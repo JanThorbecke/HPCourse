@@ -1,0 +1,7 @@
+#!/bin/bash
+
+./puls3D oper=1 fmin=1 fmax=45 file_out=puls_ref.su verbose=1
+./puls3D oper=4 fmin=1 fmax=45 file_out=puls_ref.su verbose=1
+./puls3D oper=8 fmin=1 fmax=45 file_out=puls_ref.su verbose=1
+./puls3D oper=0 fmin=1 fmax=45 file_out=puls_ref.su verbose=1
+

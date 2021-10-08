@@ -1,0 +1,3988 @@
+
+;; Function ccdft (ccdft, funcdef_no=40, decl_uid=3829, symbol_order=40)
+
+ccdft (struct complex * cdata, int n, int sign)
+{
+  static int nprev = 0;
+  static float * csval;
+  struct complex * tmp;
+  float sumi;
+  float scl;
+  int k;
+  int j;
+  int i;
+  float _11;
+  int nprev.30_13;
+  float _15;
+  double _16;
+  double _17;
+  float * csval.31_19;
+  int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  void * csval.32_25;
+  int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  float * _30;
+  unsigned int _31;
+  unsigned int _32;
+  float _33;
+  sizetype _35;
+  sizetype _36;
+  float * _37;
+  float _38;
+  long unsigned int _42;
+  long unsigned int _43;
+  int _46;
+  int _47;
+  long unsigned int _49;
+  long unsigned int _50;
+  struct complex * _52;
+  float _53;
+  long unsigned int _55;
+  long unsigned int _56;
+  float * _57;
+  float _58;
+  float _59;
+  float _62;
+  float _63;
+  sizetype _64;
+  sizetype _65;
+  float * _66;
+  float _67;
+  float _68;
+  float _69;
+  float _71;
+  float _72;
+  float _73;
+  long unsigned int _77;
+  long unsigned int _78;
+  struct complex * _79;
+  sizetype _90;
+  sizetype _91;
+  sizetype _110;
+  float * pretmp_200;
+  float pretmp_202;
+  float pretmp_251;
+  float pretmp_252;
+  complex float _256;
+  complex float prephitmp_258;
+
+  <bb 2>:
+  nprev.30_13 = nprev;
+  if (nprev.30_13 != n_14(D))
+    goto <bb 3>;
+  else
+    goto <bb 11>;
+
+  <bb 3>:
+  _15 = (float) n_14(D);
+  _16 = (double) _15;
+  _17 = 6.28318530717958623199592693708837032318115234375e+0 / _16;
+  scl_18 = (float) _17;
+  csval.31_19 = csval;
+  if (csval.31_19 != 0B)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+
+  <bb 4>:
+  free (csval.31_19);
+
+  <bb 5>:
+  _21 = n_14(D) * 2;
+  _22 = (long unsigned int) _21;
+  _23 = _22 * 4;
+  csval.32_25 = malloc (_23);
+  csval = csval.32_25;
+  if (n_14(D) > 0)
+    goto <bb 6>;
+  else
+    goto <bb 10>;
+
+  <bb 6>:
+
+  <bb 7>:
+  # i_92 = PHI <i_40(8), 0(6)>
+  # prephitmp_258 = PHI <_256(8), __complex__ (1.0e+0, 0.0)(6)>
+  _27 = i_92 * 2;
+  _28 = (long unsigned int) _27;
+  _29 = _28 * 4;
+  _30 = csval.32_25 + _29;
+  _33 = REALPART_EXPR <prephitmp_258>;
+  *_30 = _33;
+  _35 = _28 + 1;
+  _36 = _35 * 4;
+  _37 = csval.32_25 + _36;
+  _38 = IMAGPART_EXPR <prephitmp_258>;
+  *_37 = _38;
+  i_40 = i_92 + 1;
+  if (n_14(D) > i_40)
+    goto <bb 8>;
+  else
+    goto <bb 9>;
+
+  <bb 8>:
+  pretmp_251 = (float) i_40;
+  pretmp_252 = scl_18 * pretmp_251;
+  _256 = __builtin_cexpif (pretmp_252);
+  goto <bb 7>;
+
+  <bb 9>:
+
+  <bb 10>:
+  nprev = n_14(D);
+
+  <bb 11>:
+  _42 = (long unsigned int) n_14(D);
+  _43 = _42 * 8;
+  tmp_45 = malloc (_43);
+  if (n_14(D) > 0)
+    goto <bb 12>;
+  else
+    goto <bb 20>;
+
+  <bb 12>:
+  pretmp_200 = csval;
+  pretmp_202 = (float) sign_60(D);
+
+  <bb 13>:
+  # i_102 = PHI <i_82(17), 0(12)>
+
+  <bb 14>:
+  # j_101 = PHI <j_76(15), 0(13)>
+  # sumi_105 = PHI <sumi_70(15), 0.0(13)>
+  # sumi_106 = PHI <sumi_75(15), 0.0(13)>
+  _46 = i_102 * j_101;
+  _47 = _46 % n_14(D);
+  k_48 = _47 * 2;
+  _49 = (long unsigned int) j_101;
+  _50 = _49 * 8;
+  _52 = cdata_51(D) + _50;
+  _53 = _52->r;
+  _55 = (long unsigned int) k_48;
+  _56 = _55 * 4;
+  _57 = pretmp_200 + _56;
+  _58 = *_57;
+  _59 = _58 * _53;
+  _62 = _52->i;
+  _63 = _62 * pretmp_202;
+  _64 = _55 + 1;
+  _65 = _64 * 4;
+  _66 = pretmp_200 + _65;
+  _67 = *_66;
+  _68 = _63 * _67;
+  _69 = _59 - _68;
+  sumi_70 = _69 + sumi_105;
+  _71 = _58 * _62;
+  _72 = _53 * pretmp_202;
+  _73 = _72 * _67;
+  _11 = _73 + _71;
+  sumi_75 = _11 + sumi_106;
+  j_76 = j_101 + 1;
+  if (n_14(D) > j_76)
+    goto <bb 15>;
+  else
+    goto <bb 16>;
+
+  <bb 15>:
+  goto <bb 14>;
+
+  <bb 16>:
+  # sumi_264 = PHI <sumi_70(14)>
+  # sumi_263 = PHI <sumi_75(14)>
+  _77 = (long unsigned int) i_102;
+  _78 = _77 * 8;
+  _79 = tmp_45 + _78;
+  _79->r = sumi_264;
+  _79->i = sumi_263;
+  i_82 = i_102 + 1;
+  if (n_14(D) > i_82)
+    goto <bb 17>;
+  else
+    goto <bb 18>;
+
+  <bb 17>:
+  goto <bb 13>;
+
+  <bb 18>:
+  if (n_14(D) > 0)
+    goto <bb 19>;
+  else
+    goto <bb 20>;
+
+  <bb 19>:
+  _31 = (unsigned int) n_14(D);
+  _32 = _31 + 4294967295;
+  _110 = (sizetype) _32;
+  _91 = _110 + 1;
+  _90 = _91 * 8;
+  __builtin_memcpy (cdata_51(D), tmp_45, _90);
+
+  <bb 20>:
+  free (tmp_45);
+  return;
+
+}
+
+
+
+;; Function cc1_fft (cc1_fft, funcdef_no=38, decl_uid=3970, symbol_order=38)
+
+Removing basic block 33
+Removing basic block 42
+Merging blocks 19 and 46
+Merging blocks 27 and 37
+Merging blocks 39 and 30
+Merging blocks 48 and 22
+cc1_fft (struct complex * cdata, int n, int sign)
+{
+  vector(2) double * vectp_imag.107;
+  vector(2) double * vectp_imag.106;
+  vector(2) double vect__63.105;
+  vector(2) double * vectp_real.104;
+  vector(2) double * vectp_real.103;
+  vector(2) double vect__59.102;
+  vector(4) float vect__58.101;
+  vector(4) float vect__58.100;
+  vector(4) float * vectp_cdata.99;
+  vector(4) float * vectp_cdata.98;
+  int tmp.97;
+  unsigned int ratio_mult_vf.96;
+  unsigned int bnd.95;
+  unsigned int niters.94;
+  vector(4) float * vectp_cdata.93;
+  vector(4) float * vectp_cdata.92;
+  vector(4) float vect__78.91;
+  vector(2) double vect__77.90;
+  vector(2) double vect__77.89;
+  vector(2) double * vectp_imag.88;
+  vector(2) double * vectp_imag.87;
+  vector(4) float vect__74.86;
+  vector(2) double vect__73.85;
+  vector(2) double vect__73.84;
+  vector(2) double * vectp_real.83;
+  vector(2) double * vectp_real.82;
+  int tmp.81;
+  unsigned int ratio_mult_vf.80;
+  unsigned int bnd.79;
+  unsigned int niters.78;
+  double * imag;
+  double * real;
+  int j;
+  double _2;
+  int iftmp.20_3;
+  double iftmp.22_5;
+  double _14;
+  double _15;
+  double _16;
+  double _17;
+  int _18;
+  double iftmp.21_19;
+  double _20;
+  int _21;
+  double iftmp.21_22;
+  double _24;
+  int _25;
+  double iftmp.22_26;
+  double _27;
+  int _28;
+  double iftmp.22_29;
+  double _30;
+  double _31;
+  int iftmp.20_32;
+  unsigned int _33;
+  unsigned int _38;
+  double _40;
+  int iftmp.20_41;
+  long unsigned int _42;
+  long unsigned int _43;
+  struct FILE * __stderrp.24_47;
+  struct FILE * __stderrp.24_51;
+  long unsigned int _53;
+  long unsigned int _54;
+  double * _55;
+  struct complex * _57;
+  float _58;
+  double _59;
+  double * _61;
+  float _62;
+  double _63;
+  unsigned int ivtmp_64;
+  long unsigned int _69;
+  long unsigned int _70;
+  struct complex * _71;
+  double * _72;
+  double _73;
+  float _74;
+  unsigned int ivtmp_75;
+  double * _76;
+  double _77;
+  float _78;
+  unsigned int ivtmp_79;
+  int _84;
+  vector(4) float vect_inter_low_88;
+  vector(4) float vect_inter_high_89;
+  long unsigned int _94;
+  double _99;
+  unsigned int _120;
+  unsigned int _121;
+  long unsigned int _124;
+  float _127;
+  double _128;
+  double * _129;
+  float _131;
+  double _132;
+  unsigned int _134;
+  unsigned int _135;
+  double * _136;
+  struct complex * _137;
+  long unsigned int _138;
+  double prephitmp_141;
+  long unsigned int _142;
+  double * _143;
+  struct complex * _144;
+  float _145;
+  double _146;
+  double * _148;
+  float _149;
+  double _150;
+  unsigned int _153;
+  unsigned int _154;
+  vector(4) float vect_perm_even_168;
+  vector(4) float vect_perm_odd_169;
+  unsigned int ivtmp_185;
+
+  <bb 2>:
+  _14 = (double) n_13(D);
+  _15 = log (_14);
+  _16 = _15 * 1.442695040888963387004650940070860087871551513671875e+0;
+  if (_16 > 0.0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  _17 = _16 + 5.0e-1;
+  _18 = (int) _17;
+  iftmp.21_19 = (double) _18;
+  _2 = pow (2.0e+0, iftmp.21_19);
+  if (_2 > 0.0)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+
+  <bb 4>:
+  _20 = _16 - 5.0e-1;
+  _21 = (int) _20;
+  iftmp.21_22 = (double) _21;
+  _99 = pow (2.0e+0, iftmp.21_22);
+  if (_99 > 0.0)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+
+  <bb 5>:
+  if (_16 > 0.0)
+    goto <bb 6>;
+  else
+    goto <bb 7>;
+
+  <bb 6>:
+  _24 = _16 + 5.0e-1;
+  _25 = (int) _24;
+  iftmp.22_26 = (double) _25;
+  goto <bb 8>;
+
+  <bb 7>:
+  _27 = _16 - 5.0e-1;
+  _28 = (int) _27;
+  iftmp.22_29 = (double) _28;
+
+  <bb 8>:
+  # iftmp.22_5 = PHI <iftmp.22_26(6), iftmp.22_29(7)>
+  _30 = pow (2.0e+0, iftmp.22_5);
+  _31 = _30 + 5.0e-1;
+  iftmp.20_32 = (int) _31;
+  goto <bb 10>;
+
+  <bb 9>:
+  # prephitmp_141 = PHI <_2(3), _99(4)>
+  _40 = prephitmp_141 - 5.0e-1;
+  iftmp.20_41 = (int) _40;
+
+  <bb 10>:
+  # iftmp.20_3 = PHI <iftmp.20_32(8), iftmp.20_41(9)>
+  if (iftmp.20_3 != n_13(D))
+    goto <bb 11>;
+  else
+    goto <bb 14>;
+
+  <bb 11>:
+  _84 = npfa (n_13(D));
+  if (_84 == n_13(D))
+    goto <bb 12>;
+  else
+    goto <bb 13>;
+
+  <bb 12>:
+  pfacc (sign_66(D), _84, cdata_56(D));
+  goto <bb 44>;
+
+  <bb 13>:
+  ccdft (cdata_56(D), n_13(D), sign_66(D));
+  goto <bb 44>;
+
+  <bb 14>:
+  _42 = (long unsigned int) iftmp.20_3;
+  _43 = _42 * 8;
+  real_46 = malloc (_43);
+  if (real_46 == 0B)
+    goto <bb 15>;
+  else
+    goto <bb 16>;
+
+  <bb 15>:
+  __stderrp.24_47 = __stderrp;
+  __builtin_fwrite ("cc1_fft: memory allocation error\n", 1, 33, __stderrp.24_47);
+
+  <bb 16>:
+  imag_50 = malloc (_43);
+  if (imag_50 == 0B)
+    goto <bb 17>;
+  else
+    goto <bb 18>;
+
+  <bb 17>:
+  __stderrp.24_51 = __stderrp;
+  __builtin_fwrite ("cc1_fft: memory allocation error\n", 1, 33, __stderrp.24_51);
+
+  <bb 18>:
+  if (iftmp.20_3 > 0)
+    goto <bb 19>;
+  else
+    goto <bb 29>;
+
+  <bb 19>:
+  niters.94_4 = (unsigned int) iftmp.20_3;
+  _135 = niters.94_4 + 4294967292;
+  _134 = _135 >> 2;
+  bnd.95_1 = _134 + 1;
+  ratio_mult_vf.96_133 = bnd.95_1 << 2;
+  _153 = (unsigned int) iftmp.20_3;
+  _154 = _153 + 4294967295;
+  if (_154 <= 2)
+    goto <bb 25>;
+  else
+    goto <bb 20>;
+
+  <bb 20>:
+  vectp_cdata.99_162 = cdata_56(D);
+  vectp_real.104_172 = real_46;
+  vectp_imag.107_179 = imag_50;
+
+  <bb 21>:
+  # j_87 = PHI <j_65(26), 0(20)>
+  # vectp_cdata.98_163 = PHI <vectp_cdata.98_164(26), vectp_cdata.99_162(20)>
+  # vectp_real.103_173 = PHI <vectp_real.103_174(26), vectp_real.104_172(20)>
+  # vectp_imag.106_180 = PHI <vectp_imag.106_181(26), vectp_imag.107_179(20)>
+  # ivtmp_64 = PHI <ivtmp_185(26), 0(20)>
+  _53 = (long unsigned int) j_87;
+  _54 = _53 * 8;
+  _55 = real_46 + _54;
+  _57 = cdata_56(D) + _54;
+  vect__58.100_165 = MEM[(float *)vectp_cdata.98_163];
+  vectp_cdata.98_166 = vectp_cdata.98_163 + 16;
+  vect__58.101_167 = MEM[(float *)vectp_cdata.98_166];
+  vect_perm_even_168 = VEC_PERM_EXPR <vect__58.100_165, vect__58.101_167, { 0, 2, 4, 6 }>;
+  vect_perm_odd_169 = VEC_PERM_EXPR <vect__58.100_165, vect__58.101_167, { 1, 3, 5, 7 }>;
+  _58 = _57->r;
+  vect__59.102_170 = [vec_unpack_lo_expr] vect_perm_even_168;
+  vect__59.102_171 = [vec_unpack_hi_expr] vect_perm_even_168;
+  _59 = (double) _58;
+  MEM[(double *)vectp_real.103_173] = vect__59.102_170;
+  vectp_real.103_176 = vectp_real.103_173 + 16;
+  MEM[(double *)vectp_real.103_176] = vect__59.102_171;
+  _61 = imag_50 + _54;
+  _62 = _57->i;
+  vect__63.105_60 = [vec_unpack_lo_expr] vect_perm_odd_169;
+  vect__63.105_178 = [vec_unpack_hi_expr] vect_perm_odd_169;
+  _63 = (double) _62;
+  MEM[(double *)vectp_imag.106_180] = vect__63.105_60;
+  vectp_imag.106_183 = vectp_imag.106_180 + 16;
+  MEM[(double *)vectp_imag.106_183] = vect__63.105_178;
+  j_65 = j_87 + 1;
+  vectp_cdata.98_164 = vectp_cdata.98_166 + 16;
+  vectp_real.103_174 = vectp_real.103_176 + 16;
+  vectp_imag.106_181 = vectp_imag.106_183 + 16;
+  ivtmp_185 = ivtmp_64 + 1;
+  if (ivtmp_185 < bnd.95_1)
+    goto <bb 26>;
+  else
+    goto <bb 24>;
+
+  <bb 22>:
+  # j_126 = PHI <j_152(23), j_155(25)>
+  _124 = (long unsigned int) j_126;
+  _142 = _124 * 8;
+  _143 = real_46 + _142;
+  _144 = cdata_56(D) + _142;
+  _145 = _144->r;
+  _146 = (double) _145;
+  *_143 = _146;
+  _148 = imag_50 + _142;
+  _149 = _144->i;
+  _150 = (double) _149;
+  *_148 = _150;
+  j_152 = j_126 + 1;
+  if (iftmp.20_3 > j_152)
+    goto <bb 23>;
+  else
+    goto <bb 27>;
+
+  <bb 23>:
+  goto <bb 22>;
+
+  <bb 24>:
+  # j_156 = PHI <j_65(21)>
+  tmp.97_161 = (int) ratio_mult_vf.96_133;
+  if (niters.94_4 == ratio_mult_vf.96_133)
+    goto <bb 28>;
+  else
+    goto <bb 25>;
+
+  <bb 25>:
+  # j_155 = PHI <tmp.97_161(24), 0(19)>
+  goto <bb 22>;
+
+  <bb 26>:
+  goto <bb 21>;
+
+  <bb 27>:
+
+  <bb 28>:
+
+  <bb 29>:
+  if (sign_66(D) < 0)
+    goto <bb 30>;
+  else
+    goto <bb 31>;
+
+  <bb 30>:
+  fft (iftmp.20_3, real_46, imag_50);
+  goto <bb 32>;
+
+  <bb 31>:
+  ifft (iftmp.20_3, real_46, imag_50);
+
+  <bb 32>:
+  if (iftmp.20_3 > 0)
+    goto <bb 33>;
+  else
+    goto <bb 43>;
+
+  <bb 33>:
+  niters.78_36 = (unsigned int) iftmp.20_3;
+  _38 = niters.78_36 + 4294967292;
+  _33 = _38 >> 2;
+  bnd.79_37 = _33 + 1;
+  ratio_mult_vf.80_34 = bnd.79_37 << 2;
+  _121 = (unsigned int) iftmp.20_3;
+  _120 = _121 + 4294967295;
+  if (_120 <= 2)
+    goto <bb 39>;
+  else
+    goto <bb 34>;
+
+  <bb 34>:
+  vectp_real.83_112 = real_46;
+  vectp_imag.88_105 = imag_50;
+  vectp_cdata.93_92 = cdata_56(D);
+
+  <bb 35>:
+  # j_96 = PHI <j_80(40), 0(34)>
+  # vectp_real.82_111 = PHI <vectp_real.82_110(40), vectp_real.83_112(34)>
+  # vectp_imag.87_104 = PHI <vectp_imag.87_103(40), vectp_imag.88_105(34)>
+  # vectp_cdata.92_91 = PHI <vectp_cdata.92_90(40), vectp_cdata.93_92(34)>
+  # ivtmp_79 = PHI <ivtmp_75(40), 0(34)>
+  _69 = (long unsigned int) j_96;
+  _70 = _69 * 8;
+  _71 = cdata_56(D) + _70;
+  _72 = real_46 + _70;
+  vect__73.84_109 = MEM[(double *)vectp_real.82_111];
+  vectp_real.82_108 = vectp_real.82_111 + 16;
+  vect__73.85_107 = MEM[(double *)vectp_real.82_108];
+  _73 = *_72;
+  vect__74.86_106 = VEC_PACK_TRUNC_EXPR <vect__73.84_109, vect__73.85_107>;
+  _74 = (float) _73;
+  _76 = imag_50 + _70;
+  vect__77.89_102 = MEM[(double *)vectp_imag.87_104];
+  vectp_imag.87_101 = vectp_imag.87_104 + 16;
+  vect__77.90_100 = MEM[(double *)vectp_imag.87_101];
+  _77 = *_76;
+  vect__78.91_98 = VEC_PACK_TRUNC_EXPR <vect__77.89_102, vect__77.90_100>;
+  _78 = (float) _77;
+  vect_inter_high_89 = VEC_PERM_EXPR <vect__74.86_106, vect__78.91_98, { 0, 4, 1, 5 }>;
+  vect_inter_low_88 = VEC_PERM_EXPR <vect__74.86_106, vect__78.91_98, { 2, 6, 3, 7 }>;
+  MEM[(float *)vectp_cdata.92_91] = vect_inter_high_89;
+  vectp_cdata.92_11 = vectp_cdata.92_91 + 16;
+  MEM[(float *)vectp_cdata.92_11] = vect_inter_low_88;
+  j_80 = j_96 + 1;
+  vectp_real.82_110 = vectp_real.82_108 + 16;
+  vectp_imag.87_103 = vectp_imag.87_101 + 16;
+  vectp_cdata.92_90 = vectp_cdata.92_11 + 16;
+  ivtmp_75 = ivtmp_79 + 1;
+  if (ivtmp_75 < bnd.79_37)
+    goto <bb 40>;
+  else
+    goto <bb 38>;
+
+  <bb 36>:
+  # j_35 = PHI <j_122(37), j_119(39)>
+  _94 = (long unsigned int) j_35;
+  _138 = _94 * 8;
+  _137 = cdata_56(D) + _138;
+  _136 = real_46 + _138;
+  _132 = *_136;
+  _131 = (float) _132;
+  _137->r = _131;
+  _129 = imag_50 + _138;
+  _128 = *_129;
+  _127 = (float) _128;
+  _137->i = _127;
+  j_122 = j_35 + 1;
+  if (iftmp.20_3 > j_122)
+    goto <bb 37>;
+  else
+    goto <bb 41>;
+
+  <bb 37>:
+  goto <bb 36>;
+
+  <bb 38>:
+  # j_118 = PHI <j_80(35)>
+  tmp.81_113 = (int) ratio_mult_vf.80_34;
+  if (ratio_mult_vf.80_34 == niters.78_36)
+    goto <bb 42>;
+  else
+    goto <bb 39>;
+
+  <bb 39>:
+  # j_119 = PHI <tmp.81_113(38), 0(33)>
+  goto <bb 36>;
+
+  <bb 40>:
+  goto <bb 35>;
+
+  <bb 41>:
+
+  <bb 42>:
+
+  <bb 43>:
+  free (real_46);
+  free (imag_50);
+
+  <bb 44>:
+  return;
+
+}
+
+
+
+;; Function ccm_fft (ccm_fft, funcdef_no=39, decl_uid=3986, symbol_order=39)
+
+Removing basic block 43
+Removing basic block 52
+Merging blocks 26 and 56
+Merging blocks 34 and 47
+Merging blocks 49 and 37
+Merging blocks 58 and 29
+ccm_fft (struct complex * cdata, int n1, int n2, int ld1, int sign)
+{
+  vector(2) double * vectp_imag.165;
+  vector(2) double * vectp_imag.164;
+  vector(2) double vect__73.163;
+  vector(2) double * vectp_real.162;
+  vector(2) double * vectp_real.161;
+  vector(2) double vect__69.160;
+  vector(4) float vect__68.159;
+  vector(4) float vect__68.158;
+  vector(4) float * vectp.157;
+  vector(4) float * vectp.156;
+  int tmp.155;
+  unsigned int ratio_mult_vf.154;
+  unsigned int bnd.153;
+  unsigned int niters.152;
+  vector(4) float * vectp.151;
+  vector(4) float * vectp.150;
+  vector(4) float vect__92.149;
+  vector(2) double vect__91.148;
+  vector(2) double vect__91.147;
+  vector(2) double * vectp_imag.146;
+  vector(2) double * vectp_imag.145;
+  vector(4) float vect__88.144;
+  vector(2) double vect__87.143;
+  vector(2) double vect__87.142;
+  vector(2) double * vectp_real.141;
+  vector(2) double * vectp_real.140;
+  int tmp.139;
+  unsigned int ratio_mult_vf.138;
+  unsigned int bnd.137;
+  unsigned int niters.136;
+  double * imag;
+  double * real;
+  int j;
+  int i;
+  double _1;
+  double _2;
+  float _3;
+  double _4;
+  int iftmp.25_5;
+  struct complex * _6;
+  double iftmp.27_7;
+  long unsigned int _9;
+  long unsigned int _12;
+  int _14;
+  double * _15;
+  double _18;
+  double _19;
+  double _20;
+  double _21;
+  int _22;
+  double iftmp.26_23;
+  double _24;
+  int _25;
+  double iftmp.26_26;
+  long unsigned int _27;
+  double _28;
+  int _29;
+  double iftmp.27_30;
+  double _31;
+  int _32;
+  double iftmp.27_33;
+  double _34;
+  double _35;
+  int iftmp.25_36;
+  unsigned int _38;
+  unsigned int _39;
+  double _44;
+  int iftmp.25_45;
+  long unsigned int _46;
+  long unsigned int _47;
+  struct FILE * __stderrp.29_51;
+  struct FILE * __stderrp.29_55;
+  long unsigned int _58;
+  long unsigned int _59;
+  double * _60;
+  int _63;
+  long unsigned int _64;
+  long unsigned int _65;
+  struct complex * _67;
+  float _68;
+  double _69;
+  double * _71;
+  float _72;
+  double _73;
+  unsigned int ivtmp_74;
+  int _80;
+  long unsigned int _81;
+  long unsigned int _82;
+  struct complex * _83;
+  long unsigned int _84;
+  long unsigned int _85;
+  double * _86;
+  double _87;
+  float _88;
+  unsigned int ivtmp_89;
+  double * _90;
+  double _91;
+  float _92;
+  unsigned int ivtmp_93;
+  int _99;
+  int _100;
+  long unsigned int _101;
+  long unsigned int _102;
+  struct complex * _103;
+  long unsigned int _108;
+  int _114;
+  unsigned int _118;
+  unsigned int _119;
+  long unsigned int _125;
+  vector(4) float vect_inter_low_129;
+  vector(4) float vect_inter_high_130;
+  long unsigned int _133;
+  long unsigned int _134;
+  int pretmp_157;
+  unsigned int _160;
+  unsigned int _162;
+  unsigned int _163;
+  float _166;
+  double _167;
+  double * _168;
+  unsigned int _170;
+  int pretmp_173;
+  float _174;
+  double _175;
+  double * _176;
+  long unsigned int _177;
+  long unsigned int _178;
+  struct complex * _179;
+  long unsigned int _180;
+  double _182;
+  float _183;
+  double * _184;
+  double prephitmp_189;
+  long unsigned int _195;
+  long unsigned int _196;
+  vector(4) float vect_perm_even_202;
+  vector(4) float vect_perm_odd_203;
+  unsigned int ivtmp_219;
+
+  <bb 2>:
+  _18 = (double) n1_17(D);
+  _19 = log (_18);
+  _20 = _19 * 1.442695040888963387004650940070860087871551513671875e+0;
+  if (_20 > 0.0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  _21 = _20 + 5.0e-1;
+  _22 = (int) _21;
+  iftmp.26_23 = (double) _22;
+  _2 = pow (2.0e+0, iftmp.26_23);
+  if (_2 > 0.0)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+
+  <bb 4>:
+  _24 = _20 - 5.0e-1;
+  _25 = (int) _24;
+  iftmp.26_26 = (double) _25;
+  _4 = pow (2.0e+0, iftmp.26_26);
+  if (_4 > 0.0)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+
+  <bb 5>:
+  if (_20 > 0.0)
+    goto <bb 6>;
+  else
+    goto <bb 7>;
+
+  <bb 6>:
+  _28 = _20 + 5.0e-1;
+  _29 = (int) _28;
+  iftmp.27_30 = (double) _29;
+  goto <bb 8>;
+
+  <bb 7>:
+  _31 = _20 - 5.0e-1;
+  _32 = (int) _31;
+  iftmp.27_33 = (double) _32;
+
+  <bb 8>:
+  # iftmp.27_7 = PHI <iftmp.27_30(6), iftmp.27_33(7)>
+  _34 = pow (2.0e+0, iftmp.27_7);
+  _35 = _34 + 5.0e-1;
+  iftmp.25_36 = (int) _35;
+  goto <bb 10>;
+
+  <bb 9>:
+  # prephitmp_189 = PHI <_2(3), _4(4)>
+  _44 = prephitmp_189 - 5.0e-1;
+  iftmp.25_45 = (int) _44;
+
+  <bb 10>:
+  # iftmp.25_5 = PHI <iftmp.25_36(8), iftmp.25_45(9)>
+  if (iftmp.25_5 != n1_17(D))
+    goto <bb 11>;
+  else
+    goto <bb 19>;
+
+  <bb 11>:
+  _99 = npfa (n1_17(D));
+  if (_99 == n1_17(D))
+    goto <bb 12>;
+  else
+    goto <bb 13>;
+
+  <bb 12>:
+  pfamcc (sign_76(D), _99, n2_57(D), 1, ld1_61(D), cdata_66(D));
+  goto <bb 54>;
+
+  <bb 13>:
+  if (n2_57(D) > 0)
+    goto <bb 15>;
+  else
+    goto <bb 14>;
+
+  <bb 14>:
+  goto <bb 54>;
+
+  <bb 15>:
+
+  <bb 16>:
+  # i_116 = PHI <i_105(18), 0(15)>
+  _100 = i_116 * ld1_61(D);
+  _101 = (long unsigned int) _100;
+  _102 = _101 * 8;
+  _103 = cdata_66(D) + _102;
+  ccdft (_103, n1_17(D), sign_76(D));
+  i_105 = i_116 + 1;
+  if (n2_57(D) > i_105)
+    goto <bb 18>;
+  else
+    goto <bb 17>;
+
+  <bb 17>:
+  goto <bb 14>;
+
+  <bb 18>:
+  goto <bb 16>;
+
+  <bb 19>:
+  _46 = (long unsigned int) iftmp.25_5;
+  _47 = _46 * 8;
+  real_50 = malloc (_47);
+  if (real_50 == 0B)
+    goto <bb 20>;
+  else
+    goto <bb 21>;
+
+  <bb 20>:
+  __stderrp.29_51 = __stderrp;
+  __builtin_fwrite ("ccm_fft: memory allocation error\n", 1, 33, __stderrp.29_51);
+
+  <bb 21>:
+  imag_54 = malloc (_47);
+  if (imag_54 == 0B)
+    goto <bb 22>;
+  else
+    goto <bb 23>;
+
+  <bb 22>:
+  __stderrp.29_55 = __stderrp;
+  __builtin_fwrite ("ccm_fft: memory allocation error\n", 1, 33, __stderrp.29_55);
+
+  <bb 23>:
+  if (n2_57(D) > 0)
+    goto <bb 24>;
+  else
+    goto <bb 53>;
+
+  <bb 24>:
+
+  <bb 25>:
+  # i_117 = PHI <i_95(51), 0(24)>
+  if (iftmp.25_5 > 0)
+    goto <bb 26>;
+  else
+    goto <bb 36>;
+
+  <bb 26>:
+  pretmp_173 = ld1_61(D) * i_117;
+  niters.152_121 = (unsigned int) iftmp.25_5;
+  _119 = niters.152_121 + 4294967292;
+  _118 = _119 >> 2;
+  bnd.153_120 = _118 + 1;
+  ratio_mult_vf.154_113 = bnd.153_120 << 2;
+  _170 = (unsigned int) iftmp.25_5;
+  _160 = _170 + 4294967295;
+  if (_160 <= 2)
+    goto <bb 32>;
+  else
+    goto <bb 27>;
+
+  <bb 27>:
+  _195 = (long unsigned int) pretmp_173;
+  _196 = _195 * 8;
+  vectp.157_194 = cdata_66(D) + _196;
+  vectp_real.162_206 = real_50;
+  vectp_imag.165_213 = imag_54;
+
+  <bb 28>:
+  # j_115 = PHI <j_75(33), 0(27)>
+  # vectp.156_197 = PHI <vectp.156_198(33), vectp.157_194(27)>
+  # vectp_real.161_207 = PHI <vectp_real.161_208(33), vectp_real.162_206(27)>
+  # vectp_imag.164_214 = PHI <vectp_imag.164_215(33), vectp_imag.165_213(27)>
+  # ivtmp_74 = PHI <ivtmp_219(33), 0(27)>
+  _58 = (long unsigned int) j_115;
+  _59 = _58 * 8;
+  _60 = real_50 + _59;
+  _63 = j_115 + pretmp_173;
+  _64 = (long unsigned int) _63;
+  _65 = _64 * 8;
+  _67 = cdata_66(D) + _65;
+  vect__68.158_199 = MEM[(float *)vectp.156_197];
+  vectp.156_200 = vectp.156_197 + 16;
+  vect__68.159_201 = MEM[(float *)vectp.156_200];
+  vect_perm_even_202 = VEC_PERM_EXPR <vect__68.158_199, vect__68.159_201, { 0, 2, 4, 6 }>;
+  vect_perm_odd_203 = VEC_PERM_EXPR <vect__68.158_199, vect__68.159_201, { 1, 3, 5, 7 }>;
+  _68 = _67->r;
+  vect__69.160_204 = [vec_unpack_lo_expr] vect_perm_even_202;
+  vect__69.160_205 = [vec_unpack_hi_expr] vect_perm_even_202;
+  _69 = (double) _68;
+  MEM[(double *)vectp_real.161_207] = vect__69.160_204;
+  vectp_real.161_210 = vectp_real.161_207 + 16;
+  MEM[(double *)vectp_real.161_210] = vect__69.160_205;
+  _71 = imag_54 + _59;
+  _72 = _67->i;
+  vect__73.163_70 = [vec_unpack_lo_expr] vect_perm_odd_203;
+  vect__73.163_212 = [vec_unpack_hi_expr] vect_perm_odd_203;
+  _73 = (double) _72;
+  MEM[(double *)vectp_imag.164_214] = vect__73.163_70;
+  vectp_imag.164_217 = vectp_imag.164_214 + 16;
+  MEM[(double *)vectp_imag.164_217] = vect__73.163_212;
+  j_75 = j_115 + 1;
+  vectp.156_198 = vectp.156_200 + 16;
+  vectp_real.161_208 = vectp_real.161_210 + 16;
+  vectp_imag.164_215 = vectp_imag.164_217 + 16;
+  ivtmp_219 = ivtmp_74 + 1;
+  if (ivtmp_219 < bnd.153_120)
+    goto <bb 33>;
+  else
+    goto <bb 31>;
+
+  <bb 29>:
+  # j_110 = PHI <j_171(30), j_159(32)>
+  _108 = (long unsigned int) j_110;
+  _27 = _108 * 8;
+  _15 = real_50 + _27;
+  _14 = j_110 + pretmp_173;
+  _12 = (long unsigned int) _14;
+  _9 = _12 * 8;
+  _6 = cdata_66(D) + _9;
+  _3 = _6->r;
+  _1 = (double) _3;
+  *_15 = _1;
+  _184 = imag_54 + _27;
+  _183 = _6->i;
+  _182 = (double) _183;
+  *_184 = _182;
+  j_171 = j_110 + 1;
+  if (iftmp.25_5 > j_171)
+    goto <bb 30>;
+  else
+    goto <bb 34>;
+
+  <bb 30>:
+  goto <bb 29>;
+
+  <bb 31>:
+  # j_158 = PHI <j_75(28)>
+  tmp.155_193 = (int) ratio_mult_vf.154_113;
+  if (ratio_mult_vf.154_113 == niters.152_121)
+    goto <bb 35>;
+  else
+    goto <bb 32>;
+
+  <bb 32>:
+  # j_159 = PHI <tmp.155_193(31), 0(26)>
+  goto <bb 29>;
+
+  <bb 33>:
+  goto <bb 28>;
+
+  <bb 34>:
+
+  <bb 35>:
+
+  <bb 36>:
+  if (sign_76(D) < 0)
+    goto <bb 37>;
+  else
+    goto <bb 38>;
+
+  <bb 37>:
+  fft (iftmp.25_5, real_50, imag_54);
+  goto <bb 39>;
+
+  <bb 38>:
+  ifft (iftmp.25_5, real_50, imag_54);
+
+  <bb 39>:
+  if (iftmp.25_5 > 0)
+    goto <bb 40>;
+  else
+    goto <bb 50>;
+
+  <bb 40>:
+  pretmp_157 = ld1_61(D) * i_117;
+  niters.136_42 = (unsigned int) iftmp.25_5;
+  _38 = niters.136_42 + 4294967292;
+  _39 = _38 >> 2;
+  bnd.137_37 = _39 + 1;
+  ratio_mult_vf.138_62 = bnd.137_37 << 2;
+  _163 = (unsigned int) iftmp.25_5;
+  _162 = _163 + 4294967295;
+  if (_162 <= 2)
+    goto <bb 46>;
+  else
+    goto <bb 41>;
+
+  <bb 41>:
+  vectp_real.141_150 = real_50;
+  vectp_imag.146_142 = imag_54;
+  _134 = (long unsigned int) pretmp_157;
+  _133 = _134 * 8;
+  vectp.151_135 = cdata_66(D) + _133;
+
+  <bb 42>:
+  # j_107 = PHI <j_94(47), 0(41)>
+  # vectp_real.140_148 = PHI <vectp_real.140_147(47), vectp_real.141_150(41)>
+  # vectp_imag.145_141 = PHI <vectp_imag.145_140(47), vectp_imag.146_142(41)>
+  # vectp.150_132 = PHI <vectp.150_131(47), vectp.151_135(41)>
+  # ivtmp_93 = PHI <ivtmp_89(47), 0(41)>
+  _80 = j_107 + pretmp_157;
+  _81 = (long unsigned int) _80;
+  _82 = _81 * 8;
+  _83 = cdata_66(D) + _82;
+  _84 = (long unsigned int) j_107;
+  _85 = _84 * 8;
+  _86 = real_50 + _85;
+  vect__87.142_146 = MEM[(double *)vectp_real.140_148];
+  vectp_real.140_145 = vectp_real.140_148 + 16;
+  vect__87.143_144 = MEM[(double *)vectp_real.140_145];
+  _87 = *_86;
+  vect__88.144_143 = VEC_PACK_TRUNC_EXPR <vect__87.142_146, vect__87.143_144>;
+  _88 = (float) _87;
+  _90 = imag_54 + _85;
+  vect__91.147_139 = MEM[(double *)vectp_imag.145_141];
+  vectp_imag.145_138 = vectp_imag.145_141 + 16;
+  vect__91.148_137 = MEM[(double *)vectp_imag.145_138];
+  _91 = *_90;
+  vect__92.149_136 = VEC_PACK_TRUNC_EXPR <vect__91.147_139, vect__91.148_137>;
+  _92 = (float) _91;
+  vect_inter_high_130 = VEC_PERM_EXPR <vect__88.144_143, vect__92.149_136, { 0, 4, 1, 5 }>;
+  vect_inter_low_129 = VEC_PERM_EXPR <vect__88.144_143, vect__92.149_136, { 2, 6, 3, 7 }>;
+  MEM[(float *)vectp.150_132] = vect_inter_high_130;
+  vectp.150_127 = vectp.150_132 + 16;
+  MEM[(float *)vectp.150_127] = vect_inter_low_129;
+  j_94 = j_107 + 1;
+  vectp_real.140_147 = vectp_real.140_145 + 16;
+  vectp_imag.145_140 = vectp_imag.145_138 + 16;
+  vectp.150_131 = vectp.150_127 + 16;
+  ivtmp_89 = ivtmp_93 + 1;
+  if (ivtmp_89 < bnd.137_37)
+    goto <bb 47>;
+  else
+    goto <bb 45>;
+
+  <bb 43>:
+  # j_79 = PHI <j_164(44), j_161(46)>
+  _114 = j_79 + pretmp_157;
+  _125 = (long unsigned int) _114;
+  _180 = _125 * 8;
+  _179 = cdata_66(D) + _180;
+  _178 = (long unsigned int) j_79;
+  _177 = _178 * 8;
+  _176 = real_50 + _177;
+  _175 = *_176;
+  _174 = (float) _175;
+  _179->r = _174;
+  _168 = imag_54 + _177;
+  _167 = *_168;
+  _166 = (float) _167;
+  _179->i = _166;
+  j_164 = j_79 + 1;
+  if (iftmp.25_5 > j_164)
+    goto <bb 44>;
+  else
+    goto <bb 48>;
+
+  <bb 44>:
+  goto <bb 43>;
+
+  <bb 45>:
+  # j_156 = PHI <j_94(42)>
+  tmp.139_151 = (int) ratio_mult_vf.138_62;
+  if (niters.136_42 == ratio_mult_vf.138_62)
+    goto <bb 49>;
+  else
+    goto <bb 46>;
+
+  <bb 46>:
+  # j_161 = PHI <tmp.139_151(45), 0(40)>
+  goto <bb 43>;
+
+  <bb 47>:
+  goto <bb 42>;
+
+  <bb 48>:
+
+  <bb 49>:
+
+  <bb 50>:
+  i_95 = i_117 + 1;
+  if (n2_57(D) > i_95)
+    goto <bb 51>;
+  else
+    goto <bb 52>;
+
+  <bb 51>:
+  goto <bb 25>;
+
+  <bb 52>:
+
+  <bb 53>:
+  free (real_50);
+  free (imag_54);
+
+  <bb 54>:
+  return;
+
+}
+
+
+
+;; Function rcdft (rcdft, funcdef_no=41, decl_uid=3834, symbol_order=41)
+
+rcdft (float * rdata, struct complex * cdata, int n, int sign)
+{
+  static int nprev = 0;
+  static float * csval;
+  float sumi;
+  float scl;
+  int nc;
+  int k;
+  int j;
+  int i;
+  int nprev.33_11;
+  float _13;
+  double _14;
+  double _15;
+  float * csval.34_17;
+  int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  void * csval.35_23;
+  int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  float * _28;
+  float _31;
+  sizetype _33;
+  sizetype _34;
+  float * _35;
+  float _36;
+  int _40;
+  int _42;
+  int _43;
+  long unsigned int _45;
+  long unsigned int _46;
+  float * _48;
+  float _49;
+  long unsigned int _51;
+  long unsigned int _52;
+  float * _53;
+  float _54;
+  float _55;
+  float _59;
+  sizetype _60;
+  sizetype _61;
+  float * _62;
+  float _63;
+  float _64;
+  long unsigned int _67;
+  long unsigned int _68;
+  struct complex * _70;
+  float * pretmp_165;
+  float pretmp_169;
+  float pretmp_193;
+  float pretmp_194;
+  complex float _195;
+  complex float prephitmp_197;
+
+  <bb 2>:
+  nprev.33_11 = nprev;
+  if (nprev.33_11 != n_12(D))
+    goto <bb 3>;
+  else
+    goto <bb 11>;
+
+  <bb 3>:
+  _13 = (float) n_12(D);
+  _14 = (double) _13;
+  _15 = 6.28318530717958623199592693708837032318115234375e+0 / _14;
+  scl_16 = (float) _15;
+  csval.34_17 = csval;
+  if (csval.34_17 != 0B)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+
+  <bb 4>:
+  free (csval.34_17);
+
+  <bb 5>:
+  _19 = n_12(D) * 2;
+  _20 = (long unsigned int) _19;
+  _21 = _20 * 4;
+  csval.35_23 = malloc (_21);
+  csval = csval.35_23;
+  if (n_12(D) > 0)
+    goto <bb 6>;
+  else
+    goto <bb 10>;
+
+  <bb 6>:
+
+  <bb 7>:
+  # i_81 = PHI <i_38(8), 0(6)>
+  # prephitmp_197 = PHI <_195(8), __complex__ (1.0e+0, 0.0)(6)>
+  _25 = i_81 * 2;
+  _26 = (long unsigned int) _25;
+  _27 = _26 * 4;
+  _28 = csval.35_23 + _27;
+  _31 = REALPART_EXPR <prephitmp_197>;
+  *_28 = _31;
+  _33 = _26 + 1;
+  _34 = _33 * 4;
+  _35 = csval.35_23 + _34;
+  _36 = IMAGPART_EXPR <prephitmp_197>;
+  *_35 = _36;
+  i_38 = i_81 + 1;
+  if (n_12(D) > i_38)
+    goto <bb 8>;
+  else
+    goto <bb 9>;
+
+  <bb 8>:
+  pretmp_193 = (float) i_38;
+  pretmp_194 = scl_16 * pretmp_193;
+  _195 = __builtin_cexpif (pretmp_194);
+  goto <bb 7>;
+
+  <bb 9>:
+
+  <bb 10>:
+  nprev = n_12(D);
+
+  <bb 11>:
+  _40 = n_12(D) + 2;
+  nc_41 = _40 / 2;
+  if (nc_41 > 0)
+    goto <bb 12>;
+  else
+    goto <bb 21>;
+
+  <bb 12>:
+  pretmp_165 = csval;
+
+  <bb 13>:
+  # i_82 = PHI <i_73(19), 0(12)>
+  if (n_12(D) > 0)
+    goto <bb 14>;
+  else
+    goto <bb 18>;
+
+  <bb 14>:
+  pretmp_169 = (float) sign_57(D);
+
+  <bb 15>:
+  # j_85 = PHI <j_66(17), 0(14)>
+  # sumi_86 = PHI <sumi_56(17), 0.0(14)>
+  # sumi_87 = PHI <sumi_65(17), 0.0(14)>
+  _42 = i_82 * j_85;
+  _43 = _42 % n_12(D);
+  k_44 = _43 * 2;
+  _45 = (long unsigned int) j_85;
+  _46 = _45 * 4;
+  _48 = rdata_47(D) + _46;
+  _49 = *_48;
+  _51 = (long unsigned int) k_44;
+  _52 = _51 * 4;
+  _53 = pretmp_165 + _52;
+  _54 = *_53;
+  _55 = _54 * _49;
+  sumi_56 = sumi_86 + _55;
+  _59 = _49 * pretmp_169;
+  _60 = _51 + 1;
+  _61 = _60 * 4;
+  _62 = pretmp_165 + _61;
+  _63 = *_62;
+  _64 = _59 * _63;
+  sumi_65 = sumi_87 + _64;
+  j_66 = j_85 + 1;
+  if (n_12(D) > j_66)
+    goto <bb 17>;
+  else
+    goto <bb 16>;
+
+  <bb 16>:
+  # sumi_211 = PHI <sumi_56(15)>
+  # sumi_210 = PHI <sumi_65(15)>
+  goto <bb 18>;
+
+  <bb 17>:
+  goto <bb 15>;
+
+  <bb 18>:
+  # sumi_74 = PHI <sumi_211(16), 0.0(13)>
+  # sumi_75 = PHI <sumi_210(16), 0.0(13)>
+  _67 = (long unsigned int) i_82;
+  _68 = _67 * 8;
+  _70 = cdata_69(D) + _68;
+  _70->r = sumi_74;
+  _70->i = sumi_75;
+  i_73 = i_82 + 1;
+  if (nc_41 > i_73)
+    goto <bb 19>;
+  else
+    goto <bb 20>;
+
+  <bb 19>:
+  goto <bb 13>;
+
+  <bb 20>:
+
+  <bb 21>:
+  return;
+
+}
+
+
+
+;; Function rc1_fft (rc1_fft, funcdef_no=34, decl_uid=3883, symbol_order=34)
+
+Removing basic block 31
+Removing basic block 38
+Merging blocks 17 and 33
+Merging blocks 28 and 42
+Merging blocks 36 and 20
+Merging blocks 44 and 37
+Created preheader block for loop 3
+rc1_fft (float * data, struct complex * cdata, int n, int sign)
+{
+  vector(2) double * vectp_datft.245;
+  vector(2) double * vectp_datft.244;
+  vector(2) double vect__54.243;
+  vector(4) float vect__53.242;
+  vector(4) float * vectp_data.241;
+  vector(4) float * vectp_data.240;
+  int tmp.239;
+  unsigned int ratio_mult_vf.238;
+  unsigned int bnd.237;
+  unsigned int niters.236;
+  sizetype prolog_loop_adjusted_niters.235;
+  unsigned int prologue_after_cost_adjust.234;
+  unsigned int prolog_loop_niters.233;
+  vector(2) double * vectp_datft.232;
+  unsigned int niters.231;
+  double * datft;
+  int j;
+  double _2;
+  int iftmp.0_3;
+  double iftmp.2_5;
+  double _12;
+  double _13;
+  double _14;
+  double _15;
+  int _16;
+  double iftmp.1_17;
+  double _18;
+  int _19;
+  double iftmp.1_20;
+  double _22;
+  int _23;
+  double iftmp.2_24;
+  double _25;
+  int _26;
+  double iftmp.2_27;
+  double _28;
+  double _29;
+  int iftmp.0_30;
+  unsigned long _31;
+  unsigned long _32;
+  unsigned long _33;
+  double _38;
+  int iftmp.0_39;
+  long unsigned int _40;
+  long unsigned int _41;
+  struct FILE * __stderrp.4_45;
+  long unsigned int _47;
+  long unsigned int _48;
+  double * _49;
+  long unsigned int _50;
+  float * _52;
+  float _53;
+  double _54;
+  unsigned int ivtmp_55;
+  sizetype _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  struct complex * _63;
+  double * _64;
+  double _65;
+  float _66;
+  sizetype _68;
+  sizetype _69;
+  struct complex * _70;
+  unsigned long _72;
+  int _73;
+  long unsigned int _74;
+  long unsigned int _75;
+  sizetype _76;
+  double * _77;
+  double _78;
+  float _79;
+  float _80;
+  long unsigned int _84;
+  long unsigned int _85;
+  struct complex * _86;
+  double * _87;
+  double _88;
+  float _89;
+  int _94;
+  int _97;
+  int _99;
+  unsigned int _100;
+  unsigned int _104;
+  double _109;
+  unsigned int _113;
+  unsigned int _114;
+  unsigned int _115;
+  double _118;
+  float _119;
+  float * _120;
+  long unsigned int _121;
+  double * _122;
+  long unsigned int _123;
+  long unsigned int _124;
+  unsigned int _128;
+  unsigned int _129;
+  unsigned int ivtmp_133;
+  unsigned int ivtmp_134;
+  unsigned int ivtmp_137;
+  unsigned int ivtmp_138;
+  float pretmp_141;
+  double _150;
+  float _151;
+  float * _152;
+  long unsigned int _153;
+  double * _154;
+  long unsigned int _155;
+  sizetype _158;
+  long unsigned int _160;
+  double prephitmp_165;
+
+  <bb 2>:
+  _12 = (double) n_11(D);
+  _13 = log (_12);
+  _14 = _13 * 1.442695040888963387004650940070860087871551513671875e+0;
+  if (_14 > 0.0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  _15 = _14 + 5.0e-1;
+  _16 = (int) _15;
+  iftmp.1_17 = (double) _16;
+  _2 = pow (2.0e+0, iftmp.1_17);
+  if (_2 > 0.0)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+
+  <bb 4>:
+  _18 = _14 - 5.0e-1;
+  _19 = (int) _18;
+  iftmp.1_20 = (double) _19;
+  _109 = pow (2.0e+0, iftmp.1_20);
+  if (_109 > 0.0)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+
+  <bb 5>:
+  if (_14 > 0.0)
+    goto <bb 6>;
+  else
+    goto <bb 7>;
+
+  <bb 6>:
+  _22 = _14 + 5.0e-1;
+  _23 = (int) _22;
+  iftmp.2_24 = (double) _23;
+  goto <bb 8>;
+
+  <bb 7>:
+  _25 = _14 - 5.0e-1;
+  _26 = (int) _25;
+  iftmp.2_27 = (double) _26;
+
+  <bb 8>:
+  # iftmp.2_5 = PHI <iftmp.2_24(6), iftmp.2_27(7)>
+  _28 = pow (2.0e+0, iftmp.2_5);
+  _29 = _28 + 5.0e-1;
+  iftmp.0_30 = (int) _29;
+  goto <bb 10>;
+
+  <bb 9>:
+  # prephitmp_165 = PHI <_2(3), _109(4)>
+  _38 = prephitmp_165 - 5.0e-1;
+  iftmp.0_39 = (int) _38;
+
+  <bb 10>:
+  # iftmp.0_3 = PHI <iftmp.0_30(8), iftmp.0_39(9)>
+  if (iftmp.0_3 != n_11(D))
+    goto <bb 11>;
+  else
+    goto <bb 14>;
+
+  <bb 11>:
+  _94 = npfar (n_11(D));
+  if (_94 == n_11(D))
+    goto <bb 12>;
+  else
+    goto <bb 13>;
+
+  <bb 12>:
+  pfarc (sign_71(D), _94, data_51(D), cdata_58(D));
+  goto <bb 40>;
+
+  <bb 13>:
+  rcdft (data_51(D), cdata_58(D), n_11(D), sign_71(D));
+  goto <bb 40>;
+
+  <bb 14>:
+  _40 = (long unsigned int) iftmp.0_3;
+  _41 = _40 * 8;
+  datft_44 = malloc (_41);
+  if (datft_44 == 0B)
+    goto <bb 15>;
+  else
+    goto <bb 16>;
+
+  <bb 15>:
+  __stderrp.4_45 = __stderrp;
+  __builtin_fwrite ("rc1_fft: memory allocation error\n", 1, 33, __stderrp.4_45);
+
+  <bb 16>:
+  if (iftmp.0_3 > 0)
+    goto <bb 17>;
+  else
+    goto <bb 34>;
+
+  <bb 17>:
+  niters.231_34 = (unsigned int) iftmp.0_3;
+  vectp_datft.232_35 = datft_44;
+  _31 = (unsigned long) vectp_datft.232_35;
+  _32 = _31 & 15;
+  _33 = _32 >> 3;
+  _72 = -_33;
+  _100 = (unsigned int) _72;
+  _104 = _100 & 1;
+  prolog_loop_niters.233_36 = MIN_EXPR <niters.231_34, _104>;
+  if (niters.231_34 <= 4)
+    goto <bb 18>;
+  else
+    goto <bb 19>;
+
+  <bb 18>:
+
+  <bb 19>:
+  # prologue_after_cost_adjust.234_147 = PHI <niters.231_34(18), prolog_loop_niters.233_36(17)>
+  if (prologue_after_cost_adjust.234_147 == 0)
+    goto <bb 23>;
+  else
+    goto <bb 20>;
+
+  <bb 20>:
+  # j_136 = PHI <0(19)>
+  # ivtmp_137 = PHI <0(19)>
+
+  <bb 41>:
+  # j_162 = PHI <j_136(20), j_148(21)>
+  # ivtmp_134 = PHI <ivtmp_137(20), ivtmp_133(21)>
+  _160 = (long unsigned int) j_162;
+  _155 = _160 * 8;
+  _154 = datft_44 + _155;
+  _153 = _160 * 4;
+  _152 = data_51(D) + _153;
+  _151 = *_152;
+  _150 = (double) _151;
+  *_154 = _150;
+  j_148 = j_162 + 1;
+  ivtmp_133 = ivtmp_134 + 1;
+  if (ivtmp_133 < prologue_after_cost_adjust.234_147)
+    goto <bb 21>;
+  else
+    goto <bb 22>;
+
+  <bb 21>:
+  goto <bb 41>;
+
+  <bb 22>:
+  # j_145 = PHI <j_148(41)>
+  if (niters.231_34 == prologue_after_cost_adjust.234_147)
+    goto <bb 33>;
+  else
+    goto <bb 23>;
+
+  <bb 23>:
+  # j_146 = PHI <j_145(22), 0(19)>
+  prolog_loop_adjusted_niters.235_132 = (sizetype) prologue_after_cost_adjust.234_147;
+  niters.236_131 = niters.231_34 - prologue_after_cost_adjust.234_147;
+  _129 = niters.236_131 + 4294967292;
+  _128 = _129 >> 2;
+  bnd.237_130 = _128 + 1;
+  ratio_mult_vf.238_127 = bnd.237_130 << 2;
+  _115 = (unsigned int) iftmp.0_3;
+  _114 = _115 - prologue_after_cost_adjust.234_147;
+  _113 = _114 + 4294967295;
+  if (_113 <= 2)
+    goto <bb 29>;
+  else
+    goto <bb 24>;
+
+  <bb 24>:
+  _60 = prolog_loop_adjusted_niters.235_132 * 4;
+  vectp_data.241_83 = data_51(D) + _60;
+  _158 = prolog_loop_adjusted_niters.235_132 * 8;
+  vectp_datft.245_159 = datft_44 + _158;
+
+  <bb 25>:
+  # j_98 = PHI <j_56(30), j_146(24)>
+  # vectp_data.240_21 = PHI <vectp_data.240_9(30), vectp_data.241_83(24)>
+  # vectp_datft.244_157 = PHI <vectp_datft.244_156(30), vectp_datft.245_159(24)>
+  # ivtmp_55 = PHI <ivtmp_138(30), 0(24)>
+  _47 = (long unsigned int) j_98;
+  _48 = _47 * 8;
+  _49 = datft_44 + _48;
+  _50 = _47 * 4;
+  _52 = data_51(D) + _50;
+  vect__53.242_8 = MEM[(float *)vectp_data.240_21];
+  _53 = *_52;
+  vect__54.243_4 = [vec_unpack_lo_expr] vect__53.242_8;
+  vect__54.243_1 = [vec_unpack_hi_expr] vect__53.242_8;
+  _54 = (double) _53;
+  MEM[(double *)vectp_datft.244_157] = vect__54.243_4;
+  vectp_datft.244_140 = vectp_datft.244_157 + 16;
+  MEM[(double *)vectp_datft.244_140] = vect__54.243_1;
+  j_56 = j_98 + 1;
+  vectp_data.240_9 = vectp_data.240_21 + 16;
+  vectp_datft.244_156 = vectp_datft.244_140 + 16;
+  ivtmp_138 = ivtmp_55 + 1;
+  if (ivtmp_138 < bnd.237_130)
+    goto <bb 30>;
+  else
+    goto <bb 28>;
+
+  <bb 26>:
+  # j_126 = PHI <j_116(27), j_112(29)>
+  _124 = (long unsigned int) j_126;
+  _123 = _124 * 8;
+  _122 = datft_44 + _123;
+  _121 = _124 * 4;
+  _120 = data_51(D) + _121;
+  _119 = *_120;
+  _118 = (double) _119;
+  *_122 = _118;
+  j_116 = j_126 + 1;
+  if (iftmp.0_3 > j_116)
+    goto <bb 27>;
+  else
+    goto <bb 31>;
+
+  <bb 27>:
+  goto <bb 26>;
+
+  <bb 28>:
+  # j_111 = PHI <j_56(25)>
+  _97 = (int) ratio_mult_vf.238_127;
+  tmp.239_102 = _97 + j_146;
+  if (ratio_mult_vf.238_127 == niters.236_131)
+    goto <bb 32>;
+  else
+    goto <bb 29>;
+
+  <bb 29>:
+  # j_112 = PHI <tmp.239_102(28), j_146(23)>
+  goto <bb 26>;
+
+  <bb 30>:
+  goto <bb 25>;
+
+  <bb 31>:
+
+  <bb 32>:
+
+  <bb 33>:
+
+  <bb 34>:
+  realfft (iftmp.0_3, datft_44);
+  cdata_58(D)->i = 0.0;
+  _99 = iftmp.0_3 / 2;
+  if (_99 > 0)
+    goto <bb 35>;
+  else
+    goto <bb 39>;
+
+  <bb 35>:
+  pretmp_141 = (float) sign_71(D);
+
+  <bb 36>:
+  # j_105 = PHI <j_82(37), 0(35)>
+  _61 = (long unsigned int) j_105;
+  _62 = _61 * 8;
+  _63 = cdata_58(D) + _62;
+  _64 = datft_44 + _62;
+  _65 = *_64;
+  _66 = (float) _65;
+  _63->r = _66;
+  _68 = _61 + 1;
+  _69 = _68 * 8;
+  _70 = cdata_58(D) + _69;
+  _73 = iftmp.0_3 - j_105;
+  _74 = (long unsigned int) _73;
+  _75 = _74 * 8;
+  _76 = _75 + 18446744073709551608;
+  _77 = datft_44 + _76;
+  _78 = *_77;
+  _79 = (float) _78;
+  _80 = _79 * pretmp_141;
+  _70->i = _80;
+  j_82 = j_105 + 1;
+  if (j_82 < _99)
+    goto <bb 37>;
+  else
+    goto <bb 38>;
+
+  <bb 37>:
+  goto <bb 36>;
+
+  <bb 38>:
+
+  <bb 39>:
+  _84 = (long unsigned int) _99;
+  _85 = _84 * 8;
+  _86 = cdata_58(D) + _85;
+  _87 = datft_44 + _85;
+  _88 = *_87;
+  _89 = (float) _88;
+  _86->r = _89;
+  _86->i = 0.0;
+  free (datft_44);
+
+  <bb 40>:
+  return;
+
+}
+
+
+
+;; Function rcm_fft (rcm_fft, funcdef_no=35, decl_uid=3900, symbol_order=35)
+
+Removing basic block 47
+Removing basic block 54
+Merging blocks 30 and 49
+Merging blocks 44 and 58
+Merging blocks 52 and 33
+Merging blocks 60 and 53
+Created preheader block for loop 6
+rcm_fft (float * data, struct complex * cdata, int n1, int n2, int ldr, int ldc, int sign)
+{
+  vector(2) double * vectp_datft.282;
+  vector(2) double * vectp_datft.281;
+  vector(2) double vect__65.280;
+  vector(4) float vect__64.279;
+  vector(4) float * vectp.278;
+  vector(4) float * vectp.277;
+  int tmp.276;
+  unsigned int ratio_mult_vf.275;
+  unsigned int bnd.274;
+  unsigned int niters.273;
+  sizetype prolog_loop_adjusted_niters.272;
+  unsigned int prologue_after_cost_adjust.271;
+  unsigned int prolog_loop_niters.270;
+  vector(2) double * vectp_datft.269;
+  unsigned int niters.268;
+  double * datft;
+  int i;
+  int j;
+  double _2;
+  double _5;
+  int iftmp.5_6;
+  double iftmp.7_8;
+  double _18;
+  double _19;
+  double _20;
+  double _21;
+  int _22;
+  double iftmp.6_23;
+  double _24;
+  int _25;
+  double iftmp.6_26;
+  double _28;
+  int _29;
+  double iftmp.7_30;
+  double _31;
+  int _32;
+  double iftmp.7_33;
+  double _34;
+  double _35;
+  int iftmp.5_36;
+  double _44;
+  int iftmp.5_45;
+  long unsigned int _46;
+  long unsigned int _47;
+  struct FILE * __stderrp.9_51;
+  long unsigned int _54;
+  long unsigned int _55;
+  double * _56;
+  unsigned int _58;
+  int _59;
+  long unsigned int _60;
+  long unsigned int _61;
+  float * _63;
+  float _64;
+  double _65;
+  unsigned int ivtmp_66;
+  int _70;
+  long unsigned int _71;
+  long unsigned int _72;
+  struct complex * _74;
+  int _77;
+  long unsigned int _78;
+  long unsigned int _79;
+  struct complex * _80;
+  long unsigned int _81;
+  long unsigned int _82;
+  double * _83;
+  double _84;
+  float _85;
+  sizetype _87;
+  sizetype _88;
+  struct complex * _89;
+  unsigned int _91;
+  int _92;
+  long unsigned int _93;
+  long unsigned int _94;
+  sizetype _95;
+  double * _96;
+  double _97;
+  float _98;
+  float _99;
+  int _103;
+  long unsigned int _104;
+  long unsigned int _105;
+  struct complex * _106;
+  unsigned long _108;
+  unsigned long _109;
+  unsigned long _110;
+  double _111;
+  float _112;
+  int _118;
+  int _119;
+  long unsigned int _120;
+  long unsigned int _121;
+  struct complex * _122;
+  int _123;
+  long unsigned int _124;
+  long unsigned int _125;
+  float * _126;
+  _Bool _129;
+  _Bool _130;
+  _Bool _131;
+  int _133;
+  long unsigned int _134;
+  long unsigned int _135;
+  struct complex * _136;
+  int _137;
+  long unsigned int _138;
+  long unsigned int _139;
+  float * _140;
+  unsigned long _154;
+  long unsigned int _167;
+  unsigned int ivtmp_187;
+  unsigned int ivtmp_188;
+  sizetype _194;
+  sizetype _201;
+  sizetype _202;
+  sizetype _203;
+  int _205;
+  unsigned int _213;
+  unsigned int _214;
+  unsigned int _215;
+  int pretmp_220;
+  long unsigned int pretmp_221;
+  long unsigned int pretmp_222;
+  double * pretmp_223;
+  double _226;
+  float _227;
+  float * _228;
+  long unsigned int _229;
+  long unsigned int _230;
+  float pretmp_233;
+  int _235;
+  double * _236;
+  long unsigned int _237;
+  long unsigned int _238;
+  unsigned int _242;
+  unsigned int _243;
+  unsigned int ivtmp_247;
+  unsigned int ivtmp_248;
+  int pretmp_253;
+  double _269;
+  float _270;
+  float * _271;
+  long unsigned int _272;
+  long unsigned int _273;
+  int _274;
+  double * _282;
+  long unsigned int _283;
+  double prephitmp_288;
+
+  <bb 2>:
+  _18 = (double) n1_17(D);
+  _19 = log (_18);
+  _20 = _19 * 1.442695040888963387004650940070860087871551513671875e+0;
+  if (_20 > 0.0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  _21 = _20 + 5.0e-1;
+  _22 = (int) _21;
+  iftmp.6_23 = (double) _22;
+  _5 = pow (2.0e+0, iftmp.6_23);
+  if (_5 > 0.0)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+
+  <bb 4>:
+  _24 = _20 - 5.0e-1;
+  _25 = (int) _24;
+  iftmp.6_26 = (double) _25;
+  _2 = pow (2.0e+0, iftmp.6_26);
+  if (_2 > 0.0)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+
+  <bb 5>:
+  if (_20 > 0.0)
+    goto <bb 6>;
+  else
+    goto <bb 7>;
+
+  <bb 6>:
+  _28 = _20 + 5.0e-1;
+  _29 = (int) _28;
+  iftmp.7_30 = (double) _29;
+  goto <bb 8>;
+
+  <bb 7>:
+  _31 = _20 - 5.0e-1;
+  _32 = (int) _31;
+  iftmp.7_33 = (double) _32;
+
+  <bb 8>:
+  # iftmp.7_8 = PHI <iftmp.7_30(6), iftmp.7_33(7)>
+  _34 = pow (2.0e+0, iftmp.7_8);
+  _35 = _34 + 5.0e-1;
+  iftmp.5_36 = (int) _35;
+  goto <bb 10>;
+
+  <bb 9>:
+  # prephitmp_288 = PHI <_5(3), _2(4)>
+  _44 = prephitmp_288 - 5.0e-1;
+  iftmp.5_45 = (int) _44;
+
+  <bb 10>:
+  # iftmp.5_6 = PHI <iftmp.5_36(8), iftmp.5_45(9)>
+  if (iftmp.5_6 != n1_17(D))
+    goto <bb 11>;
+  else
+    goto <bb 25>;
+
+  <bb 11>:
+  _118 = npfar (n1_17(D));
+  if (_118 == n1_17(D))
+    goto <bb 12>;
+  else
+    goto <bb 20>;
+
+  <bb 12>:
+  _129 = ldr_57(D) == _118;
+  _130 = ldc_69(D) == n2_53(D);
+  _131 = _129 & _130;
+  if (_131 != 0)
+    goto <bb 13>;
+  else
+    goto <bb 14>;
+
+  <bb 13>:
+  pfa2rc (sign_90(D), 1, _118, n2_53(D), data_62(D), cdata_73(D));
+  goto <bb 56>;
+
+  <bb 14>:
+  if (n2_53(D) > 0)
+    goto <bb 16>;
+  else
+    goto <bb 15>;
+
+  <bb 15>:
+  goto <bb 56>;
+
+  <bb 16>:
+
+  <bb 17>:
+  # i_149 = PHI <i_142(19), 0(16)>
+  _133 = i_149 * ldc_69(D);
+  _134 = (long unsigned int) _133;
+  _135 = _134 * 8;
+  _136 = cdata_73(D) + _135;
+  _137 = i_149 * ldr_57(D);
+  _138 = (long unsigned int) _137;
+  _139 = _138 * 4;
+  _140 = data_62(D) + _139;
+  pfarc (sign_90(D), _118, _140, _136);
+  i_142 = i_149 + 1;
+  if (n2_53(D) > i_142)
+    goto <bb 19>;
+  else
+    goto <bb 18>;
+
+  <bb 18>:
+  goto <bb 15>;
+
+  <bb 19>:
+  goto <bb 17>;
+
+  <bb 20>:
+  if (n2_53(D) > 0)
+    goto <bb 21>;
+  else
+    goto <bb 15>;
+
+  <bb 21>:
+
+  <bb 22>:
+  # i_150 = PHI <i_128(24), 0(21)>
+  _119 = i_150 * ldc_69(D);
+  _120 = (long unsigned int) _119;
+  _121 = _120 * 8;
+  _122 = cdata_73(D) + _121;
+  _123 = i_150 * ldr_57(D);
+  _124 = (long unsigned int) _123;
+  _125 = _124 * 4;
+  _126 = data_62(D) + _125;
+  rcdft (_126, _122, n1_17(D), sign_90(D));
+  i_128 = i_150 + 1;
+  if (n2_53(D) > i_128)
+    goto <bb 24>;
+  else
+    goto <bb 23>;
+
+  <bb 23>:
+  goto <bb 15>;
+
+  <bb 24>:
+  goto <bb 22>;
+
+  <bb 25>:
+  _46 = (long unsigned int) iftmp.5_6;
+  _47 = _46 * 8;
+  datft_50 = malloc (_47);
+  if (datft_50 == 0B)
+    goto <bb 26>;
+  else
+    goto <bb 27>;
+
+  <bb 26>:
+  __stderrp.9_51 = __stderrp;
+  __builtin_fwrite ("rcm_fft: memory allocation error\n", 1, 33, __stderrp.9_51);
+
+  <bb 27>:
+  if (n2_53(D) > 0)
+    goto <bb 28>;
+  else
+    goto <bb 55>;
+
+  <bb 28>:
+  pretmp_220 = iftmp.5_6 / 2;
+  pretmp_221 = (long unsigned int) pretmp_220;
+  pretmp_222 = pretmp_221 * 8;
+  pretmp_223 = datft_50 + pretmp_222;
+
+  <bb 29>:
+  # i_153 = PHI <i_115(53), 0(28)>
+  if (iftmp.5_6 > 0)
+    goto <bb 30>;
+  else
+    goto <bb 47>;
+
+  <bb 30>:
+  pretmp_253 = ldr_57(D) * i_153;
+  niters.268_37 = (unsigned int) iftmp.5_6;
+  vectp_datft.269_38 = datft_50;
+  _154 = (unsigned long) vectp_datft.269_38;
+  _108 = _154 & 15;
+  _109 = _108 >> 3;
+  _110 = -_109;
+  _58 = (unsigned int) _110;
+  _91 = _58 & 1;
+  prolog_loop_niters.270_39 = MIN_EXPR <niters.268_37, _91>;
+  if (niters.268_37 <= 4)
+    goto <bb 31>;
+  else
+    goto <bb 32>;
+
+  <bb 31>:
+
+  <bb 32>:
+  # prologue_after_cost_adjust.271_259 = PHI <niters.268_37(31), prolog_loop_niters.270_39(30)>
+  if (prologue_after_cost_adjust.271_259 == 0)
+    goto <bb 36>;
+  else
+    goto <bb 33>;
+
+  <bb 33>:
+  # j_250 = PHI <0(32)>
+  # ivtmp_187 = PHI <0(32)>
+
+  <bb 57>:
+  # j_165 = PHI <j_250(33), j_260(34)>
+  # ivtmp_248 = PHI <ivtmp_187(33), ivtmp_247(34)>
+  _167 = (long unsigned int) j_165;
+  _283 = _167 * 8;
+  _282 = datft_50 + _283;
+  _274 = j_165 + pretmp_253;
+  _273 = (long unsigned int) _274;
+  _272 = _273 * 4;
+  _271 = data_62(D) + _272;
+  _270 = *_271;
+  _269 = (double) _270;
+  *_282 = _269;
+  j_260 = j_165 + 1;
+  ivtmp_247 = ivtmp_248 + 1;
+  if (ivtmp_247 < prologue_after_cost_adjust.271_259)
+    goto <bb 34>;
+  else
+    goto <bb 35>;
+
+  <bb 34>:
+  goto <bb 57>;
+
+  <bb 35>:
+  # j_257 = PHI <j_260(57)>
+  if (niters.268_37 == prologue_after_cost_adjust.271_259)
+    goto <bb 46>;
+  else
+    goto <bb 36>;
+
+  <bb 36>:
+  # j_258 = PHI <j_257(35), 0(32)>
+  prolog_loop_adjusted_niters.272_246 = (sizetype) prologue_after_cost_adjust.271_259;
+  niters.273_245 = niters.268_37 - prologue_after_cost_adjust.271_259;
+  _243 = niters.273_245 + 4294967292;
+  _242 = _243 >> 2;
+  bnd.274_244 = _242 + 1;
+  ratio_mult_vf.275_241 = bnd.274_244 << 2;
+  _215 = (unsigned int) iftmp.5_6;
+  _214 = _215 - prologue_after_cost_adjust.271_259;
+  _213 = _214 + 4294967295;
+  if (_213 <= 2)
+    goto <bb 42>;
+  else
+    goto <bb 37>;
+
+  <bb 37>:
+  _203 = (sizetype) pretmp_253;
+  _202 = _203 + prolog_loop_adjusted_niters.272_246;
+  _201 = _202 * 4;
+  vectp.278_204 = data_62(D) + _201;
+  _194 = prolog_loop_adjusted_niters.272_246 * 8;
+  vectp_datft.282_195 = datft_50 + _194;
+
+  <bb 38>:
+  # j_146 = PHI <j_67(43), j_258(37)>
+  # vectp.277_200 = PHI <vectp.277_199(43), vectp.278_204(37)>
+  # vectp_datft.281_193 = PHI <vectp_datft.281_192(43), vectp_datft.282_195(37)>
+  # ivtmp_66 = PHI <ivtmp_188(43), 0(37)>
+  _54 = (long unsigned int) j_146;
+  _55 = _54 * 8;
+  _56 = datft_50 + _55;
+  _59 = j_146 + pretmp_253;
+  _60 = (long unsigned int) _59;
+  _61 = _60 * 4;
+  _63 = data_62(D) + _61;
+  vect__64.279_198 = MEM[(float *)vectp.277_200];
+  _64 = *_63;
+  vect__65.280_197 = [vec_unpack_lo_expr] vect__64.279_198;
+  vect__65.280_196 = [vec_unpack_hi_expr] vect__64.279_198;
+  _65 = (double) _64;
+  MEM[(double *)vectp_datft.281_193] = vect__65.280_197;
+  vectp_datft.281_190 = vectp_datft.281_193 + 16;
+  MEM[(double *)vectp_datft.281_190] = vect__65.280_196;
+  j_67 = j_146 + 1;
+  vectp.277_199 = vectp.277_200 + 16;
+  vectp_datft.281_192 = vectp_datft.281_190 + 16;
+  ivtmp_188 = ivtmp_66 + 1;
+  if (ivtmp_188 < bnd.274_244)
+    goto <bb 43>;
+  else
+    goto <bb 41>;
+
+  <bb 39>:
+  # j_240 = PHI <j_216(40), j_212(42)>
+  _238 = (long unsigned int) j_240;
+  _237 = _238 * 8;
+  _236 = datft_50 + _237;
+  _235 = j_240 + pretmp_253;
+  _230 = (long unsigned int) _235;
+  _229 = _230 * 4;
+  _228 = data_62(D) + _229;
+  _227 = *_228;
+  _226 = (double) _227;
+  *_236 = _226;
+  j_216 = j_240 + 1;
+  if (iftmp.5_6 > j_216)
+    goto <bb 40>;
+  else
+    goto <bb 44>;
+
+  <bb 40>:
+  goto <bb 39>;
+
+  <bb 41>:
+  # j_211 = PHI <j_67(38)>
+  _205 = (int) ratio_mult_vf.275_241;
+  tmp.276_206 = _205 + j_258;
+  if (ratio_mult_vf.275_241 == niters.273_245)
+    goto <bb 45>;
+  else
+    goto <bb 42>;
+
+  <bb 42>:
+  # j_212 = PHI <tmp.276_206(41), j_258(36)>
+  goto <bb 39>;
+
+  <bb 43>:
+  goto <bb 38>;
+
+  <bb 44>:
+
+  <bb 45>:
+
+  <bb 46>:
+
+  <bb 47>:
+  realfft (iftmp.5_6, datft_50);
+  _70 = i_153 * ldc_69(D);
+  _71 = (long unsigned int) _70;
+  _72 = _71 * 8;
+  _74 = cdata_73(D) + _72;
+  _74->i = 0.0;
+  if (pretmp_220 > 0)
+    goto <bb 48>;
+  else
+    goto <bb 52>;
+
+  <bb 48>:
+  pretmp_233 = (float) sign_90(D);
+
+  <bb 49>:
+  # j_157 = PHI <j_101(50), 0(48)>
+  _77 = j_157 + _70;
+  _78 = (long unsigned int) _77;
+  _79 = _78 * 8;
+  _80 = cdata_73(D) + _79;
+  _81 = (long unsigned int) j_157;
+  _82 = _81 * 8;
+  _83 = datft_50 + _82;
+  _84 = *_83;
+  _85 = (float) _84;
+  _80->r = _85;
+  _87 = _78 + 1;
+  _88 = _87 * 8;
+  _89 = cdata_73(D) + _88;
+  _92 = iftmp.5_6 - j_157;
+  _93 = (long unsigned int) _92;
+  _94 = _93 * 8;
+  _95 = _94 + 18446744073709551608;
+  _96 = datft_50 + _95;
+  _97 = *_96;
+  _98 = (float) _97;
+  _99 = _98 * pretmp_233;
+  _89->i = _99;
+  j_101 = j_157 + 1;
+  if (j_101 < pretmp_220)
+    goto <bb 50>;
+  else
+    goto <bb 51>;
+
+  <bb 50>:
+  goto <bb 49>;
+
+  <bb 51>:
+
+  <bb 52>:
+  _103 = _70 + pretmp_220;
+  _104 = (long unsigned int) _103;
+  _105 = _104 * 8;
+  _106 = cdata_73(D) + _105;
+  _111 = *pretmp_223;
+  _112 = (float) _111;
+  _106->r = _112;
+  _106->i = 0.0;
+  i_115 = i_153 + 1;
+  if (n2_53(D) > i_115)
+    goto <bb 53>;
+  else
+    goto <bb 54>;
+
+  <bb 53>:
+  goto <bb 29>;
+
+  <bb 54>:
+
+  <bb 55>:
+  free (datft_50);
+
+  <bb 56>:
+  return;
+
+}
+
+
+
+;; Function crdft (crdft, funcdef_no=42, decl_uid=3839, symbol_order=42)
+
+Removing basic block 28
+Merging blocks 23 and 32
+Merging blocks 34 and 26
+crdft (struct complex * cdata, float * rdata, int n, int sign)
+{
+  vector(4) float * vectp_rdata.347;
+  vector(4) float * vectp_rdata.346;
+  vector(4) float vect_cst_.345;
+  vector(4) float vect__95.344;
+  vector(4) float vect_cst_.343;
+  vector(4) float vect__89.342;
+  vector(4) float vect__88.341;
+  vector(4) float vect__88.340;
+  vector(4) float * vectp_rdata.339;
+  vector(4) float * vectp_rdata.338;
+  int tmp.337;
+  unsigned int ratio_mult_vf.336;
+  unsigned int bnd.335;
+  unsigned int niters.334;
+  static int nprev = 0;
+  static float * csval;
+  float sumr;
+  float scl;
+  int nc;
+  int k;
+  int j;
+  int i;
+  int nprev.36_13;
+  float _15;
+  double _16;
+  double _17;
+  float * csval.37_19;
+  int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  void * csval.38_25;
+  int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  float * _30;
+  float _33;
+  sizetype _35;
+  sizetype _36;
+  float * _37;
+  float _38;
+  int _42;
+  int _44;
+  int _45;
+  long unsigned int _47;
+  long unsigned int _48;
+  struct complex * _50;
+  float _51;
+  long unsigned int _53;
+  long unsigned int _54;
+  float * _55;
+  float _56;
+  float _57;
+  unsigned int _59;
+  float _60;
+  float _61;
+  sizetype _62;
+  sizetype _63;
+  float * _64;
+  float _65;
+  float _66;
+  float _67;
+  long unsigned int _70;
+  long unsigned int _71;
+  float * _73;
+  float _75;
+  float _76;
+  int _79;
+  double _80;
+  double _81;
+  unsigned int _83;
+  int _84;
+  long unsigned int _85;
+  long unsigned int _86;
+  float * _87;
+  float _88;
+  float _89;
+  unsigned int ivtmp_90;
+  sizetype _91;
+  sizetype _92;
+  float * _93;
+  float _94;
+  float _95;
+  unsigned int ivtmp_96;
+  int _101;
+  vector(4) float vect_inter_low_170;
+  vector(4) float vect_inter_high_171;
+  vector(4) float vect_perm_odd_182;
+  vector(4) float vect_perm_even_183;
+  float pretmp_189;
+  float prephitmp_190;
+  float * pretmp_196;
+  float pretmp_200;
+  unsigned int _212;
+  unsigned int _213;
+  float _216;
+  float _217;
+  float * _218;
+  sizetype _219;
+  sizetype _220;
+  float _222;
+  float _223;
+  float pretmp_227;
+  float pretmp_228;
+  complex float _232;
+  unsigned int _233;
+  complex float prephitmp_234;
+  float * _235;
+  long unsigned int _236;
+  long unsigned int _237;
+  int _238;
+
+  <bb 2>:
+  nprev.36_13 = nprev;
+  if (nprev.36_13 != n_14(D))
+    goto <bb 3>;
+  else
+    goto <bb 11>;
+
+  <bb 3>:
+  _15 = (float) n_14(D);
+  _16 = (double) _15;
+  _17 = 6.28318530717958623199592693708837032318115234375e+0 / _16;
+  scl_18 = (float) _17;
+  csval.37_19 = csval;
+  if (csval.37_19 != 0B)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+
+  <bb 4>:
+  free (csval.37_19);
+
+  <bb 5>:
+  _21 = n_14(D) * 2;
+  _22 = (long unsigned int) _21;
+  _23 = _22 * 4;
+  csval.38_25 = malloc (_23);
+  csval = csval.38_25;
+  if (n_14(D) > 0)
+    goto <bb 6>;
+  else
+    goto <bb 10>;
+
+  <bb 6>:
+
+  <bb 7>:
+  # i_100 = PHI <i_40(8), 0(6)>
+  # prephitmp_234 = PHI <_232(8), __complex__ (1.0e+0, 0.0)(6)>
+  _27 = i_100 * 2;
+  _28 = (long unsigned int) _27;
+  _29 = _28 * 4;
+  _30 = csval.38_25 + _29;
+  _33 = REALPART_EXPR <prephitmp_234>;
+  *_30 = _33;
+  _35 = _28 + 1;
+  _36 = _35 * 4;
+  _37 = csval.38_25 + _36;
+  _38 = IMAGPART_EXPR <prephitmp_234>;
+  *_37 = _38;
+  i_40 = i_100 + 1;
+  if (n_14(D) > i_40)
+    goto <bb 8>;
+  else
+    goto <bb 9>;
+
+  <bb 8>:
+  pretmp_227 = (float) i_40;
+  pretmp_228 = scl_18 * pretmp_227;
+  _232 = __builtin_cexpif (pretmp_228);
+  goto <bb 7>;
+
+  <bb 9>:
+
+  <bb 10>:
+  nprev = n_14(D);
+
+  <bb 11>:
+  _42 = n_14(D) + 2;
+  nc_43 = _42 / 2;
+  if (n_14(D) > 0)
+    goto <bb 12>;
+  else
+    goto <bb 21>;
+
+  <bb 12>:
+  pretmp_196 = csval;
+
+  <bb 13>:
+  # i_107 = PHI <i_78(19), 0(12)>
+  if (nc_43 > 0)
+    goto <bb 14>;
+  else
+    goto <bb 18>;
+
+  <bb 14>:
+  pretmp_200 = (float) sign_58(D);
+
+  <bb 15>:
+  # j_110 = PHI <j_69(17), 0(14)>
+  # sumr_108 = PHI <sumr_68(17), 0.0(14)>
+  _44 = i_107 * j_110;
+  _45 = _44 % n_14(D);
+  k_46 = _45 * 2;
+  _47 = (long unsigned int) j_110;
+  _48 = _47 * 8;
+  _50 = cdata_49(D) + _48;
+  _51 = _50->r;
+  _53 = (long unsigned int) k_46;
+  _54 = _53 * 4;
+  _55 = pretmp_196 + _54;
+  _56 = *_55;
+  _57 = _56 * _51;
+  _60 = _50->i;
+  _61 = _60 * pretmp_200;
+  _62 = _53 + 1;
+  _63 = _62 * 4;
+  _64 = pretmp_196 + _63;
+  _65 = *_64;
+  _66 = _61 * _65;
+  _67 = _57 - _66;
+  sumr_68 = _67 + sumr_108;
+  j_69 = j_110 + 1;
+  if (nc_43 > j_69)
+    goto <bb 17>;
+  else
+    goto <bb 16>;
+
+  <bb 16>:
+  # sumr_239 = PHI <sumr_68(15)>
+  pretmp_189 = sumr_239 * 2.0e+0;
+  goto <bb 18>;
+
+  <bb 17>:
+  goto <bb 15>;
+
+  <bb 18>:
+  # prephitmp_190 = PHI <pretmp_189(16), 0.0(13)>
+  _70 = (long unsigned int) i_107;
+  _71 = _70 * 4;
+  _73 = rdata_72(D) + _71;
+  _75 = cdata_49(D)->r;
+  _76 = prephitmp_190 - _75;
+  *_73 = _76;
+  i_78 = i_107 + 1;
+  if (n_14(D) > i_78)
+    goto <bb 19>;
+  else
+    goto <bb 20>;
+
+  <bb 19>:
+  goto <bb 13>;
+
+  <bb 20>:
+
+  <bb 21>:
+  _79 = n_14(D) & 1;
+  if (_79 == 0)
+    goto <bb 22>;
+  else
+    goto <bb 33>;
+
+  <bb 22>:
+  _80 = (double) n_14(D);
+  _81 = _80 * 2.5e-1;
+  scl_82 = (float) _81;
+  _101 = nc_43 + -1;
+  if (_101 > 0)
+    goto <bb 23>;
+  else
+    goto <bb 33>;
+
+  <bb 23>:
+  _83 = (unsigned int) nc_43;
+  niters.334_32 = _83 + 4294967295;
+  _59 = niters.334_32 + 4294967292;
+  _233 = _59 >> 2;
+  bnd.335_52 = _233 + 1;
+  ratio_mult_vf.336_11 = bnd.335_52 << 2;
+  _213 = (unsigned int) nc_43;
+  _212 = _213 + 4294967294;
+  if (_212 <= 2)
+    goto <bb 29>;
+  else
+    goto <bb 24>;
+
+  <bb 24>:
+  vectp_rdata.339_204 = rdata_72(D);
+  vect_cst_.343_181 = {scl_82, scl_82, scl_82, scl_82};
+  vect_cst_.345_179 = {scl_82, scl_82, scl_82, scl_82};
+  vectp_rdata.347_174 = rdata_72(D);
+
+  <bb 25>:
+  # i_99 = PHI <i_97(30), 0(24)>
+  # vectp_rdata.338_188 = PHI <vectp_rdata.338_187(30), vectp_rdata.339_204(24)>
+  # vectp_rdata.346_173 = PHI <vectp_rdata.346_172(30), vectp_rdata.347_174(24)>
+  # ivtmp_96 = PHI <ivtmp_90(30), 0(24)>
+  _84 = i_99 * 2;
+  _85 = (long unsigned int) _84;
+  _86 = _85 * 4;
+  _87 = rdata_72(D) + _86;
+  vect__88.340_186 = MEM[(float *)vectp_rdata.338_188];
+  vectp_rdata.338_185 = vectp_rdata.338_188 + 16;
+  vect__88.341_184 = MEM[(float *)vectp_rdata.338_185];
+  vect_perm_even_183 = VEC_PERM_EXPR <vect__88.340_186, vect__88.341_184, { 0, 2, 4, 6 }>;
+  vect_perm_odd_182 = VEC_PERM_EXPR <vect__88.340_186, vect__88.341_184, { 1, 3, 5, 7 }>;
+  _88 = *_87;
+  vect__89.342_180 = vect_perm_even_183 - vect_cst_.343_181;
+  _89 = _88 - scl_82;
+  _91 = _85 + 1;
+  _92 = _91 * 4;
+  _93 = rdata_72(D) + _92;
+  _94 = *_93;
+  vect__95.344_178 = vect_perm_odd_182 + vect_cst_.345_179;
+  _95 = _94 + scl_82;
+  vect_inter_high_171 = VEC_PERM_EXPR <vect__89.342_180, vect__95.344_178, { 0, 4, 1, 5 }>;
+  vect_inter_low_170 = VEC_PERM_EXPR <vect__89.342_180, vect__95.344_178, { 2, 6, 3, 7 }>;
+  MEM[(float *)vectp_rdata.346_173] = vect_inter_high_171;
+  vectp_rdata.346_162 = vectp_rdata.346_173 + 16;
+  MEM[(float *)vectp_rdata.346_162] = vect_inter_low_170;
+  i_97 = i_99 + 1;
+  vectp_rdata.338_187 = vectp_rdata.338_185 + 16;
+  vectp_rdata.346_172 = vectp_rdata.346_162 + 16;
+  ivtmp_90 = ivtmp_96 + 1;
+  if (ivtmp_90 < bnd.335_52)
+    goto <bb 30>;
+  else
+    goto <bb 28>;
+
+  <bb 26>:
+  # i_116 = PHI <i_214(27), i_211(29)>
+  _238 = i_116 * 2;
+  _237 = (long unsigned int) _238;
+  _236 = _237 * 4;
+  _235 = rdata_72(D) + _236;
+  _223 = *_235;
+  _222 = _223 - scl_82;
+  *_235 = _222;
+  _220 = _237 + 1;
+  _219 = _220 * 4;
+  _218 = rdata_72(D) + _219;
+  _217 = *_218;
+  _216 = _217 + scl_82;
+  *_218 = _216;
+  i_214 = i_116 + 1;
+  if (i_214 < _101)
+    goto <bb 27>;
+  else
+    goto <bb 31>;
+
+  <bb 27>:
+  goto <bb 26>;
+
+  <bb 28>:
+  # i_210 = PHI <i_97(25)>
+  tmp.337_205 = (int) ratio_mult_vf.336_11;
+  if (ratio_mult_vf.336_11 == niters.334_32)
+    goto <bb 32>;
+  else
+    goto <bb 29>;
+
+  <bb 29>:
+  # i_211 = PHI <tmp.337_205(28), 0(23)>
+  goto <bb 26>;
+
+  <bb 30>:
+  goto <bb 25>;
+
+  <bb 31>:
+
+  <bb 32>:
+
+  <bb 33>:
+  return;
+
+}
+
+
+
+;; Function cr1_fft (cr1_fft, funcdef_no=36, decl_uid=3924, symbol_order=36)
+
+Removing basic block 40
+Removing basic block 47
+Merging blocks 24 and 42
+Merging blocks 37 and 51
+Merging blocks 45 and 26
+Merging blocks 53 and 46
+Created preheader block for loop 4
+cr1_fft (struct complex * cdata, float * data, int n, int sign)
+{
+  vector(4) float * vectp_data.396;
+  vector(4) float * vectp_data.395;
+  vector(4) float vect__88.394;
+  vector(2) double vect__87.393;
+  vector(2) double vect__87.392;
+  vector(2) double * vectp_datft.391;
+  vector(2) double * vectp_datft.390;
+  int tmp.389;
+  unsigned int ratio_mult_vf.388;
+  unsigned int bnd.387;
+  unsigned int niters.386;
+  sizetype prolog_loop_adjusted_niters.385;
+  unsigned int prologue_after_cost_adjust.384;
+  unsigned int prolog_loop_niters.383;
+  vector(4) float * vectp_data.382;
+  unsigned int niters.381;
+  double * datft;
+  int j;
+  double _2;
+  double _3;
+  int iftmp.10_4;
+  double iftmp.12_6;
+  double _15;
+  double _16;
+  double _17;
+  double _18;
+  int _19;
+  double iftmp.11_20;
+  double _21;
+  int _22;
+  double iftmp.11_23;
+  unsigned int ivtmp_24;
+  double _25;
+  int _26;
+  double iftmp.12_27;
+  double _28;
+  int _29;
+  double iftmp.12_30;
+  double _31;
+  double _32;
+  int iftmp.10_33;
+  unsigned long _35;
+  unsigned long _36;
+  double _41;
+  int iftmp.10_42;
+  long unsigned int _43;
+  long unsigned int _44;
+  struct FILE * __stderrp.14_48;
+  unsigned int ivtmp_50;
+  long unsigned int _51;
+  long unsigned int _52;
+  double * _53;
+  struct complex * _55;
+  float _56;
+  double _57;
+  unsigned long _59;
+  int _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  double * _63;
+  sizetype _64;
+  sizetype _65;
+  struct complex * _66;
+  float _67;
+  double _68;
+  long unsigned int _72;
+  long unsigned int _73;
+  double * _74;
+  struct complex * _75;
+  float _76;
+  double _77;
+  long unsigned int _81;
+  long unsigned int _82;
+  float * _84;
+  long unsigned int _85;
+  double * _86;
+  double _87;
+  float _88;
+  unsigned int ivtmp_89;
+  long unsigned int _91;
+  long unsigned int _92;
+  float * _93;
+  int _94;
+  long unsigned int _95;
+  long unsigned int _96;
+  double * _97;
+  double _98;
+  float _99;
+  double _102;
+  float _103;
+  int _107;
+  int _111;
+  sizetype _113;
+  unsigned int _114;
+  unsigned long _125;
+  sizetype _129;
+  int _131;
+  unsigned int _139;
+  unsigned int _140;
+  unsigned int _141;
+  float _144;
+  double _145;
+  double * _146;
+  long unsigned int _147;
+  float * _148;
+  long unsigned int _149;
+  long unsigned int _150;
+  unsigned int _154;
+  unsigned int _155;
+  unsigned int ivtmp_159;
+  unsigned int ivtmp_163;
+  float _177;
+  double _178;
+  int pretmp_181;
+  double * _185;
+  long unsigned int _186;
+  float * _187;
+  long unsigned int _188;
+  long unsigned int _189;
+  unsigned int _192;
+  double prephitmp_196;
+
+  <bb 2>:
+  _15 = (double) n_14(D);
+  _16 = log (_15);
+  _17 = _16 * 1.442695040888963387004650940070860087871551513671875e+0;
+  if (_17 > 0.0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  _18 = _17 + 5.0e-1;
+  _19 = (int) _18;
+  iftmp.11_20 = (double) _19;
+  _3 = pow (2.0e+0, iftmp.11_20);
+  if (_3 > 0.0)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+
+  <bb 4>:
+  _21 = _17 - 5.0e-1;
+  _22 = (int) _21;
+  iftmp.11_23 = (double) _22;
+  _2 = pow (2.0e+0, iftmp.11_23);
+  if (_2 > 0.0)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+
+  <bb 5>:
+  if (_17 > 0.0)
+    goto <bb 6>;
+  else
+    goto <bb 7>;
+
+  <bb 6>:
+  _25 = _17 + 5.0e-1;
+  _26 = (int) _25;
+  iftmp.12_27 = (double) _26;
+  goto <bb 8>;
+
+  <bb 7>:
+  _28 = _17 - 5.0e-1;
+  _29 = (int) _28;
+  iftmp.12_30 = (double) _29;
+
+  <bb 8>:
+  # iftmp.12_6 = PHI <iftmp.12_27(6), iftmp.12_30(7)>
+  _31 = pow (2.0e+0, iftmp.12_6);
+  _32 = _31 + 5.0e-1;
+  iftmp.10_33 = (int) _32;
+  goto <bb 10>;
+
+  <bb 9>:
+  # prephitmp_196 = PHI <_3(3), _2(4)>
+  _41 = prephitmp_196 - 5.0e-1;
+  iftmp.10_42 = (int) _41;
+
+  <bb 10>:
+  # iftmp.10_4 = PHI <iftmp.10_33(8), iftmp.10_42(9)>
+  if (iftmp.10_4 != n_14(D))
+    goto <bb 11>;
+  else
+    goto <bb 14>;
+
+  <bb 11>:
+  _107 = npfar (n_14(D));
+  if (_107 == n_14(D))
+    goto <bb 12>;
+  else
+    goto <bb 13>;
+
+  <bb 12>:
+  pfacr (sign_80(D), _107, cdata_54(D), data_83(D));
+  goto <bb 49>;
+
+  <bb 13>:
+  crdft (cdata_54(D), data_83(D), n_14(D), sign_80(D));
+  goto <bb 49>;
+
+  <bb 14>:
+  _43 = (long unsigned int) iftmp.10_4;
+  _44 = _43 * 8;
+  datft_47 = malloc (_44);
+  if (datft_47 == 0B)
+    goto <bb 15>;
+  else
+    goto <bb 16>;
+
+  <bb 15>:
+  __stderrp.14_48 = __stderrp;
+  __builtin_fwrite ("cr1_fft: memory allocation error\n", 1, 33, __stderrp.14_48);
+
+  <bb 16>:
+  _111 = iftmp.10_4 / 2;
+  if (_111 > 0)
+    goto <bb 17>;
+  else
+    goto <bb 21>;
+
+  <bb 17>:
+  pretmp_181 = iftmp.10_4 + -1;
+
+  <bb 18>:
+  # j_120 = PHI <j_70(19), 0(17)>
+  _51 = (long unsigned int) j_120;
+  _52 = _51 * 8;
+  _53 = datft_47 + _52;
+  _55 = cdata_54(D) + _52;
+  _56 = _55->r;
+  _57 = (double) _56;
+  *_53 = _57;
+  _60 = pretmp_181 - j_120;
+  _61 = (long unsigned int) _60;
+  _62 = _61 * 8;
+  _63 = datft_47 + _62;
+  _64 = _51 + 1;
+  _65 = _64 * 8;
+  _66 = cdata_54(D) + _65;
+  _67 = _66->i;
+  _68 = (double) _67;
+  *_63 = _68;
+  j_70 = j_120 + 1;
+  if (j_70 < _111)
+    goto <bb 19>;
+  else
+    goto <bb 20>;
+
+  <bb 19>:
+  goto <bb 18>;
+
+  <bb 20>:
+
+  <bb 21>:
+  _72 = (long unsigned int) _111;
+  _73 = _72 * 8;
+  _74 = datft_47 + _73;
+  _75 = cdata_54(D) + _73;
+  _76 = _75->r;
+  _77 = (double) _76;
+  *_74 = _77;
+  realifft (iftmp.10_4, datft_47);
+  if (sign_80(D) == -1)
+    goto <bb 22>;
+  else
+    goto <bb 41>;
+
+  <bb 22>:
+  if (iftmp.10_4 > 0)
+    goto <bb 24>;
+  else
+    goto <bb 23>;
+
+  <bb 23>:
+  goto <bb 48>;
+
+  <bb 24>:
+  niters.381_38 = (unsigned int) iftmp.10_4;
+  vectp_data.382_39 = data_83(D);
+  _35 = (unsigned long) vectp_data.382_39;
+  _36 = _35 & 15;
+  _59 = _36 >> 2;
+  _125 = -_59;
+  _114 = (unsigned int) _125;
+  _192 = _114 & 3;
+  prolog_loop_niters.383_34 = MIN_EXPR <niters.381_38, _192>;
+  if (niters.381_38 <= 4)
+    goto <bb 25>;
+  else
+    goto <bb 26>;
+
+  <bb 25>:
+
+  <bb 26>:
+  # prologue_after_cost_adjust.384_174 = PHI <niters.381_38(25), prolog_loop_niters.383_34(24)>
+  if (prologue_after_cost_adjust.384_174 == 0)
+    goto <bb 30>;
+  else
+    goto <bb 27>;
+
+  <bb 27>:
+  # j_165 = PHI <0(26)>
+  # ivtmp_24 = PHI <0(26)>
+
+  <bb 50>:
+  # j_191 = PHI <j_165(27), j_175(28)>
+  # ivtmp_163 = PHI <ivtmp_24(27), ivtmp_159(28)>
+  _189 = (long unsigned int) j_191;
+  _188 = _189 * 4;
+  _187 = data_83(D) + _188;
+  _186 = _189 * 8;
+  _185 = datft_47 + _186;
+  _178 = *_185;
+  _177 = (float) _178;
+  *_187 = _177;
+  j_175 = j_191 + 1;
+  ivtmp_159 = ivtmp_163 + 1;
+  if (ivtmp_159 < prologue_after_cost_adjust.384_174)
+    goto <bb 28>;
+  else
+    goto <bb 29>;
+
+  <bb 28>:
+  goto <bb 50>;
+
+  <bb 29>:
+  # j_168 = PHI <j_175(50)>
+  if (niters.381_38 == prologue_after_cost_adjust.384_174)
+    goto <bb 39>;
+  else
+    goto <bb 30>;
+
+  <bb 30>:
+  # j_169 = PHI <j_168(29), 0(26)>
+  prolog_loop_adjusted_niters.385_158 = (sizetype) prologue_after_cost_adjust.384_174;
+  niters.386_157 = niters.381_38 - prologue_after_cost_adjust.384_174;
+  _155 = niters.386_157 + 4294967292;
+  _154 = _155 >> 2;
+  bnd.387_156 = _154 + 1;
+  ratio_mult_vf.388_153 = bnd.387_156 << 2;
+  _141 = (unsigned int) iftmp.10_4;
+  _140 = _141 - prologue_after_cost_adjust.384_174;
+  _139 = _140 + 4294967295;
+  if (_139 <= 2)
+    goto <bb 36>;
+  else
+    goto <bb 31>;
+
+  <bb 31>:
+  _129 = prolog_loop_adjusted_niters.385_158 * 8;
+  vectp_datft.391_130 = datft_47 + _129;
+  _113 = prolog_loop_adjusted_niters.385_158 * 4;
+  vectp_data.396_116 = data_83(D) + _113;
+
+  <bb 32>:
+  # j_121 = PHI <j_90(40), j_169(31)>
+  # vectp_datft.390_128 = PHI <vectp_datft.390_127(40), vectp_datft.391_130(31)>
+  # vectp_data.395_112 = PHI <vectp_data.395_110(40), vectp_data.396_116(31)>
+  # ivtmp_89 = PHI <ivtmp_50(40), 0(31)>
+  _81 = (long unsigned int) j_121;
+  _82 = _81 * 4;
+  _84 = data_83(D) + _82;
+  _85 = _81 * 8;
+  _86 = datft_47 + _85;
+  vect__87.392_126 = MEM[(double *)vectp_datft.390_128];
+  vectp_datft.390_123 = vectp_datft.390_128 + 16;
+  vect__87.393_122 = MEM[(double *)vectp_datft.390_123];
+  _87 = *_86;
+  vect__88.394_119 = VEC_PACK_TRUNC_EXPR <vect__87.392_126, vect__87.393_122>;
+  _88 = (float) _87;
+  MEM[(float *)vectp_data.395_112] = vect__88.394_119;
+  j_90 = j_121 + 1;
+  vectp_datft.390_127 = vectp_datft.390_123 + 16;
+  vectp_data.395_110 = vectp_data.395_112 + 16;
+  ivtmp_50 = ivtmp_89 + 1;
+  if (ivtmp_50 < bnd.387_156)
+    goto <bb 40>;
+  else
+    goto <bb 35>;
+
+  <bb 33>:
+  # j_152 = PHI <j_142(34), j_138(36)>
+  _150 = (long unsigned int) j_152;
+  _149 = _150 * 4;
+  _148 = data_83(D) + _149;
+  _147 = _150 * 8;
+  _146 = datft_47 + _147;
+  _145 = *_146;
+  _144 = (float) _145;
+  *_148 = _144;
+  j_142 = j_152 + 1;
+  if (iftmp.10_4 > j_142)
+    goto <bb 34>;
+  else
+    goto <bb 37>;
+
+  <bb 34>:
+  goto <bb 33>;
+
+  <bb 35>:
+  # j_137 = PHI <j_90(32)>
+  _131 = (int) ratio_mult_vf.388_153;
+  tmp.389_132 = _131 + j_169;
+  if (ratio_mult_vf.388_153 == niters.386_157)
+    goto <bb 38>;
+  else
+    goto <bb 36>;
+
+  <bb 36>:
+  # j_138 = PHI <tmp.389_132(35), j_169(30)>
+  goto <bb 33>;
+
+  <bb 37>:
+
+  <bb 38>:
+
+  <bb 39>:
+  goto <bb 23>;
+
+  <bb 40>:
+  goto <bb 32>;
+
+  <bb 41>:
+  if (sign_80(D) == 1)
+    goto <bb 42>;
+  else
+    goto <bb 23>;
+
+  <bb 42>:
+  if (iftmp.10_4 > 1)
+    goto <bb 43>;
+  else
+    goto <bb 47>;
+
+  <bb 43>:
+
+  <bb 44>:
+  # j_118 = PHI <j_101(45), 1(43)>
+  _91 = (long unsigned int) j_118;
+  _92 = _91 * 4;
+  _93 = data_83(D) + _92;
+  _94 = iftmp.10_4 - j_118;
+  _95 = (long unsigned int) _94;
+  _96 = _95 * 8;
+  _97 = datft_47 + _96;
+  _98 = *_97;
+  _99 = (float) _98;
+  *_93 = _99;
+  j_101 = j_118 + 1;
+  if (iftmp.10_4 > j_101)
+    goto <bb 45>;
+  else
+    goto <bb 46>;
+
+  <bb 45>:
+  goto <bb 44>;
+
+  <bb 46>:
+
+  <bb 47>:
+  _102 = *datft_47;
+  _103 = (float) _102;
+  *data_83(D) = _103;
+
+  <bb 48>:
+  free (datft_47);
+
+  <bb 49>:
+  return;
+
+}
+
+
+
+;; Function crm_fft (crm_fft, funcdef_no=37, decl_uid=3944, symbol_order=37)
+
+Removing basic block 58
+Removing basic block 65
+Merging blocks 38 and 60
+Merging blocks 55 and 69
+Merging blocks 63 and 40
+Merging blocks 71 and 64
+Created preheader block for loop 7
+crm_fft (struct complex * cdata, float * data, int n1, int n2, int ldc, int ldr, int sign)
+{
+  vector(4) float * vectp.443;
+  vector(4) float * vectp.442;
+  vector(4) float vect__109.441;
+  vector(2) double vect__108.440;
+  vector(2) double vect__108.439;
+  vector(2) double * vectp_datft.438;
+  vector(2) double * vectp_datft.437;
+  int tmp.436;
+  unsigned int ratio_mult_vf.435;
+  unsigned int bnd.434;
+  unsigned int niters.433;
+  sizetype prolog_loop_adjusted_niters.432;
+  unsigned int prologue_after_cost_adjust.431;
+  unsigned int prolog_loop_niters.430;
+  vector(2) double * vectp_datft.429;
+  unsigned int niters.428;
+  double * datft;
+  int i;
+  int j;
+  double _3;
+  double _6;
+  int iftmp.15_7;
+  double iftmp.17_9;
+  double _21;
+  double _22;
+  double _23;
+  double _24;
+  int _25;
+  double iftmp.16_26;
+  double _27;
+  int _28;
+  double iftmp.16_29;
+  double _31;
+  int _32;
+  double iftmp.17_33;
+  double _34;
+  int _35;
+  double iftmp.17_36;
+  double _37;
+  double _38;
+  int iftmp.15_39;
+  unsigned long _42;
+  double _47;
+  int iftmp.15_48;
+  long unsigned int _49;
+  long unsigned int _50;
+  struct FILE * __stderrp.19_54;
+  long unsigned int _58;
+  long unsigned int _59;
+  double * _60;
+  int _63;
+  long unsigned int _64;
+  long unsigned int _65;
+  struct complex * _67;
+  float _68;
+  double _69;
+  int _72;
+  long unsigned int _73;
+  long unsigned int _74;
+  double * _75;
+  sizetype _76;
+  sizetype _77;
+  struct complex * _78;
+  float _79;
+  double _80;
+  unsigned long _84;
+  unsigned long _85;
+  unsigned int _86;
+  unsigned int _87;
+  int _89;
+  long unsigned int _90;
+  long unsigned int _91;
+  struct complex * _92;
+  float _93;
+  double _94;
+  long unsigned int _99;
+  int _100;
+  long unsigned int _101;
+  long unsigned int _102;
+  float * _104;
+  long unsigned int _105;
+  long unsigned int _106;
+  double * _107;
+  double _108;
+  float _109;
+  unsigned int ivtmp_110;
+  long unsigned int _112;
+  int _113;
+  long unsigned int _114;
+  long unsigned int _115;
+  float * _116;
+  int _117;
+  long unsigned int _118;
+  long unsigned int _119;
+  double * _120;
+  double _121;
+  float _122;
+  int _125;
+  long unsigned int _126;
+  long unsigned int _127;
+  float * _128;
+  double _129;
+  float _130;
+  int _135;
+  int _136;
+  long unsigned int _137;
+  long unsigned int _138;
+  float * _139;
+  int _140;
+  long unsigned int _141;
+  long unsigned int _142;
+  struct complex * _143;
+  _Bool _146;
+  _Bool _147;
+  _Bool _148;
+  int _150;
+  long unsigned int _151;
+  long unsigned int _152;
+  float * _153;
+  int _154;
+  long unsigned int _155;
+  long unsigned int _156;
+  struct complex * _157;
+  unsigned long _164;
+  float * _188;
+  unsigned int ivtmp_233;
+  unsigned int ivtmp_234;
+  sizetype _238;
+  sizetype _239;
+  sizetype _240;
+  sizetype _248;
+  int pretmp_251;
+  long unsigned int pretmp_252;
+  long unsigned int pretmp_253;
+  double * pretmp_254;
+  int _256;
+  unsigned int _264;
+  int pretmp_265;
+  int prephitmp_266;
+  unsigned int _267;
+  int pretmp_268;
+  int prephitmp_269;
+  int pretmp_270;
+  unsigned int _272;
+  float _275;
+  double _276;
+  double * _277;
+  long unsigned int _278;
+  long unsigned int _279;
+  int pretmp_280;
+  float * _284;
+  long unsigned int _285;
+  long unsigned int _286;
+  int _287;
+  int pretmp_293;
+  int pretmp_294;
+  unsigned int _296;
+  unsigned int _297;
+  unsigned int ivtmp_301;
+  unsigned int ivtmp_302;
+  float _319;
+  double _320;
+  double * _321;
+  long unsigned int _322;
+  long unsigned int _330;
+  int _331;
+  int _332;
+  double prephitmp_336;
+
+  <bb 2>:
+  _21 = (double) n1_20(D);
+  _22 = log (_21);
+  _23 = _22 * 1.442695040888963387004650940070860087871551513671875e+0;
+  if (_23 > 0.0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  _24 = _23 + 5.0e-1;
+  _25 = (int) _24;
+  iftmp.16_26 = (double) _25;
+  _6 = pow (2.0e+0, iftmp.16_26);
+  if (_6 > 0.0)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+
+  <bb 4>:
+  _27 = _23 - 5.0e-1;
+  _28 = (int) _27;
+  iftmp.16_29 = (double) _28;
+  _3 = pow (2.0e+0, iftmp.16_29);
+  if (_3 > 0.0)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+
+  <bb 5>:
+  if (_23 > 0.0)
+    goto <bb 6>;
+  else
+    goto <bb 7>;
+
+  <bb 6>:
+  _31 = _23 + 5.0e-1;
+  _32 = (int) _31;
+  iftmp.17_33 = (double) _32;
+  goto <bb 8>;
+
+  <bb 7>:
+  _34 = _23 - 5.0e-1;
+  _35 = (int) _34;
+  iftmp.17_36 = (double) _35;
+
+  <bb 8>:
+  # iftmp.17_9 = PHI <iftmp.17_33(6), iftmp.17_36(7)>
+  _37 = pow (2.0e+0, iftmp.17_9);
+  _38 = _37 + 5.0e-1;
+  iftmp.15_39 = (int) _38;
+  goto <bb 10>;
+
+  <bb 9>:
+  # prephitmp_336 = PHI <_6(3), _3(4)>
+  _47 = prephitmp_336 - 5.0e-1;
+  iftmp.15_48 = (int) _47;
+
+  <bb 10>:
+  # iftmp.15_7 = PHI <iftmp.15_39(8), iftmp.15_48(9)>
+  if (iftmp.15_7 != n1_20(D))
+    goto <bb 11>;
+  else
+    goto <bb 25>;
+
+  <bb 11>:
+  _135 = npfar (n1_20(D));
+  if (_135 == n1_20(D))
+    goto <bb 12>;
+  else
+    goto <bb 20>;
+
+  <bb 12>:
+  _146 = ldr_98(D) == _135;
+  _147 = ldc_61(D) == n2_56(D);
+  _148 = _146 & _147;
+  if (_148 != 0)
+    goto <bb 13>;
+  else
+    goto <bb 14>;
+
+  <bb 13>:
+  pfa2cr (sign_97(D), 1, _135, n2_56(D), cdata_66(D), data_103(D));
+  goto <bb 67>;
+
+  <bb 14>:
+  if (n2_56(D) > 0)
+    goto <bb 16>;
+  else
+    goto <bb 15>;
+
+  <bb 15>:
+  goto <bb 67>;
+
+  <bb 16>:
+
+  <bb 17>:
+  # i_171 = PHI <i_159(19), 0(16)>
+  _150 = i_171 * ldr_98(D);
+  _151 = (long unsigned int) _150;
+  _152 = _151 * 4;
+  _153 = data_103(D) + _152;
+  _154 = i_171 * ldc_61(D);
+  _155 = (long unsigned int) _154;
+  _156 = _155 * 8;
+  _157 = cdata_66(D) + _156;
+  pfacr (sign_97(D), _135, _157, _153);
+  i_159 = i_171 + 1;
+  if (n2_56(D) > i_159)
+    goto <bb 19>;
+  else
+    goto <bb 18>;
+
+  <bb 18>:
+  goto <bb 15>;
+
+  <bb 19>:
+  goto <bb 17>;
+
+  <bb 20>:
+  if (n2_56(D) > 0)
+    goto <bb 21>;
+  else
+    goto <bb 15>;
+
+  <bb 21>:
+
+  <bb 22>:
+  # i_178 = PHI <i_145(24), 0(21)>
+  _136 = i_178 * ldr_98(D);
+  _137 = (long unsigned int) _136;
+  _138 = _137 * 4;
+  _139 = data_103(D) + _138;
+  _140 = i_178 * ldc_61(D);
+  _141 = (long unsigned int) _140;
+  _142 = _141 * 8;
+  _143 = cdata_66(D) + _142;
+  crdft (_143, _139, n1_20(D), sign_97(D));
+  i_145 = i_178 + 1;
+  if (n2_56(D) > i_145)
+    goto <bb 24>;
+  else
+    goto <bb 23>;
+
+  <bb 23>:
+  goto <bb 15>;
+
+  <bb 24>:
+  goto <bb 22>;
+
+  <bb 25>:
+  _49 = (long unsigned int) iftmp.15_7;
+  _50 = _49 * 8;
+  datft_53 = malloc (_50);
+  if (datft_53 == 0B)
+    goto <bb 26>;
+  else
+    goto <bb 27>;
+
+  <bb 26>:
+  __stderrp.19_54 = __stderrp;
+  __builtin_fwrite ("crm_fft: memory allocation error\n", 1, 33, __stderrp.19_54);
+
+  <bb 27>:
+  if (n2_56(D) > 0)
+    goto <bb 28>;
+  else
+    goto <bb 66>;
+
+  <bb 28>:
+  pretmp_251 = iftmp.15_7 / 2;
+  pretmp_252 = (long unsigned int) pretmp_251;
+  pretmp_253 = pretmp_252 * 8;
+  pretmp_254 = datft_53 + pretmp_253;
+
+  <bb 29>:
+  # i_179 = PHI <i_132(64), 0(28)>
+  if (pretmp_251 > 0)
+    goto <bb 30>;
+  else
+    goto <bb 34>;
+
+  <bb 30>:
+  pretmp_293 = ldc_61(D) * i_179;
+  pretmp_294 = iftmp.15_7 + -1;
+
+  <bb 31>:
+  # j_175 = PHI <j_82(33), 0(30)>
+  _58 = (long unsigned int) j_175;
+  _59 = _58 * 8;
+  _60 = datft_53 + _59;
+  _63 = j_175 + pretmp_293;
+  _64 = (long unsigned int) _63;
+  _65 = _64 * 8;
+  _67 = cdata_66(D) + _65;
+  _68 = _67->r;
+  _69 = (double) _68;
+  *_60 = _69;
+  _72 = pretmp_294 - j_175;
+  _73 = (long unsigned int) _72;
+  _74 = _73 * 8;
+  _75 = datft_53 + _74;
+  _76 = _64 + 1;
+  _77 = _76 * 8;
+  _78 = cdata_66(D) + _77;
+  _79 = _78->i;
+  _80 = (double) _79;
+  *_75 = _80;
+  j_82 = j_175 + 1;
+  if (j_82 < pretmp_251)
+    goto <bb 33>;
+  else
+    goto <bb 32>;
+
+  <bb 32>:
+  _332 = pretmp_293;
+  goto <bb 35>;
+
+  <bb 33>:
+  goto <bb 31>;
+
+  <bb 34>:
+  pretmp_265 = ldc_61(D) * i_179;
+
+  <bb 35>:
+  # prephitmp_266 = PHI <pretmp_293(32), pretmp_265(34)>
+  _89 = pretmp_251 + prephitmp_266;
+  _90 = (long unsigned int) _89;
+  _91 = _90 * 8;
+  _92 = cdata_66(D) + _91;
+  _93 = _92->r;
+  _94 = (double) _93;
+  *pretmp_254 = _94;
+  realifft (iftmp.15_7, datft_53);
+  if (sign_97(D) == -1)
+    goto <bb 36>;
+  else
+    goto <bb 55>;
+
+  <bb 36>:
+  if (iftmp.15_7 > 0)
+    goto <bb 38>;
+  else
+    goto <bb 37>;
+
+  <bb 37>:
+  goto <bb 63>;
+
+  <bb 38>:
+  pretmp_280 = ldr_98(D) * i_179;
+  niters.428_45 = (unsigned int) iftmp.15_7;
+  vectp_datft.429_40 = datft_53;
+  _42 = (unsigned long) vectp_datft.429_40;
+  _164 = _42 & 15;
+  _84 = _164 >> 3;
+  _85 = -_84;
+  _86 = (unsigned int) _85;
+  _87 = _86 & 1;
+  prolog_loop_niters.430_41 = MIN_EXPR <niters.428_45, _87>;
+  if (niters.428_45 <= 4)
+    goto <bb 39>;
+  else
+    goto <bb 40>;
+
+  <bb 39>:
+
+  <bb 40>:
+  # prologue_after_cost_adjust.431_309 = PHI <niters.428_45(39), prolog_loop_niters.430_41(38)>
+  if (prologue_after_cost_adjust.431_309 == 0)
+    goto <bb 44>;
+  else
+    goto <bb 41>;
+
+  <bb 41>:
+  # j_304 = PHI <0(40)>
+  # ivtmp_233 = PHI <0(40)>
+
+  <bb 68>:
+  # j_62 = PHI <j_304(41), j_317(42)>
+  # ivtmp_302 = PHI <ivtmp_233(41), ivtmp_301(42)>
+  _125 = j_62 + pretmp_280;
+  _99 = (long unsigned int) _125;
+  _112 = _99 * 4;
+  _188 = data_103(D) + _112;
+  _330 = (long unsigned int) j_62;
+  _322 = _330 * 8;
+  _321 = datft_53 + _322;
+  _320 = *_321;
+  _319 = (float) _320;
+  *_188 = _319;
+  j_317 = j_62 + 1;
+  ivtmp_301 = ivtmp_302 + 1;
+  if (ivtmp_301 < prologue_after_cost_adjust.431_309)
+    goto <bb 42>;
+  else
+    goto <bb 43>;
+
+  <bb 42>:
+  goto <bb 68>;
+
+  <bb 43>:
+  # j_307 = PHI <j_317(68)>
+  if (niters.428_45 == prologue_after_cost_adjust.431_309)
+    goto <bb 53>;
+  else
+    goto <bb 44>;
+
+  <bb 44>:
+  # j_308 = PHI <j_307(43), 0(40)>
+  prolog_loop_adjusted_niters.432_300 = (sizetype) prologue_after_cost_adjust.431_309;
+  niters.433_299 = niters.428_45 - prologue_after_cost_adjust.431_309;
+  _297 = niters.433_299 + 4294967292;
+  _296 = _297 >> 2;
+  bnd.434_298 = _296 + 1;
+  ratio_mult_vf.435_290 = bnd.434_298 << 2;
+  _272 = (unsigned int) iftmp.15_7;
+  _267 = _272 - prologue_after_cost_adjust.431_309;
+  _264 = _267 + 4294967295;
+  if (_264 <= 2)
+    goto <bb 50>;
+  else
+    goto <bb 45>;
+
+  <bb 45>:
+  _248 = prolog_loop_adjusted_niters.432_300 * 8;
+  vectp_datft.438_249 = datft_53 + _248;
+  _240 = (sizetype) pretmp_280;
+  _239 = _240 + prolog_loop_adjusted_niters.432_300;
+  _238 = _239 * 4;
+  vectp.443_241 = data_103(D) + _238;
+
+  <bb 46>:
+  # j_167 = PHI <j_111(54), j_308(45)>
+  # vectp_datft.437_247 = PHI <vectp_datft.437_246(54), vectp_datft.438_249(45)>
+  # vectp.442_237 = PHI <vectp.442_236(54), vectp.443_241(45)>
+  # ivtmp_110 = PHI <ivtmp_234(54), 0(45)>
+  _100 = j_167 + pretmp_280;
+  _101 = (long unsigned int) _100;
+  _102 = _101 * 4;
+  _104 = data_103(D) + _102;
+  _105 = (long unsigned int) j_167;
+  _106 = _105 * 8;
+  _107 = datft_53 + _106;
+  vect__108.439_245 = MEM[(double *)vectp_datft.437_247];
+  vectp_datft.437_244 = vectp_datft.437_247 + 16;
+  vect__108.440_243 = MEM[(double *)vectp_datft.437_244];
+  _108 = *_107;
+  vect__109.441_242 = VEC_PACK_TRUNC_EXPR <vect__108.439_245, vect__108.440_243>;
+  _109 = (float) _108;
+  MEM[(float *)vectp.442_237] = vect__109.441_242;
+  j_111 = j_167 + 1;
+  vectp_datft.437_246 = vectp_datft.437_244 + 16;
+  vectp.442_236 = vectp.442_237 + 16;
+  ivtmp_234 = ivtmp_110 + 1;
+  if (ivtmp_234 < bnd.434_298)
+    goto <bb 54>;
+  else
+    goto <bb 49>;
+
+  <bb 47>:
+  # j_289 = PHI <j_273(48), j_263(50)>
+  _287 = j_289 + pretmp_280;
+  _286 = (long unsigned int) _287;
+  _285 = _286 * 4;
+  _284 = data_103(D) + _285;
+  _279 = (long unsigned int) j_289;
+  _278 = _279 * 8;
+  _277 = datft_53 + _278;
+  _276 = *_277;
+  _275 = (float) _276;
+  *_284 = _275;
+  j_273 = j_289 + 1;
+  if (iftmp.15_7 > j_273)
+    goto <bb 48>;
+  else
+    goto <bb 51>;
+
+  <bb 48>:
+  goto <bb 47>;
+
+  <bb 49>:
+  # j_262 = PHI <j_111(46)>
+  _256 = (int) ratio_mult_vf.435_290;
+  tmp.436_257 = _256 + j_308;
+  if (ratio_mult_vf.435_290 == niters.433_299)
+    goto <bb 52>;
+  else
+    goto <bb 50>;
+
+  <bb 50>:
+  # j_263 = PHI <tmp.436_257(49), j_308(44)>
+  goto <bb 47>;
+
+  <bb 51>:
+
+  <bb 52>:
+
+  <bb 53>:
+  goto <bb 37>;
+
+  <bb 54>:
+  goto <bb 46>;
+
+  <bb 55>:
+  if (sign_97(D) == 1)
+    goto <bb 56>;
+  else
+    goto <bb 37>;
+
+  <bb 56>:
+  if (iftmp.15_7 > 1)
+    goto <bb 57>;
+  else
+    goto <bb 61>;
+
+  <bb 57>:
+  pretmp_270 = ldr_98(D) * i_179;
+
+  <bb 58>:
+  # j_168 = PHI <j_124(60), 1(57)>
+  _113 = j_168 + pretmp_270;
+  _114 = (long unsigned int) _113;
+  _115 = _114 * 4;
+  _116 = data_103(D) + _115;
+  _117 = iftmp.15_7 - j_168;
+  _118 = (long unsigned int) _117;
+  _119 = _118 * 8;
+  _120 = datft_53 + _119;
+  _121 = *_120;
+  _122 = (float) _121;
+  *_116 = _122;
+  j_124 = j_168 + 1;
+  if (iftmp.15_7 > j_124)
+    goto <bb 60>;
+  else
+    goto <bb 59>;
+
+  <bb 59>:
+  _331 = pretmp_270;
+  goto <bb 62>;
+
+  <bb 60>:
+  goto <bb 58>;
+
+  <bb 61>:
+  pretmp_268 = ldr_98(D) * i_179;
+
+  <bb 62>:
+  # prephitmp_269 = PHI <pretmp_270(59), pretmp_268(61)>
+  _126 = (long unsigned int) prephitmp_269;
+  _127 = _126 * 4;
+  _128 = data_103(D) + _127;
+  _129 = *datft_53;
+  _130 = (float) _129;
+  *_128 = _130;
+
+  <bb 63>:
+  i_132 = i_179 + 1;
+  if (n2_56(D) > i_132)
+    goto <bb 64>;
+  else
+    goto <bb 65>;
+
+  <bb 64>:
+  goto <bb 29>;
+
+  <bb 65>:
+
+  <bb 66>:
+  free (datft_53);
+
+  <bb 67>:
+  return;
+
+}
+
+

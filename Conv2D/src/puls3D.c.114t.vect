@@ -1,0 +1,1089 @@
+
+;; Function main (main, funcdef_no=35, decl_uid=5124, symbol_order=36) (executed once)
+
+main (int argc, char * * argv)
+{
+  static const char __func__[5] = "main";
+  struct segyhdr tr;
+  char * file_out;
+  char * file_src;
+  struct complex * cwave;
+  float * tmpdata;
+  float * wavelet;
+  float * data3d;
+  float perc;
+  float cp;
+  float wfacts;
+  float wfacto;
+  float alpha;
+  double t2;
+  double t1;
+  double t0;
+  float d1;
+  float df;
+  float fmax;
+  float fmin;
+  float dz;
+  float dt;
+  float dy;
+  float dx;
+  int i;
+  int opt;
+  int k;
+  int nwrite;
+  int nread;
+  int oper;
+  int nfreq;
+  int nt;
+  int ny;
+  int nx;
+  int j;
+  int ndepth;
+  int verbose;
+  int oply;
+  int oplx;
+  struct FILE * fp;
+  sizetype _4;
+  int iftmp.22_8;
+  double _33;
+  char * file_src.16_44;
+  int _55;
+  int _58;
+  int _61;
+  int verbose.0_62;
+  struct FILE * __stderrp.1_63;
+  int _67;
+  int _70;
+  int _73;
+  int _76;
+  int _79;
+  int nx.2_80;
+  int _83;
+  float dx.3_84;
+  int _87;
+  int _90;
+  int _93;
+  float dx.3_94;
+  int _97;
+  int _100;
+  int _103;
+  int oplx.4_104;
+  int _107;
+  int _110;
+  int _113;
+  int _116;
+  int _119;
+  int _122;
+  int _125;
+  int _128;
+  int verbose.0_131;
+  struct FILE * __stderrp.1_132;
+  float fmin.5_134;
+  double _135;
+  struct FILE * __stderrp.1_136;
+  struct FILE * __stderrp.1_138;
+  float fmax.6_140;
+  double _141;
+  struct FILE * __stderrp.1_142;
+  struct FILE * __stderrp.1_144;
+  float cp.7_146;
+  double _147;
+  float dx.3_148;
+  double _149;
+  float alpha.8_150;
+  double _151;
+  double _152;
+  double _153;
+  double _155;
+  double _156;
+  struct FILE * __stderrp.1_157;
+  struct FILE * __stderrp.1_159;
+  int nx.2_161;
+  struct FILE * __stderrp.1_162;
+  struct FILE * __stderrp.1_164;
+  float dx.3_166;
+  double _167;
+  struct FILE * __stderrp.1_168;
+  struct FILE * __stderrp.1_170;
+  int ny.9_172;
+  struct FILE * __stderrp.1_173;
+  struct FILE * __stderrp.1_175;
+  float dy.10_177;
+  double _178;
+  struct FILE * __stderrp.1_179;
+  struct FILE * __stderrp.1_181;
+  int nt.11_183;
+  struct FILE * __stderrp.1_184;
+  struct FILE * __stderrp.1_186;
+  float dt.12_188;
+  double _189;
+  struct FILE * __stderrp.1_190;
+  struct FILE * __stderrp.1_192;
+  float dz.13_194;
+  double _195;
+  struct FILE * __stderrp.1_196;
+  struct FILE * __stderrp.1_198;
+  int oplx.4_200;
+  struct FILE * __stderrp.1_201;
+  struct FILE * __stderrp.1_203;
+  int oply.14_205;
+  struct FILE * __stderrp.1_206;
+  struct FILE * __stderrp.1_208;
+  float alpha.8_210;
+  double _211;
+  struct FILE * __stderrp.1_212;
+  struct FILE * __stderrp.1_214;
+  float cp.7_216;
+  double _217;
+  struct FILE * __stderrp.1_218;
+  struct FILE * __stderrp.1_220;
+  int ndepth.15_222;
+  struct FILE * __stderrp.1_223;
+  char * file_src.16_225;
+  int _227;
+  int nt.11_229;
+  long unsigned int _230;
+  int _233;
+  long unsigned int _234;
+  long unsigned int _235;
+  float * _236;
+  int verbose.0_238;
+  struct FILE * __stderrp.1_239;
+  char * file_src.16_244;
+  struct FILE * __stderrp.1_245;
+  long unsigned int _248;
+  short unsigned int _253;
+  short unsigned int _255;
+  float _256;
+  double _257;
+  double _258;
+  float _260;
+  int _261;
+  float dt.12_262;
+  float _263;
+  int _264;
+  long unsigned int _268;
+  long unsigned int _272;
+  int nt.11_278;
+  struct FILE * __stderrp.1_284;
+  int nt.11_286;
+  int _287;
+  float _289;
+  float dt.12_290;
+  float _291;
+  long unsigned int _293;
+  long unsigned int _294;
+  int verbose.0_299;
+  struct FILE * __stderrp.1_301;
+  double _303;
+  struct FILE * __stderrp.1_304;
+  struct FILE * __stderrp.1_308;
+  double _310;
+  struct FILE * __stderrp.1_311;
+  int nx.2_313;
+  int ny.9_314;
+  int _315;
+  int ndepth.15_316;
+  int _317;
+  long unsigned int _318;
+  int verbose.0_321;
+  int oper.17_322;
+  int opt.18_323;
+  float wfacts.19_324;
+  float wfacto.20_325;
+  float cp.7_326;
+  float alpha.8_327;
+  float dz.13_328;
+  int oply.14_329;
+  int oplx.4_330;
+  float dy.10_331;
+  float dx.3_332;
+  float fmax.6_333;
+  float fmin.5_334;
+  int verbose.0_336;
+  double _340;
+  struct FILE * __stderrp.1_341;
+  int ndepth.15_344;
+  long unsigned int _345;
+  long unsigned int _346;
+  int nx.2_350;
+  int _351;
+  double _352;
+  float dx.3_353;
+  double _354;
+  double _355;
+  double _356;
+  float _357;
+  int ny.9_359;
+  int _360;
+  double _361;
+  float dy.10_362;
+  double _363;
+  double _364;
+  double _365;
+  float _366;
+  float dz.13_368;
+  int _371;
+  short unsigned int _372;
+  short unsigned int _373;
+  short unsigned int _375;
+  short int _379;
+  char * file_out.21_381;
+  char * file_out.21_384;
+  struct FILE * __stderrp.1_385;
+  float _388;
+  float _389;
+  float dy.10_390;
+  float _391;
+  float _392;
+  float _393;
+  int _394;
+  int nx.2_396;
+  float _397;
+  float _398;
+  float dx.3_399;
+  float _400;
+  float _401;
+  float _402;
+  double _403;
+  double _404;
+  int iftmp.22_405;
+  double _406;
+  double _407;
+  int iftmp.22_408;
+  unsigned int _411;
+  long unsigned int _412;
+  long unsigned int _413;
+  float * _414;
+  unsigned int _415;
+  int _416;
+  unsigned int _417;
+  int _418;
+  unsigned int _419;
+  int _420;
+  int _421;
+  long unsigned int _422;
+  long unsigned int _423;
+  float * _424;
+  float _425;
+  long unsigned int _429;
+  long unsigned int _431;
+  int ndepth.15_433;
+  char * file_out.21_434;
+  struct FILE * __stderrp.1_435;
+  int verbose.0_440;
+  double _443;
+  struct FILE * __stderrp.1_444;
+  double _446;
+  struct FILE * __stderrp.1_447;
+  int ndepth.15_475;
+  int ny.9_476;
+  sizetype _483;
+  sizetype _487;
+  int prephitmp_600;
+  int prephitmp_608;
+  int pretmp_620;
+  int pretmp_623;
+  int pretmp_626;
+  float * _633;
+  long unsigned int _634;
+  long unsigned int _635;
+  int nx.2_636;
+  char * pretmp_637;
+  char * prephitmp_638;
+  int pretmp_642;
+  int prephitmp_643;
+  int pretmp_644;
+  int prephitmp_645;
+
+  <bb 2>:
+  t0_49 = wallclock_time ();
+  initargs (argc_50(D), argv_51(D));
+  requestdoc (1);
+  _55 = getparint ("oper", &oper);
+  if (_55 == 0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  oper = 0;
+
+  <bb 4>:
+  _58 = getparint ("verbose", &verbose);
+  if (_58 == 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+
+  <bb 5>:
+  verbose = 0;
+
+  <bb 6>:
+  _61 = getparstring ("file_out", &file_out);
+  if (_61 == 0)
+    goto <bb 7>;
+  else
+    goto <bb 10>;
+
+  <bb 7>:
+  verbose.0_62 = verbose;
+  if (verbose.0_62 != 0)
+    goto <bb 8>;
+  else
+    goto <bb 9>;
+
+  <bb 8>:
+  __stderrp.1_63 = __stderrp;
+  __builtin_fwrite ("parameter file_out not found, assume pipe\n", 1, 42, __stderrp.1_63);
+
+  <bb 9>:
+  file_out = 0B;
+
+  <bb 10>:
+  _67 = getparstring ("file_src", &file_src);
+  if (_67 == 0)
+    goto <bb 11>;
+  else
+    goto <bb 12>;
+
+  <bb 11>:
+  file_src = 0B;
+
+  <bb 12>:
+  _70 = getparfloat ("cp", &cp);
+  if (_70 == 0)
+    goto <bb 13>;
+  else
+    goto <bb 14>;
+
+  <bb 13>:
+  cp = 1.0e+3;
+
+  <bb 14>:
+  _73 = getparint ("nx", &nx);
+  if (_73 == 0)
+    goto <bb 15>;
+  else
+    goto <bb 16>;
+
+  <bb 15>:
+  nx = 111;
+
+  <bb 16>:
+  _76 = getparfloat ("dx", &dx);
+  if (_76 == 0)
+    goto <bb 17>;
+  else
+    goto <bb 18>;
+
+  <bb 17>:
+  dx = 1.0e+1;
+
+  <bb 18>:
+  _79 = getparint ("ny", &ny);
+  if (_79 == 0)
+    goto <bb 19>;
+  else
+    goto <bb 20>;
+
+  <bb 19>:
+  nx.2_80 = nx;
+  ny = nx.2_80;
+
+  <bb 20>:
+  _83 = getparfloat ("dy", &dy);
+  if (_83 == 0)
+    goto <bb 21>;
+  else
+    goto <bb 22>;
+
+  <bb 21>:
+  dx.3_84 = dx;
+  dy = dx.3_84;
+
+  <bb 22>:
+  _87 = getparint ("nt", &nt);
+  if (_87 == 0)
+    goto <bb 23>;
+  else
+    goto <bb 24>;
+
+  <bb 23>:
+  nt = 256;
+
+  <bb 24>:
+  _90 = getparfloat ("dt", &dt);
+  if (_90 == 0)
+    goto <bb 25>;
+  else
+    goto <bb 26>;
+
+  <bb 25>:
+  dt = 4.0000001899898052215576171875e-3;
+
+  <bb 26>:
+  _93 = getparfloat ("dz", &dz);
+  if (_93 == 0)
+    goto <bb 27>;
+  else
+    goto <bb 28>;
+
+  <bb 27>:
+  dx.3_94 = dx;
+  dz = dx.3_94;
+
+  <bb 28>:
+  _97 = getparfloat ("alpha", &alpha);
+  if (_97 == 0)
+    goto <bb 29>;
+  else
+    goto <bb 30>;
+
+  <bb 29>:
+  alpha = 6.5e+1;
+
+  <bb 30>:
+  _100 = getparint ("oplx", &oplx);
+  if (_100 == 0)
+    goto <bb 31>;
+  else
+    goto <bb 32>;
+
+  <bb 31>:
+  oplx = 19;
+
+  <bb 32>:
+  _103 = getparint ("oply", &oply);
+  if (_103 == 0)
+    goto <bb 33>;
+  else
+    goto <bb 34>;
+
+  <bb 33>:
+  oplx.4_104 = oplx;
+  oply = oplx.4_104;
+
+  <bb 34>:
+  _107 = getparfloat ("wfacto", &wfacto);
+  if (_107 == 0)
+    goto <bb 35>;
+  else
+    goto <bb 36>;
+
+  <bb 35>:
+  wfacto = 4.999999873689375817775726318359375e-5;
+
+  <bb 36>:
+  _110 = getparfloat ("wfacts", &wfacts);
+  if (_110 == 0)
+    goto <bb 37>;
+  else
+    goto <bb 38>;
+
+  <bb 37>:
+  wfacts = 9.99999977648258209228515625e-3;
+
+  <bb 38>:
+  _113 = getparfloat ("perc", &perc);
+  if (_113 == 0)
+    goto <bb 39>;
+  else
+    goto <bb 40>;
+
+  <bb 39>:
+  perc = 5.0e+0;
+
+  <bb 40>:
+  _116 = getparfloat ("fmin", &fmin);
+  if (_116 == 0)
+    goto <bb 41>;
+  else
+    goto <bb 42>;
+
+  <bb 41>:
+  fmin = 5.0e+0;
+
+  <bb 42>:
+  _119 = getparfloat ("fmax", &fmax);
+  if (_119 == 0)
+    goto <bb 43>;
+  else
+    goto <bb 44>;
+
+  <bb 43>:
+  fmax = 4.5e+1;
+
+  <bb 44>:
+  _122 = getparint ("ndepth", &ndepth);
+  if (_122 == 0)
+    goto <bb 45>;
+  else
+    goto <bb 46>;
+
+  <bb 45>:
+  ndepth = 55;
+
+  <bb 46>:
+  _125 = getparint ("opt", &opt);
+  if (_125 == 0)
+    goto <bb 47>;
+  else
+    goto <bb 48>;
+
+  <bb 47>:
+  opt = 0;
+
+  <bb 48>:
+  _128 = getparint ("verbose", &verbose);
+  if (_128 == 0)
+    goto <bb 49>;
+  else
+    goto <bb 50>;
+
+  <bb 49>:
+  verbose = 0;
+
+  <bb 50>:
+  opt = 1;
+  verbose.0_131 = verbose;
+  if (verbose.0_131 != 0)
+    goto <bb 51>;
+  else
+    goto <bb 97>;
+
+  <bb 51>:
+  __stderrp.1_132 = __stderrp;
+  __builtin_fwrite ("Minimum frequency to treat ............... : ", 1, 45, __stderrp.1_132);
+  fmin.5_134 = fmin;
+  _135 = (double) fmin.5_134;
+  __stderrp.1_136 = __stderrp;
+  fprintf (__stderrp.1_136, "%f\n", _135);
+  __stderrp.1_138 = __stderrp;
+  __builtin_fwrite ("Maximum frequency to treat ............... : ", 1, 45, __stderrp.1_138);
+  fmax.6_140 = fmax;
+  _141 = (double) fmax.6_140;
+  __stderrp.1_142 = __stderrp;
+  fprintf (__stderrp.1_142, "%f\n", _141);
+  __stderrp.1_144 = __stderrp;
+  __builtin_fwrite ("Maximum unaliased frequency .............. : ", 1, 45, __stderrp.1_144);
+  cp.7_146 = cp;
+  _147 = (double) cp.7_146;
+  dx.3_148 = dx;
+  _149 = (double) dx.3_148;
+  alpha.8_150 = alpha;
+  _151 = (double) alpha.8_150;
+  _152 = _151 * 1.74532925199432954743716805978692718781530857086181640625e-2;
+  _153 = sin (_152);
+  _355 = _149 * 2.0e+0;
+  _155 = _355 * _153;
+  _156 = _147 / _155;
+  __stderrp.1_157 = __stderrp;
+  fprintf (__stderrp.1_157, "%f\n", _156);
+  __stderrp.1_159 = __stderrp;
+  __builtin_fwrite ("Number of x samples ...................... : ", 1, 45, __stderrp.1_159);
+  nx.2_161 = nx;
+  __stderrp.1_162 = __stderrp;
+  fprintf (__stderrp.1_162, "%d\n", nx.2_161);
+  __stderrp.1_164 = __stderrp;
+  __builtin_fwrite ("Stepsize in spatial(x) domain ............ : ", 1, 45, __stderrp.1_164);
+  dx.3_166 = dx;
+  _167 = (double) dx.3_166;
+  __stderrp.1_168 = __stderrp;
+  fprintf (__stderrp.1_168, "%f\n", _167);
+  __stderrp.1_170 = __stderrp;
+  __builtin_fwrite ("Number of y samples ...................... : ", 1, 45, __stderrp.1_170);
+  ny.9_172 = ny;
+  __stderrp.1_173 = __stderrp;
+  fprintf (__stderrp.1_173, "%d\n", ny.9_172);
+  __stderrp.1_175 = __stderrp;
+  __builtin_fwrite ("Stepsize in spatial(y) domain ............ : ", 1, 45, __stderrp.1_175);
+  dy.10_177 = dy;
+  _178 = (double) dy.10_177;
+  __stderrp.1_179 = __stderrp;
+  fprintf (__stderrp.1_179, "%f\n", _178);
+  __stderrp.1_181 = __stderrp;
+  __builtin_fwrite ("Number of time samples ................... : ", 1, 45, __stderrp.1_181);
+  nt.11_183 = nt;
+  __stderrp.1_184 = __stderrp;
+  fprintf (__stderrp.1_184, "%d\n", nt.11_183);
+  __stderrp.1_186 = __stderrp;
+  __builtin_fwrite ("Stepsize in time domain .................. : ", 1, 45, __stderrp.1_186);
+  dt.12_188 = dt;
+  _189 = (double) dt.12_188;
+  __stderrp.1_190 = __stderrp;
+  fprintf (__stderrp.1_190, "%f\n", _189);
+  __stderrp.1_192 = __stderrp;
+  __builtin_fwrite ("Extrapolation step ....................... : ", 1, 45, __stderrp.1_192);
+  dz.13_194 = dz;
+  _195 = (double) dz.13_194;
+  __stderrp.1_196 = __stderrp;
+  fprintf (__stderrp.1_196, "%f\n", _195);
+  __stderrp.1_198 = __stderrp;
+  __builtin_fwrite ("Operator length in x (odd) ............... : ", 1, 45, __stderrp.1_198);
+  oplx.4_200 = oplx;
+  __stderrp.1_201 = __stderrp;
+  fprintf (__stderrp.1_201, "%d\n", oplx.4_200);
+  __stderrp.1_203 = __stderrp;
+  __builtin_fwrite ("Operator length in y (odd) ............... : ", 1, 45, __stderrp.1_203);
+  oply.14_205 = oply;
+  __stderrp.1_206 = __stderrp;
+  fprintf (__stderrp.1_206, "%d\n", oply.14_205);
+  __stderrp.1_208 = __stderrp;
+  __builtin_fwrite ("Maximum angle of interest ................ : ", 1, 45, __stderrp.1_208);
+  alpha.8_210 = alpha;
+  _211 = (double) alpha.8_210;
+  __stderrp.1_212 = __stderrp;
+  fprintf (__stderrp.1_212, "%f\n", _211);
+  __stderrp.1_214 = __stderrp;
+  __builtin_fwrite ("P-wave velocity  ......................... : ", 1, 45, __stderrp.1_214);
+  cp.7_216 = cp;
+  _217 = (double) cp.7_216;
+  __stderrp.1_218 = __stderrp;
+  fprintf (__stderrp.1_218, "%f\n", _217);
+  __stderrp.1_220 = __stderrp;
+  __builtin_fwrite ("Number of depth steps .................... : ", 1, 45, __stderrp.1_220);
+  ndepth.15_222 = ndepth;
+  __stderrp.1_223 = __stderrp;
+  fprintf (__stderrp.1_223, "%d\n", ndepth.15_222);
+  file_src.16_225 = file_src;
+  if (file_src.16_225 == 0B)
+    goto <bb 52>;
+  else
+    goto <bb 55>;
+
+  <bb 52>:
+  _227 = getparfloat ("dt", &dt);
+  if (_227 == 0)
+    goto <bb 53>;
+  else
+    goto <bb 54>;
+
+  <bb 53>:
+  dt = 4.0000001899898052215576171875e-3;
+
+  <bb 54>:
+  nt.11_229 = nt;
+  _230 = (long unsigned int) nt.11_229;
+  wavelet_232 = calloc (_230, 4);
+  _233 = nt.11_229 / 2;
+  _234 = (long unsigned int) _233;
+  _235 = _234 * 4;
+  _236 = wavelet_232 + _235;
+  *_236 = 1.0e+0;
+  goto <bb 69>;
+
+  <bb 55>:
+  verbose.0_238 = verbose;
+  if (verbose.0_238 != 0)
+    goto <bb 56>;
+  else
+    goto <bb 57>;
+
+  <bb 56>:
+  __stderrp.1_239 = __stderrp;
+  fprintf (__stderrp.1_239, "Reading wavelet from file %s.\n", file_src.16_225);
+  pretmp_637 = file_src;
+
+  <bb 57>:
+  # prephitmp_638 = PHI <file_src.16_225(55), pretmp_637(56), file_src.16_44(97)>
+  fp_243 = fopen (prephitmp_638, "r");
+  if (fp_243 == 0B)
+    goto <bb 58>;
+  else
+    goto <bb 59>;
+
+  <bb 58>:
+  file_src.16_244 = file_src;
+  __stderrp.1_245 = __stderrp;
+  fprintf (__stderrp.1_245, "error in opening file %s.\n", file_src.16_244);
+
+  <bb 59>:
+  _248 = fread (&tr, 1, 240, fp_243);
+  nread_249 = (int) _248;
+  if (nread_249 != 240)
+    goto <bb 60>;
+  else
+    goto <bb 61>;
+
+  <bb 60>:
+  __assert_rtn (&__func__, "puls3D.c", 164, "nread == TRCBYTES");
+
+  <bb 61>:
+  _253 = tr.ns;
+  i_254 = (int) _253;
+  _255 = tr.dt;
+  _256 = (float) _255;
+  _257 = (double) _256;
+  _258 = _257 * 9.99999999999999954748111825886258685613938723690807819366e-7;
+  d1_259 = (float) _258;
+  _260 = d1_259 * 1.0e+3;
+  _261 = (int) _260;
+  dt.12_262 = dt;
+  _263 = dt.12_262 * 1.0e+3;
+  _264 = (int) _263;
+  if (_261 != _264)
+    goto <bb 62>;
+  else
+    goto <bb 63>;
+
+  <bb 62>:
+  __assert_rtn (&__func__, "puls3D.c", 167, "(int)(d1*1000) == (int)(dt*1000)");
+
+  <bb 63>:
+  _268 = (long unsigned int) _253;
+  wavelet_270 = calloc (_268, 4);
+  _272 = fread (wavelet_270, 4, _268, fp_243);
+  nread_273 = (int) _272;
+  if (i_254 != nread_273)
+    goto <bb 64>;
+  else
+    goto <bb 65>;
+
+  <bb 64>:
+  __assert_rtn (&__func__, "puls3D.c", 171, "nread == n1");
+
+  <bb 65>:
+  fclose (fp_243);
+  nt.11_278 = nt;
+  if (i_254 <= nt.11_278)
+    goto <bb 66>;
+  else
+    goto <bb 68>;
+
+  <bb 66>:
+  if (i_254 < nt.11_278)
+    goto <bb 67>;
+  else
+    goto <bb 69>;
+
+  <bb 67>:
+  _415 = (unsigned int) nt.11_278;
+  _417 = (unsigned int) _253;
+  _419 = _415 - _417;
+  _411 = _419 + 4294967295;
+  _483 = (sizetype) _411;
+  _487 = _483 + 1;
+  _4 = _487 * 4;
+  _635 = (long unsigned int) i_254;
+  _634 = _635 * 4;
+  _633 = wavelet_270 + _634;
+  __builtin_memset (_633, 0, _4);
+  wavelet_477 = wavelet_270;
+  goto <bb 69>;
+
+  <bb 68>:
+  __stderrp.1_284 = __stderrp;
+  __builtin_fwrite ("file_src has more samples than output\n", 1, 38, __stderrp.1_284);
+
+  <bb 69>:
+  # wavelet_7 = PHI <wavelet_232(54), wavelet_270(67), wavelet_270(68), wavelet_270(66)>
+  nt.11_286 = nt;
+  _287 = nt.11_286 / 2;
+  nfreq_288 = _287 + 1;
+  _289 = (float) nt.11_286;
+  dt.12_290 = dt;
+  _291 = _289 * dt.12_290;
+  df_292 = 1.0e+0 / _291;
+  _293 = (long unsigned int) nfreq_288;
+  _294 = _293 * 8;
+  cwave_296 = malloc (_294);
+  rc1fft (wavelet_7, cwave_296, nt.11_286, -1);
+  free (wavelet_7);
+  verbose.0_299 = verbose;
+  if (verbose.0_299 != 0)
+    goto <bb 70>;
+  else
+    goto <bb 71>;
+
+  <bb 70>:
+  __stderrp.1_301 = __stderrp;
+  __builtin_fwrite ("Frequency step ........................... : ", 1, 45, __stderrp.1_301);
+  _303 = (double) df_292;
+  __stderrp.1_304 = __stderrp;
+  fprintf (__stderrp.1_304, "%f\n", _303);
+  t1_307 = wallclock_time ();
+  __stderrp.1_308 = __stderrp;
+  __builtin_fwrite ("\nComputation Time (seconds)\n", 1, 28, __stderrp.1_308);
+  _310 = t1_307 - t0_49;
+  __stderrp.1_311 = __stderrp;
+  fprintf (__stderrp.1_311, "- Reading wavelet forward FFT ... = %f s.\n", _310);
+
+  <bb 71>:
+  # t1_5 = PHI <t1_300(D)(69), t1_307(70)>
+  nx.2_313 = nx;
+  ny.9_314 = ny;
+  _315 = nx.2_313 * ny.9_314;
+  ndepth.15_316 = ndepth;
+  _317 = _315 * ndepth.15_316;
+  _318 = (long unsigned int) _317;
+  data3d_320 = calloc (_318, 4);
+  verbose.0_321 = verbose;
+  oper.17_322 = oper;
+  opt.18_323 = opt;
+  wfacts.19_324 = wfacts;
+  wfacto.20_325 = wfacto;
+  cp.7_326 = cp;
+  alpha.8_327 = alpha;
+  dz.13_328 = dz;
+  oply.14_329 = oply;
+  oplx.4_330 = oplx;
+  dy.10_331 = dy;
+  dx.3_332 = dx;
+  fmax.6_333 = fmax;
+  fmin.5_334 = fmin;
+  extr3D (cwave_296, df_292, fmin.5_334, fmax.6_333, nfreq_288, nx.2_313, dx.3_332, ny.9_314, dy.10_331, oplx.4_330, oply.14_329, dz.13_328, ndepth.15_316, alpha.8_327, cp.7_326, wfacto.20_325, wfacts.19_324, data3d_320, 1, 1, opt.18_323, 1, oper.17_322, verbose.0_321);
+  verbose.0_336 = verbose;
+  if (verbose.0_336 != 0)
+    goto <bb 72>;
+  else
+    goto <bb 73>;
+
+  <bb 72>:
+  t2_339 = wallclock_time ();
+  _340 = t2_339 - t1_5;
+  __stderrp.1_341 = __stderrp;
+  fprintf (__stderrp.1_341, "- Total Migration time .......... = %f s.\n", _340);
+
+  <bb 73>:
+  # t2_6 = PHI <t2_337(D)(71), t2_339(72)>
+  free (cwave_296);
+  ndepth.15_344 = ndepth;
+  _345 = (long unsigned int) ndepth.15_344;
+  _346 = _345 * 4;
+  tmpdata_348 = malloc (_346);
+  __builtin_memset (&tr, 0, 240);
+  nx.2_350 = nx;
+  _351 = 1 - nx.2_350;
+  _352 = (double) _351;
+  dx.3_353 = dx;
+  _354 = (double) dx.3_353;
+  _364 = _354 * 5.0e-1;
+  _356 = _364 * _352;
+  _357 = (float) _356;
+  tr.f1 = _357;
+  ny.9_359 = ny;
+  _360 = 1 - ny.9_359;
+  _361 = (double) _360;
+  dy.10_362 = dy;
+  _363 = (double) dy.10_362;
+  _33 = _363 * 5.0e-1;
+  _365 = _33 * _361;
+  _366 = (float) _365;
+  tr.f2 = _366;
+  dz.13_368 = dz;
+  tr.d1 = dz.13_368;
+  tr.d2 = dx.3_353;
+  _371 = (int) dz.13_368;
+  _372 = (short unsigned int) _371;
+  _373 = _372 * 1000;
+  tr.dt = _373;
+  _375 = (short unsigned int) ndepth.15_344;
+  tr.ns = _375;
+  tr.scalco = -1000;
+  tr.fldr = 1;
+  _379 = (short int) nx.2_350;
+  tr.trwf = _379;
+  file_out.21_381 = file_out;
+  fp_383 = fopen (file_out.21_381, "w");
+  if (fp_383 == 0B)
+    goto <bb 74>;
+  else
+    goto <bb 75>;
+
+  <bb 74>:
+  file_out.21_384 = file_out;
+  __stderrp.1_385 = __stderrp;
+  fprintf (__stderrp.1_385, "error in opening file %s.\n", file_out.21_384);
+
+  <bb 75>:
+  ny.9_476 = ny;
+  if (ny.9_476 > 0)
+    goto <bb 76>;
+  else
+    goto <bb 94>;
+
+  <bb 76>:
+  pretmp_642 = nx;
+
+  <bb 77>:
+  # j_276 = PHI <j_438(93), 0(76)>
+  # prephitmp_600 = PHI <prephitmp_645(93), ny.9_476(76)>
+  # prephitmp_643 = PHI <prephitmp_608(93), pretmp_642(76)>
+  _388 = tr.f2;
+  _389 = (float) j_276;
+  dy.10_390 = dy;
+  _391 = _389 * dy.10_390;
+  _392 = _391 + _388;
+  _393 = _392 * 1.0e+3;
+  _394 = (int) _393;
+  tr.gy = _394;
+  if (prephitmp_643 > 0)
+    goto <bb 78>;
+  else
+    goto <bb 92>;
+
+  <bb 78>:
+
+  <bb 79>:
+  # i_480 = PHI <i_437(91), 0(78)>
+  _397 = tr.f1;
+  _398 = (float) i_480;
+  dx.3_399 = dx;
+  _400 = _398 * dx.3_399;
+  _401 = _400 + _397;
+  _402 = _401 * 1.0e+3;
+  if (_402 > 0.0)
+    goto <bb 80>;
+  else
+    goto <bb 81>;
+
+  <bb 80>:
+  _403 = (double) _402;
+  _404 = _403 + 5.0e-1;
+  iftmp.22_405 = (int) _404;
+  goto <bb 82>;
+
+  <bb 81>:
+  _406 = (double) _402;
+  _407 = _406 - 5.0e-1;
+  iftmp.22_408 = (int) _407;
+
+  <bb 82>:
+  # iftmp.22_8 = PHI <iftmp.22_405(80), iftmp.22_408(81)>
+  tr.gx = iftmp.22_8;
+  fwrite (&tr, 1, 240, fp_383);
+  ndepth.15_475 = ndepth;
+  if (ndepth.15_475 > 0)
+    goto <bb 83>;
+  else
+    goto <bb 87>;
+
+  <bb 83>:
+  pretmp_620 = nx;
+  pretmp_623 = ny;
+  pretmp_626 = j_276 * pretmp_620;
+
+  <bb 84>:
+  # k_267 = PHI <k_427(85), 0(83)>
+  _412 = (long unsigned int) k_267;
+  _413 = _412 * 4;
+  _414 = tmpdata_348 + _413;
+  _416 = k_267 * pretmp_620;
+  _418 = _416 * pretmp_623;
+  _420 = _418 + pretmp_626;
+  _421 = _420 + i_480;
+  _422 = (long unsigned int) _421;
+  _423 = _422 * 4;
+  _424 = data3d_320 + _423;
+  _425 = *_424;
+  *_414 = _425;
+  k_427 = k_267 + 1;
+  if (k_427 < ndepth.15_475)
+    goto <bb 85>;
+  else
+    goto <bb 86>;
+
+  <bb 85>:
+  goto <bb 84>;
+
+  <bb 86>:
+
+  <bb 87>:
+  _429 = (long unsigned int) ndepth.15_475;
+  _431 = fwrite (tmpdata_348, 4, _429, fp_383);
+  nwrite_432 = (int) _431;
+  ndepth.15_433 = ndepth;
+  if (nwrite_432 != ndepth.15_433)
+    goto <bb 88>;
+  else
+    goto <bb 89>;
+
+  <bb 88>:
+  file_out.21_434 = file_out;
+  __stderrp.1_435 = __stderrp;
+  fprintf (__stderrp.1_435, "Error in writing samples to file %s.\n", file_out.21_434);
+
+  <bb 89>:
+  i_437 = i_480 + 1;
+  nx.2_396 = nx;
+  if (nx.2_396 > i_437)
+    goto <bb 91>;
+  else
+    goto <bb 90>;
+
+  <bb 90>:
+  # nx.2_636 = PHI <nx.2_396(89)>
+  pretmp_644 = ny;
+  goto <bb 92>;
+
+  <bb 91>:
+  goto <bb 79>;
+
+  <bb 92>:
+  # prephitmp_608 = PHI <nx.2_636(90), prephitmp_643(77)>
+  # prephitmp_645 = PHI <pretmp_644(90), prephitmp_600(77)>
+  j_438 = j_276 + 1;
+  if (j_438 < prephitmp_645)
+    goto <bb 93>;
+  else
+    goto <bb 94>;
+
+  <bb 93>:
+  goto <bb 77>;
+
+  <bb 94>:
+  fclose (fp_383);
+  verbose.0_440 = verbose;
+  if (verbose.0_440 != 0)
+    goto <bb 95>;
+  else
+    goto <bb 96>;
+
+  <bb 95>:
+  t1_442 = wallclock_time ();
+  _443 = t1_442 - t2_6;
+  __stderrp.1_444 = __stderrp;
+  fprintf (__stderrp.1_444, "- Writing 3D data ............... = %f s.\n", _443);
+  _446 = t1_442 - t0_49;
+  __stderrp.1_447 = __stderrp;
+  fprintf (__stderrp.1_447, "- Total time .................... = %f s.\n", _446);
+
+  <bb 96>:
+  free (data3d_320);
+  free (tmpdata_348);
+  oplx ={v} {CLOBBER};
+  oply ={v} {CLOBBER};
+  verbose ={v} {CLOBBER};
+  ndepth ={v} {CLOBBER};
+  nx ={v} {CLOBBER};
+  ny ={v} {CLOBBER};
+  nt ={v} {CLOBBER};
+  oper ={v} {CLOBBER};
+  opt ={v} {CLOBBER};
+  dx ={v} {CLOBBER};
+  dy ={v} {CLOBBER};
+  dt ={v} {CLOBBER};
+  dz ={v} {CLOBBER};
+  fmin ={v} {CLOBBER};
+  fmax ={v} {CLOBBER};
+  alpha ={v} {CLOBBER};
+  wfacto ={v} {CLOBBER};
+  wfacts ={v} {CLOBBER};
+  cp ={v} {CLOBBER};
+  perc ={v} {CLOBBER};
+  file_src ={v} {CLOBBER};
+  file_out ={v} {CLOBBER};
+  tr ={v} {CLOBBER};
+  return 0;
+
+  <bb 97>:
+  file_src.16_44 = file_src;
+  if (file_src.16_44 == 0B)
+    goto <bb 52>;
+  else
+    goto <bb 57>;
+
+}
+
+

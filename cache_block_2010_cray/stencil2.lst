@@ -1,0 +1,581 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          S u m m a r y   R e p o r t
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Compilation
+-----------
+File     : /cray/css/u2/jan/cache_block_2010/stencil2.f90
+Compiled : 07/27/10  09:16:24
+Compiler : Version 7.2.6.104
+Target   : x86-64
+Command  : /opt/cray/cce/7.2.6.104/cftn/x86-64/bin/ftn_driver.exe -hcpu=x86-64
+           -hstatic -ra -c -ostencil2.o
+           -I/opt/cray/pmi/1.0-1.0000.7901.22.1.ss/include
+           -I/opt/cray/cce/7.2.6.104/craylibs/x86-64/include
+           -L/opt/cray/pmi/1.0-1.0000.7901.22.1.ss/lib64
+           -L/opt/cray/cce/7.2.6.104/craylibs/x86-64
+           -L/opt/acml/4.4.0/gfortran64/lib -lcraymath -lacml_mv -lgfortran
+           -I/opt/acml/4.4.0/gfortran64/include -L/opt/gcc/4.1.2/snos/lib64
+           -D__CRAYXT -D__CRAYXT_COMPUTE_LINUX_TARGET -D__TARGET_LINUX__
+           -I/opt/cray/mpt/5.0.1/xt/seastar/mpich2-cray/include
+           -I/opt/cray/mpt/5.0.1/xt/seastar/sma/include
+           -I/opt/xt-libsci/10.4.6/cray/include -I/opt/xt-pe/2.2.48B/include
+           -I/opt/xt-pe/default/include
+           -L/opt/cray/mpt/5.0.1/xt/seastar/mpich2-cray/lib
+           -L/opt/cray/mpt/5.0.1/xt/seastar/sma/lib64
+           -L/opt/xt-libsci/10.4.6/cray/lib/72 -L/opt/xt-pe/2.2.48B/lib
+           -L/opt/xt-pe/default/lib -L/opt/xt-pe/2.2.48B/lib/snos64
+           -L/opt/xt-pe/default/lib/snos64 -lsci -lsma -lmpichf90 -lmpich -lrt
+           -lpmi -lalpslli -lalpsutil -lportals -lpthread -lm
+           -L/usr/lib/alps stencil2.f90
+
+ftnlx report
+------------
+Source   : /cray/css/u2/jan/cache_block_2010/stencil2.f90
+Date     : 07/27/2010  09:16:25
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          O p t i o n s   R e p o r t
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Options :  -O cache2,fp2,scalar2,thread2,vector2,modinline,ipa3,noaggress
+           -O noautothread,nodwarf,fusion2,nomsgs,negmsgs,omp,nooverindex,patter
+           n
+           -O shortcircuit2,unroll2,nozeroinc
+           -h cache2,fp2,thread2,noautothread,nocaf,cpu,nofunc_trace,noomp_trace
+           -h omp,nopat_trace,nosecond_underscore
+           -s default32 
+           -eh 
+           -eM 
+           -d acdgjlmnovwBDILPQRTZ 
+           -e hkpqyS       
+           -f free
+           -m3
+           -S /tmp/pbs.5103890.sdb/pe_15137/stencil2.s
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          S o u r c e   L i s t i n g
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+     %%%    L o o p m a r k   L e g e n d    %%%
+
+     Primary Loop Type        Modifiers
+     ------- ---- ----        ---------
+     A - Pattern matched      a - vector atomic memory operation
+                              b - blocked
+     C - Collapsed            c - conditional and/or computed
+     D - Deleted              f - fused
+     E - Cloned                
+     I - Inlined              i - interchanged
+     M - Multithreaded        m - partitioned
+     P - Parallel             p - partial
+     R - Redundant            r - unrolled
+                              s - shortloop
+     V - Vectorized           t - array syntax temp used
+                              w - unwound
+
+
+    1.                  program stencil2
+    2.                  
+    3.                    implicit none
+    4.                    integer loop
+    5.                    integer i, j, k, l
+    6.                    integer jbegin, jend, kts, kte, ibegin, iend
+    7.                    integer(kind=8) startt, endt
+    8.                    double precision eclksec
+    9.                  
+   10.                    integer(kind=8) irtc, irtc_rate
+   11.                    external irtc, irtc_rate
+   12.                  
+   13.                    double precision err
+   14.                    double precision, parameter :: tol = 1d-12
+   15.                  
+   16.                    integer, parameter :: NLOOP = 1000
+   17.                  
+   18.                    real*4, allocatable :: c(:,:,:), a(:,:,:,:), b(:,:,:), d(:,:,:)
+   19.                    real*4, allocatable :: tmp(:)
+   20.                  
+   21.                    eclksec = dble(irtc_rate())
+   22.                  
+   23.                    ibegin = 1
+   24.                    iend = 90
+   25.                  
+   26.                    kts = 1
+   27.                    kte = 36
+   28.                  
+   29.                    jbegin = 1
+   30.                    jend = 42
+   31.                  
+   32.                    allocate(c(ibegin:iend, kts:kte, jbegin:jend), &
+   33.                         d(ibegin:iend, kts:kte, jbegin:jend), &
+   34.                         a(19, ibegin-1:iend+1, kts-1:kte+1, jbegin-1:jend+1), &
+   35.                         b(ibegin-1:iend+1, kts-1:kte+1, jbegin-1:jend+1), tmp(ibegin-1:iend+1))
+   36.                  
+   37.                    ! Initialize data
+   38.  1-------------<   do j = jbegin-1, jend+1
+   39.  1 2-----------<      do k = kts-1, kte+1
+   40.  1 2 Vpr4------<         do i = ibegin-1, iend+1
+   41.  1 2 Vpr4 Vpw--<            do l = 1, 19
+   42.  1 2 Vpr4 Vpw                  a(l,i,k,j) = 3.0 - mod(l + i + j + k, 6)
+   43.  1 2 Vpr4 Vpw-->            end do
+   44.  1 2 Vpr4                   b(i,k,j) = sin(real(i,4))*cos(real(k,4))*real(j,4)
+   45.  1 2 Vpr4------>         end do
+   46.  1 2----------->      end do
+   47.  1------------->   end do
+   48.                  
+   49.                    ! Calculate correct answer
+   50.  b-------------<   do j = jbegin, jend
+   51.  b b-----------<      do k = kts, kte
+   52.  b b r8--------<         do i = ibegin, iend
+   53.  b b r8                     d(i,k,j) = a(1 ,i,k,j)*b(i  ,k  ,j  )      &
+   54.  b b r8                               +a(2 ,i,k,j)*b(i-1,k  ,j  )      &
+   55.  b b r8                               +a(3 ,i,k,j)*b(i+1,k  ,j  )      &
+   56.  b b r8                               +a(4 ,i,k,j)*b(i  ,k  ,j-1)      &
+   57.  b b r8                               +a(5 ,i,k,j)*b(i  ,k  ,j+1)      &
+   58.  b b r8                               +a(6 ,i,k,j)*b(i+1,k  ,j+1)      &
+   59.  b b r8                               +a(7 ,i,k,j)*b(i+1,k  ,j-1)      &
+   60.  b b r8                               +a(8 ,i,k,j)*b(i-1,k  ,j-1)      &
+   61.  b b r8                               +a(9 ,i,k,j)*b(i-1,k  ,j+1)      &
+   62.  b b r8                               +a(10,i,k,j)*b(i  ,k-1,j  )      &
+   63.  b b r8                               +a(11,i,k,j)*b(i-1,k-1,j  )      &
+   64.  b b r8                               +a(12,i,k,j)*b(i+1,k-1,j  )      &
+   65.  b b r8                               +a(13,i,k,j)*b(i  ,k-1,j-1)      &
+   66.  b b r8                               +a(14,i,k,j)*b(i  ,k-1,j+1)      &
+   67.  b b r8                               +a(15,i,k,j)*b(i  ,k+1,j  )      &
+   68.  b b r8                               +a(16,i,k,j)*b(i-1,k+1,j  )      &
+   69.  b b r8                               +a(17,i,k,j)*b(i+1,k+1,j  )      &
+   70.  b b r8                               +a(18,i,k,j)*b(i  ,k+1,j-1)      &
+   71.  b b r8                               +a(19,i,k,j)*b(i  ,k+1,j+1)
+   72.  b b r8-------->         end do
+   73.  b b----------->      end do
+   74.  b------------->   end do
+   75.                  
+   76.                    ! Timing loop
+   77.  1-------------<   do loop = 0, NLOOP
+   78.  1                    if (loop == 1) startt = irtc()
+   79.  1               !     do i = ibegin, iend
+   80.  1               !        tmp(i) = 0.0
+   81.  1               !     end do
+   82.  1               ! BEGIN CACHE BLOCKING
+   83.  1 b-----------<      do j = jbegin, jend
+   84.  1 b b---------<         do k = kts, kte
+   85.  1 b b r8------<            do i = ibegin, iend
+   86.  1 b b r8                      tmp(i)   = a(1 ,i,k,j)*b(i  ,k  ,j  )      &
+   87.  1 b b r8                                +a(2 ,i,k,j)*b(i-1,k  ,j  )      &
+   88.  1 b b r8                                +a(3 ,i,k,j)*b(i+1,k  ,j  )      &
+   89.  1 b b r8                                +a(4 ,i,k,j)*b(i  ,k  ,j-1)      &
+   90.  1 b b r8                                +a(5 ,i,k,j)*b(i  ,k  ,j+1)      &
+   91.  1 b b r8                                +a(6 ,i,k,j)*b(i+1,k  ,j+1)      &
+   92.  1 b b r8                                +a(7 ,i,k,j)*b(i+1,k  ,j-1)      &
+   93.  1 b b r8                                +a(8 ,i,k,j)*b(i-1,k  ,j-1)      &
+   94.  1 b b r8                                +a(9 ,i,k,j)*b(i-1,k  ,j+1)      
+   95.  1 b b r8------>            end do
+   96.  1 b b r8------<            do i = ibegin, iend
+   97.  1 b b r8                      c(i,k,j) = tmp(i)  &
+   98.  1 b b r8                                +a(10,i,k,j)*b(i  ,k-1,j  )      &
+   99.  1 b b r8                                +a(11,i,k,j)*b(i-1,k-1,j  )      &
+  100.  1 b b r8                                +a(12,i,k,j)*b(i+1,k-1,j  )      &
+  101.  1 b b r8                                +a(13,i,k,j)*b(i  ,k-1,j-1)      &
+  102.  1 b b r8                                +a(14,i,k,j)*b(i  ,k-1,j+1)      &
+  103.  1 b b r8                                +a(15,i,k,j)*b(i  ,k+1,j  )      &
+  104.  1 b b r8                                +a(16,i,k,j)*b(i-1,k+1,j  )      &
+  105.  1 b b r8                                +a(17,i,k,j)*b(i+1,k+1,j  )      &
+  106.  1 b b r8                                +a(18,i,k,j)*b(i  ,k+1,j-1)      &
+  107.  1 b b r8                                +a(19,i,k,j)*b(i  ,k+1,j+1)
+  108.  1 b b r8------>            end do
+  109.  1 b b--------->         end do
+  110.  1 b----------->      end do
+  111.  1               ! END CACHE BLOCKING
+  112.  1------------->   end do
+  113.                    endt = irtc()
+  114.                  
+  115.                    print '(a,i5,a,f10.6,a)', 'Elapsed time for ', NLOOP, ' loops: ', &
+  116.                  	dble(endt - startt) / eclksec, ' seconds'
+  117.                  
+  118.  Vfr4---------<>   d = d - c
+  119.                    err = 0d0
+  120.  f-------------<   do j = jbegin, jend
+  121.  f f-----------<      do k = kts, kte
+  122.  f f f---------<         do i = ibegin, iend
+  123.  f f f                      err = err + d(i,k,j)**2
+  124.  f f f--------->         end do
+  125.  f f----------->      end do
+  126.  f------------->   end do
+  127.                    err = sqrt(err)
+  128.                  
+  129.                    if (err < tol) then
+  130.                       print *,'Check passed.'
+  131.                    else
+  132.                       print '(a,f20.16)','Check failed, error = ',err
+  133.                    endif
+  134.                  
+  135.                    deallocate(c, a, b)
+  136.                  
+  137.                  end program stencil2
+
+ftn-3021 ftn: IPA File = stencil2.f90, Line = 21 
+  Routine IRTC_RATE was not inlined because the compiler was unable to locate the routine to expand it inline.
+
+ftn-6294 ftn: VECTOR File = stencil2.f90, Line = 38 
+  A loop starting at line 38 was not vectorized because a better candidate was found at line 41.
+
+ftn-6294 ftn: VECTOR File = stencil2.f90, Line = 39 
+  A loop starting at line 39 was not vectorized because a better candidate was found at line 41.
+
+ftn-6005 ftn: SCALAR File = stencil2.f90, Line = 40 
+  A loop starting at line 40 was unrolled 4 times.
+
+ftn-6209 ftn: VECTOR File = stencil2.f90, Line = 40 
+  A loop starting at line 40 was partially vectorized.
+
+ftn-6373 ftn: VECTOR File = stencil2.f90, Line = 41 
+  A loop starting at line 41 with a trip count of 16 was unwound into 4 vector iterations.
+
+ftn-6209 ftn: VECTOR File = stencil2.f90, Line = 41 
+  A loop starting at line 41 was partially vectorized.
+
+ftn-6294 ftn: VECTOR File = stencil2.f90, Line = 50 
+  A loop starting at line 50 was not vectorized because a better candidate was found at line 52.
+
+ftn-6049 ftn: SCALAR File = stencil2.f90, Line = 50 
+  A loop starting at line 50 was blocked with block size 4.
+
+ftn-6294 ftn: VECTOR File = stencil2.f90, Line = 51 
+  A loop starting at line 51 was not vectorized because a better candidate was found at line 52.
+
+ftn-6049 ftn: SCALAR File = stencil2.f90, Line = 51 
+  A loop starting at line 51 was blocked with block size 4.
+
+ftn-6332 ftn: VECTOR File = stencil2.f90, Line = 52 
+  A loop starting at line 52 was not vectorized because it does not map well onto the target architecture.
+
+ftn-6005 ftn: SCALAR File = stencil2.f90, Line = 52 
+  A loop starting at line 52 was unrolled 8 times.
+
+ftn-6287 ftn: VECTOR File = stencil2.f90, Line = 77 
+  A loop starting at line 77 was not vectorized because it contains a call to function "IRTC" on line 78.
+
+ftn-3021 ftn: IPA File = stencil2.f90, Line = 78 
+  Routine IRTC was not inlined because the compiler was unable to locate the routine to expand it inline.
+
+ftn-6315 ftn: VECTOR File = stencil2.f90, Line = 83 
+  A loop starting at line 83 was not vectorized because the target array (TMP) would require rank expansion.
+
+ftn-6049 ftn: SCALAR File = stencil2.f90, Line = 83 
+  A loop starting at line 83 was blocked with block size 8.
+
+ftn-6315 ftn: VECTOR File = stencil2.f90, Line = 84 
+  A loop starting at line 84 was not vectorized because the target array (TMP) would require rank expansion.
+
+ftn-6049 ftn: SCALAR File = stencil2.f90, Line = 84 
+  A loop starting at line 84 was blocked with block size 8.
+
+ftn-6332 ftn: VECTOR File = stencil2.f90, Line = 85 
+  A loop starting at line 85 was not vectorized because it does not map well onto the target architecture.
+
+ftn-6005 ftn: SCALAR File = stencil2.f90, Line = 85 
+  A loop starting at line 85 was unrolled 8 times.
+
+ftn-6332 ftn: VECTOR File = stencil2.f90, Line = 96 
+  A loop starting at line 96 was not vectorized because it does not map well onto the target architecture.
+
+ftn-6005 ftn: SCALAR File = stencil2.f90, Line = 96 
+  A loop starting at line 96 was unrolled 8 times.
+
+ftn-3021 ftn: IPA File = stencil2.f90, Line = 113 
+  Routine IRTC was not inlined because the compiler was unable to locate the routine to expand it inline.
+
+ftn-6005 ftn: SCALAR File = stencil2.f90, Line = 118 
+  A loop starting at line 118 was unrolled 4 times.
+
+ftn-6204 ftn: VECTOR File = stencil2.f90, Line = 118 
+  A loop starting at line 118 was vectorized.
+
+ftn-6004 ftn: SCALAR File = stencil2.f90, Line = 120 
+  A loop starting at line 120 was fused with the loop starting at line 118.
+
+ftn-6004 ftn: SCALAR File = stencil2.f90, Line = 121 
+  A loop starting at line 121 was fused with the loop starting at line 118.
+
+ftn-6004 ftn: SCALAR File = stencil2.f90, Line = 122 
+  A loop starting at line 122 was fused with the loop starting at line 118.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 C r o s s   R e f e r e n c e   for   STENCIL2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Name                            Storage                           Attributes
+----                            -------                           ----------
+
+A                               Heap                              REAL*4, DIMENSION(:, :, :, :), ALLOCATABLE, SAVE
+  Decl      18
+  Set       42
+  Used      34      53      54      55      56      57      58      59      60      61      62      63      64      65      66
+            67      68      69      70      71      86      87      88      89      90      91      92      93      94      98
+            99     100     101     102     103     104     105     106     107     135
+
+B                               Heap                              REAL*4, DIMENSION(:, :, :), ALLOCATABLE, SAVE
+  Decl      18
+  Set       44
+  Used      35      53      54      55      56      57      58      59      60      61      62      63      64      65      66
+            67      68      69      70      71      86      87      88      89      90      91      92      93      94      98
+            99     100     101     102     103     104     105     106     107     135
+
+C                               Heap                              REAL*4, DIMENSION(:, :, :), ALLOCATABLE, SAVE
+  Decl      18
+  Set       97
+  Used      32     118     135
+
+COS                                                               Function, REAL, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used      44
+
+D                               Heap                              REAL*4, DIMENSION(:, :, :), ALLOCATABLE, SAVE
+  Decl      18
+  Set       53     118
+  Used      33     123
+
+DBLE                                                              Function, DOUBLE PRECISION, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used       0     116
+
+ECLKSEC                         Static offset=0                   DOUBLE PRECISION, SAVE
+  Decl       8
+  Set       21
+  Used     116
+
+ENDT                            Static offset=64                  INTEGER(KIND=8), SAVE
+  Decl       7
+  Set      113
+  Used     116
+
+ERR                             Static offset=128                 DOUBLE PRECISION, SAVE
+  Decl      13
+  Set      119     123     127
+  Used     129     132
+
+I                               Static offset=192                 INTEGER, SAVE
+  Decl       5
+  Set       40      52      85      96     122
+  Used      42      44      53      54      55      56      57      58      59      60      61      62      63      64      65
+            66      67      68      69      70      71      86      87      88      89      90      91      92      93      94
+            97      98      99     100     101     102     103     104     105     106     107     123
+
+IBEGIN                          Static offset=256                 INTEGER, SAVE
+  Decl       6
+  Set       23
+  Used
+
+IEND                            Static offset=320                 INTEGER, SAVE
+  Decl       6
+  Set       24
+  Used      40      52      85      96     122
+
+IRTC                                                              Function, INTEGER(KIND=8), RESULT(IRTC), EXTERNAL
+  Decl      10      11
+  Set 
+  Used
+
+IRTC_RATE                                                         Function, INTEGER(KIND=8), RESULT(IRTC_RATE), EXTERNAL
+  Decl      10      11
+  Set 
+  Used
+
+J                               Static offset=384                 INTEGER, SAVE
+  Decl       5
+  Set       38      50      83     120
+  Used      42      44      53      54      55      56      57      58      59      60      61      62      63      64      65
+            66      67      68      69      70      71      86      87      88      89      90      91      92      93      94
+            97      98      99     100     101     102     103     104     105     106     107     123
+
+JBEGIN                          Static offset=448                 INTEGER, SAVE
+  Decl       6
+  Set       29
+  Used
+
+JEND                            Static offset=512                 INTEGER, SAVE
+  Decl       6
+  Set       30
+  Used      38      50      83     120
+
+K                               Static offset=576                 INTEGER, SAVE
+  Decl       5
+  Set       39      51      84     121
+  Used      42      44      53      54      55      56      57      58      59      60      61      62      63      64      65
+            66      67      68      69      70      71      86      87      88      89      90      91      92      93      94
+            97      98      99     100     101     102     103     104     105     106     107     123
+
+KTE                             Static offset=640                 INTEGER, SAVE
+  Decl       6
+  Set       27
+  Used      39      51      84     121
+
+KTS                             Static offset=704                 INTEGER, SAVE
+  Decl       6
+  Set       26
+  Used
+
+L                               Static offset=768                 INTEGER, SAVE
+  Decl       5
+  Set       41
+  Used      42
+
+LOOP                            Static offset=832                 INTEGER, SAVE
+  Decl       4
+  Set       77
+  Used      78
+
+MOD                                                               Function, INTEGER, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used      42
+
+NLOOP                                                             INTEGER, PARAMETER
+  Decl      16
+  Set 
+  Used      77     115
+
+REAL                                                              Function, REAL, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used      44
+
+SIN                                                               Function, REAL, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used      44
+
+SQRT                                                              Function, REAL, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used     127
+
+STARTT                          Static offset=896                 INTEGER(KIND=8), SAVE
+  Decl       7
+  Set       78
+  Used     116
+
+STENCIL2                                                          Main program
+  Decl       1
+  Set 
+  Used
+
+TMP                             Heap                              REAL*4, DIMENSION(:), ALLOCATABLE, SAVE
+  Decl      19
+  Set       86
+  Used      35      97
+
+TOL                                                               DOUBLE PRECISION, PARAMETER
+  Decl      14
+  Set 
+  Used     129
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                         E x t e r n a l   R e p o r t
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Name  Messages
+----  --------
+COS(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   STENCIL2 (Line 44, file stencil2.f90)
+
+Name  Messages
+----  --------
+DBLE(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   STENCIL2 (Line 21, file stencil2.f90)
+                   STENCIL2 (Line 116, file stencil2.f90)
+
+Name  Messages
+----  --------
+IRTC
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   STENCIL2 (Line 78, file stencil2.f90)
+                   STENCIL2 (Line 113, file stencil2.f90)
+
+Name  Messages
+----  --------
+IRTC_RATE
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   STENCIL2 (Line 21, file stencil2.f90)
+
+Name  Messages
+----  --------
+MOD(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   STENCIL2 (Line 42, file stencil2.f90)
+
+Name  Messages
+----  --------
+REAL(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   STENCIL2 (Line 44, file stencil2.f90)
+                   STENCIL2 (Line 44, file stencil2.f90)
+                   STENCIL2 (Line 44, file stencil2.f90)
+
+Name  Messages
+----  --------
+SIN(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   STENCIL2 (Line 44, file stencil2.f90)
+
+Name  Messages
+----  --------
+SQRT(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   STENCIL2 (Line 127, file stencil2.f90)
+
+Name  Messages
+----  --------
+STENCIL2
+      Defined as:  Program (line 1, file stencil2.f90)
+
+      Calls:       IRTC (Line 78, file stencil2.f90)
+                   IRTC (Line 113, file stencil2.f90)
+                   IRTC_RATE (Line 21, file stencil2.f90)
+                   DBLE(Intrinsic) (Line 21, file stencil2.f90)
+                   DBLE(Intrinsic) (Line 116, file stencil2.f90)
+                   MOD(Intrinsic) (Line 42, file stencil2.f90)
+                   REAL(Intrinsic) (Line 44, file stencil2.f90)
+                   REAL(Intrinsic) (Line 44, file stencil2.f90)
+                   REAL(Intrinsic) (Line 44, file stencil2.f90)
+                   SIN(Intrinsic) (Line 44, file stencil2.f90)
+                   COS(Intrinsic) (Line 44, file stencil2.f90)
+                   SQRT(Intrinsic) (Line 127, file stencil2.f90)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

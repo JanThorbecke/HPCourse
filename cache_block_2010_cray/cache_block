@@ -1,0 +1,2120 @@
+ModuleCmd_Switch.c(137):ERROR:152: Module 'PrgEnv-pgi' is currently not loaded
+Elapsed time for    10 loops:   4.690285 seconds
+ Check passed.
+Application 8679912 resources: utime 0, stime 0
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 4 3.328977
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 8 3.327628
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 12 3.374760
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 16 3.385407
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 20 3.391824
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 24 3.421805
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 28 3.438800
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 32 3.448005
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 36 3.458577
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 40 3.470597
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 44 3.484736
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 48 3.517950
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 52 3.539617
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 56 3.566160
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 60 3.566692
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 64 3.580590
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 68 3.598217
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 72 3.618076
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 76 3.617459
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 80 3.621899
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 84 3.639272
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 88 3.659371
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 4 x 92 3.682901
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 4 3.199139
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 8 3.185674
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 12 3.251461
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 16 3.269347
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 20 3.283527
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 24 3.321852
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 28 3.344560
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 32 3.357503
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 36 3.369172
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 40 3.384712
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 44 3.403653
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 48 3.452993
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 52 3.484106
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 56 3.524441
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 60 3.525841
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 64 3.545196
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 68 3.571183
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 72 3.595621
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 76 3.597916
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 80 3.599591
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 84 3.620854
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 88 3.642974
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 8 x 92 3.672275
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 4 3.202189
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 8 3.145330
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 12 3.210002
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 16 3.233882
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 20 3.250795
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 24 3.293754
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 28 3.315769
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 32 3.328343
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 36 3.340960
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 40 3.357036
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 44 3.376420
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 48 3.428020
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 52 3.464742
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 56 3.508050
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 60 3.509295
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 64 3.530967
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 68 3.559982
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 72 3.585828
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 76 3.589576
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 80 3.588513
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 84 3.611307
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 88 3.639425
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 12 x 92 3.668321
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 4 3.195246
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 8 3.122961
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 12 3.193124
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 16 3.221602
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 20 3.239406
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 24 3.277399
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 28 3.300520
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 32 3.310464
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 36 3.323087
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 40 3.338768
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 44 3.359838
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 48 3.413755
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 52 3.453077
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 56 3.498687
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 60 3.500474
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 64 3.522242
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 68 3.552252
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 72 3.580499
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 76 3.582781
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 80 3.583491
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 84 3.604632
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 88 3.634874
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 16 x 92 3.665671
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 4 3.185982
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 8 3.115753
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 12 3.193656
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 16 3.221740
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 20 3.235162
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 24 3.271218
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 28 3.291288
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 32 3.301763
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 36 3.313208
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 40 3.328322
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 44 3.350643
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 48 3.404656
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 52 3.443988
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 56 3.493456
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 60 3.494421
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 64 3.518729
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 68 3.547985
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 72 3.578192
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 76 3.578137
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 80 3.581140
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 84 3.604343
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 88 3.631605
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 20 x 92 3.661483
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 4 3.179453
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 8 3.114879
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 12 3.194915
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 16 3.216685
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 20 3.226427
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 24 3.261115
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 28 3.280186
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 32 3.291172
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 36 3.303113
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 40 3.320822
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 44 3.342239
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 48 3.400309
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 52 3.438705
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 56 3.489728
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 60 3.489226
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 64 3.513990
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 68 3.545579
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 72 3.574340
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 76 3.577879
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 80 3.576114
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 84 3.600058
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 88 3.629053
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 24 x 92 3.662235
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 4 3.183444
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 8 3.126930
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 12 3.202348
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 16 3.216407
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 20 3.222948
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 24 3.256747
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 28 3.277006
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 32 3.287568
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 36 3.299333
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 40 3.317253
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 44 3.341465
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 48 3.396034
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 52 3.435497
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 56 3.487623
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 60 3.488304
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 64 3.511716
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 68 3.543465
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 72 3.575111
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 76 3.576370
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 80 3.576270
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 84 3.599302
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 88 3.627819
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 28 x 92 3.659647
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 4 3.188663
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 8 3.136669
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 12 3.200873
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 16 3.210195
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 20 3.217649
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 24 3.250215
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 28 3.270912
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 32 3.281375
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 36 3.293019
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 40 3.311092
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 44 3.333809
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 48 3.391820
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 52 3.432899
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 56 3.490038
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 60 3.484486
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 64 3.509522
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 68 3.540898
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 72 3.572450
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 76 3.573315
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 80 3.573159
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 84 3.597475
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 88 3.627011
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 32 x 92 3.660415
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 4 3.203005
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 8 3.148050
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 12 3.199896
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 16 3.206933
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 20 3.212982
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 24 3.246462
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 28 3.267186
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 32 3.277581
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 36 3.289783
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 40 3.308347
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 44 3.330890
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 48 3.390115
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 52 3.429667
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 56 3.481652
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 60 3.481068
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 64 3.507499
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 68 3.540791
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 72 3.570692
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 76 3.574362
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 80 3.570340
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 84 3.596091
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 88 3.625513
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 36 x 92 3.658126
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 4 3.234250
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 8 3.159340
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 12 3.200998
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 16 3.206767
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 20 3.211318
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 24 3.245571
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 28 3.265647
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 32 3.276932
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 36 3.288549
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 40 3.308408
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 44 3.329582
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 48 3.388487
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 52 3.429920
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 56 3.481230
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 60 3.482258
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 64 3.506565
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 68 3.539691
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 72 3.571295
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 76 3.572437
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 80 3.572168
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 84 3.596401
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 88 3.624906
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 40 x 92 3.659597
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 4 3.259623
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 8 3.154180
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 12 3.194820
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 16 3.203218
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 20 3.207951
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 24 3.241184
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 28 3.263467
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 32 3.273756
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 36 3.286778
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 40 3.305104
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 44 3.326566
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 48 3.387116
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 52 3.427174
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 56 3.479111
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 60 3.482906
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 64 3.506025
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 68 3.539008
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 72 3.569876
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 76 3.571302
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 80 3.570642
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 84 3.597221
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 88 3.623362
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 44 x 92 3.658160
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 4 3.285953
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 8 3.156849
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 12 3.191970
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 16 3.198350
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 20 3.205035
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 24 3.238591
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 28 3.258688
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 32 3.270029
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 36 3.282678
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 40 3.300720
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 44 3.324767
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 48 3.383455
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 52 3.424548
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 56 3.478025
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 60 3.478900
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 64 3.502776
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 68 3.536832
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 72 3.568621
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 76 3.569457
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 80 3.569149
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 84 3.590920
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 88 3.622490
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 48 x 92 3.656886
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 4 3.301312
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 8 3.152482
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 12 3.191408
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 16 3.198886
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 20 3.204421
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 24 3.236655
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 28 3.259911
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 32 3.270053
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 36 3.282637
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 40 3.301110
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 44 3.323954
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 48 3.384468
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 52 3.425421
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 56 3.478687
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 60 3.479222
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 64 3.502577
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 68 3.537317
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 72 3.568789
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 76 3.569430
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 80 3.567705
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 84 3.593666
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 88 3.623836
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 52 x 92 3.657890
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 4 3.319086
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 8 3.156644
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 12 3.192776
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 16 3.198334
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 20 3.203443
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 24 3.236664
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 28 3.259256
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 32 3.269648
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 36 3.280685
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 40 3.301595
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 44 3.322834
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 48 3.384815
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 52 3.424952
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 56 3.476917
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 60 3.478519
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 64 3.502811
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 68 3.536707
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 72 3.568774
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 76 3.568974
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 80 3.568339
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 84 3.592993
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 88 3.622446
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 56 x 92 3.656292
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 4 3.312026
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 8 3.152484
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 12 3.189216
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 16 3.194384
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 20 3.200929
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 24 3.235804
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 28 3.255756
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 32 3.266874
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 36 3.279865
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 40 3.297348
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 44 3.321615
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 48 3.381034
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 52 3.422088
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 56 3.475555
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 60 3.477367
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 64 3.502298
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 68 3.534514
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 72 3.566143
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 76 3.568026
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 80 3.566715
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 84 3.593055
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 88 3.622871
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 60 x 92 3.664394
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 4 3.308028
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 8 3.147792
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 12 3.187688
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 16 3.195657
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 20 3.199437
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 24 3.234702
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 28 3.256245
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 32 3.266402
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 36 3.279695
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 40 3.296981
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 44 3.322199
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 48 3.381359
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 52 3.422853
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 56 3.475934
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 60 3.476607
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 64 3.502752
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 68 3.535511
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 72 3.566037
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 76 3.569590
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 80 3.567914
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 84 3.592272
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 88 3.622300
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 64 x 92 3.655230
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 4 3.316615
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 8 3.149708
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 12 3.187145
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 16 3.192982
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 20 3.199736
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 24 3.232701
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 28 3.254303
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 32 3.266397
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 36 3.279383
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 40 3.298097
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 44 3.321237
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 48 3.382444
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 52 3.422979
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 56 3.476889
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 60 3.477650
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 64 3.503214
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 68 3.536112
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 72 3.567825
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 76 3.567649
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 80 3.566172
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 84 3.590680
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 88 3.621763
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 68 x 92 3.655651
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 4 3.320899
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 8 3.149180
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 12 3.185032
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 16 3.190093
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 20 3.195976
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 24 3.230875
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 28 3.251290
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 32 3.263130
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 36 3.275137
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 40 3.295413
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 44 3.316963
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 48 3.377776
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 52 3.420798
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 56 3.475865
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 60 3.475395
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 64 3.500878
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 68 3.532713
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 72 3.565642
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 76 3.567608
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 80 3.567810
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 84 3.592547
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 88 3.613902
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 72 x 92 3.656133
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 4 3.320763
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 8 3.149909
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 12 3.185350
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 16 3.190758
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 20 3.195890
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 24 3.230566
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 28 3.252555
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 32 3.263082
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 36 3.275159
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 40 3.296395
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 44 3.317083
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 48 3.380216
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 52 3.421351
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 56 3.473298
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 60 3.475548
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 64 3.500968
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 68 3.533785
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 72 3.565941
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 76 3.568160
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 80 3.566441
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 84 3.592626
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 88 3.620597
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 76 x 92 3.654882
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 4 3.312561
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 8 3.148845
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 12 3.184436
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 16 3.189560
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 20 3.197416
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 24 3.229384
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 28 3.251949
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 32 3.263149
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 36 3.276858
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 40 3.293729
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 44 3.318375
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 48 3.378574
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 52 3.421912
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 56 3.474002
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 60 3.475775
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 64 3.501492
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 68 3.534811
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 72 3.564678
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 76 3.568165
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 80 3.565514
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 84 3.591653
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 88 3.620367
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 80 x 92 3.655057
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 4 3.307217
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 8 3.145147
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 12 3.184512
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 16 3.190190
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 20 3.196607
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 24 3.229774
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 28 3.251823
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 32 3.264305
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 36 3.277231
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 40 3.296776
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 44 3.318938
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 48 3.378818
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 52 3.420726
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 56 3.474531
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 60 3.477110
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 64 3.502604
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 68 3.535576
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 72 3.565794
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 76 3.567180
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 80 3.567941
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 84 3.590855
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 88 3.623270
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 84 x 92 3.657863
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 4 3.311614
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 8 3.143528
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 12 3.182131
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 16 3.189719
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 20 3.195741
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 24 3.231097
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 28 3.252324
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 32 3.262862
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 36 3.277578
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 40 3.296189
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 44 3.317729
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 48 3.377871
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 52 3.420222
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 56 3.474690
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 60 3.475709
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 64 3.501288
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 68 3.534837
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 72 3.565123
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 76 3.567744
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 80 3.566049
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 84 3.591090
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 88 3.622356
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 88 x 92 3.656785
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 4 3.316016
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 8 3.145513
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 12 3.183062
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 16 3.188218
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 20 3.196208
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 24 3.229632
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 28 3.252379
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 32 3.263126
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 36 3.275948
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 40 3.295272
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 44 3.317865
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 48 3.378260
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 52 3.421742
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 56 3.474989
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 60 3.475120
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 64 3.501094
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 68 3.532836
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 72 3.564802
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 76 3.567747
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 80 3.567279
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 84 3.590708
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 88 3.621960
+ftn -r a -c -o stencil1.o stencil1.f90
+ftn  -o stencil1 stencil1.o C_time_lib/libCray_timer.a
+rm stencil1.o
+Blocksize 92 x 92 3.657458

@@ -1,0 +1,24 @@
+# gnuplot script for load_store results
+
+set style data linespoints
+set xlabel "nt samples"
+set ylabel "bandwidth [MBytes/s]"
+
+
+set yrange [0.0:17000]
+set size 1.0,1.0;
+set grid
+set xtics (16,128,1024,16e3,1e6,16e6,1e9)
+set log x
+set xrange [8:8e9]
+set parametric
+
+set term postscript eps color 22
+set output 'MacCore2Duo.eps'
+plot "MacCore2Duo" using 1:2 title "Mac Core 2 Duo" lw 3, "MacCorei7" using 1:2 title "Mac Core i7" lw 3
+
+exit
+
+set term postscript eps color 22
+set output 'OpteronIntel.eps'
+plot "OpteronIntel_1024" using 1:2 title "Opteron 1024" lw 3, "OpteronIntel_4096" using 1:2 title "Opteron 4096" lw 3, "OpteronIntel_16384" using 1:2 title "Opteron 16384" lw 3

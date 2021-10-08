@@ -1,0 +1,15 @@
+
+Check the options in the Makefile to see if your compiler can use the options defined by CFLAGS=
+
+type 
+
+> make
+
+and the program is ready to run by typing
+
+> ./corrOpt file_out=outputname np=24
+
+use for outputname something which decsribes your hardware. The gnuplot script plot.gnp produces a figure similar to the one shown in the course.
+
+That's all there is to do, of course you can have a look at the source code and try to understand what is done.
+

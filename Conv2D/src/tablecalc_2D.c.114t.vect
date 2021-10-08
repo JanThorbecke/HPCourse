@@ -1,0 +1,646 @@
+
+;; Function tablecalc_2D (tablecalc_2D, funcdef_no=8, decl_uid=3692, symbol_order=11)
+
+tablecalc_2D (int oplx, int oply, int nx, float dx, int ny, float dy, float dz, float alpha, float fmin, float fmax, float cmin, float cmax, float df, float weight, int fine, int method, int verbose)
+{
+  static const char __func__[13] = "tablecalc_2D";
+  float kmax;
+  int size;
+  int iy;
+  int ix;
+  int ntable;
+  int hoply;
+  int hoplx;
+  int ikx;
+  double iftmp.0_4;
+  float _12;
+  double _13;
+  double iftmp.0_14;
+  double _16;
+  double _17;
+  float kmin.1_18;
+  float _22;
+  double _23;
+  double _24;
+  double _26;
+  double _27;
+  double _29;
+  double _30;
+  float _32;
+  float _33;
+  double _34;
+  double _35;
+  float dkx.2_36;
+  float _38;
+  float _39;
+  int _40;
+  int _45;
+  int _48;
+  int _51;
+  long unsigned int _52;
+  long unsigned int _53;
+  void * table.5_55;
+  struct FILE * __stderrp.7_61;
+  int _63;
+  int _64;
+  int _65;
+  struct FILE * __stderrp.7_66;
+  int _69;
+  float _70;
+  float _71;
+  double _72;
+  struct complex * table.6_75;
+  int _79;
+  long unsigned int _80;
+  long unsigned int _81;
+  struct complex * _82;
+  unsigned int _108;
+  unsigned int _109;
+  unsigned int _112;
+  int pretmp_116;
+  int pretmp_117;
+  int pretmp_118;
+
+  <bb 2>:
+  _12 = fmin_10(D) - df_11(D);
+  if (_12 > 0.0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  _13 = (double) _12;
+  iftmp.0_14 = _13 * 6.28318530717958623199592693708837032318115234375e+0;
+
+  <bb 4>:
+  # iftmp.0_4 = PHI <iftmp.0_14(3), 0.0(2)>
+  _16 = (double) cmax_15(D);
+  _17 = iftmp.0_4 / _16;
+  kmin.1_18 = (float) _17;
+  kmin = kmin.1_18;
+  _22 = df_11(D) + fmax_21(D);
+  _23 = (double) _22;
+  _24 = _23 * 6.28318530717958623199592693708837032318115234375e+0;
+  _26 = (double) cmin_25(D);
+  _27 = _24 / _26;
+  kmax_28 = (float) _27;
+  _29 = (double) df_11(D);
+  _30 = _29 * 6.28318530717958623199592693708837032318115234375e+0;
+  _32 = (float) fine_31(D);
+  _33 = cmax_15(D) * _32;
+  _34 = (double) _33;
+  _35 = _30 / _34;
+  dkx.2_36 = (float) _35;
+  dkx = dkx.2_36;
+  _38 = kmax_28 - kmin.1_18;
+  _39 = _38 / dkx.2_36;
+  _40 = (int) _39;
+  ntable_41 = _40 + 1;
+  _45 = oplx_44(D) + 1;
+  hoplx_46 = _45 / 2;
+  _48 = oply_47(D) + 1;
+  hoply_49 = _48 / 2;
+  size_50 = hoplx_46 * hoply_49;
+  _51 = ntable_41 * size_50;
+  _52 = (long unsigned int) _51;
+  _53 = _52 * 8;
+  table.5_55 = malloc (_53);
+  table = table.5_55;
+  if (table.5_55 == 0B)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+
+  <bb 5>:
+  __assert_rtn (&__func__, "tablecalc_2D.c", 40, "table != NULL");
+
+  <bb 6>:
+  if (verbose_60(D) != 0)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+
+  <bb 7>:
+  __stderrp.7_61 = __stderrp;
+  fprintf (__stderrp.7_61, "Number of operators to calculate = %d\n", ntable_41);
+  _63 = ntable_41 * 8;
+  _64 = _63 * hoplx_46;
+  _65 = _64 * hoply_49;
+  __stderrp.7_66 = __stderrp;
+  fprintf (__stderrp.7_66, "Size of operator table = %d bytes \n", _65);
+
+  <bb 8>:
+  if (ntable_41 > 0)
+    goto <bb 9>;
+  else
+    goto <bb 25>;
+
+  <bb 9>:
+
+  <bb 10>:
+  # ikx_91 = PHI <ikx_87(23), 0(9)>
+  if (hoply_49 > 0)
+    goto <bb 11>;
+  else
+    goto <bb 22>;
+
+  <bb 11>:
+  _112 = (unsigned int) size_50;
+  _109 = (unsigned int) ikx_91;
+  _108 = _112 * _109;
+  pretmp_116 = (int) _108;
+
+  <bb 12>:
+  # iy_93 = PHI <iy_86(20), 0(11)>
+  if (hoplx_46 > 0)
+    goto <bb 13>;
+  else
+    goto <bb 19>;
+
+  <bb 13>:
+  pretmp_117 = hoplx_46 * iy_93;
+  pretmp_118 = pretmp_116 + pretmp_117;
+
+  <bb 14>:
+  # ix_92 = PHI <ix_85(17), 0(13)>
+  _69 = rand ();
+  _70 = (float) _69;
+  _71 = _70 * 4.656612873077392578125e-10;
+  _72 = (double) _71;
+  if (_72 < 9.899999999999999911182158029987476766109466552734375e-1)
+    goto <bb 15>;
+  else
+    goto <bb 16>;
+
+  <bb 15>:
+  rand ();
+
+  <bb 16>:
+  rand ();
+  table.6_75 = table;
+  _79 = ix_92 + pretmp_118;
+  _80 = (long unsigned int) _79;
+  _81 = _80 * 8;
+  _82 = table.6_75 + _81;
+  _82->r = -4.3755104428555569029413163661956787109375e-8;
+  _82->i = 1.00100004673004150390625e+0;
+  ix_85 = ix_92 + 1;
+  if (hoplx_46 > ix_85)
+    goto <bb 17>;
+  else
+    goto <bb 18>;
+
+  <bb 17>:
+  goto <bb 14>;
+
+  <bb 18>:
+
+  <bb 19>:
+  iy_86 = iy_93 + 1;
+  if (hoply_49 > iy_86)
+    goto <bb 20>;
+  else
+    goto <bb 21>;
+
+  <bb 20>:
+  goto <bb 12>;
+
+  <bb 21>:
+
+  <bb 22>:
+  ikx_87 = ikx_91 + 1;
+  if (ntable_41 > ikx_87)
+    goto <bb 23>;
+  else
+    goto <bb 24>;
+
+  <bb 23>:
+  goto <bb 10>;
+
+  <bb 24>:
+
+  <bb 25>:
+  return;
+
+}
+
+
+
+;; Function readtable2D (readtable2D, funcdef_no=9, decl_uid=3730, symbol_order=12)
+
+
+SSA replacement table
+N_i -> { O_1 ... O_j } means that N_i replaces O_1, ..., O_j
+
+_1 -> { _38 }
+_2 -> { _37 }
+.MEM_49 -> { .MEM_36 }
+_51 -> { _35 }
+_52 -> { _34 }
+_53 -> { _33 }
+_54 -> { _32 }
+_55 -> { _31 }
+_56 -> { _30 }
+_57 -> { _29 }
+_58 -> { _28 }
+_59 -> { _26 }
+_60 -> { _25 }
+_61 -> { _24 }
+_62 -> { _23 }
+_63 -> { _22 }
+_64 -> { _19 }
+_65 -> { _17 }
+_66 -> { _16 }
+.MEM_67 -> { .MEM_48 }
+i_68 -> { i_50 }
+_84 -> { _41 }
+_85 -> { _40 }
+_87 -> { _44 }
+_91 -> { _39 }
+.MEM_100 -> { .MEM_45 }
+i_101 -> { i_46 }
+Incremental SSA update started at block: 10
+Number of blocks in CFG: 14
+Number of blocks to update: 8 ( 57%)
+
+
+Removing basic block 14
+Merging blocks 3 and 10
+Merging blocks 11 and 18
+Merging blocks 20 and 13
+readtable2D (struct complex * oper, float k, int hoplx, int hoply, int mode)
+{
+  vector(4) float * vectp_oper.58;
+  vector(4) float * vectp_oper.57;
+  vector(4) float vect_cst_.56;
+  vector(4) float vect__44.55;
+  vector(4) float vect__41.54;
+  vector(4) float vect_cst_.53;
+  vector(4) float vect__40.52;
+  vector(4) float vect__39.51;
+  vector(4) float vect__35.50;
+  vector(4) float vect_cst_.49;
+  vector(4) float vect__34.48;
+  vector(4) float vect__33.47;
+  vector(4) float vect__32.46;
+  vector(4) float vect__32.45;
+  vector(4) float * vectp.44;
+  vector(4) float * vectp.43;
+  vector(4) float vect__26.42;
+  vector(4) float vect__26.41;
+  vector(4) float * vectp.40;
+  vector(4) float * vectp.39;
+  int tmp.38;
+  unsigned int ratio_mult_vf.37;
+  unsigned int bnd.36;
+  unsigned int niters.35;
+  float linscale;
+  int size;
+  int i;
+  int p2;
+  int p1;
+  float _1;
+  float _2;
+  float kmin.9_7;
+  float _9;
+  float dkx.10_10;
+  float _11;
+  float _14;
+  long unsigned int _16;
+  long unsigned int _17;
+  struct complex * _19;
+  unsigned int _21;
+  int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  struct complex * _25;
+  float _26;
+  _Bool _27;
+  int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  struct complex * _31;
+  float _32;
+  float _33;
+  float _34;
+  float _35;
+  unsigned int ivtmp_36;
+  float _37;
+  float _38;
+  float _39;
+  float _40;
+  float _41;
+  sizetype _43;
+  float _44;
+  unsigned int ivtmp_45;
+  sizetype _47;
+  float _51;
+  float _52;
+  float _53;
+  float _54;
+  struct complex * _55;
+  long unsigned int _56;
+  long unsigned int _57;
+  int _58;
+  float _59;
+  struct complex * _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  int _63;
+  struct complex * _64;
+  long unsigned int _65;
+  long unsigned int _66;
+  _Bool _69;
+  _Bool _70;
+  _Bool _71;
+  struct complex * _72;
+  long unsigned int _73;
+  long unsigned int _74;
+  struct complex * _75;
+  _Bool _76;
+  struct complex * _77;
+  sizetype _78;
+  sizetype _79;
+  sizetype _80;
+  _Bool _81;
+  _Bool _82;
+  _Bool _83;
+  float _84;
+  float _85;
+  struct complex * pretmp_86;
+  float _87;
+  int pretmp_88;
+  int pretmp_89;
+  float pretmp_90;
+  float _91;
+  struct complex * _92;
+  long unsigned int _93;
+  long unsigned int _94;
+  struct complex * _95;
+  _Bool _96;
+  struct complex * _97;
+  sizetype _98;
+  unsigned int _105;
+  unsigned int _106;
+  long unsigned int _110;
+  long unsigned int _111;
+  struct complex * _112;
+  int _113;
+  long unsigned int _114;
+  long unsigned int _115;
+  struct complex * _116;
+  float _117;
+  int _118;
+  long unsigned int _119;
+  long unsigned int _120;
+  struct complex * _121;
+  float _122;
+  float _123;
+  float _124;
+  float _125;
+  float _127;
+  float _128;
+  float _129;
+  float _130;
+  float _131;
+  float _132;
+  unsigned int _135;
+  unsigned int _136;
+  vector(4) float vect_perm_even_150;
+  vector(4) float vect_perm_odd_151;
+  vector(4) float vect_perm_even_158;
+  vector(4) float vect_perm_odd_159;
+  vector(4) float vect_inter_high_173;
+  vector(4) float vect_inter_low_174;
+
+  <bb 2>:
+  size_5 = hoplx_3(D) * hoply_4(D);
+  kmin.9_7 = kmin;
+  _9 = k_8(D) - kmin.9_7;
+  dkx.10_10 = dkx;
+  _11 = _9 / dkx.10_10;
+  p1_12 = (int) _11;
+  p2_13 = p1_12 + 1;
+  _14 = (float) p1_12;
+  linscale_15 = _11 - _14;
+  if (size_5 > 0)
+    goto <bb 3>;
+  else
+    goto <bb 18>;
+
+  <bb 3>:
+  pretmp_86 = table;
+  pretmp_88 = size_5 * p2_13;
+  pretmp_89 = size_5 * p1_12;
+  pretmp_90 = (float) mode_42(D);
+  _21 = (unsigned int) size_5;
+  _27 = _21 > 4;
+  _43 = (sizetype) pretmp_88;
+  _47 = _43 + 4;
+  _98 = _47 * 8;
+  _97 = pretmp_86 + _98;
+  _96 = oper_18(D) >= _97;
+  _95 = oper_18(D) + 32;
+  _94 = (long unsigned int) pretmp_88;
+  _93 = _94 * 8;
+  _92 = pretmp_86 + _93;
+  _83 = _92 >= _95;
+  _82 = _83 | _96;
+  _81 = _27 & _82;
+  _80 = (sizetype) pretmp_89;
+  _79 = _80 + 4;
+  _78 = _79 * 8;
+  _77 = pretmp_86 + _78;
+  _76 = oper_18(D) >= _77;
+  _75 = oper_18(D) + 32;
+  _74 = (long unsigned int) pretmp_89;
+  _73 = _74 * 8;
+  _72 = pretmp_86 + _73;
+  _71 = _72 >= _75;
+  _70 = _71 | _76;
+  _69 = _70 & _81;
+  if (_69 != 0)
+    goto <bb 4>;
+  else
+    goto <bb 12>;
+
+  <bb 4>:
+  niters.35_103 = (unsigned int) size_5;
+  _105 = niters.35_103 + 4294967292;
+  _106 = _105 >> 2;
+  bnd.36_104 = _106 + 1;
+  ratio_mult_vf.37_107 = bnd.36_104 << 2;
+  _135 = (unsigned int) size_5;
+  _136 = _135 + 4294967295;
+  if (_136 <= 2)
+    goto <bb 10>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  vectp.40_144 = pretmp_86 + _93;
+  vectp.44_152 = pretmp_86 + _73;
+  vect_cst_.49_161 = {linscale_15, linscale_15, linscale_15, linscale_15};
+  vect_cst_.53_165 = {linscale_15, linscale_15, linscale_15, linscale_15};
+  vect_cst_.56_168 = {pretmp_90, pretmp_90, pretmp_90, pretmp_90};
+  vectp_oper.58_170 = oper_18(D);
+
+  <bb 6>:
+  # i_50 = PHI <i_46(11), 0(5)>
+  # vectp.39_145 = PHI <vectp.39_146(11), vectp.40_144(5)>
+  # vectp.43_153 = PHI <vectp.43_154(11), vectp.44_152(5)>
+  # vectp_oper.57_171 = PHI <vectp_oper.57_172(11), vectp_oper.58_170(5)>
+  # ivtmp_45 = PHI <ivtmp_36(11), 0(5)>
+  _16 = (long unsigned int) i_50;
+  _17 = _16 * 8;
+  _19 = oper_18(D) + _17;
+  _22 = i_50 + pretmp_88;
+  _23 = (long unsigned int) _22;
+  _24 = _23 * 8;
+  _25 = pretmp_86 + _24;
+  vect__26.41_147 = MEM[(float *)vectp.39_145];
+  vectp.39_148 = vectp.39_145 + 16;
+  vect__26.42_149 = MEM[(float *)vectp.39_148];
+  vect_perm_even_150 = VEC_PERM_EXPR <vect__26.41_147, vect__26.42_149, { 0, 2, 4, 6 }>;
+  vect_perm_odd_151 = VEC_PERM_EXPR <vect__26.41_147, vect__26.42_149, { 1, 3, 5, 7 }>;
+  _26 = _25->r;
+  _28 = i_50 + pretmp_89;
+  _29 = (long unsigned int) _28;
+  _30 = _29 * 8;
+  _31 = pretmp_86 + _30;
+  vect__32.45_155 = MEM[(float *)vectp.43_153];
+  vectp.43_156 = vectp.43_153 + 16;
+  vect__32.46_157 = MEM[(float *)vectp.43_156];
+  vect_perm_even_158 = VEC_PERM_EXPR <vect__32.45_155, vect__32.46_157, { 0, 2, 4, 6 }>;
+  vect_perm_odd_159 = VEC_PERM_EXPR <vect__32.45_155, vect__32.46_157, { 1, 3, 5, 7 }>;
+  _32 = _31->r;
+  vect__33.47_160 = vect_perm_even_150 - vect_perm_even_158;
+  _33 = _26 - _32;
+  vect__34.48_162 = vect_cst_.49_161 * vect__33.47_160;
+  _34 = linscale_15 * _33;
+  vect__35.50_163 = vect__34.48_162 + vect_perm_even_158;
+  _35 = _34 + _32;
+  _37 = _25->i;
+  _38 = _31->i;
+  vect__39.51_164 = vect_perm_odd_151 - vect_perm_odd_159;
+  _39 = _37 - _38;
+  vect__40.52_166 = vect_cst_.53_165 * vect__39.51_164;
+  _40 = linscale_15 * _39;
+  vect__41.54_167 = vect__40.52_166 + vect_perm_odd_159;
+  _41 = _40 + _38;
+  vect__44.55_169 = vect__41.54_167 * vect_cst_.56_168;
+  _44 = _41 * pretmp_90;
+  vect_inter_high_173 = VEC_PERM_EXPR <vect__35.50_163, vect__44.55_169, { 0, 4, 1, 5 }>;
+  vect_inter_low_174 = VEC_PERM_EXPR <vect__35.50_163, vect__44.55_169, { 2, 6, 3, 7 }>;
+  MEM[(float *)vectp_oper.57_171] = vect_inter_high_173;
+  vectp_oper.57_176 = vectp_oper.57_171 + 16;
+  MEM[(float *)vectp_oper.57_176] = vect_inter_low_174;
+  i_46 = i_50 + 1;
+  vectp.39_146 = vectp.39_148 + 16;
+  vectp.43_154 = vectp.43_156 + 16;
+  vectp_oper.57_172 = vectp_oper.57_176 + 16;
+  ivtmp_36 = ivtmp_45 + 1;
+  if (ivtmp_36 < bnd.36_104)
+    goto <bb 11>;
+  else
+    goto <bb 9>;
+
+  <bb 7>:
+  # i_108 = PHI <i_134(8), i_137(10)>
+  _110 = (long unsigned int) i_108;
+  _111 = _110 * 8;
+  _112 = oper_18(D) + _111;
+  _113 = i_108 + pretmp_88;
+  _114 = (long unsigned int) _113;
+  _115 = _114 * 8;
+  _116 = pretmp_86 + _115;
+  _117 = _116->r;
+  _118 = i_108 + pretmp_89;
+  _119 = (long unsigned int) _118;
+  _120 = _119 * 8;
+  _121 = pretmp_86 + _120;
+  _122 = _121->r;
+  _123 = _117 - _122;
+  _124 = linscale_15 * _123;
+  _125 = _124 + _122;
+  _112->r = _125;
+  _127 = _116->i;
+  _128 = _121->i;
+  _129 = _127 - _128;
+  _130 = linscale_15 * _129;
+  _131 = _130 + _128;
+  _132 = _131 * pretmp_90;
+  _112->i = _132;
+  i_134 = i_108 + 1;
+  if (size_5 > i_134)
+    goto <bb 8>;
+  else
+    goto <bb 15>;
+
+  <bb 8>:
+  goto <bb 7>;
+
+  <bb 9>:
+  # i_138 = PHI <i_46(6)>
+  tmp.38_143 = (int) ratio_mult_vf.37_107;
+  if (niters.35_103 == ratio_mult_vf.37_107)
+    goto <bb 16>;
+  else
+    goto <bb 10>;
+
+  <bb 10>:
+  # i_137 = PHI <tmp.38_143(9), 0(4)>
+  goto <bb 7>;
+
+  <bb 11>:
+  goto <bb 6>;
+
+  <bb 12>:
+
+  <bb 13>:
+  # i_68 = PHI <0(12), i_101(14)>
+  _66 = (long unsigned int) i_68;
+  _65 = _66 * 8;
+  _64 = oper_18(D) + _65;
+  _63 = i_68 + pretmp_88;
+  _62 = (long unsigned int) _63;
+  _61 = _62 * 8;
+  _60 = pretmp_86 + _61;
+  _59 = _60->r;
+  _58 = i_68 + pretmp_89;
+  _57 = (long unsigned int) _58;
+  _56 = _57 * 8;
+  _55 = pretmp_86 + _56;
+  _54 = _55->r;
+  _53 = _59 - _54;
+  _52 = linscale_15 * _53;
+  _51 = _52 + _54;
+  _64->r = _51;
+  _2 = _60->i;
+  _1 = _55->i;
+  _91 = _2 - _1;
+  _85 = linscale_15 * _91;
+  _84 = _85 + _1;
+  _87 = _84 * pretmp_90;
+  _64->i = _87;
+  i_101 = i_68 + 1;
+  if (size_5 > i_101)
+    goto <bb 14>;
+  else
+    goto <bb 17>;
+
+  <bb 14>:
+  goto <bb 13>;
+
+  <bb 15>:
+
+  <bb 16>:
+
+  <bb 17>:
+
+  <bb 18>:
+  return;
+
+}
+
+

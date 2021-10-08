@@ -1,0 +1,44 @@
+
+Open the Makefile and change the LIBS= variable to a library where BLAS can be found. For some machines the LIBS variable has
+already put into the makefile and uncomment (remove the # in front of the line) the correct LIBS= definition.
+
+In case you cannot find a suitable BLAS library remove the call to sgemm in the code at line 176:
+
+175 
+176     sgemm_(transa, transb, &row, &col, &col, &alpha,
+177         &matrix_a[0][0], &col, &matrix_b[0][0], &col, &beta, &matrix_r[0][0]    , &col);
+178 
+
+replace those lines with
+
+175 /*
+176     sgemm_(transa, transb, &row, &col, &col, &alpha,
+177         &matrix_a[0][0], &col, &matrix_b[0][0], &col, &beta, &matrix_r[0][0]    , &col);
+178  */
+
+and in the Makefile comment out (add a # at the first position of the line) all LIBS= definitions, and compile again.
+
+If the make command gives errors because it does not understand the -mssse3 flag remove this flag from the CFLAGS= definition and
+try again.  Or use the GNU compilers.
+
+Compile the program by typing
+
+> make
+
+and run in by typing
+
+./ClassicMatrixMultiply
+
+Look at the results and try to understand the differences. All programs do similar operations, but with different access to memory.
+
+As an extra exercise compile code with a lower optimisation option -O1 (replaces -O3) and run again.
+
+Change the flag back to -O3 and change in the source code the size of the Arrays:
+
+ROWS 1024
+COLUMNS 1024
+
+and run again, do you see any differences compared with running ROWS and COLUMNS 1020?
+
+The results of this program will be discussed during the course.
+

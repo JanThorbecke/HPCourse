@@ -1,0 +1,266 @@
+
+;; Function rc2dfft (rc2dfft, funcdef_no=34, decl_uid=3868, symbol_order=34)
+
+rc2dfft (float * rdata, struct complex * cdata, int nr, int nc, int ldr, int ldc, int sign)
+{
+  struct complex * tmp;
+  int nf;
+  int j;
+  int i;
+  long unsigned int _16;
+  long unsigned int _17;
+  int _20;
+  long unsigned int _22;
+  long unsigned int _23;
+  struct complex * _24;
+  int _25;
+  int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  struct complex * _29;
+  int _33;
+  int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  struct complex * _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  struct complex * _40;
+
+  <bb 2>:
+  rcmfft (rdata_8(D), cdata_9(D), nr_10(D), nc_11(D), ldr_12(D), ldc_13(D), sign_14(D));
+  _16 = (long unsigned int) nc_11(D);
+  _17 = _16 * 8;
+  tmp_19 = malloc (_17);
+  _20 = nr_10(D) + 2;
+  nf_21 = _20 / 2;
+  if (nf_21 > 0)
+    goto <bb 3>;
+  else
+    goto <bb 17>;
+
+  <bb 3>:
+
+  <bb 4>:
+  # i_51 = PHI <i_43(15), 0(3)>
+  if (nc_11(D) > 0)
+    goto <bb 5>;
+  else
+    goto <bb 18>;
+
+  <bb 5>:
+
+  <bb 6>:
+  # j_52 = PHI <j_31(7), 0(5)>
+  _22 = (long unsigned int) j_52;
+  _23 = _22 * 8;
+  _24 = tmp_19 + _23;
+  _25 = j_52 * ldc_13(D);
+  _26 = _25 + i_51;
+  _27 = (long unsigned int) _26;
+  _28 = _27 * 8;
+  _29 = cdata_9(D) + _28;
+  *_24 = *_29;
+  j_31 = j_52 + 1;
+  if (nc_11(D) > j_31)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+
+  <bb 7>:
+  goto <bb 6>;
+
+  <bb 8>:
+  cc1fft (tmp_19, nc_11(D), sign_14(D));
+  if (nc_11(D) > 0)
+    goto <bb 9>;
+  else
+    goto <bb 13>;
+
+  <bb 9>:
+
+  <bb 10>:
+  # j_53 = PHI <j_42(11), 0(9)>
+  _33 = j_53 * ldc_13(D);
+  _34 = _33 + i_51;
+  _35 = (long unsigned int) _34;
+  _36 = _35 * 8;
+  _37 = cdata_9(D) + _36;
+  _38 = (long unsigned int) j_53;
+  _39 = _38 * 8;
+  _40 = tmp_19 + _39;
+  *_37 = *_40;
+  j_42 = j_53 + 1;
+  if (nc_11(D) > j_42)
+    goto <bb 11>;
+  else
+    goto <bb 12>;
+
+  <bb 11>:
+  goto <bb 10>;
+
+  <bb 12>:
+
+  <bb 13>:
+
+  <bb 14>:
+  i_43 = i_51 + 1;
+  if (nf_21 > i_43)
+    goto <bb 15>;
+  else
+    goto <bb 16>;
+
+  <bb 15>:
+  goto <bb 4>;
+
+  <bb 16>:
+
+  <bb 17>:
+  free (tmp_19);
+  return;
+
+  <bb 18>:
+  cc1fft (tmp_19, nc_11(D), sign_14(D));
+  goto <bb 14>;
+
+}
+
+
+
+;; Function rc2dfftf (rc2dfftf, funcdef_no=35, decl_uid=3989, symbol_order=35)
+
+rc2dfftf (float * rdata, struct complex * cdata, int * nr, int * nc, int * ldr, int * ldc, int * sign)
+{
+  struct complex * tmp;
+  int nf;
+  int j;
+  int i;
+  int _3;
+  int _5;
+  int _7;
+  int _9;
+  int _11;
+  long unsigned int _15;
+  long unsigned int _16;
+  int _18;
+  long unsigned int _21;
+  long unsigned int _22;
+  struct complex * _23;
+  int _24;
+  int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  struct complex * _29;
+  int _32;
+  int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  struct complex * _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  struct complex * _39;
+
+  <bb 2>:
+  _3 = *sign_2(D);
+  _5 = *ldc_4(D);
+  _7 = *ldr_6(D);
+  _9 = *nc_8(D);
+  _11 = *nr_10(D);
+  rcmfft (rdata_12(D), cdata_13(D), _11, _9, _7, _5, _3);
+  _15 = (long unsigned int) _9;
+  _16 = _15 * 8;
+  tmp_17 = malloc (_16);
+  _18 = _11 + 2;
+  nf_19 = _18 / 2;
+  if (nf_19 > 0)
+    goto <bb 3>;
+  else
+    goto <bb 17>;
+
+  <bb 3>:
+
+  <bb 4>:
+  # i_58 = PHI <i_41(15), 0(3)>
+  if (_9 > 0)
+    goto <bb 5>;
+  else
+    goto <bb 18>;
+
+  <bb 5>:
+
+  <bb 6>:
+  # j_57 = PHI <j_30(7), 0(5)>
+  _21 = (long unsigned int) j_57;
+  _22 = _21 * 8;
+  _23 = tmp_17 + _22;
+  _24 = _5 * j_57;
+  _26 = _24 + i_58;
+  _27 = (long unsigned int) _26;
+  _28 = _27 * 8;
+  _29 = cdata_13(D) + _28;
+  *_23 = *_29;
+  j_30 = j_57 + 1;
+  if (_9 > j_30)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+
+  <bb 7>:
+  goto <bb 6>;
+
+  <bb 8>:
+  cc1fft (tmp_17, _9, _3);
+  if (_9 > 0)
+    goto <bb 9>;
+  else
+    goto <bb 13>;
+
+  <bb 9>:
+
+  <bb 10>:
+  # j_59 = PHI <j_40(11), 0(9)>
+  _32 = _5 * j_59;
+  _33 = i_58 + _32;
+  _34 = (long unsigned int) _33;
+  _35 = _34 * 8;
+  _36 = cdata_13(D) + _35;
+  _37 = (long unsigned int) j_59;
+  _38 = _37 * 8;
+  _39 = tmp_17 + _38;
+  *_36 = *_39;
+  j_40 = j_59 + 1;
+  if (_9 > j_40)
+    goto <bb 11>;
+  else
+    goto <bb 12>;
+
+  <bb 11>:
+  goto <bb 10>;
+
+  <bb 12>:
+
+  <bb 13>:
+
+  <bb 14>:
+  i_41 = i_58 + 1;
+  if (nf_19 > i_41)
+    goto <bb 15>;
+  else
+    goto <bb 16>;
+
+  <bb 15>:
+  goto <bb 4>;
+
+  <bb 16>:
+
+  <bb 17>:
+  free (tmp_17);
+  return;
+
+  <bb 18>:
+  cc1fft (tmp_17, _9, _3);
+  goto <bb 14>;
+
+}
+
+

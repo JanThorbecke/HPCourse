@@ -1,0 +1,62 @@
+# Makefile for general rules
+
+########################################################################
+# C compiler; change this only if you are using a different C-compiler
+#Intel 
+CC = icc
+PROFILE = -vec_report2 -gp
+OPTC = -O3 -axT -no-prec-div
+
+#OSX clang 
+CC = clang
+PROFILE = -pg
+OPTC = -Ofast
+
+#OSX PGI 
+CC = pgcc
+PROFILE = -Mprof=lines,func
+OPTC = -Ofast
+OPTC = -O0 -g
+
+#GNU 
+CC = gcc
+PROFILE = -pg
+OPTC = -O3 -ffast-math -funroll-all-loops -mssse3 -mfpmath=sse -fdump-tree-vect -ftree-vectorizer-verbose=3 $(PROFILE)
+
+########################################################################
+# standard CFLAGS
+CFLAGS = $(OPTC)
+
+#############################################################################
+# the archiver
+AR = ar
+
+#############################################################################
+# ar FLAGS
+ARFLAGS = rv
+
+#############################################################################
+# ranlib definition
+RANLIB = ar -s
+
+.SUFFIXES : .o .c .cc .f .a
+.c.o	:
+	$(CC) -c $(CFLAGS) $(OPTC) $<
+.c.a	:
+	$(CC) -c $(CFLAGS) $(OPTC) $<
+	$(AR) $(ARFLAGS) $@ $*.o
+	rm -f $*.o
+.o.a	:
+	$(AR) $(ARFLAGS) $@ $*.o
+	rm -f $*.o
+.f.a	:
+	$(FC) -c $(FFLAGS) $<
+	$(AR) $(ARFLAGS) $@ $*.o
+	rm -f $*.o
+.cc.a	:
+	$(C++) -c $(C++FLAGS) $<
+	$(AR) $(ARFLAGS) $@ $*.o
+	rm -f $*.o
+.cc.o	:
+	$(C++) -c $(C++FLAGS) $<
+

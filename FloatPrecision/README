@@ -1,0 +1,22 @@
+Compile the program with
+
+gcc -O0 float.c
+
+and run 
+./a.out
+
+in the code the floating point numbers are printed with
+
+    fprintf(stderr,"i=%d a=%16.14f c=%10.9g d=%16.14g \n",i, a, c, d);
+
+16.14 means that it will be printed in a area of 16 characters with 14 decimals. 
+
+
+Compile the second program
+gcc comparefloats.c
+
+and run
+./a.out
+
+can you explain the outcome of these tests? What happens if you change the 'float a,b;' to 'double a,b;'
+

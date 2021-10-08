@@ -1,0 +1,56 @@
+# gnuplot script for load_store results
+# corrOpt cache=6 file_out=duocore_1024 np=24
+
+set style data linespoints
+#set data style linespoint
+set key outside right
+set xlabel "nt samples"
+set ylabel "performance [Mflop/s]"
+
+set yrange [0.0:4500]
+set size 1.4,1.0;
+set grid
+
+#set title "scaling on X1 with model 400x250x28"
+set xtics (2,8,32,128,512,2048,16384,262144,8e6)
+#set ytics (100,150,200)
+set log x
+set xrange [0.9:8388608]
+set parametric
+
+#set term postscript landscape 22
+set term postscript eps color 22
+set output 'XeonIntel.eps'
+plot "XeonIntel_1024" using 1:2 title "Xeon 1024" lw 3, "XeonIntel_4096" using 1:2 title "Xeon 4096" lw 3, "XeonIntel_16384" using 1:2 title "Xeon 16384" lw 3
+
+
+set term postscript eps color 22
+set output 'OpteronIntel.eps'
+plot "OpteronIntel_1024" using 1:2 title "Opteron 1024" lw 3, "OpteronIntel_4096" using 1:2 title "Opteron 4096" lw 3, "OpteronIntel_16384" using 1:2 title "Opteron 16384" lw 3
+
+set term postscript eps color 22
+set output 'DuoCoreIntel.eps'
+plot "duocore_1024" using 1:2 title "DuoCore 1024" lw 3, "duocore_4096" using 1:2 title "DuoCore 4096" lw 3, "duocore_16384" using 1:2 title "DuoCore 16384" lw 3
+
+exit;
+
+set term postscript eps color 22
+set output 'Pathscale.eps'
+plot "OpteronPath_4096" using 1:2 title "Opteron 4096" lw 3, "XeonPath_4096" using 1:2 title "Xeon 4096" lw 3
+
+
+set term postscript eps color 22
+set output 'BlueGene.eps'
+plot "BlueGene_1024" using 1:2 title "BlueGene 1024" lw 3, "BlueGene_4096" using 1:2 title "BlueGene 4096" lw 3
+
+set term postscript eps color 22
+set output 'BlueGeneFPU.eps'
+plot "BlueGene2FPU" using 1:2 title "BlueGene 2FPU" lw 3, "BlueGene1FPU" using 1:2 title "BlueGene 1FPU" lw 3
+
+set yrange [0.0:800]
+set yrange [0.0:900]
+set term postscript eps color 22
+set output 'BlueGene_zoom.eps'
+plot "BlueGene2FPU" using 1:2 title "BlueGene 2FPU" lw 3, "BlueGene1FPU" using 1:2 title "BlueGene 1FPU" lw 3
+#plot "BlueGene_1024" using 1:2 title "BlueGene 1024" lw 3, "BlueGene_4096" using 1:2 title "BlueGene 4096" lw 3
+

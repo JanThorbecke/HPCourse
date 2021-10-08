@@ -1,0 +1,104 @@
+set data style linespoint
+set key right top 
+set mytics 5
+set xlabel 'l block'
+set ylabel 'k block '
+#set size 1.0,1.0
+#set size ratio 0.8
+set grid
+
+#Elapsed time for     2 loops:   4.304643 seconds
+#Elapsed time for     2 loops:   2.416189 seconds
+
+
+set term postscript color eps
+set output 'stencil3.eps'
+set ticslevel 1
+
+set title "Istanbul global search"
+
+#  integer, parameter :: N1 = 10, M1 = 500
+#  integer, parameter :: N2 =  8, M2 = 454
+#
+#!dir$ blockingsize(555)
+#   do l = 1, M2
+#!dir$ blockingsize(444)
+#      do k = 1, M1
+#!dir$ noblocking
+#     do n = 1, N2
+#!dir$ noblocking
+#        do m = 1, N1
+#           do j = 1, N2
+#              do i = 1, N1
+
+#for (( l=0; l<101; l+=4 )) do
+#	for (( k=0; k<121; k+=4 )) do
+
+
+set view 60,45
+set pm3d at b
+set dgrid3d 31,26
+
+splot "data3.txt" using 1:2:3 with lines notitle
+
+
+#####
+set title "Istanbul around minimum"
+
+set nokey
+#set cntrparam bspline
+set contour
+set cntrparam levels incremental 1.74, 0.02, 1.96
+set surface
+set view 60,45
+set dgrid3d 15,15
+set pm3d at b
+splot "data3z.txt" using 1:2:3 with lines notitle
+
+
+set key 2,17
+unset pm3d
+set contour
+unset surface
+set cntrparam levels incremental 1.74, 0.02, 1.96
+set view 0,0
+set dgrid3d 15,15
+splot "data3z.txt" using 1:2:3 with lines notitle
+
+
+
+#####
+set title "Magny Cours global search"
+
+set nokey
+set view 60,45
+set pm3d at b
+set surface
+set dgrid3d 31,26
+
+splot "data3b.txt" using 1:2:3 with lines notitle
+
+#####
+set title "Magny Cours around minimum"
+
+set nokey
+set contour
+#set cntrparam levels 16
+set cntrparam levels incremental 3.0, 0.02, 3.30
+set surface
+set view 60,45
+set dgrid3d 15,15
+set pm3d at b
+splot "data3zb.txt" using 1:2:3 with lines notitle
+
+set key 1,18 
+unset pm3d
+set contour
+unset surface
+#set cntrparam levels 16
+set cntrparam levels incremental 3.0, 0.02, 3.30
+set view 0,0
+set dgrid3d 15,15
+splot "data3zb.txt" using 1:2:3 with lines notitle
+
+

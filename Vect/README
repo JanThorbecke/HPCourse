@@ -1,0 +1,6 @@
+When you use the Intel compiler (icc) you only have to type make and run the ./vect program. 
+
+Look at the code and try to understand what is computed and how it is implemented. 
+
+For the GNU compiler you have to make changes in the Makefile, compile and run. Using the GNU compiler make sure that the loop which is suppose to vectorize is vectorized by the GNU compiler (you might have to play with option -fast, -Ofast, -msse4, to get the loop vectorrized)
+

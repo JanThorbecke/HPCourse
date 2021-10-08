@@ -1,0 +1,19 @@
+# gnuplot script for load_store results
+
+#set style data linespoints
+#set data style linespoint
+set data style point
+
+set xlabel "block size"
+set ylabel "runtime in seconds"
+
+
+set yrange [0:8]
+set size 1.0,1.0;
+set grid
+set xrange [0:2040]
+#set parametric
+set title "Blocking of Matrix multiplication 2040x2040"
+set term postscript eps color 22
+set output 'MatMulBlock.eps'
+plot "results.txt" using 1:2 title "Mac Core 2 Duo" lw 3

@@ -1,0 +1,115 @@
+set style data linespoints
+#set data style linespoint
+set mytics 5
+set xlabel 'k block'
+set ylabel 'j block'
+set zlabel 'time'
+
+#set size 1.0,1.0
+#set size ratio 0.8
+set grid
+
+set term postscript color eps
+set output 'stencil1.eps'
+set ticslevel 1
+
+#Elapsed time for    10 loops:   3.909659 seconds
+#Elapsed time for    10 loops:   2.792235 seconds
+
+#!dir$ blockable(j,k)
+#!dir$ blockingsize(555)
+#    do k = 6, nz-5
+#!dir$ blockingsize(444)
+#       do j = 6, ny-5
+#          do i = 6, nx-5
+#
+#for (( k=1; k<41; k+=1 )) do
+#    for (( j=1; j<21; j+=1 )) do
+#        sed -e 's/555/'"$k"'/g' -e 's/444/'"$j"'/g' < nep.f90 > stencil1.f90
+
+
+set title "Istanbul global search"
+
+unset dgrid3d
+
+ref=4.844617
+set view 60,45
+set pm3d at b
+#set dgrid3d 23,23,1
+splot "data1.txt" using 1:2:($3) with lines notitle
+
+#set pm3d
+#set contour
+#splot "data1.txt" with pm3d
+
+#####
+set title "Istanbul around minimum"
+
+set nokey
+set cntrparam bspline
+set surface
+set contour
+#set cntrparam levels incremental 3.10, 0.01, 3.31
+set cntrparam levels 16
+set view 60,45
+set dgrid3d 19,39
+set pm3d at b
+splot "data1b.txt" using 1:2:($3) with lines notitle
+
+set key -6,21
+
+unset dgrid3d
+unset pm3d
+set contour
+unset surface
+#set cntrparam levels incremental 3.10, 0.01, 3.31
+set cntrparam levels 16
+set view 0,0
+set dgrid3d 19,39,1
+splot "data1b.txt" using 1:2:3 with lines notitle
+
+#####
+set title "Magny Cours around minimum"
+
+set nokey
+set contour
+#set cntrparam levels incremental 2.80, 0.02, 3.15
+set cntrparam levels 16
+set surface
+set view 60,45
+set dgrid3d 20,40
+set pm3d at b
+splot "data1c_nounr.txt" using 1:2:3 with lines notitle
+
+set key -6,21
+unset pm3d
+set contour
+unset surface
+set view 0,0
+set dgrid3d 20,40
+splot "data1c_nounr.txt" using 1:2:3 with lines notitle
+
+unset dgrid3d
+
+#####
+set title "Magny Cours around minimum with unrolling(2) of j"
+
+set nokey
+set contour
+#set cntrparam levels incremental 2.80, 0.02, 3.15
+set cntrparam levels 16
+set surface
+set view 60,45
+set dgrid3d 19,39,1
+set pm3d at b
+splot "data1c.txt" using 1:2:3 with lines notitle
+
+set key -6,21
+unset pm3d
+set contour
+unset surface
+set cntrparam levels 16
+set view 0,0
+set dgrid3d 19,39,1
+splot "data1c.txt" using 1:2:3 with lines notitle
+

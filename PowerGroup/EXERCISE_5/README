@@ -1,0 +1,38 @@
+
+EXERCISE 5:   Turbulence Code
+*****************************
+
+
+Silicon Graphics BV
+De Meern, The Netherlands.
+
+April 2, 1999.
+
+
+This exercise contains a somewhat larger application program.
+It implements the most important computational part of a 
+turbulence model (thanks to Roel Verstappen, RUG).
+
+
+1.  Go to directory "src", which includes the sources and the Makefile.
+    The Makefile includes the flag for automatic parallellization 
+    (-pfa keep). Make executable "poisson_O3" by just typing make.
+
+    Run the executable on 1 processor, and note the wallclock time.
+    The code already contains a timer for routine "iccgp". Also note
+    that wallclock time. The executable does not require any input.
+
+    Profile the code on 1 processor with ssrun, and pay attention to
+    routine "iccgp".  Make sure that you get the profile of "iccgp"
+    in detail (i.e. on loop level).
+
+
+2.  Run the executable on 2, 3 and 4 processors, and determine the
+    wallclock times. Also, note the times for "iccgp".
+
+    What do you observe ?
+
+
+3.  Parallellize the code more efficiently, using OpenMP directives.
+    Only pay attention to routine iccgp. Always check the correctness of
+    the answers (which are printed to STDOUT already).

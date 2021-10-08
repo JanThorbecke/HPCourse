@@ -1,0 +1,23 @@
+# gnuplot script for load_store results
+
+set style data linespoints
+set xlabel "size of array in Bytes"
+set ylabel "bandwidth [MBytes/s]"
+
+set yrange [0.0:18000]
+set size 1.0,1.0;
+set grid
+set xtics (16,128,1024,16e3,1e6,16e6,4e9)
+set log x
+set xrange [8:8e9]
+set parametric
+
+set term postscript eps color 22
+set output 'LoadStore.eps'
+plot "MacCorei7" using 1:2 title "Haswell qc 2.0" lw 3, "Exe2_result_MacCorei7_YoheiNishitsuji" using 1:2 title "Yohei" lw 3
+
+exit
+
+set term postscript eps color 22
+set output 'OpteronIntel.eps'
+plot "OpteronIntel_1024" using 1:2 title "Opteron 1024" lw 3, "OpteronIntel_4096" using 1:2 title "Opteron 4096" lw 3, "OpteronIntel_16384" using 1:2 title "Opteron 16384" lw 3

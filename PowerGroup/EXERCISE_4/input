@@ -1,0 +1,6 @@
+400  400      ! X & Y grid dimensions
+1.0           ! Helmholtz constant
+1.00006e0     ! Relaxation factor for solver
+1.0e-9        ! Iterative solver tolerance
+500           ! Maximum number of iterations for it solver
+0             ! dummy integer variable (not used here)

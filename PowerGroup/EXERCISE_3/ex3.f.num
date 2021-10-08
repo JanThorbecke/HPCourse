@@ -1,0 +1,40 @@
+     1        program ex3
+     2        parameter (n=100)
+     3        parameter (m=5000)
+     4        real a(n,n), b(n,n), c(n,n)
+     5
+     6        do 10 i = 1, n
+     7           do 11 j = 1, n
+     8                   a(j,i) = (i * j) / (i + j)
+     9                   b(j,i) = 0.
+    10                   c(j,i) = 0.
+    11   11      continue
+    12   10   continue
+    13
+    14        do 20 i = 2, n-1
+    15           do 21 j = 2, i
+    16              do 22 k = 1, m
+    17                      b(j,i) = b(j,i)
+    18       &                       + a(j  ,i-1)/k     + a(j  ,i+1)/k
+    19       &                       + a(j-1,i  )/k     + a(j+1,i  )/k
+    20       &                       + a(j-1,i-1)/(k*k) + a(j+1,i+1)/(k*k)
+    21       &                       + a(j-1,i+1)/(k*k) + a(j+1,i-1)/(k*k)
+    22   22         continue
+    23   21      continue
+    24   20   continue
+    25  
+    26        do 30 i = 2, n-1
+    27           do 31 j = 2, i
+    28              do 32 k = 1, m
+    29                      c(j,i) = c(j,i)
+    30       &                       + a(j  ,i-1)/k     + a(j  ,i+1)/k
+    31       &                       + a(j-1,i  )/k     + a(j+1,i  )/k
+    32       &                       - a(j-1,i-1)/(k*k) - a(j+1,i+1)/(k*k)
+    33       &                       - a(j-1,i+1)/(k*k) - a(j+1,i-1)/(k*k)
+    34   32         continue
+    35   31      continue
+    36   30   continue
+    37  
+    38        print *, ' Done, B(50,51), C(50,51) is: ', b(50,51),c(50,51)
+    39  
+    40        end

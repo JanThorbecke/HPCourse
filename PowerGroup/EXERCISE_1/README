@@ -1,0 +1,54 @@
+
+EXERCISE 1:   Matrix Multiply Using Autoparallelism
+***************************************************
+
+
+The file matmul.f contains a straightforward implementation of
+matrix multiply in which an outer loop will be parallelized
+by automatic parallelizers.
+
+Note that the driver routine has a loop which calls matmul several
+times. Currently, the repeat value is set to 30, which results
+in about 15 seconds single-CPU time on an Origin200 system.o
+
+
+1. Compile the code and run single-CPU. Use compiler option -O3.
+   Use the Unix "time" command to time the execution of the code.
+
+
+2. Compile the source for automatic parallellization and
+   check the compiler output. Remember that for automatic 
+   parallellization, you need -O3 -parallel -par_report3 . In order to
+   save the compiler output, use -O3 -pfa keep.
+
+   Check the files matmul.l and matmul.m. Determine which
+   compiler transformations have taken place. Try to understand
+   why the compiler has been doing this.
+
+
+3. Run the parallel executable on 2, 3 and 4 CPUs. Use the
+   relevant environment variable to set the number of threads
+   to 2, 3 or 4. Of course, determine the wallclock time.
+
+
+4. Use OpenMP directives to force the loop with label 30 to
+   be parallellized. Compile with -O3 -pfa keep (and -mp to let
+   the compiler interpret the OpenMP directives). 
+   Check the .l and .m files to check if the compiler indeed has
+   interpreted the OpenMP directives. 
+
+   Run on 1 CPU and determine the wallclock time.
+   Now, run on 2, 3 and 4 CPUS, and determine the wallclock times.
+
+   Try to understand what is going on.
+
+
+5. Change the source code by introducing a temporary scalar 
+   variable x, which is used instead of C(i,j) during the 
+   calculation in the loop with label 32. After the loop with
+   label 32, do not forget to assign the value of x to C(i,j)
+ 
+   Compile and run again on 1, 2, 3 and 4 CPUs.
+
+   Compare the results with exercise 4.
+

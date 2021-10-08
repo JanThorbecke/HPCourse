@@ -1,0 +1,1046 @@
+
+;; Function fht (fht, funcdef_no=0, decl_uid=1798, symbol_order=6)
+
+fht (double * fz, int n)
+{
+  double g3;
+  double f3;
+  double g2;
+  double f2;
+  double g1;
+  double f1;
+  double f0;
+  double g0;
+  double b;
+  double a;
+  int j;
+  int i;
+  double s2;
+  double c2;
+  int i;
+  double g3;
+  double f3;
+  double g2;
+  double f2;
+  double g1;
+  double f1;
+  double f0;
+  double g0;
+  double c1;
+  double s1;
+  double g3;
+  double f3;
+  double g2;
+  double f2;
+  double g1;
+  double f1;
+  double f0;
+  double g0;
+  double c4;
+  double s4;
+  double c3;
+  double s3;
+  double c2;
+  double s2;
+  double c1;
+  double s1;
+  double f3;
+  double f2;
+  double f1;
+  double f0;
+  double a;
+  int t_lam;
+  double * gi;
+  double * fn;
+  double * fi;
+  int kx;
+  int k4;
+  int k3;
+  int k2;
+  int k1;
+  int k;
+  int i;
+  double powmult_9;
+  double powmult_15;
+  int _35;
+  long unsigned int _37;
+  long unsigned int _38;
+  double * _40;
+  long unsigned int _42;
+  long unsigned int _43;
+  double * _44;
+  double _45;
+  int _49;
+  long unsigned int _52;
+  long unsigned int _53;
+  double _55;
+  double _56;
+  double _59;
+  double _60;
+  double _63;
+  double _65;
+  double _67;
+  double _69;
+  long unsigned int _72;
+  long unsigned int _73;
+  double _76;
+  double _77;
+  double _80;
+  double _81;
+  double _84;
+  double _85;
+  double _88;
+  double _89;
+  double _100;
+  double _102;
+  double _104;
+  double _106;
+  double _108;
+  double _110;
+  double _112;
+  double _114;
+  long unsigned int _124;
+  long unsigned int _125;
+  int prephitmp_127;
+  unsigned int _129;
+  double _130;
+  sizetype _132;
+  double * _133;
+  double _134;
+  sizetype _137;
+  sizetype _138;
+  double * _139;
+  double _140;
+  unsigned int _141;
+  sizetype _142;
+  double * _143;
+  double _144;
+  double _147;
+  double _149;
+  double _151;
+  double _153;
+  double _155;
+  double * _156;
+  double _157;
+  double * _160;
+  double _161;
+  double * _163;
+  double _164;
+  double _166;
+  double _168;
+  double _170;
+  double _172;
+  sizetype _174;
+  sizetype _175;
+  int _184;
+  int _185;
+  int _192;
+  int _193;
+  double _196;
+  int _197;
+  double _198;
+  double _199;
+  double _200;
+  double _201;
+  double _203;
+  double _204;
+  double _205;
+  double _206;
+  double _211;
+  long unsigned int _213;
+  long unsigned int _214;
+  sizetype _216;
+  sizetype _217;
+  double * _220;
+  double _221;
+  double _222;
+  double * _223;
+  double _224;
+  double _225;
+  double _227;
+  double _228;
+  double _230;
+  double _233;
+  double * _236;
+  double _237;
+  double _238;
+  double * _239;
+  double _240;
+  double _241;
+  double _243;
+  double _244;
+  double * _246;
+  double _247;
+  double * _250;
+  double _251;
+  double _254;
+  double _255;
+  double _257;
+  double _258;
+  double _260;
+  double _262;
+  double _264;
+  double _266;
+  double _268;
+  double _269;
+  double _271;
+  double _272;
+  double _274;
+  double _276;
+  double _278;
+  double _280;
+  int _302;
+  int _306;
+  int _327;
+  int _329;
+  double * prephitmp_957;
+  long unsigned int pretmp_958;
+  long unsigned int pretmp_959;
+  long unsigned int pretmp_960;
+  long unsigned int pretmp_961;
+  long unsigned int pretmp_962;
+  long unsigned int pretmp_963;
+  long unsigned int pretmp_964;
+  long unsigned int pretmp_965;
+  int pretmp_1000;
+  int prephitmp_1001;
+  long unsigned int _1054;
+  int pretmp_1055;
+  long unsigned int _1057;
+  long unsigned int _1058;
+  long unsigned int _1059;
+
+  <bb 2>:
+  if (n_32(D) > 1)
+    goto <bb 3>;
+  else
+    goto <bb 18>;
+
+  <bb 3>:
+  pretmp_1055 = n_32(D) >> 1;
+
+  <bb 4>:
+  # k1_301 = PHI <k1_48(12), 1(3)>
+  # k2_316 = PHI <k2_287(12), 0(3)>
+  k2_319 = k2_316 ^ pretmp_1055;
+  _302 = k2_319 & pretmp_1055;
+  if (_302 == 0)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+
+  <bb 5>:
+
+  <bb 6>:
+  # k_304 = PHI <k_36(8), pretmp_1055(5)>
+  # k2_294 = PHI <k2_34(8), k2_319(5)>
+  k_36 = k_304 >> 1;
+  k2_34 = k2_294 ^ k_36;
+  _35 = k2_34 & k_36;
+  if (_35 == 0)
+    goto <bb 8>;
+  else
+    goto <bb 7>;
+
+  <bb 7>:
+  # k2_1063 = PHI <k2_34(6)>
+  goto <bb 9>;
+
+  <bb 8>:
+  goto <bb 6>;
+
+  <bb 9>:
+  # k2_287 = PHI <k2_1063(7), k2_319(4)>
+  if (k2_287 < k1_301)
+    goto <bb 10>;
+  else
+    goto <bb 11>;
+
+  <bb 10>:
+  _37 = (long unsigned int) k1_301;
+  _38 = _37 * 8;
+  _40 = fz_39(D) + _38;
+  a_41 = *_40;
+  _42 = (long unsigned int) k2_287;
+  _43 = _42 * 8;
+  _44 = fz_39(D) + _43;
+  _45 = *_44;
+  *_40 = _45;
+  *_44 = a_41;
+
+  <bb 11>:
+  k1_48 = k1_301 + 1;
+  if (n_32(D) > k1_48)
+    goto <bb 12>;
+  else
+    goto <bb 13>;
+
+  <bb 12>:
+  goto <bb 4>;
+
+  <bb 13>:
+  if (n_32(D) > 1)
+    goto <bb 14>;
+  else
+    goto <bb 19>;
+
+  <bb 14>:
+
+  <bb 15>:
+  # k_300 = PHI <k_50(17), 0(14)>
+  k_50 = k_300 + 1;
+  _49 = 1 << k_50;
+  if (n_32(D) > _49)
+    goto <bb 17>;
+  else
+    goto <bb 16>;
+
+  <bb 16>:
+  # k_1060 = PHI <k_50(15)>
+  pretmp_1000 = k_1060 & 1;
+  goto <bb 18>;
+
+  <bb 17>:
+  goto <bb 15>;
+
+  <bb 18>:
+  # prephitmp_1001 = PHI <pretmp_1000(16), 0(2)>
+  if (prephitmp_1001 == 0)
+    goto <bb 19>;
+  else
+    goto <bb 23>;
+
+  <bb 19>:
+  # k_307 = PHI <prephitmp_1001(18), 0(13)>
+  _52 = (long unsigned int) n_32(D);
+  _53 = _52 * 8;
+  fn_54 = fz_39(D) + _53;
+  if (fz_39(D) < fn_54)
+    goto <bb 20>;
+  else
+    goto <bb 29>;
+
+  <bb 20>:
+
+  <bb 21>:
+  # fz_298 = PHI <fz_71(22), fz_39(D)(20)>
+  _55 = *fz_298;
+  _56 = MEM[(double *)fz_298 + 8B];
+  f1_57 = _55 - _56;
+  f0_58 = _56 + _55;
+  _59 = MEM[(double *)fz_298 + 16B];
+  _60 = MEM[(double *)fz_298 + 24B];
+  f3_61 = _59 - _60;
+  f2_62 = _60 + _59;
+  _63 = f0_58 - f2_62;
+  MEM[(double *)fz_298 + 16B] = _63;
+  _65 = f2_62 + f0_58;
+  *fz_298 = _65;
+  _67 = f1_57 - f3_61;
+  MEM[(double *)fz_298 + 24B] = _67;
+  _69 = f3_61 + f1_57;
+  MEM[(double *)fz_298 + 8B] = _69;
+  fz_71 = fz_298 + 32;
+  if (fn_54 > fz_71)
+    goto <bb 22>;
+  else
+    goto <bb 28>;
+
+  <bb 22>:
+  goto <bb 21>;
+
+  <bb 23>:
+  _72 = (long unsigned int) n_32(D);
+  _73 = _72 * 8;
+  fn_74 = fz_39(D) + _73;
+  gi_75 = fz_39(D) + 8;
+  if (fz_39(D) < fn_74)
+    goto <bb 24>;
+  else
+    goto <bb 29>;
+
+  <bb 24>:
+
+  <bb 25>:
+  # fz_299 = PHI <fz_116(27), fz_39(D)(24)>
+  # gi_315 = PHI <gi_117(27), gi_75(24)>
+  _76 = *fz_299;
+  _77 = *gi_315;
+  c1_78 = _76 - _77;
+  s1_79 = _77 + _76;
+  _80 = MEM[(double *)fz_299 + 16B];
+  _81 = MEM[(double *)gi_315 + 16B];
+  c2_82 = _80 - _81;
+  s2_83 = _81 + _80;
+  _84 = MEM[(double *)fz_299 + 32B];
+  _85 = MEM[(double *)gi_315 + 32B];
+  c3_86 = _84 - _85;
+  s3_87 = _85 + _84;
+  _88 = MEM[(double *)fz_299 + 48B];
+  _89 = MEM[(double *)gi_315 + 48B];
+  c4_90 = _88 - _89;
+  s4_91 = _89 + _88;
+  f1_92 = s1_79 - s2_83;
+  f0_93 = s2_83 + s1_79;
+  g1_94 = c1_78 - c2_82;
+  g0_95 = c2_82 + c1_78;
+  f3_96 = s3_87 - s4_91;
+  f2_97 = s4_91 + s3_87;
+  g3_98 = c4_90 * 1.4142135623730951454746218587388284504413604736328125e+0;
+  g2_99 = c3_86 * 1.4142135623730951454746218587388284504413604736328125e+0;
+  _100 = f0_93 - f2_97;
+  MEM[(double *)fz_299 + 32B] = _100;
+  _102 = f2_97 + f0_93;
+  *fz_299 = _102;
+  _104 = f1_92 - f3_96;
+  MEM[(double *)fz_299 + 48B] = _104;
+  _106 = f3_96 + f1_92;
+  MEM[(double *)fz_299 + 16B] = _106;
+  _108 = g0_95 - g2_99;
+  MEM[(double *)gi_315 + 32B] = _108;
+  _110 = g2_99 + g0_95;
+  *gi_315 = _110;
+  _112 = g1_94 - g3_98;
+  MEM[(double *)gi_315 + 48B] = _112;
+  _114 = g3_98 + g1_94;
+  MEM[(double *)gi_315 + 16B] = _114;
+  fz_116 = fz_299 + 64;
+  gi_117 = gi_315 + 64;
+  if (fn_74 > fz_116)
+    goto <bb 27>;
+  else
+    goto <bb 26>;
+
+  <bb 26>:
+  prephitmp_127 = prephitmp_1001;
+  fn_128 = fn_74;
+  goto <bb 29>;
+
+  <bb 27>:
+  goto <bb 25>;
+
+  <bb 28>:
+  k_219 = k_307;
+  fn_51 = fn_54;
+
+  <bb 29>:
+  # k_317 = PHI <k_307(28), prephitmp_1001(26), k_307(19), prephitmp_1001(23)>
+  # prephitmp_957 = PHI <fn_54(28), fn_74(26), fn_54(19), fn_74(23)>
+  if (n_32(D) <= 15)
+    goto <bb 55>;
+  else
+    goto <bb 30>;
+
+  <bb 30>:
+
+  <bb 31>:
+  # k_4 = PHI <k_317(30), k_118(54)>
+  k_118 = k_4 + 2;
+  k1_119 = 1 << k_118;
+  k2_120 = k1_119 << 1;
+  k4_121 = k2_120 << 1;
+  k3_122 = k2_120 + k1_119;
+  kx_123 = k1_119 >> 1;
+  _124 = (long unsigned int) kx_123;
+  _125 = _124 * 8;
+  gi_126 = fz_39(D) + _125;
+  pretmp_958 = (long unsigned int) k1_119;
+  pretmp_959 = pretmp_958 * 8;
+  pretmp_960 = (long unsigned int) k2_120;
+  pretmp_961 = pretmp_960 * 8;
+  pretmp_962 = (long unsigned int) k3_122;
+  pretmp_963 = pretmp_962 * 8;
+  pretmp_964 = (long unsigned int) k4_121;
+  pretmp_965 = pretmp_964 * 8;
+
+  <bb 32>:
+  # fz_10 = PHI <fz_39(D)(31), fz_177(33)>
+  # gi_13 = PHI <gi_126(31), gi_176(33)>
+  _130 = *fz_10;
+  _133 = fz_10 + pretmp_959;
+  _134 = *_133;
+  f1_135 = _130 - _134;
+  f0_136 = _134 + _130;
+  _139 = fz_10 + pretmp_961;
+  _140 = *_139;
+  _143 = fz_10 + pretmp_963;
+  _144 = *_143;
+  f3_145 = _140 - _144;
+  f2_146 = _144 + _140;
+  _147 = f0_136 - f2_146;
+  *_139 = _147;
+  _149 = f2_146 + f0_136;
+  *fz_10 = _149;
+  _151 = f1_135 - f3_145;
+  *_143 = _151;
+  _153 = f3_145 + f1_135;
+  *_133 = _153;
+  _155 = *gi_13;
+  _156 = gi_13 + pretmp_959;
+  _157 = *_156;
+  g1_158 = _155 - _157;
+  g0_159 = _157 + _155;
+  _160 = gi_13 + pretmp_963;
+  _161 = *_160;
+  g3_162 = _161 * 1.4142135623730951454746218587388284504413604736328125e+0;
+  _163 = gi_13 + pretmp_961;
+  _164 = *_163;
+  g2_165 = _164 * 1.4142135623730951454746218587388284504413604736328125e+0;
+  _166 = g0_159 - g2_165;
+  *_163 = _166;
+  _168 = g2_165 + g0_159;
+  *gi_13 = _168;
+  _170 = g1_158 - g3_162;
+  *_160 = _170;
+  _172 = g3_162 + g1_158;
+  *_156 = _172;
+  gi_176 = gi_13 + pretmp_965;
+  fz_177 = fz_10 + pretmp_965;
+  if (fz_177 < prephitmp_957)
+    goto <bb 33>;
+  else
+    goto <bb 34>;
+
+  <bb 33>:
+  goto <bb 32>;
+
+  <bb 34>:
+  # _1059 = PHI <pretmp_959(32)>
+  # _1058 = PHI <pretmp_961(32)>
+  # _1057 = PHI <pretmp_963(32)>
+  # _1054 = PHI <pretmp_965(32)>
+  _129 = (unsigned int) k_4;
+  _132 = (sizetype) _129;
+  _137 = _132 + 1;
+  _138 = _137 * 8;
+  __builtin_memcpy (&MEM[(void *)&coswrk + 16B], &MEM[(void *)&costab + 16B], _138);
+  _141 = (unsigned int) k_4;
+  _142 = (sizetype) _141;
+  _174 = _142 + 1;
+  _175 = _174 * 8;
+  __builtin_memcpy (&MEM[(void *)&sinwrk + 16B], &MEM[(void *)&sintab + 16B], _175);
+  if (kx_123 > 1)
+    goto <bb 56>;
+  else
+    goto <bb 35>;
+
+  <bb 35>:
+  if (n_32(D) > k4_121)
+    goto <bb 54>;
+  else
+    goto <bb 55>;
+
+  <bb 36>:
+  t_lam_183 = t_lam_21 + 1;
+  _327 = t_lam_183 & 1;
+  if (_327 == 0)
+    goto <bb 37>;
+  else
+    goto <bb 41>;
+
+  <bb 37>:
+
+  <bb 38>:
+  # i_311 = PHI <i_186(40), 0(37)>
+  i_186 = i_311 + 1;
+  _184 = t_lam_183 >> i_186;
+  _185 = _184 & 1;
+  if (_185 == 0)
+    goto <bb 40>;
+  else
+    goto <bb 39>;
+
+  <bb 39>:
+  # i_1053 = PHI <i_186(38)>
+  goto <bb 41>;
+
+  <bb 40>:
+  goto <bb 38>;
+
+  <bb 41>:
+  # i_318 = PHI <i_1053(39), 0(36)>
+
+  <bb 42>:
+  # i_285 = PHI <i_318(41), 0(56)>
+  # t_lam_21 = PHI <t_lam_183(41), 1(56)>
+  # i_293 = PHI <i_284(41), 1(56)>
+  i_187 = k_118 - i_285;
+  s1_188 = sinwrk[i_187];
+  c1_189 = coswrk[i_187];
+  if (i_187 > 1)
+    goto <bb 43>;
+  else
+    goto <bb 49>;
+
+  <bb 43>:
+  j_191 = i_285 + 2;
+  _329 = t_lam_21 >> j_191;
+  _306 = _329 & 1;
+  if (_306 != 0)
+    goto <bb 44>;
+  else
+    goto <bb 48>;
+
+  <bb 44>:
+
+  <bb 45>:
+  # j_314 = PHI <j_194(47), j_191(44)>
+  j_194 = j_314 + 1;
+  _192 = t_lam_21 >> j_194;
+  _193 = _192 & 1;
+  if (_193 != 0)
+    goto <bb 47>;
+  else
+    goto <bb 46>;
+
+  <bb 46>:
+  # j_1052 = PHI <j_194(45)>
+  goto <bb 48>;
+
+  <bb 47>:
+  goto <bb 45>;
+
+  <bb 48>:
+  # j_286 = PHI <j_1052(46), j_191(43)>
+  j_195 = k_118 - j_286;
+  _196 = halsec[i_187];
+  _197 = i_187 + -1;
+  _198 = sinwrk[_197];
+  _199 = sinwrk[j_195];
+  _200 = _199 + _198;
+  _201 = _200 * _196;
+  sinwrk[i_187] = _201;
+  _203 = coswrk[_197];
+  _204 = coswrk[j_195];
+  _205 = _204 + _203;
+  _206 = _205 * _196;
+  coswrk[i_187] = _206;
+
+  <bb 49>:
+  powmult_15 = c1_189 * c1_189;
+  powmult_9 = s1_188 * s1_188;
+  c2_210 = powmult_15 - powmult_9;
+  _211 = s1_188 * c1_189;
+  s2_212 = _211 * 2.0e+0;
+  _213 = (long unsigned int) i_293;
+  _214 = _213 * 8;
+  fi_215 = fz_39(D) + _214;
+  _216 = pretmp_958 - _213;
+  _217 = _216 * 8;
+  gi_218 = fz_39(D) + _217;
+
+  <bb 50>:
+  # fi_11 = PHI <fi_215(49), fi_283(51)>
+  # gi_14 = PHI <gi_218(49), gi_282(51)>
+  _220 = fi_11 + _1059;
+  _221 = *_220;
+  _222 = _221 * s2_212;
+  _223 = gi_14 + _1059;
+  _224 = *_223;
+  _225 = _224 * c2_210;
+  b_226 = _222 - _225;
+  _227 = _221 * c2_210;
+  _228 = _224 * s2_212;
+  a_229 = _228 + _227;
+  _230 = *fi_11;
+  f1_231 = _230 - a_229;
+  f0_232 = a_229 + _230;
+  _233 = *gi_14;
+  g1_234 = _233 - b_226;
+  g0_235 = b_226 + _233;
+  _236 = fi_11 + _1057;
+  _237 = *_236;
+  _238 = _237 * s2_212;
+  _239 = gi_14 + _1057;
+  _240 = *_239;
+  _241 = _240 * c2_210;
+  b_242 = _238 - _241;
+  _243 = _237 * c2_210;
+  _244 = _240 * s2_212;
+  a_245 = _244 + _243;
+  _246 = fi_11 + _1058;
+  _247 = *_246;
+  f3_248 = _247 - a_245;
+  f2_249 = a_245 + _247;
+  _250 = gi_14 + _1058;
+  _251 = *_250;
+  g3_252 = _251 - b_242;
+  g2_253 = b_242 + _251;
+  _254 = f2_249 * s1_188;
+  _255 = g3_252 * c1_189;
+  b_256 = _254 - _255;
+  _257 = f2_249 * c1_189;
+  _258 = g3_252 * s1_188;
+  a_259 = _258 + _257;
+  _260 = f0_232 - a_259;
+  *_246 = _260;
+  _262 = a_259 + f0_232;
+  *fi_11 = _262;
+  _264 = g1_234 - b_256;
+  *_239 = _264;
+  _266 = b_256 + g1_234;
+  *_223 = _266;
+  _268 = g2_253 * c1_189;
+  _269 = f3_248 * s1_188;
+  b_270 = _268 - _269;
+  _271 = g2_253 * s1_188;
+  _272 = f3_248 * c1_189;
+  a_273 = _272 + _271;
+  _274 = g0_235 - a_273;
+  *_250 = _274;
+  _276 = a_273 + g0_235;
+  *gi_14 = _276;
+  _278 = f1_231 - b_270;
+  *_236 = _278;
+  _280 = b_270 + f1_231;
+  *_220 = _280;
+  gi_282 = gi_14 + _1054;
+  fi_283 = fi_11 + _1054;
+  if (fi_283 < prephitmp_957)
+    goto <bb 51>;
+  else
+    goto <bb 52>;
+
+  <bb 51>:
+  goto <bb 50>;
+
+  <bb 52>:
+  i_284 = i_293 + 1;
+  if (kx_123 > i_284)
+    goto <bb 36>;
+  else
+    goto <bb 53>;
+
+  <bb 53>:
+  goto <bb 35>;
+
+  <bb 54>:
+  goto <bb 31>;
+
+  <bb 55>:
+  return;
+
+  <bb 56>:
+  goto <bb 42>;
+
+}
+
+
+
+;; Function ifft (ifft, funcdef_no=1, decl_uid=1893, symbol_order=7)
+
+ifft (int n, double * real, double * imag)
+{
+  int k;
+  int j;
+  int i;
+  double t;
+  double s;
+  double r;
+  double q;
+  double d;
+  double c;
+  double b;
+  double a;
+  long unsigned int _12;
+  long unsigned int _13;
+  double * _14;
+  long unsigned int _16;
+  long unsigned int _17;
+  double * _18;
+  double * _22;
+  double * _24;
+  double _28;
+  double _29;
+  double _31;
+  double _32;
+  double _34;
+  double _35;
+  double _37;
+  double _38;
+
+  <bb 2>:
+  fht (real_5(D), n_6(D));
+  fht (imag_8(D), n_6(D));
+  j_10 = n_6(D) + -1;
+  k_11 = n_6(D) / 2;
+  if (k_11 > 1)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+
+  <bb 3>:
+
+  <bb 4>:
+  # i_43 = PHI <i_40(5), 1(3)>
+  # j_42 = PHI <j_41(5), j_10(3)>
+  _12 = (long unsigned int) i_43;
+  _13 = _12 * 8;
+  _14 = real_5(D) + _13;
+  a_15 = *_14;
+  _16 = (long unsigned int) j_42;
+  _17 = _16 * 8;
+  _18 = real_5(D) + _17;
+  b_19 = *_18;
+  q_20 = b_19 + a_15;
+  r_21 = a_15 - b_19;
+  _22 = imag_8(D) + _13;
+  c_23 = *_22;
+  _24 = imag_8(D) + _17;
+  d_25 = *_24;
+  s_26 = d_25 + c_23;
+  t_27 = c_23 - d_25;
+  _28 = s_26 + r_21;
+  _29 = _28 * 5.0e-1;
+  *_22 = _29;
+  _31 = s_26 - r_21;
+  _32 = _31 * 5.0e-1;
+  *_24 = _32;
+  _34 = q_20 - t_27;
+  _35 = _34 * 5.0e-1;
+  *_14 = _35;
+  _37 = t_27 + q_20;
+  _38 = _37 * 5.0e-1;
+  *_18 = _38;
+  i_40 = i_43 + 1;
+  j_41 = j_42 + -1;
+  if (k_11 > i_40)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+
+  <bb 5>:
+  goto <bb 4>;
+
+  <bb 6>:
+
+  <bb 7>:
+  return;
+
+}
+
+
+
+;; Function realfft (realfft, funcdef_no=2, decl_uid=1912, symbol_order=8)
+
+realfft (int n, double * real)
+{
+  int k;
+  int j;
+  int i;
+  double b;
+  double a;
+  long unsigned int _10;
+  long unsigned int _11;
+  double * _12;
+  long unsigned int _14;
+  long unsigned int _15;
+  double * _16;
+  double _18;
+  double _19;
+  double _21;
+  double _22;
+
+  <bb 2>:
+  fht (real_5(D), n_6(D));
+  j_8 = n_6(D) + -1;
+  k_9 = n_6(D) / 2;
+  if (k_9 > 1)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+
+  <bb 3>:
+
+  <bb 4>:
+  # i_29 = PHI <i_24(5), 1(3)>
+  # j_30 = PHI <j_25(5), j_8(3)>
+  _10 = (long unsigned int) i_29;
+  _11 = _10 * 8;
+  _12 = real_5(D) + _11;
+  a_13 = *_12;
+  _14 = (long unsigned int) j_30;
+  _15 = _14 * 8;
+  _16 = real_5(D) + _15;
+  b_17 = *_16;
+  _18 = a_13 - b_17;
+  _19 = _18 * 5.0e-1;
+  *_16 = _19;
+  _21 = b_17 + a_13;
+  _22 = _21 * 5.0e-1;
+  *_12 = _22;
+  i_24 = i_29 + 1;
+  j_25 = j_30 + -1;
+  if (k_9 > i_24)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+
+  <bb 5>:
+  goto <bb 4>;
+
+  <bb 6>:
+
+  <bb 7>:
+  return;
+
+}
+
+
+
+;; Function fft (fft, funcdef_no=3, decl_uid=1924, symbol_order=9)
+
+fft (int n, double * real, double * imag)
+{
+  int k;
+  int j;
+  int i;
+  double t;
+  double s;
+  double r;
+  double q;
+  double d;
+  double c;
+  double b;
+  double a;
+  long unsigned int _8;
+  long unsigned int _9;
+  double * _11;
+  long unsigned int _13;
+  long unsigned int _14;
+  double * _15;
+  double * _20;
+  double * _22;
+  double _26;
+  double _27;
+  double _29;
+  double _30;
+  double _32;
+  double _33;
+  double _35;
+  double _36;
+
+  <bb 2>:
+  j_5 = n_4(D) + -1;
+  k_6 = n_4(D) / 2;
+  if (k_6 > 1)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+
+  <bb 3>:
+
+  <bb 4>:
+  # i_43 = PHI <i_38(5), 1(3)>
+  # j_42 = PHI <j_39(5), j_5(3)>
+  _8 = (long unsigned int) i_43;
+  _9 = _8 * 8;
+  _11 = real_10(D) + _9;
+  a_12 = *_11;
+  _13 = (long unsigned int) j_42;
+  _14 = _13 * 8;
+  _15 = real_10(D) + _14;
+  b_16 = *_15;
+  q_17 = b_16 + a_12;
+  r_18 = a_12 - b_16;
+  _20 = imag_19(D) + _9;
+  c_21 = *_20;
+  _22 = imag_19(D) + _14;
+  d_23 = *_22;
+  s_24 = d_23 + c_21;
+  t_25 = c_21 - d_23;
+  _26 = t_25 + q_17;
+  _27 = _26 * 5.0e-1;
+  *_11 = _27;
+  _29 = q_17 - t_25;
+  _30 = _29 * 5.0e-1;
+  *_15 = _30;
+  _32 = s_24 - r_18;
+  _33 = _32 * 5.0e-1;
+  *_20 = _33;
+  _35 = s_24 + r_18;
+  _36 = _35 * 5.0e-1;
+  *_22 = _36;
+  i_38 = i_43 + 1;
+  j_39 = j_42 + -1;
+  if (k_6 > i_38)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+
+  <bb 5>:
+  goto <bb 4>;
+
+  <bb 6>:
+
+  <bb 7>:
+  fht (real_10(D), n_4(D));
+  fht (imag_19(D), n_4(D));
+  return;
+
+}
+
+
+
+;; Function realifft (realifft, funcdef_no=4, decl_uid=1943, symbol_order=10)
+
+realifft (int n, double * real)
+{
+  int k;
+  int j;
+  int i;
+  double b;
+  double a;
+  long unsigned int _8;
+  long unsigned int _9;
+  double * _11;
+  long unsigned int _13;
+  long unsigned int _14;
+  double * _15;
+  double _17;
+  double _19;
+
+  <bb 2>:
+  j_5 = n_4(D) + -1;
+  k_6 = n_4(D) / 2;
+  if (k_6 > 1)
+    goto <bb 3>;
+  else
+    goto <bb 7>;
+
+  <bb 3>:
+
+  <bb 4>:
+  # i_27 = PHI <i_21(5), 1(3)>
+  # j_28 = PHI <j_22(5), j_5(3)>
+  _8 = (long unsigned int) i_27;
+  _9 = _8 * 8;
+  _11 = real_10(D) + _9;
+  a_12 = *_11;
+  _13 = (long unsigned int) j_28;
+  _14 = _13 * 8;
+  _15 = real_10(D) + _14;
+  b_16 = *_15;
+  _17 = a_12 - b_16;
+  *_15 = _17;
+  _19 = b_16 + a_12;
+  *_11 = _19;
+  i_21 = i_27 + 1;
+  j_22 = j_28 + -1;
+  if (k_6 > i_21)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+
+  <bb 5>:
+  goto <bb 4>;
+
+  <bb 6>:
+
+  <bb 7>:
+  fht (real_10(D), n_4(D));
+  return;
+
+}
+
+

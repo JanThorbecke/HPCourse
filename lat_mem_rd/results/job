@@ -1,0 +1,13 @@
+#!/bin/csh
+#qsub -q work -j oe -V -S /bin/bash -W exclusive ./job
+#time mpirun -np $NSLOTS -hostfile $TMPDIR/machines  ./a.out
+
+cd /usr/people/jan/lat_mem_rd
+
+echo NSLOTS=$NSLOTS
+echo TMPDIR=$TMPDIR
+
+/usr/people/jan/lat_mem_rd/lat_mem_rd 128 32  > XD1_lat_mem_128-s32  2>&1
+/usr/people/jan/lat_mem_rd/lat_mem_rd 128 64 > XD1_lat_mem_128-s64 2>&1
+/usr/people/jan/lat_mem_rd/lat_mem_rd 128 128 > XD1_lat_mem_128-s128 2>&1
+

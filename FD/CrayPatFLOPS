@@ -1,0 +1,598 @@
+jan@guppy1:~/lus/FD/fdelmodc/demo> pat_report *.xf
+pat_report:  Using existing file:   fdelmodc+pat+14620-12s.ap2
+Data file 1/1: [....................]
+CrayPat/X:  Version 4.4.1 Revision 2380 (xf 2119)  02/12/09 10:01:32
+
+Number of PEs (MPI ranks):      1
+
+Number of Threads per PE:       1
+
+Number of Cores per Processor:  1
+
+Execution start time:   Fri Apr 17 04:39:12 2009
+
+System type and speed:   x86_64  2400 MHz
+
+Current path to data file:
+  /home/users/jan/lus/FD/fdelmodc/demo/fdelmodc+pat+14620-12s.ap2
+  /home/users/jan/lus/FD/fdelmodc/demo/fdelmodc+pat+14620-12s.xf
+
+Notes:
+    Sampling interval was 1 microseconds (1000000.0/sec)
+  BSD timer type was ITIMER_PROF
+
+
+
+Preserved existing file:   fdelmodc+pat+14620-12s.apa
+
+
+Notes for table 1:
+
+  Table option:
+    -O samp_profile
+  Options implied by table option:  
+    -d sa%@0.95,sa,imb_sa,imb_sa% -b gr,fu
+
+  Options for related tables not shown by default:
+    -O samp_profile+src    
+
+  The Total value for Samp is the sum of the Group values.
+  The Group value for Samp is the sum of the Function values.
+    (To specify different aggregations, see:  pat_help report options s1)
+
+  This table shows only lines with Samp% > 0.95.
+    (To set thresholds to zero, specify:  -T)
+
+  Percentages at each level are of the Total for the program.
+    (For percentages relative to next level up, specify:
+      -s percent=r[elative])
+
+
+Table 1:  Profile by Function
+
+ Samp % | Samp |Group
+        |      | Function
+
+ 100.0% | 6008 |Total
+|------------------------
+|  98.5% | 5918 |USER
+||-----------------------
+||  87.8% | 5277 |elastic4
+||  10.2% |  610 |taperEdges
+||=======================
+|   1.5% |   90 |ETC
+|========================
+
+
+Notes for table 2:
+
+  Table option:
+    -O samp_profile+src
+  Options implied by table option:  
+    -d sa%@0.95,sa,imb_sa,imb_sa% -b gr,fu,so,li
+
+  Options for related tables not shown by default:
+    -O samp_profile        
+
+  The Total value for Samp is the sum of the Group values.
+  The Group value for Samp is the sum of the Function values.
+  The Function value for Samp is the sum of the Source values.
+  The Source value for Samp is the sum of the Line values.
+    (To specify different aggregations, see:  pat_help report options s1)
+
+  This table shows only lines with Samp% > 0.95.
+    (To set thresholds to zero, specify:  -T)
+
+  Percentages at each level are of the Total for the program.
+    (For percentages relative to next level up, specify:
+      -s percent=r[elative])
+
+
+Table 2:  Profile by Group, Function, and Line
+
+ Samp % | Samp |Group
+        |      | Function
+        |      |  Source
+        |      |   Line
+
+ 100.0% | 6008 |Total
+|------------------------
+|  98.5% | 5918 |USER
+||-----------------------
+||  87.8% | 5277 |elastic4
+3|        |      | jan/FD/fdelmodc/elastic4.c
+||||---------------------
+4|||  20.0% | 1202 |line.88
+4|||  18.9% | 1134 |line.100
+4|||   5.9% |  357 |line.150
+4|||  23.8% | 1430 |line.154
+4|||  19.2% | 1153 |line.181
+||||=====================
+||  10.2% |  610 |taperEdges
+3|        |      | jan/FD/fdelmodc/taperEdges.c
+||||---------------------
+4|||   2.7% |  165 |line.23
+4|||   1.7% |  104 |line.35
+4|||   3.5% |  212 |line.47
+4|||   2.1% |  129 |line.59
+||=======================
+|   1.5% |   90 |ETC
+|========================
+
+
+Notes for table 3:
+
+  Table option:
+    -O samp_profile+hwpc
+  Options implied by table option:  
+    -d sa%@0.95,sa,imb_sa,imb_sa%,P -b gr,fu
+
+  Options for related tables not shown by default:
+    -O samp_profile+src    
+
+  The Total value for each data item is the sum of the Group values.
+  The Group value for each data item is the sum of the Function values.
+    (To specify different aggregations, see:  pat_help report options s1)
+
+  'D1 cache utilization (M)' is based on data size 8B, and refills caused by 
+    misses.
+
+  'TLB cache utilization' is based on data size 8B, page size 4096B.
+
+  This table shows only lines with Samp% > 0.95.
+    (To set thresholds to zero, specify:  -T)
+
+  Percentages at each level are of the Total for the program.
+    (For percentages relative to next level up, specify:
+      -s percent=r[elative])
+
+
+Table 3:  Profile by Function
+
+Group / Function
+
+========================================================================
+Totals for program
+------------------------------------------------------------------------
+  Samp%                                       100.0%
+  Samp                                          6008
+  DATA_CACHE_MISSES        39.315M/sec    1867859956 misses
+  PAPI_TLB_DM               0.696M/sec      33066944 misses
+  PAPI_L1_DCA            1172.724M/sec   55716098218 refs
+  PAPI_FP_OPS             867.258M/sec   41203431576 ops
+  User time (approx)       47.510 secs  114024000000 cycles
+  HW FP Ops / User time   867.258M/sec   41203431576 ops  18.1%peak(DP)
+  Computational intensity    0.36 ops/cycle     0.74 ops/ref
+  MFLOPS (aggregate)       867.26M/sec
+  TLB utilization         1684.95 refs/miss    3.291 avg uses
+  D1 cache hit,miss ratios  96.6% hits          3.4% misses
+  D1 cache utilization (M)  29.83 refs/miss    3.729 avg uses
+========================================================================
+USER
+------------------------------------------------------------------------
+  Samp%                                        98.5%
+  Samp                                          5918
+  DATA_CACHE_MISSES        39.323M/sec    1858385473 misses
+  PAPI_TLB_DM               0.695M/sec      32868549 misses
+  PAPI_L1_DCA            1171.695M/sec   55374286890 refs
+  PAPI_FP_OPS             868.063M/sec   41024671129 ops
+  User time (approx)       47.260 secs  113424000000 cycles
+  HW FP Ops / User time   868.063M/sec   41024671129 ops  18.1%peak(DP)
+  Computational intensity    0.36 ops/cycle     0.74 ops/ref
+  MFLOPS (aggregate)       868.06M/sec
+  TLB utilization         1684.72 refs/miss    3.290 avg uses
+  D1 cache hit,miss ratios  96.6% hits          3.4% misses
+  D1 cache utilization (M)  29.80 refs/miss    3.725 avg uses
+========================================================================
+USER / elastic4
+------------------------------------------------------------------------
+  Samp%                                        87.8%
+  Samp                                          5277
+  DATA_CACHE_MISSES        39.255M/sec    1656576316 misses
+  PAPI_TLB_DM               0.690M/sec      29133317 misses
+  PAPI_L1_DCA            1170.174M/sec   49381331439 refs
+  PAPI_FP_OPS             863.194M/sec   36426781386 ops
+  User time (approx)       42.200 secs  101280000000 cycles
+  HW FP Ops / User time   863.194M/sec   36426781386 ops  18.0%peak(DP)
+  Computational intensity    0.36 ops/cycle     0.74 ops/ref
+  MFLOPS (aggregate)       863.19M/sec
+  TLB utilization         1695.01 refs/miss    3.311 avg uses
+  D1 cache hit,miss ratios  96.6% hits          3.4% misses
+  D1 cache utilization (M)  29.81 refs/miss    3.726 avg uses
+========================================================================
+USER / taperEdges
+------------------------------------------------------------------------
+  Samp%                                       10.2%
+  Samp                                          610
+  DATA_CACHE_MISSES        39.994M/sec    194771827 misses
+  PAPI_TLB_DM               0.741M/sec      3610935 misses
+  PAPI_L1_DCA            1187.395M/sec   5782612972 refs
+  PAPI_FP_OPS             913.368M/sec   4448103922 ops
+  User time (approx)        4.870 secs  11688000000 cycles
+  HW FP Ops / User time   913.368M/sec   4448103922 ops  19.0%peak(DP)
+  Computational intensity    0.38 ops/cycle    0.77 ops/ref
+  MFLOPS (aggregate)       913.37M/sec
+  TLB utilization         1601.42 refs/miss   3.128 avg uses
+  D1 cache hit,miss ratios  96.6% hits         3.4% misses
+  D1 cache utilization (M)  29.69 refs/miss   3.711 avg uses
+========================================================================
+ETC
+------------------------------------------------------------------------
+  Samp%                                       1.5%
+  Samp                                          90
+  DATA_CACHE_MISSES        37.898M/sec     9474483 misses
+  PAPI_TLB_DM               0.794M/sec      198395 misses
+  PAPI_L1_DCA            1367.245M/sec   341811328 refs
+  PAPI_FP_OPS             715.042M/sec   178760447 ops
+  User time (approx)        0.250 secs   600000000 cycles
+  HW FP Ops / User time   715.042M/sec   178760447 ops  14.9%peak(DP)
+  Computational intensity    0.30 ops/cycle   0.52 ops/ref
+  MFLOPS (aggregate)       715.04M/sec
+  TLB utilization         1722.88 refs/miss  3.365 avg uses
+  D1 cache hit,miss ratios  97.2% hits        2.8% misses
+  D1 cache utilization (M)  36.08 refs/miss  4.510 avg uses
+========================================================================
+
+
+Notes for table 4:
+
+  Table option:
+    -O samp_profile+src+hwpc
+  Options implied by table option:  
+    -d sa%@0.95,sa,imb_sa,imb_sa%,P -b gr,fu,so,li
+
+  Options for related tables not shown by default:
+    -O samp_profile        
+
+  The Total value for each data item is the sum of the Group values.
+  The Group value for each data item is the sum of the Function values.
+  The Function value for each data item is the sum of the Source values.
+  The Source value for each data item is the sum of the Line values.
+    (To specify different aggregations, see:  pat_help report options s1)
+
+  'D1 cache utilization (M)' is based on data size 8B, and refills caused by 
+    misses.
+
+  'TLB cache utilization' is based on data size 8B, page size 4096B.
+
+  This table shows only lines with Samp% > 0.95.
+    (To set thresholds to zero, specify:  -T)
+
+  Percentages at each level are of the Total for the program.
+    (For percentages relative to next level up, specify:
+      -s percent=r[elative])
+
+
+Table 4:  Profile by Group, Function, and Line
+
+Group / Function / Source / Line
+
+========================================================================
+Totals for program
+------------------------------------------------------------------------
+  Samp%                                       100.0%
+  Samp                                          6008
+  DATA_CACHE_MISSES        39.315M/sec    1867859956 misses
+  PAPI_TLB_DM               0.696M/sec      33066944 misses
+  PAPI_L1_DCA            1172.724M/sec   55716098218 refs
+  PAPI_FP_OPS             867.258M/sec   41203431576 ops
+  User time (approx)       47.510 secs  114024000000 cycles
+  HW FP Ops / User time   867.258M/sec   41203431576 ops  18.1%peak(DP)
+  Computational intensity    0.36 ops/cycle     0.74 ops/ref
+  MFLOPS (aggregate)       867.26M/sec
+  TLB utilization         1684.95 refs/miss    3.291 avg uses
+  D1 cache hit,miss ratios  96.6% hits          3.4% misses
+  D1 cache utilization (M)  29.83 refs/miss    3.729 avg uses
+========================================================================
+USER
+------------------------------------------------------------------------
+  Samp%                                        98.5%
+  Samp                                          5918
+  DATA_CACHE_MISSES        39.323M/sec    1858385473 misses
+  PAPI_TLB_DM               0.695M/sec      32868549 misses
+  PAPI_L1_DCA            1171.695M/sec   55374286890 refs
+  PAPI_FP_OPS             868.063M/sec   41024671129 ops
+  User time (approx)       47.260 secs  113424000000 cycles
+  HW FP Ops / User time   868.063M/sec   41024671129 ops  18.1%peak(DP)
+  Computational intensity    0.36 ops/cycle     0.74 ops/ref
+  MFLOPS (aggregate)       868.06M/sec
+  TLB utilization         1684.72 refs/miss    3.290 avg uses
+  D1 cache hit,miss ratios  96.6% hits          3.4% misses
+  D1 cache utilization (M)  29.80 refs/miss    3.725 avg uses
+========================================================================
+USER / elastic4
+------------------------------------------------------------------------
+  Samp%                                        87.8%
+  Samp                                          5277
+  DATA_CACHE_MISSES        39.255M/sec    1656576316 misses
+  PAPI_TLB_DM               0.690M/sec      29133317 misses
+  PAPI_L1_DCA            1170.174M/sec   49381331439 refs
+  PAPI_FP_OPS             863.194M/sec   36426781386 ops
+  User time (approx)       42.200 secs  101280000000 cycles
+  HW FP Ops / User time   863.194M/sec   36426781386 ops  18.0%peak(DP)
+  Computational intensity    0.36 ops/cycle     0.74 ops/ref
+  MFLOPS (aggregate)       863.19M/sec
+  TLB utilization         1695.01 refs/miss    3.311 avg uses
+  D1 cache hit,miss ratios  96.6% hits          3.4% misses
+  D1 cache utilization (M)  29.81 refs/miss    3.726 avg uses
+========================================================================
+USER / elastic4 / jan/FD/fdelmodc/elastic4.c
+------------------------------------------------------------------------
+  Samp%                                        87.8%
+  Samp                                          5277
+  DATA_CACHE_MISSES        39.255M/sec    1656576316 misses
+  PAPI_TLB_DM               0.690M/sec      29133317 misses
+  PAPI_L1_DCA            1170.174M/sec   49381331439 refs
+  PAPI_FP_OPS             863.194M/sec   36426781386 ops
+  User time (approx)       42.200 secs  101280000000 cycles
+  HW FP Ops / User time   863.194M/sec   36426781386 ops  18.0%peak(DP)
+  Computational intensity    0.36 ops/cycle     0.74 ops/ref
+  MFLOPS (aggregate)       863.19M/sec
+  TLB utilization         1695.01 refs/miss    3.311 avg uses
+  D1 cache hit,miss ratios  96.6% hits          3.4% misses
+  D1 cache utilization (M)  29.81 refs/miss    3.726 avg uses
+========================================================================
+USER / elastic4 / jan/FD/fdelmodc/elastic4.c / line.88
+------------------------------------------------------------------------
+  Samp%                                       20.0%
+  Samp                                         1202
+  DATA_CACHE_MISSES        37.683M/sec    360628612 misses
+  PAPI_TLB_DM               0.764M/sec      7307906 misses
+  PAPI_L1_DCA            1116.064M/sec  10680732867 refs
+  PAPI_FP_OPS             790.991M/sec   7569785329 ops
+  User time (approx)        9.570 secs  22968000000 cycles
+  HW FP Ops / User time   790.991M/sec   7569785329 ops  16.5%peak(DP)
+  Computational intensity    0.33 ops/cycle    0.71 ops/ref
+  MFLOPS (aggregate)       790.99M/sec
+  TLB utilization         1461.53 refs/miss   2.855 avg uses
+  D1 cache hit,miss ratios  96.6% hits         3.4% misses
+  D1 cache utilization (M)  29.62 refs/miss   3.702 avg uses
+========================================================================
+USER / elastic4 / jan/FD/fdelmodc/elastic4.c / line.100
+------------------------------------------------------------------------
+  Samp%                                       18.9%
+  Samp                                         1134
+  DATA_CACHE_MISSES        37.204M/sec    336692026 misses
+  PAPI_TLB_DM               0.766M/sec      6928918 misses
+  PAPI_L1_DCA            1116.286M/sec  10102386435 refs
+  PAPI_FP_OPS             759.261M/sec   6871316046 ops
+  User time (approx)        9.050 secs  21720000000 cycles
+  HW FP Ops / User time   759.261M/sec   6871316046 ops  15.8%peak(DP)
+  Computational intensity    0.32 ops/cycle    0.68 ops/ref
+  MFLOPS (aggregate)       759.26M/sec
+  TLB utilization         1458.00 refs/miss   2.848 avg uses
+  D1 cache hit,miss ratios  96.7% hits         3.3% misses
+  D1 cache utilization (M)  30.00 refs/miss   3.751 avg uses
+========================================================================
+USER / elastic4 / jan/FD/fdelmodc/elastic4.c / line.150
+------------------------------------------------------------------------
+  Samp%                                       5.9%
+  Samp                                         357
+  DATA_CACHE_MISSES        41.756M/sec   114828635 misses
+  PAPI_TLB_DM               0.667M/sec     1834157 misses
+  PAPI_L1_DCA            1249.481M/sec  3436071878 refs
+  PAPI_FP_OPS             937.167M/sec  2577209742 ops
+  User time (approx)        2.750 secs  6600000000 cycles
+  HW FP Ops / User time   937.167M/sec  2577209742 ops  19.5%peak(DP)
+  Computational intensity    0.39 ops/cycle   0.75 ops/ref
+  MFLOPS (aggregate)       937.17M/sec
+  TLB utilization         1873.38 refs/miss  3.659 avg uses
+  D1 cache hit,miss ratios  96.7% hits        3.3% misses
+  D1 cache utilization (M)  29.92 refs/miss  3.740 avg uses
+========================================================================
+USER / elastic4 / jan/FD/fdelmodc/elastic4.c / line.154
+------------------------------------------------------------------------
+  Samp%                                       23.8%
+  Samp                                         1430
+  DATA_CACHE_MISSES        39.797M/sec    460447299 misses
+  PAPI_TLB_DM               0.630M/sec      7293029 misses
+  PAPI_L1_DCA            1190.999M/sec  13779860709 refs
+  PAPI_FP_OPS             894.616M/sec  10350704472 ops
+  User time (approx)       11.570 secs  27768000000 cycles
+  HW FP Ops / User time   894.616M/sec  10350704472 ops  18.6%peak(DP)
+  Computational intensity    0.37 ops/cycle    0.75 ops/ref
+  MFLOPS (aggregate)       894.62M/sec
+  TLB utilization         1889.46 refs/miss   3.690 avg uses
+  D1 cache hit,miss ratios  96.7% hits         3.3% misses
+  D1 cache utilization (M)  29.93 refs/miss   3.741 avg uses
+========================================================================
+USER / elastic4 / jan/FD/fdelmodc/elastic4.c / line.181
+------------------------------------------------------------------------
+  Samp%                                       19.2%
+  Samp                                         1153
+  DATA_CACHE_MISSES        41.476M/sec    383650227 misses
+  PAPI_TLB_DM               0.623M/sec      5764275 misses
+  PAPI_L1_DCA            1229.450M/sec  11372409981 refs
+  PAPI_FP_OPS             978.396M/sec   9050163422 ops
+  User time (approx)        9.250 secs  22200000000 cycles
+  HW FP Ops / User time   978.396M/sec   9050163422 ops  20.4%peak(DP)
+  Computational intensity    0.41 ops/cycle    0.80 ops/ref
+  MFLOPS (aggregate)       978.40M/sec
+  TLB utilization         1972.91 refs/miss   3.853 avg uses
+  D1 cache hit,miss ratios  96.6% hits         3.4% misses
+  D1 cache utilization (M)  29.64 refs/miss   3.705 avg uses
+========================================================================
+USER / taperEdges
+------------------------------------------------------------------------
+  Samp%                                       10.2%
+  Samp                                          610
+  DATA_CACHE_MISSES        39.994M/sec    194771827 misses
+  PAPI_TLB_DM               0.741M/sec      3610935 misses
+  PAPI_L1_DCA            1187.395M/sec   5782612972 refs
+  PAPI_FP_OPS             913.368M/sec   4448103922 ops
+  User time (approx)        4.870 secs  11688000000 cycles
+  HW FP Ops / User time   913.368M/sec   4448103922 ops  19.0%peak(DP)
+  Computational intensity    0.38 ops/cycle    0.77 ops/ref
+  MFLOPS (aggregate)       913.37M/sec
+  TLB utilization         1601.42 refs/miss   3.128 avg uses
+  D1 cache hit,miss ratios  96.6% hits         3.4% misses
+  D1 cache utilization (M)  29.69 refs/miss   3.711 avg uses
+========================================================================
+USER / taperEdges / jan/FD/fdelmodc/taperEdges.c
+------------------------------------------------------------------------
+  Samp%                                       10.2%
+  Samp                                          610
+  DATA_CACHE_MISSES        39.994M/sec    194771827 misses
+  PAPI_TLB_DM               0.741M/sec      3610935 misses
+  PAPI_L1_DCA            1187.395M/sec   5782612972 refs
+  PAPI_FP_OPS             913.368M/sec   4448103922 ops
+  User time (approx)        4.870 secs  11688000000 cycles
+  HW FP Ops / User time   913.368M/sec   4448103922 ops  19.0%peak(DP)
+  Computational intensity    0.38 ops/cycle    0.77 ops/ref
+  MFLOPS (aggregate)       913.37M/sec
+  TLB utilization         1601.42 refs/miss   3.128 avg uses
+  D1 cache hit,miss ratios  96.6% hits         3.4% misses
+  D1 cache utilization (M)  29.69 refs/miss   3.711 avg uses
+========================================================================
+USER / taperEdges / jan/FD/fdelmodc/taperEdges.c / line.23
+------------------------------------------------------------------------
+  Samp%                                       2.7%
+  Samp                                         165
+  DATA_CACHE_MISSES        40.912M/sec    53594743 misses
+  PAPI_TLB_DM               0.703M/sec      920305 misses
+  PAPI_L1_DCA            1218.068M/sec  1595669199 refs
+  PAPI_FP_OPS             961.961M/sec  1260168368 ops
+  User time (approx)        1.310 secs  3144000000 cycles
+  HW FP Ops / User time   961.961M/sec  1260168368 ops  20.0%peak(DP)
+  Computational intensity    0.40 ops/cycle   0.79 ops/ref
+  MFLOPS (aggregate)       961.96M/sec
+  TLB utilization         1733.85 refs/miss  3.386 avg uses
+  D1 cache hit,miss ratios  96.6% hits        3.4% misses
+  D1 cache utilization (M)  29.77 refs/miss  3.722 avg uses
+========================================================================
+USER / taperEdges / jan/FD/fdelmodc/taperEdges.c / line.35
+------------------------------------------------------------------------
+  Samp%                                       1.7%
+  Samp                                         104
+  DATA_CACHE_MISSES        40.284M/sec    33435370 misses
+  PAPI_TLB_DM               0.733M/sec      608497 misses
+  PAPI_L1_DCA            1200.080M/sec   996066247 refs
+  PAPI_FP_OPS             935.858M/sec   776762443 ops
+  User time (approx)        0.830 secs  1992000000 cycles
+  HW FP Ops / User time   935.858M/sec   776762443 ops  19.5%peak(DP)
+  Computational intensity    0.39 ops/cycle   0.78 ops/ref
+  MFLOPS (aggregate)       935.86M/sec
+  TLB utilization         1636.93 refs/miss  3.197 avg uses
+  D1 cache hit,miss ratios  96.6% hits        3.4% misses
+  D1 cache utilization (M)  29.79 refs/miss  3.724 avg uses
+========================================================================
+USER / taperEdges / jan/FD/fdelmodc/taperEdges.c / line.47
+------------------------------------------------------------------------
+  Samp%                                       3.5%
+  Samp                                         212
+  DATA_CACHE_MISSES        40.020M/sec    67633803 misses
+  PAPI_TLB_DM               0.753M/sec     1273385 misses
+  PAPI_L1_DCA            1186.828M/sec  2005739044 refs
+  PAPI_FP_OPS             906.182M/sec  1531446968 ops
+  User time (approx)        1.690 secs  4056000000 cycles
+  HW FP Ops / User time   906.182M/sec  1531446968 ops  18.9%peak(DP)
+  Computational intensity    0.38 ops/cycle   0.76 ops/ref
+  MFLOPS (aggregate)       906.18M/sec
+  TLB utilization         1575.12 refs/miss  3.076 avg uses
+  D1 cache hit,miss ratios  96.6% hits        3.4% misses
+  D1 cache utilization (M)  29.66 refs/miss  3.707 avg uses
+========================================================================
+USER / taperEdges / jan/FD/fdelmodc/taperEdges.c / line.59
+------------------------------------------------------------------------
+  Samp%                                       2.1%
+  Samp                                         129
+  DATA_CACHE_MISSES        38.565M/sec    40107911 misses
+  PAPI_TLB_DM               0.778M/sec      808748 misses
+  PAPI_L1_DCA            1139.556M/sec  1185138482 refs
+  PAPI_FP_OPS             845.891M/sec   879726143 ops
+  User time (approx)        1.040 secs  2496000000 cycles
+  HW FP Ops / User time   845.891M/sec   879726143 ops  17.6%peak(DP)
+  Computational intensity    0.35 ops/cycle   0.74 ops/ref
+  MFLOPS (aggregate)       845.89M/sec
+  TLB utilization         1465.40 refs/miss  2.862 avg uses
+  D1 cache hit,miss ratios  96.6% hits        3.4% misses
+  D1 cache utilization (M)  29.55 refs/miss  3.694 avg uses
+========================================================================
+ETC
+------------------------------------------------------------------------
+  Samp%                                       1.5%
+  Samp                                          90
+  DATA_CACHE_MISSES        37.898M/sec     9474483 misses
+  PAPI_TLB_DM               0.794M/sec      198395 misses
+  PAPI_L1_DCA            1367.245M/sec   341811328 refs
+  PAPI_FP_OPS             715.042M/sec   178760447 ops
+  User time (approx)        0.250 secs   600000000 cycles
+  HW FP Ops / User time   715.042M/sec   178760447 ops  14.9%peak(DP)
+  Computational intensity    0.30 ops/cycle   0.52 ops/ref
+  MFLOPS (aggregate)       715.04M/sec
+  TLB utilization         1722.88 refs/miss  3.365 avg uses
+  D1 cache hit,miss ratios  97.2% hits        2.8% misses
+  D1 cache utilization (M)  36.08 refs/miss  4.510 avg uses
+========================================================================
+
+
+Notes for table 5:
+
+  Table option:
+    -O program_time
+  Options implied by table option:  
+    -d pt,hm -b to
+
+
+Table 5:  Program Wall Clock Time, Memory High Water Mark
+
+   Process |  Process |Total
+      Time |    HiMem |
+           | (MBytes) |
+
+ 48.326339 |   37.637 |Total
+|===========================
+
+
+=========  Additional details ============================
+
+Experiment:  samp_pc_time
+
+Original path to data file:
+  /lus/nid00008/jan/FD/fdelmodc/demo/fdelmodc+pat+14620-12s.xf
+
+Original program:  /lus/nid00008/jan/FD/fdelmodc/fdelmodc
+
+Instrumented with:  pat_build -f fdelmodc 
+
+Instrumented program:  ../fdelmodc+pat
+
+Program invocation:
+  ../fdelmodc+pat file_cp=model_cp.su file_cs=model_cs.su \
+	 file_den=model_ro.su ischeme=3 file_src=wavelet.su verbose=4 \
+	 file_rcv=rec.su file_snap=snap.su xrcv1=0 xrcv2=2100 dxrcv=15 \
+	 zrcv1=400 rec_type_vx=1 rec_type_pp=1 rec_type_ss=1 rec_int_vx=1 \
+	 ...
+
+Exit Status:  0  PEs:  0
+
+Memory pagesize:  4096
+
+Runtime environment variables:
+  MPICHBASEDIR=/opt/mpt/3.2.0.1/xt
+  PAT_RT_INTERVAL=1
+  PAT_RT_EXPERIMENT=samp_pc_time
+  PAT_RT_SUMMARY=0
+  MPICH_DIR=/opt/mpt/3.2.0.1/xt/mpich2-pgi
+  PAT_RT_HWPC=1
+
+Report time environment variables:
+  CRAYPAT_ROOT=/opt/xt-tools/craypat/4.4.1/v23/cpatx
+
+Report command line options:  <none>
+
+Operating system:
+  Linux 2.6.16.54-0.2.12_1.0000.4235.0-cnl #1 SMP Thu Mar 26 09:34:07 PDT 2009
+
+Hardware performance counter events:
+  PAPI_TLB_DM        Data translation lookaside buffer misses
+  CYCLES_USER        User Cycles (approx, from clock ticks)
+  PAPI_FP_OPS        Floating point operations
+  PAPI_L1_DCA        Level 1 data cache accesses
+  DATA_CACHE_MISSES  Data Cache Misses
+
+Instrumentation overhead could not be estimated.
+
+Number of traced functions: 13
+  (To see the list, specify:  -s traced_functions=show)
+

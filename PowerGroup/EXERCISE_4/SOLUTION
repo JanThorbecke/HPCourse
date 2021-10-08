@@ -1,0 +1,219 @@
+
+SOLUTION to:
+
+EXERCISE 4:   Jacobi Iterative Solver
+*************************************
+
+
+Silicon Graphics BV
+De Meern, The Netherlands.
+
+March 30, 1999.
+
+
+1.  The wallclock time on one CPU is about 10 secs.
+
+2.  Profiling the code on a single-CPU can be done in the following
+    way:
+
+    ssrun -fpcsampx single/jacobi < input
+
+    This gives a jacobi.fpcsampx.m######, with ##### the process-id
+    of the run. Then:
+
+    prof -lines single/jacobi jacobi.fpcsampx.m#####, which gives:
+
+-------------------------------------------------------------------------
+SpeedShop profile listing generated Tue Mar 30 12:32:23 1999
+   prof -lines single/jacobi jacobi.fpcsampx.m87761
+                  jacobi (n32): Target program
+                      fpcsampx: Experiment name
+                pc,4,1000,0:cu: Marching orders
+               R10000 / R10010: CPU / FPU
+                             4: Number of CPUs
+                           250: Clock frequency (MHz.)
+  Experiment notes--
+          From file jacobi.fpcsampx.m87761:
+        Caliper point 0 at target begin, PID 87761
+                        /hpc/peterm/OpenMP/EXERCISE_4/single/jacobi
+        Caliper point 1 at exit(0)
+-------------------------------------------------------------------------
+Summary of statistical PC sampling data (fpcsampx)--
+                          6645: Total samples
+                         6.645: Accumulated time (secs.)
+                           1.0: Time per sample (msecs.)
+                             4: Sample bin width (bytes)
+-------------------------------------------------------------------------
+Function list, in descending order by time
+-------------------------------------------------------------------------
+ [index]      secs    %    cum.%   samples  function (dso: file, line)
+
+     [1]     6.625  99.7%  99.7%      6625  jacobi (jacobi: jacobi.f, 1)
+     [2]     0.017   0.3% 100.0%        17  initialize (jacobi: initialize.f, 1)
+     [3]     0.003   0.0% 100.0%         3  error_check (jacobi: error_check.f, 1)
+
+             6.645 100.0% 100.0%      6645  TOTAL
+
+
+-------------------------------------------------------------------------
+Line list, in descending order by function-time and then line number
+-------------------------------------------------------------------------
+          secs     %   cum.%   samples  function (dso: file, line)
+
+         0.002    0.0    0.0         2  jacobi (jacobi: jacobi.f, 44)
+         0.001    0.0    0.0         1  jacobi (jacobi: jacobi.f, 45)
+         0.419    6.3    6.4       419  jacobi (jacobi: jacobi.f, 46)
+         6.196   93.2   99.6      6196  jacobi (jacobi: jacobi.f, 57)
+         0.006    0.1   99.7         6  jacobi (jacobi: jacobi.f, 63)
+         0.001    0.0   99.7         1  jacobi (jacobi: jacobi.f, 67)
+
+         0.002    0.0   99.7         2  initialize (jacobi: initialize.f, 28)
+         0.015    0.2  100.0        15  initialize (jacobi: initialize.f, 29)
+
+         0.001    0.0  100.0         1  error_check (jacobi: error_check.f, 21)
+         0.002    0.0  100.0         2  error_check (jacobi: error_check.f, 22)
+
+
+
+3.  The wallclock time are for automatic parallellization are:
+
+    1 CPU:    ca.  9  secs.
+    2 CPUs:   ca.  9  secs.
+    3 CPUs:   ca.  9  secs.
+    4 CPUs:   ca. 12  secs.
+
+    Apparently, the automatic parallellization is not efficient. If you
+    have a look into the "jacobi.m" file, it is observed that the
+    important loop is automatically parallellized over index I: this
+    is the innermost loop. So, this does not seem to be the most
+    efficient choice of the compiler.
+
+
+4.  The most important loop is the nested loop we already noticed in
+    the profile. Using OpenMP directives to parallellize the outer 
+    loop over j leads to the following piece of code:
+
+
+c$omp parallel do
+c$omp&   private(j,i,resid)
+c$omp&   shared(ax,ay,b,uold,f,omega)
+c$omp&   reduction(+:error)
+         do j = 2,m-1
+            do i = 2,n-1
+
+*     Evaluate residual
+
+               resid = (ax*(uold(i-1,j) + uold(i+1,j))
+     &                + ay*(uold(i,j-1) + uold(i,j+1))
+     &                 + b * uold(i,j) - f(i,j))/b
+
+* Update solution
+
+               u(i,j) = uold(i,j) - omega * resid
+
+* Error accumulation
+
+               error = error + resid*resid
+            end do
+         enddo
+
+
+    The wallclock times are:
+
+    1 CPU:    ca. 9   secs.
+    2 CPUs:   ca. 5.5 secs.
+    3 CPUS:   ca. 4   secs.
+    4 CPUs:   ca. 3   secs
+
+
+    Looking into the jacobi.m file now shows that the outermost loop
+    over J has been parallellized now.
+
+
+
+5.  The wallclock times are:
+
+    1 CPU:    ca. 9   secs.
+    2 CPUs:   ca. 5.5 secs.
+    3 CPUs:   ca. 4   secs.
+    4 CPUs:   ca. 3   secs.
+
+    So, the parallellization can also be done automatically, provided
+    some care is taken for the correct single-CPU optimization.
+
+
+6.  The wallclock times are:
+
+    1 CPU:    ca. 10 secs.
+    2 CPUs:   ca. 19 secs.
+    3 CPUs:   ca. 25 secs.
+    4 CPUs:   ca. 25 secs.
+
+    Adding OpenMP directives to the parallel region finally might lead
+    the following source code:
+
+
+c$omp parallel
+c$omp& shared(k,maxit,omega,error,tol,n,m,ax,ay,b,alpha,uold,u,f,
+c$omp&        ta,tb,tc,td,te)
+c$omp& private(i,j,k_local,resid,error_local)
+
+      error_local = error
+      k_local  = k
+
+      do while (k.le.maxit .and. error.gt. tol)
+
+c$omp barrier             ! Important for syncronization
+         error = 0.0      ! Note redundant
+
+         error_local = 0.0
+
+* Copy new solution into old
+c$omp do
+         do j=1,m
+            do i=1,n
+               uold(i,j) = u(i,j)
+            enddo
+         enddo
+c$omp end do
+* Compute stencil, residual, & update
+
+c$omp do
+         do j = 2,m-1
+            do i = 2,n-1
+*     Evaluate residual
+               resid = (ax*(uold(i-1,j) + uold(i+1,j))
+     &                + ay*(uold(i,j-1) + uold(i,j+1))
+     &                 + b * uold(i,j) - f(i,j))/b
+* Update solution
+               u(i,j) = uold(i,j) - omega * resid
+* Accumulate residual error
+               error_local = error_local + resid*resid
+            end do
+         enddo
+c$omp end do
+
+* Error check
+
+*  Add error from all processors
+c$omp critical
+         error = error + error_local
+c$omp end critical
+
+         k_local = k_local + 1
+
+* Update shared data (use one proc only)
+
+c$omp single
+         error = sqrt(error)/dble(n*m)
+         k = k_local
+c$omp end single
+
+         error_local = error
+*
+      enddo                     ! End iteration loop
+*
+c$omp end parallel
+
+
+    The wallclock times are comparable to the wallclock times in 5.

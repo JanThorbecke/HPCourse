@@ -1,0 +1,2023 @@
+
+;; Function getparinit (getparinit, funcdef_no=33, decl_uid=4165, symbol_order=39)
+
+getparinit ()
+{
+  int i;
+  char * eqptr;
+  int i;
+  int count;
+  int inquote;
+  int D.4803;
+  int i;
+  char * D.4797;
+  int j;
+  int i;
+  int nread;
+  char * pargstr;
+  int argstrlen;
+  int parfile;
+  static int pfargc;
+  int pflen;
+  struct FILE * pffd;
+  static char * pfname;
+  long unsigned int _12;
+  void * targv.19_17;
+  char * _21;
+  int xargc.8_24;
+  long unsigned int _28;
+  long unsigned int _29;
+  char * * _30;
+  char * _31;
+  long unsigned int _32;
+  unsigned int _33;
+  unsigned int argstrlen.10_34;
+  unsigned int _36;
+  long int _45;
+  long unsigned int _53;
+  long unsigned int _54;
+  void * _55;
+  long unsigned int _57;
+  char * pfname.12_59;
+  char * argstr.14_62;
+  int xargc.8_68;
+  unsigned char _69;
+  int targc.17_70;
+  long unsigned int _72;
+  void * targv.19_74;
+  sizetype _77;
+  char * _78;
+  char _79;
+  sizetype _80;
+  char * _81;
+  char _82;
+  long unsigned int _84;
+  long unsigned int _85;
+  char * * _86;
+  int xargc.8_93;
+  long unsigned int _96;
+  long unsigned int _97;
+  char * * _98;
+  char * _99;
+  long unsigned int _102;
+  long unsigned int _103;
+  char * * _104;
+  char * * xargv.9_106;
+  char * * _107;
+  char * _108;
+  long unsigned int _109;
+  sizetype _110;
+  void * argtbl.23_114;
+  long unsigned int _121;
+  long unsigned int _122;
+  char * * _123;
+  char * _124;
+  int _125;
+  long unsigned int _126;
+  char * _128;
+  sizetype _132;
+  char * _133;
+  char _134;
+  sizetype _139;
+  char * _140;
+  char _141;
+  int targc.17_145;
+  sizetype _146;
+  char * _147;
+  char _148;
+  sizetype _153;
+  char * _154;
+  char _155;
+  char * _158;
+  unsigned char _159;
+  long unsigned int _163;
+  long unsigned int _164;
+  char * * _165;
+  char * _166;
+  int nargs.27_169;
+  long unsigned int _170;
+  long unsigned int _171;
+  struct pointer_table * _172;
+  char * _173;
+  int nargs.28_174;
+  void * targv.19_179;
+  unsigned int _181;
+  int _182;
+  long unsigned int _195;
+  void * targv.19_197;
+  long unsigned int _198;
+  int _203;
+  void * targv.19_210;
+  long unsigned int _211;
+  int targc.17_212;
+  long unsigned int _216;
+  void * argstr.13_220;
+  int targc.17_223;
+  int xargc.8_224;
+  int _225;
+  void * argstr.13_227;
+  int _232;
+  int _233;
+  int pretmp_293;
+  int prephitmp_294;
+  char * prephitmp_297;
+  sizetype pretmp_299;
+  sizetype pretmp_300;
+  sizetype prephitmp_301;
+  int prephitmp_304;
+  char * * pretmp_313;
+  char * * prephitmp_314;
+  char * * pretmp_322;
+  int prephitmp_330;
+  char * * pretmp_348;
+  char * _358;
+  char * argstr.14_359;
+
+  <bb 2>:
+  tabled = 1;
+  xargc.8_24 = xargc;
+  if (xargc.8_24 == 0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  err ("%s: xargc=%d -- not initiated in main", "getpars.c", 0);
+  pretmp_293 = xargc;
+
+  <bb 4>:
+  # prephitmp_294 = PHI <xargc.8_24(2), pretmp_293(3)>
+  if (prephitmp_294 > 1)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+
+  <bb 5>:
+  pretmp_348 = xargv;
+
+  <bb 6>:
+  # argstrlen_1 = PHI <argstrlen_37(8), 0(5)>
+  # i_202 = PHI <i_38(8), 1(5)>
+  _28 = (long unsigned int) i_202;
+  _29 = _28 * 8;
+  _30 = pretmp_348 + _29;
+  _31 = *_30;
+  _32 = strlen (_31);
+  _33 = (unsigned int) _32;
+  argstrlen.10_34 = (unsigned int) argstrlen_1;
+  _181 = argstrlen.10_34 + 1;
+  _36 = _181 + _33;
+  argstrlen_37 = (int) _36;
+  i_38 = i_202 + 1;
+  if (i_38 < prephitmp_294)
+    goto <bb 8>;
+  else
+    goto <bb 7>;
+
+  <bb 7>:
+  # argstrlen_360 = PHI <argstrlen_37(6)>
+  goto <bb 9>;
+
+  <bb 8>:
+  goto <bb 6>;
+
+  <bb 9>:
+  # argstrlen_168 = PHI <argstrlen_360(7), 0(4)>
+  i_118 = prephitmp_294 + -1;
+  if (i_118 > 0)
+    goto <bb 10>;
+  else
+    goto <bb 61>;
+
+  <bb 10>:
+  pretmp_322 = xargv;
+
+  <bb 11>:
+  # i_240 = PHI <i_129(15), i_118(10)>
+  _121 = (long unsigned int) i_240;
+  _122 = _121 * 8;
+  _123 = pretmp_322 + _122;
+  _124 = *_123;
+  _125 = strncmp ("par=", _124, 4);
+  if (_125 == 0)
+    goto <bb 12>;
+  else
+    goto <bb 14>;
+
+  <bb 12>:
+  _126 = strlen (_124);
+  if (_126 != 4)
+    goto <bb 13>;
+  else
+    goto <bb 14>;
+
+  <bb 13>:
+  # _358 = PHI <_124(12)>
+  _128 = _358 + 4;
+  pfname = _128;
+  if (_128 != 0B)
+    goto <bb 62>;
+  else
+    goto <bb 63>;
+
+  <bb 14>:
+  i_129 = i_240 + -1;
+  if (i_129 > 0)
+    goto <bb 15>;
+  else
+    goto <bb 61>;
+
+  <bb 15>:
+  goto <bb 11>;
+
+  <bb 16>:
+  pfname.12_59 = pfname;
+  err ("%s: fread only %d bytes out of %d from %s", "getpars.c", nread_58, pflen_46, pfname.12_59);
+
+  <bb 17>:
+  fclose (pffd_42);
+  argstr.14_62 = argstr;
+  *argstr.14_62 = 0;
+  if (pflen_46 > 1)
+    goto <bb 18>;
+  else
+    goto <bb 39>;
+
+  <bb 18>:
+
+  <bb 19>:
+  # i_241 = PHI <i_144(28), 1(18)>
+  # inquote_242 = PHI <inquote_177(28), 0(18)>
+  # count_243 = PHI <count_160(28), 0(18)>
+  _132 = (sizetype) i_241;
+  _133 = argstr.14_62 + _132;
+  _134 = *_133;
+  if (_134 == 34)
+    goto <bb 20>;
+  else
+    goto <bb 21>;
+
+  <bb 20>:
+  _232 = inquote_242 ^ 1;
+  inquote_137 = _232 & 1;
+  if (inquote_137 == 0)
+    goto <bb 25>;
+  else
+    goto <bb 27>;
+
+  <bb 21>:
+  if (inquote_242 == 0)
+    goto <bb 22>;
+  else
+    goto <bb 27>;
+
+  <bb 22>:
+  if (_134 == 32)
+    goto <bb 24>;
+  else
+    goto <bb 23>;
+
+  <bb 23>:
+  _159 = (unsigned char) _134;
+  _69 = _159 + 247;
+  if (_69 <= 1)
+    goto <bb 24>;
+  else
+    goto <bb 25>;
+
+  <bb 24>:
+  *_133 = 0;
+  goto <bb 27>;
+
+  <bb 25>:
+  # inquote_228 = PHI <inquote_242(23), inquote_137(20)>
+  _139 = _132 + 18446744073709551615;
+  _140 = argstr.14_62 + _139;
+  _141 = *_140;
+  if (_141 == 0)
+    goto <bb 26>;
+  else
+    goto <bb 27>;
+
+  <bb 26>:
+  count_143 = count_243 + 1;
+
+  <bb 27>:
+  # count_160 = PHI <count_243(21), count_243(24), count_243(25), count_143(26), count_243(20)>
+  # inquote_177 = PHI <inquote_242(21), inquote_242(24), inquote_228(25), inquote_228(26), inquote_137(20)>
+  i_144 = i_241 + 1;
+  if (pflen_46 > i_144)
+    goto <bb 28>;
+  else
+    goto <bb 29>;
+
+  <bb 28>:
+  goto <bb 19>;
+
+  <bb 29>:
+  # count_357 = PHI <count_160(27)>
+  if (pflen_46 > 1)
+    goto <bb 30>;
+  else
+    goto <bb 65>;
+
+  <bb 30>:
+
+  <bb 31>:
+  # i_244 = PHI <i_156(38), 1(30)>
+  # inquote_245 = PHI <inquote_161(38), 0(30)>
+  _146 = (sizetype) i_244;
+  _147 = argstr.14_62 + _146;
+  _148 = *_147;
+  if (_148 == 34)
+    goto <bb 32>;
+  else
+    goto <bb 33>;
+
+  <bb 32>:
+  _233 = inquote_245 ^ 1;
+  inquote_151 = _233 & 1;
+
+  <bb 33>:
+  # inquote_152 = PHI <inquote_245(31), inquote_151(32)>
+  if (inquote_152 != 0)
+    goto <bb 34>;
+  else
+    goto <bb 37>;
+
+  <bb 34>:
+  _153 = _146 + 1;
+  _154 = argstr.14_62 + _153;
+  _155 = *_154;
+  if (_155 != 34)
+    goto <bb 35>;
+  else
+    goto <bb 36>;
+
+  <bb 35>:
+  *_147 = _155;
+  goto <bb 37>;
+
+  <bb 36>:
+  *_147 = 0;
+  *_154 = 0;
+
+  <bb 37>:
+  # inquote_161 = PHI <0(33), 1(35), 0(36)>
+  i_156 = i_244 + 1;
+  if (pflen_46 > i_156)
+    goto <bb 38>;
+  else
+    goto <bb 64>;
+
+  <bb 38>:
+  goto <bb 31>;
+
+  <bb 39>:
+  _158 = argstr.14_62 + _54;
+  *_158 = 0;
+  pfargc = 0;
+  xargc.8_68 = xargc;
+  targc.17_70 = xargc.8_68 + -1;
+  targc = targc.17_70;
+  _72 = (long unsigned int) targc.17_70;
+  targv.19_74 = calloc (_72, 8);
+  targv = targv.19_74;
+
+  <bb 40>:
+  # targc.17_145 = PHI <targc.17_70(39), targc.17_223(65)>
+  # _53 = PHI <_72(39), _12(65)>
+  # targv.19_17 = PHI <targv.19_74(39), targv.19_179(65)>
+  # prephitmp_330 = PHI <xargc.8_68(39), xargc.8_224(65)>
+  if (pflen_46 > 1)
+    goto <bb 41>;
+  else
+    goto <bb 48>;
+
+  <bb 41>:
+
+  <bb 42>:
+  # i_205 = PHI <i_8(47), 0(41)>
+  # j_235 = PHI <j_88(47), 1(41)>
+  _77 = (sizetype) j_235;
+  _78 = argstr.14_62 + _77;
+  _79 = *_78;
+  if (_79 != 0)
+    goto <bb 43>;
+  else
+    goto <bb 45>;
+
+  <bb 43>:
+  _80 = _77 + 18446744073709551615;
+  _81 = argstr.14_62 + _80;
+  _82 = *_81;
+  if (_82 == 0)
+    goto <bb 44>;
+  else
+    goto <bb 45>;
+
+  <bb 44>:
+  i_83 = i_205 + 1;
+  _84 = (long unsigned int) i_205;
+  _85 = _84 * 8;
+  _86 = targv.19_17 + _85;
+  *_86 = _78;
+
+  <bb 45>:
+  # i_8 = PHI <i_205(42), i_205(43), i_83(44)>
+  j_88 = j_235 + 1;
+  if (pflen_46 > j_88)
+    goto <bb 47>;
+  else
+    goto <bb 46>;
+
+  <bb 46>:
+  # i_361 = PHI <i_8(45)>
+  argstr.14_359 = argstr.14_62;
+  pretmp_299 = _54 + 2;
+  goto <bb 49>;
+
+  <bb 47>:
+  goto <bb 42>;
+
+  <bb 48>:
+  pretmp_300 = _54 + 2;
+
+  <bb 49>:
+  # i_10 = PHI <i_361(46), 0(48), 0(63)>
+  # targc.17_212 = PHI <targc.17_145(46), targc.17_145(48), i_118(63)>
+  # _211 = PHI <_53(46), _53(48), _195(63)>
+  # targv.19_210 = PHI <targv.19_17(46), targv.19_17(48), targv.19_197(63)>
+  # prephitmp_297 = PHI <argstr.14_62(46), argstr.14_62(48), argstr.13_227(63)>
+  # prephitmp_301 = PHI <pretmp_299(46), pretmp_300(48), 2(63)>
+  # prephitmp_304 = PHI <prephitmp_330(46), prephitmp_330(48), prephitmp_294(63)>
+  pargstr_92 = prephitmp_297 + prephitmp_301;
+  if (prephitmp_304 > 1)
+    goto <bb 50>;
+  else
+    goto <bb 53>;
+
+  <bb 50>:
+  pretmp_313 = xargv;
+
+  <bb 51>:
+  # pargstr_206 = PHI <pargstr_111(52), pargstr_92(50)>
+  # i_234 = PHI <i_101(52), i_10(50)>
+  # j_236 = PHI <j_112(52), 1(50)>
+  # prephitmp_314 = PHI <xargv.9_106(52), pretmp_313(50)>
+  _96 = (long unsigned int) j_236;
+  _97 = _96 * 8;
+  _98 = prephitmp_314 + _97;
+  _99 = *_98;
+  __builtin_strcpy (pargstr_206, _99);
+  i_101 = i_234 + 1;
+  _102 = (long unsigned int) i_234;
+  _103 = _102 * 8;
+  _104 = targv.19_210 + _103;
+  *_104 = pargstr_206;
+  xargv.9_106 = xargv;
+  _107 = xargv.9_106 + _97;
+  _108 = *_107;
+  _109 = strlen (_108);
+  _110 = _109 + 1;
+  pargstr_111 = pargstr_206 + _110;
+  j_112 = j_236 + 1;
+  xargc.8_93 = xargc;
+  if (xargc.8_93 > j_112)
+    goto <bb 52>;
+  else
+    goto <bb 66>;
+
+  <bb 52>:
+  goto <bb 51>;
+
+  <bb 66>:
+
+  <bb 53>:
+  argtbl.23_114 = calloc (_211, 16);
+  argtbl = argtbl.23_114;
+  nargs = 0;
+  if (targc.17_212 > 0)
+    goto <bb 54>;
+  else
+    goto <bb 60>;
+
+  <bb 54>:
+
+  <bb 55>:
+  # i_246 = PHI <i_175(58), 0(54)>
+  _163 = (long unsigned int) i_246;
+  _164 = _163 * 8;
+  _165 = targv.19_210 + _164;
+  _166 = *_165;
+  eqptr_167 = strchr (_166, 61);
+  if (eqptr_167 != 0B)
+    goto <bb 56>;
+  else
+    goto <bb 57>;
+
+  <bb 56>:
+  nargs.27_169 = nargs;
+  _170 = (long unsigned int) nargs.27_169;
+  _171 = _170 * 16;
+  _172 = argtbl.23_114 + _171;
+  _172->name = _166;
+  _173 = eqptr_167 + 1;
+  _172->asciival = _173;
+  *eqptr_167 = 0;
+  nargs.28_174 = nargs.27_169 + 1;
+  nargs = nargs.28_174;
+
+  <bb 57>:
+  i_175 = i_246 + 1;
+  if (i_175 < targc.17_212)
+    goto <bb 58>;
+  else
+    goto <bb 59>;
+
+  <bb 58>:
+  goto <bb 55>;
+
+  <bb 59>:
+
+  <bb 60>:
+  return;
+
+  <bb 61>:
+  pfname = 0B;
+  goto <bb 63>;
+
+  <bb 62>:
+  pffd_42 = fopen (_128, "r");
+  fseek (pffd_42, 0, 2);
+  _45 = ftell (pffd_42);
+  pflen_46 = (int) _45;
+  rewind (pffd_42);
+  argstrlen_48 = argstrlen_168 + pflen_46;
+  _182 = argstrlen_48 + 2;
+  _216 = (long unsigned int) _182;
+  argstr.13_220 = calloc (_216, 1);
+  argstr = argstr.13_220;
+  _54 = (long unsigned int) pflen_46;
+  _55 = argstr.13_220 + 1;
+  _57 = fread (_55, 1, _54, pffd_42);
+  nread_58 = (int) _57;
+  if (pflen_46 != nread_58)
+    goto <bb 16>;
+  else
+    goto <bb 17>;
+
+  <bb 63>:
+  _203 = argstrlen_168 + 2;
+  _198 = (long unsigned int) _203;
+  argstr.13_227 = calloc (_198, 1);
+  argstr = argstr.13_227;
+  pfargc = 0;
+  targc = i_118;
+  _195 = (long unsigned int) i_118;
+  targv.19_197 = calloc (_195, 8);
+  targv = targv.19_197;
+  goto <bb 49>;
+
+  <bb 64>:
+
+  <bb 65>:
+  _21 = argstr.14_62 + _54;
+  *_21 = 0;
+  pfargc = count_357;
+  xargc.8_224 = xargc;
+  _225 = xargc.8_224 + count_357;
+  targc.17_223 = _225 + -1;
+  targc = targc.17_223;
+  _12 = (long unsigned int) targc.17_223;
+  targv.19_179 = calloc (_12, 8);
+  targv = targv.19_179;
+  goto <bb 40>;
+
+}
+
+
+
+;; Function getnpar.constprop (getnpar.constprop.1, funcdef_no=40, decl_uid=4775, symbol_order=73)
+
+getnpar.constprop (char * name, char * type, void * ptr)
+{
+  int i;
+  int D.4889;
+  int i;
+  int nval;
+  char * aval;
+  char * tmpstr;
+  int xargc.4_1;
+  int tabled.5_2;
+  char _6;
+  char * _11;
+  int _20;
+  unsigned int _23;
+  short int _25;
+  short unsigned int _27;
+  long int _29;
+  long unsigned int _31;
+  float _33;
+  double _35;
+  long unsigned int _37;
+  char _43;
+  char _46;
+  char _48;
+  char _51;
+  int _53;
+  int nargs.29_86;
+  long unsigned int _90;
+  long unsigned int _91;
+  struct pointer_table * _92;
+  char * _93;
+  int _94;
+  char _97;
+  char _98;
+  struct pointer_table * pretmp_103;
+  struct pointer_table * _113;
+  char pretmp_125;
+  char prephitmp_126;
+  char prephitmp_128;
+
+  <bb 2>:
+  xargc.4_1 = xargc;
+  if (xargc.4_1 == 1)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  goto <bb 41>;
+
+  <bb 4>:
+  tabled.5_2 = tabled;
+  if (tabled.5_2 == 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+
+  <bb 5>:
+  getparinit ();
+
+  <bb 6>:
+  nargs.29_86 = nargs;
+  i_87 = nargs.29_86 + -1;
+  if (i_87 >= 0)
+    goto <bb 7>;
+  else
+    goto <bb 3>;
+
+  <bb 7>:
+  pretmp_103 = argtbl;
+
+  <bb 8>:
+  # i_118 = PHI <i_95(10), i_87(7)>
+  _90 = (long unsigned int) i_118;
+  _91 = _90 * 16;
+  _92 = pretmp_103 + _91;
+  _93 = _92->name;
+  _94 = strcmp (name_3(D), _93);
+  if (_94 == 0)
+    goto <bb 42>;
+  else
+    goto <bb 9>;
+
+  <bb 9>:
+  i_95 = i_118 + -1;
+  if (i_95 >= 0)
+    goto <bb 10>;
+  else
+    goto <bb 3>;
+
+  <bb 10>:
+  goto <bb 8>;
+
+  <bb 11>:
+  _11 = _113->asciival;
+  MEM[(char * *)ptr_12(D)] = _11;
+  goto <bb 41>;
+
+  <bb 12>:
+  aval_17 = _113->asciival;
+  _97 = *aval_17;
+  if (_97 != 0)
+    goto <bb 13>;
+  else
+    goto <bb 40>;
+
+  <bb 13>:
+
+  <bb 14>:
+  # aval_105 = PHI <aval_124(39), aval_17(13)>
+  # ptr_101 = PHI <ptr_54(39), ptr_12(D)(13)>
+  # nval_115 = PHI <nval_50(39), 0(13)>
+  # prephitmp_126 = PHI <pretmp_125(39), _6(13)>
+  # prephitmp_128 = PHI <_51(39), _97(13)>
+  switch (prephitmp_126) <default: <L9>, case 97: <L8>, case 100: <L7>, case 102: <L6>, case 104: <L2>, case 105: <L0>, case 108: <L4>, case 112: <L1>, case 117: <L3>, case 118: <L5>>
+
+<L0>:
+  _20 = eatoi (aval_105);
+  MEM[(int *)ptr_101] = _20;
+  ptr_22 = ptr_101 + 4;
+  goto <bb 36>;
+
+<L1>:
+  _23 = eatop (aval_105);
+  MEM[(unsigned int *)ptr_101] = _23;
+  ptr_24 = ptr_101 + 4;
+  goto <bb 36>;
+
+<L2>:
+  _25 = eatoh (aval_105);
+  MEM[(short int *)ptr_101] = _25;
+  ptr_26 = ptr_101 + 2;
+  goto <bb 36>;
+
+<L3>:
+  _27 = eatou (aval_105);
+  MEM[(short unsigned int *)ptr_101] = _27;
+  ptr_28 = ptr_101 + 2;
+  goto <bb 36>;
+
+<L4>:
+  _29 = eatol (aval_105);
+  MEM[(long int *)ptr_101] = _29;
+  ptr_30 = ptr_101 + 8;
+  goto <bb 36>;
+
+<L5>:
+  _31 = eatov (aval_105);
+  MEM[(long unsigned int *)ptr_101] = _31;
+  ptr_32 = ptr_101 + 8;
+  goto <bb 36>;
+
+<L6>:
+  _33 = eatof (aval_105);
+  MEM[(float *)ptr_101] = _33;
+  ptr_34 = ptr_101 + 4;
+  goto <bb 36>;
+
+<L7>:
+  _35 = eatod (aval_105);
+  MEM[(double *)ptr_101] = _35;
+  ptr_36 = ptr_101 + 8;
+  goto <bb 36>;
+
+<L8>:
+  _37 = strlen (aval_105);
+  tmpstr_38 = calloc (_37, 1);
+  if (prephitmp_128 != 44)
+    goto <bb 24>;
+  else
+    goto <bb 31>;
+
+  <bb 24>:
+  if (prephitmp_128 != 0)
+    goto <bb 25>;
+  else
+    goto <bb 31>;
+
+  <bb 25>:
+
+  <bb 26>:
+  # tmpstr_104 = PHI <tmpstr_40(30), tmpstr_38(25)>
+  # aval_102 = PHI <aval_42(30), aval_105(25)>
+  # _98 = PHI <_43(30), prephitmp_128(25)>
+  tmpstr_40 = tmpstr_104 + 1;
+  aval_42 = aval_102 + 1;
+  *tmpstr_104 = _98;
+  _43 = *aval_42;
+  if (_43 != 44)
+    goto <bb 28>;
+  else
+    goto <bb 27>;
+
+  <bb 27>:
+  # tmpstr_131 = PHI <tmpstr_40(26)>
+  goto <bb 31>;
+
+  <bb 28>:
+  if (_43 != 0)
+    goto <bb 30>;
+  else
+    goto <bb 29>;
+
+  <bb 29>:
+  # tmpstr_130 = PHI <tmpstr_40(28)>
+  goto <bb 31>;
+
+  <bb 30>:
+  goto <bb 26>;
+
+  <bb 31>:
+  # tmpstr_56 = PHI <tmpstr_131(27), tmpstr_130(29), tmpstr_38(23), tmpstr_38(24)>
+  *tmpstr_56 = 0;
+  MEM[(char * *)ptr_101] = tmpstr_38;
+  ptr_44 = ptr_101 + 8;
+  goto <bb 36>;
+
+<L9>:
+  err ("%s: invalid parameter type = %s", "getpars.c", type_5(D));
+  goto <bb 36>;
+
+  <bb 33>:
+  _46 = MEM[(char *)aval_45 + 1B];
+  if (_46 == 0)
+    goto <bb 34>;
+  else
+    goto <bb 35>;
+
+  <bb 34>:
+  # aval_124 = PHI <aval_47(33), aval_47(37)>
+  nval_50 = nval_115 + 1;
+  _51 = *aval_124;
+  if (_51 != 0)
+    goto <bb 39>;
+  else
+    goto <bb 38>;
+
+  <bb 35>:
+  goto <bb 37>;
+
+  <bb 36>:
+  # ptr_54 = PHI <ptr_22(15), ptr_24(16), ptr_26(17), ptr_28(18), ptr_30(19), ptr_32(20), ptr_34(21), ptr_36(22), ptr_44(31), ptr_101(32)>
+
+  <bb 37>:
+  # aval_45 = PHI <aval_47(35), aval_105(36)>
+  aval_47 = aval_45 + 1;
+  _48 = *aval_45;
+  if (_48 != 44)
+    goto <bb 33>;
+  else
+    goto <bb 34>;
+
+  <bb 38>:
+  # nval_123 = PHI <nval_50(34)>
+  goto <bb 40>;
+
+  <bb 39>:
+  pretmp_125 = *type_5(D);
+  goto <bb 14>;
+
+  <bb 40>:
+  # nval_4 = PHI <nval_123(38), 0(12)>
+
+  <bb 41>:
+  # _53 = PHI <0(3), nval_4(40), 1(11)>
+  return _53;
+
+  <bb 42>:
+  # _113 = PHI <_92(8)>
+  _6 = *type_5(D);
+  if (_6 == 115)
+    goto <bb 11>;
+  else
+    goto <bb 12>;
+
+}
+
+
+
+;; Function initargs (initargs, funcdef_no=5, decl_uid=3947, symbol_order=11)
+
+initargs (int argc, char * * argv)
+{
+  int tabled.0_7;
+  char * argstr.1_8;
+  char * * targv.2_10;
+  struct pointer_table * argtbl.3_12;
+
+  <bb 2>:
+  xargc = argc_3(D);
+  xargv = argv_5(D);
+  tabled.0_7 = tabled;
+  if (tabled.0_7 == 1)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  argstr.1_8 = argstr;
+  free (argstr.1_8);
+  targv.2_10 = targv;
+  free (targv.2_10);
+  argtbl.3_12 = argtbl;
+  free (argtbl.3_12);
+
+  <bb 4>:
+  tabled = 0;
+  return;
+
+}
+
+
+
+;; Function getparint (getparint, funcdef_no=6, decl_uid=3950, symbol_order=12)
+
+getparint (char * name, int * ptr)
+{
+  int _5;
+
+  <bb 2>:
+  _5 = getnpar.constprop (name_2(D), "i", ptr_3(D));
+  return _5;
+
+}
+
+
+
+;; Function getparuint (getparuint, funcdef_no=7, decl_uid=3953, symbol_order=13)
+
+getparuint (char * name, unsigned int * ptr)
+{
+  int _5;
+
+  <bb 2>:
+  _5 = getnpar.constprop (name_2(D), "p", ptr_3(D));
+  return _5;
+
+}
+
+
+
+;; Function getparshort (getparshort, funcdef_no=8, decl_uid=3956, symbol_order=14)
+
+getparshort (char * name, short int * ptr)
+{
+  int _5;
+
+  <bb 2>:
+  _5 = getnpar.constprop (name_2(D), "h", ptr_3(D));
+  return _5;
+
+}
+
+
+
+;; Function getparushort (getparushort, funcdef_no=9, decl_uid=3959, symbol_order=15)
+
+getparushort (char * name, short unsigned int * ptr)
+{
+  int _5;
+
+  <bb 2>:
+  _5 = getnpar.constprop (name_2(D), "u", ptr_3(D));
+  return _5;
+
+}
+
+
+
+;; Function getparlong (getparlong, funcdef_no=10, decl_uid=3962, symbol_order=16)
+
+getparlong (char * name, long int * ptr)
+{
+  int _5;
+
+  <bb 2>:
+  _5 = getnpar.constprop (name_2(D), "l", ptr_3(D));
+  return _5;
+
+}
+
+
+
+;; Function getparulong (getparulong, funcdef_no=11, decl_uid=3965, symbol_order=17)
+
+getparulong (char * name, long unsigned int * ptr)
+{
+  int _5;
+
+  <bb 2>:
+  _5 = getnpar.constprop (name_2(D), "v", ptr_3(D));
+  return _5;
+
+}
+
+
+
+;; Function getparfloat (getparfloat, funcdef_no=12, decl_uid=3968, symbol_order=18)
+
+getparfloat (char * name, float * ptr)
+{
+  int _5;
+
+  <bb 2>:
+  _5 = getnpar.constprop (name_2(D), "f", ptr_3(D));
+  return _5;
+
+}
+
+
+
+;; Function getpardouble (getpardouble, funcdef_no=13, decl_uid=3971, symbol_order=19)
+
+getpardouble (char * name, double * ptr)
+{
+  int _5;
+
+  <bb 2>:
+  _5 = getnpar.constprop (name_2(D), "d", ptr_3(D));
+  return _5;
+
+}
+
+
+
+;; Function getparstring (getparstring, funcdef_no=14, decl_uid=3974, symbol_order=20)
+
+getparstring (char * name, char * * ptr)
+{
+  int _5;
+
+  <bb 2>:
+  _5 = getnpar.constprop (name_2(D), "s", ptr_3(D));
+  return _5;
+
+}
+
+
+
+;; Function getparstringarray (getparstringarray, funcdef_no=15, decl_uid=3977, symbol_order=21)
+
+getparstringarray (char * name, char * * ptr)
+{
+  int _5;
+
+  <bb 2>:
+  _5 = getnpar.constprop (name_2(D), "a", ptr_3(D));
+  return _5;
+
+}
+
+
+
+;; Function getpar (getpar, funcdef_no=16, decl_uid=4227, symbol_order=22)
+
+getpar (char * name, char * type, void * ptr)
+{
+  int _6;
+
+  <bb 2>:
+  _6 = getnpar.constprop (name_2(D), type_3(D), ptr_4(D));
+  return _6;
+
+}
+
+
+
+;; Function getnpar (getnpar, funcdef_no=27, decl_uid=4022, symbol_order=33)
+
+getnpar (int n, char * name, char * type, void * ptr)
+{
+  int i;
+  int D.4990;
+  int n;
+  int i;
+  int D.4986;
+  char * tmpstr;
+  char * aval;
+  int nval;
+  int i;
+  int _6;
+  int xargc.4_12;
+  int tabled.5_13;
+  char _19;
+  struct pointer_table * argtbl.6_20;
+  long unsigned int _21;
+  long unsigned int _22;
+  struct pointer_table * _23;
+  char * _24;
+  struct pointer_table * argtbl.6_28;
+  long unsigned int _29;
+  long unsigned int _30;
+  struct pointer_table * _31;
+  char _33;
+  unsigned int _37;
+  int _41;
+  long unsigned int _45;
+  double _52;
+  float _56;
+  long unsigned int _60;
+  long int _64;
+  short unsigned int _68;
+  short int _72;
+  char _77;
+  char _78;
+  char _85;
+  int nargs.29_89;
+  long unsigned int _93;
+  long unsigned int _94;
+  struct pointer_table * _95;
+  char * _96;
+  int _97;
+  int _101;
+  long unsigned int _104;
+  long unsigned int _105;
+  struct pointer_table * _106;
+  char * _107;
+  int _108;
+  char _117;
+  int nargs.29_125;
+  char _139;
+  char pretmp_147;
+  char prephitmp_148;
+  char prephitmp_150;
+  struct pointer_table * pretmp_155;
+  struct pointer_table * pretmp_159;
+
+  <bb 2>:
+  xargc.4_12 = xargc;
+  if (xargc.4_12 == 1)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  goto <bb 53>;
+
+  <bb 4>:
+  tabled.5_13 = tabled;
+  if (tabled.5_13 == 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+
+  <bb 5>:
+  getparinit ();
+
+  <bb 6>:
+  if (n_15(D) == 0)
+    goto <bb 7>;
+  else
+    goto <bb 15>;
+
+  <bb 7>:
+  nargs.29_89 = nargs;
+  i_90 = nargs.29_89 + -1;
+  if (i_90 >= 0)
+    goto <bb 8>;
+  else
+    goto <bb 14>;
+
+  <bb 8>:
+  pretmp_159 = argtbl;
+
+  <bb 9>:
+  # i_138 = PHI <i_98(13), i_90(8)>
+  _93 = (long unsigned int) i_138;
+  _94 = _93 * 16;
+  _95 = pretmp_159 + _94;
+  _96 = _95->name;
+  _97 = strcmp (name_16(D), _96);
+  if (_97 == 0)
+    goto <bb 10>;
+  else
+    goto <bb 11>;
+
+  <bb 10>:
+  # i_152 = PHI <i_138(9)>
+  goto <bb 14>;
+
+  <bb 11>:
+  i_98 = i_138 + -1;
+  if (i_98 >= 0)
+    goto <bb 13>;
+  else
+    goto <bb 12>;
+
+  <bb 12>:
+  # i_154 = PHI <i_98(11)>
+  goto <bb 14>;
+
+  <bb 13>:
+  goto <bb 9>;
+
+  <bb 14>:
+  # i_17 = PHI <i_152(10), i_154(12), i_90(7)>
+  goto <bb 21>;
+
+  <bb 15>:
+  nargs.29_125 = nargs;
+  if (nargs.29_125 > 0)
+    goto <bb 16>;
+  else
+    goto <bb 3>;
+
+  <bb 16>:
+  pretmp_155 = argtbl;
+
+  <bb 17>:
+  # i_129 = PHI <i_111(20), 0(16)>
+  # n_135 = PHI <n_116(20), n_15(D)(16)>
+  _104 = (long unsigned int) i_129;
+  _105 = _104 * 16;
+  _106 = pretmp_155 + _105;
+  _107 = _106->name;
+  _108 = strcmp (name_16(D), _107);
+  if (_108 == 0)
+    goto <bb 18>;
+  else
+    goto <bb 19>;
+
+  <bb 18>:
+  n_110 = n_135 + -1;
+  if (n_110 == 0)
+    goto <bb 54>;
+  else
+    goto <bb 19>;
+
+  <bb 19>:
+  # n_116 = PHI <n_135(17), n_110(18)>
+  i_111 = i_129 + 1;
+  if (i_111 < nargs.29_125)
+    goto <bb 20>;
+  else
+    goto <bb 3>;
+
+  <bb 20>:
+  goto <bb 17>;
+
+  <bb 21>:
+  # _101 = PHI <i_17(14), i_153(54)>
+  if (_101 < 0)
+    goto <bb 3>;
+  else
+    goto <bb 22>;
+
+  <bb 22>:
+  _19 = *type_18(D);
+  if (_19 == 115)
+    goto <bb 23>;
+  else
+    goto <bb 24>;
+
+  <bb 23>:
+  argtbl.6_20 = argtbl;
+  _21 = (long unsigned int) _101;
+  _22 = _21 * 16;
+  _23 = argtbl.6_20 + _22;
+  _24 = _23->asciival;
+  MEM[(char * *)ptr_25(D)] = _24;
+  goto <bb 53>;
+
+  <bb 24>:
+  argtbl.6_28 = argtbl;
+  _29 = (long unsigned int) _101;
+  _30 = _29 * 16;
+  _31 = argtbl.6_28 + _30;
+  aval_32 = _31->asciival;
+  _117 = *aval_32;
+  if (_117 != 0)
+    goto <bb 25>;
+  else
+    goto <bb 52>;
+
+  <bb 25>:
+
+  <bb 26>:
+  # ptr_121 = PHI <ptr_75(51), ptr_25(D)(25)>
+  # nval_124 = PHI <nval_79(51), 0(25)>
+  # aval_122 = PHI <aval_164(51), aval_32(25)>
+  # prephitmp_148 = PHI <pretmp_147(51), _19(25)>
+  # prephitmp_150 = PHI <_33(51), _117(25)>
+  switch (prephitmp_148) <default: <L18>, case 97: <L17>, case 100: <L16>, case 102: <L15>, case 104: <L11>, case 105: <L9>, case 108: <L13>, case 112: <L10>, case 117: <L12>, case 118: <L14>>
+
+<L9>:
+  _41 = eatoi (aval_122);
+  MEM[(int *)ptr_121] = _41;
+  ptr_43 = ptr_121 + 4;
+  goto <bb 48>;
+
+<L10>:
+  _37 = eatop (aval_122);
+  MEM[(unsigned int *)ptr_121] = _37;
+  ptr_39 = ptr_121 + 4;
+  goto <bb 48>;
+
+<L11>:
+  _72 = eatoh (aval_122);
+  MEM[(short int *)ptr_121] = _72;
+  ptr_74 = ptr_121 + 2;
+  goto <bb 48>;
+
+<L12>:
+  _68 = eatou (aval_122);
+  MEM[(short unsigned int *)ptr_121] = _68;
+  ptr_70 = ptr_121 + 2;
+  goto <bb 48>;
+
+<L13>:
+  _64 = eatol (aval_122);
+  MEM[(long int *)ptr_121] = _64;
+  ptr_66 = ptr_121 + 8;
+  goto <bb 48>;
+
+<L14>:
+  _60 = eatov (aval_122);
+  MEM[(long unsigned int *)ptr_121] = _60;
+  ptr_62 = ptr_121 + 8;
+  goto <bb 48>;
+
+<L15>:
+  _56 = eatof (aval_122);
+  MEM[(float *)ptr_121] = _56;
+  ptr_58 = ptr_121 + 4;
+  goto <bb 48>;
+
+<L16>:
+  _52 = eatod (aval_122);
+  MEM[(double *)ptr_121] = _52;
+  ptr_54 = ptr_121 + 8;
+  goto <bb 48>;
+
+<L17>:
+  _45 = strlen (aval_122);
+  tmpstr_47 = calloc (_45, 1);
+  if (prephitmp_150 != 44)
+    goto <bb 36>;
+  else
+    goto <bb 43>;
+
+  <bb 36>:
+  if (prephitmp_150 != 0)
+    goto <bb 37>;
+  else
+    goto <bb 43>;
+
+  <bb 37>:
+
+  <bb 38>:
+  # tmpstr_136 = PHI <tmpstr_82(42), tmpstr_47(37)>
+  # aval_142 = PHI <aval_84(42), aval_122(37)>
+  # _139 = PHI <_85(42), prephitmp_150(37)>
+  tmpstr_82 = tmpstr_136 + 1;
+  aval_84 = aval_142 + 1;
+  *tmpstr_136 = _139;
+  _85 = *aval_84;
+  if (_85 != 44)
+    goto <bb 40>;
+  else
+    goto <bb 39>;
+
+  <bb 39>:
+  # tmpstr_162 = PHI <tmpstr_82(38)>
+  goto <bb 43>;
+
+  <bb 40>:
+  if (_85 != 0)
+    goto <bb 42>;
+  else
+    goto <bb 41>;
+
+  <bb 41>:
+  # tmpstr_161 = PHI <tmpstr_82(40)>
+  goto <bb 43>;
+
+  <bb 42>:
+  goto <bb 38>;
+
+  <bb 43>:
+  # tmpstr_35 = PHI <tmpstr_162(39), tmpstr_161(41), tmpstr_47(35), tmpstr_47(36)>
+  *tmpstr_35 = 0;
+  MEM[(char * *)ptr_121] = tmpstr_47;
+  ptr_50 = ptr_121 + 8;
+  goto <bb 48>;
+
+<L18>:
+  err ("%s: invalid parameter type = %s", "getpars.c", type_18(D));
+  goto <bb 48>;
+
+  <bb 45>:
+  _78 = MEM[(char *)aval_4 + 1B];
+  if (_78 == 0)
+    goto <bb 46>;
+  else
+    goto <bb 47>;
+
+  <bb 46>:
+  # aval_164 = PHI <aval_76(45), aval_76(49)>
+  nval_79 = nval_124 + 1;
+  _33 = *aval_164;
+  if (_33 != 0)
+    goto <bb 51>;
+  else
+    goto <bb 50>;
+
+  <bb 47>:
+  goto <bb 49>;
+
+  <bb 48>:
+  # ptr_75 = PHI <ptr_39(28), ptr_74(29), ptr_43(27), ptr_121(44), ptr_50(43), ptr_54(34), ptr_58(33), ptr_62(32), ptr_66(31), ptr_70(30)>
+
+  <bb 49>:
+  # aval_4 = PHI <aval_122(48), aval_76(47)>
+  aval_76 = aval_4 + 1;
+  _77 = *aval_4;
+  if (_77 != 44)
+    goto <bb 45>;
+  else
+    goto <bb 46>;
+
+  <bb 50>:
+  # nval_163 = PHI <nval_79(46)>
+  goto <bb 52>;
+
+  <bb 51>:
+  pretmp_147 = *type_18(D);
+  goto <bb 26>;
+
+  <bb 52>:
+  # nval_115 = PHI <nval_163(50), 0(24)>
+
+  <bb 53>:
+  # _6 = PHI <0(3), nval_115(52), 1(23)>
+  return _6;
+
+  <bb 54>:
+  # i_153 = PHI <i_129(18)>
+  goto <bb 21>;
+
+}
+
+
+
+;; Function getnparint (getnparint, funcdef_no=17, decl_uid=3981, symbol_order=23)
+
+getnparint (int n, char * name, int * ptr)
+{
+  int _6;
+
+  <bb 2>:
+  _6 = getnpar (n_2(D), name_3(D), "i", ptr_4(D));
+  return _6;
+
+}
+
+
+
+;; Function getnparuint (getnparuint, funcdef_no=18, decl_uid=3985, symbol_order=24)
+
+getnparuint (int n, char * name, unsigned int * ptr)
+{
+  int _6;
+
+  <bb 2>:
+  _6 = getnpar (n_2(D), name_3(D), "p", ptr_4(D));
+  return _6;
+
+}
+
+
+
+;; Function getnparshort (getnparshort, funcdef_no=19, decl_uid=3989, symbol_order=25)
+
+getnparshort (int n, char * name, short int * ptr)
+{
+  int _6;
+
+  <bb 2>:
+  _6 = getnpar (n_2(D), name_3(D), "h", ptr_4(D));
+  return _6;
+
+}
+
+
+
+;; Function getnparushort (getnparushort, funcdef_no=20, decl_uid=3993, symbol_order=26)
+
+getnparushort (int n, char * name, short unsigned int * ptr)
+{
+  int _6;
+
+  <bb 2>:
+  _6 = getnpar (n_2(D), name_3(D), "u", ptr_4(D));
+  return _6;
+
+}
+
+
+
+;; Function getnparlong (getnparlong, funcdef_no=21, decl_uid=3997, symbol_order=27)
+
+getnparlong (int n, char * name, long int * ptr)
+{
+  int _6;
+
+  <bb 2>:
+  _6 = getnpar (n_2(D), name_3(D), "l", ptr_4(D));
+  return _6;
+
+}
+
+
+
+;; Function getnparulong (getnparulong, funcdef_no=22, decl_uid=4001, symbol_order=28)
+
+getnparulong (int n, char * name, long unsigned int * ptr)
+{
+  int _6;
+
+  <bb 2>:
+  _6 = getnpar (n_2(D), name_3(D), "v", ptr_4(D));
+  return _6;
+
+}
+
+
+
+;; Function getnparfloat (getnparfloat, funcdef_no=23, decl_uid=4005, symbol_order=29)
+
+getnparfloat (int n, char * name, float * ptr)
+{
+  int _6;
+
+  <bb 2>:
+  _6 = getnpar (n_2(D), name_3(D), "f", ptr_4(D));
+  return _6;
+
+}
+
+
+
+;; Function getnpardouble (getnpardouble, funcdef_no=24, decl_uid=4009, symbol_order=30)
+
+getnpardouble (int n, char * name, double * ptr)
+{
+  int _6;
+
+  <bb 2>:
+  _6 = getnpar (n_2(D), name_3(D), "d", ptr_4(D));
+  return _6;
+
+}
+
+
+
+;; Function getnparstring (getnparstring, funcdef_no=25, decl_uid=4013, symbol_order=31)
+
+getnparstring (int n, char * name, char * * ptr)
+{
+  int _6;
+
+  <bb 2>:
+  _6 = getnpar (n_2(D), name_3(D), "s", ptr_4(D));
+  return _6;
+
+}
+
+
+
+;; Function getnparstringarray (getnparstringarray, funcdef_no=26, decl_uid=4017, symbol_order=32)
+
+getnparstringarray (int n, char * name, char * * ptr)
+{
+  int _6;
+
+  <bb 2>:
+  _6 = getnpar (n_2(D), name_3(D), "a", ptr_4(D));
+  return _6;
+
+}
+
+
+
+;; Function getPar (getPar, funcdef_no=28, decl_uid=4033, symbol_order=34)
+
+getPar (char * name, char * type, void * ptr)
+{
+  <bb 2>:
+  getnpar.constprop (name_2(D), type_3(D), ptr_4(D));
+  return;
+
+}
+
+
+
+;; Function countparname (countparname, funcdef_no=29, decl_uid=4024, symbol_order=35)
+
+countparname (char * name)
+{
+  int nname;
+  int i;
+  int _4;
+  int xargc.33_8;
+  int tabled.34_9;
+  long unsigned int _13;
+  long unsigned int _14;
+  struct pointer_table * _15;
+  char * _16;
+  int _18;
+  int nargs.36_25;
+  struct pointer_table * pretmp_34;
+
+  <bb 2>:
+  xargc.33_8 = xargc;
+  if (xargc.33_8 == 1)
+    goto <bb 13>;
+  else
+    goto <bb 3>;
+
+  <bb 3>:
+  tabled.34_9 = tabled;
+  if (tabled.34_9 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+
+  <bb 4>:
+  getparinit ();
+
+  <bb 5>:
+  nargs.36_25 = nargs;
+  if (nargs.36_25 > 0)
+    goto <bb 6>;
+  else
+    goto <bb 12>;
+
+  <bb 6>:
+  pretmp_34 = argtbl;
+
+  <bb 7>:
+  # i_26 = PHI <i_20(11), 0(6)>
+  # nname_27 = PHI <nname_2(11), 0(6)>
+  _13 = (long unsigned int) i_26;
+  _14 = _13 * 16;
+  _15 = pretmp_34 + _14;
+  _16 = _15->name;
+  _18 = strcmp (name_17(D), _16);
+  if (_18 == 0)
+    goto <bb 8>;
+  else
+    goto <bb 9>;
+
+  <bb 8>:
+  nname_19 = nname_27 + 1;
+
+  <bb 9>:
+  # nname_2 = PHI <nname_27(7), nname_19(8)>
+  i_20 = i_26 + 1;
+  if (i_20 < nargs.36_25)
+    goto <bb 11>;
+  else
+    goto <bb 10>;
+
+  <bb 10>:
+  # nname_33 = PHI <nname_2(9)>
+  goto <bb 12>;
+
+  <bb 11>:
+  goto <bb 7>;
+
+  <bb 12>:
+  # nname_22 = PHI <nname_33(10), 0(5)>
+
+  <bb 13>:
+  # _4 = PHI <0(2), nname_22(12)>
+  return _4;
+
+}
+
+
+
+;; Function countnparval (countnparval, funcdef_no=30, decl_uid=4029, symbol_order=36)
+
+countnparval (int n, char * name)
+{
+  int i;
+  int D.5096;
+  int n;
+  int i;
+  int D.5092;
+  int i;
+  int count;
+  int i;
+  int _1;
+  int xargc.37_5;
+  int tabled.38_6;
+  struct pointer_table * argtbl.39_11;
+  long unsigned int _12;
+  long unsigned int _13;
+  struct pointer_table * _14;
+  char * _15;
+  char _17;
+  sizetype _22;
+  char * _23;
+  int nargs.29_26;
+  long unsigned int _30;
+  long unsigned int _31;
+  struct pointer_table * _32;
+  char * _33;
+  int _34;
+  int nargs.29_37;
+  int _38;
+  long unsigned int _41;
+  long unsigned int _42;
+  struct pointer_table * _43;
+  char * _44;
+  int _45;
+  char _59;
+  char _61;
+  int pretmp_87;
+  int prephitmp_88;
+  struct pointer_table * pretmp_92;
+  struct pointer_table * pretmp_96;
+
+  <bb 2>:
+  xargc.37_5 = xargc;
+  if (xargc.37_5 == 1)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  goto <bb 28>;
+
+  <bb 4>:
+  tabled.38_6 = tabled;
+  if (tabled.38_6 == 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+
+  <bb 5>:
+  getparinit ();
+
+  <bb 6>:
+  if (n_8(D) == 0)
+    goto <bb 7>;
+  else
+    goto <bb 15>;
+
+  <bb 7>:
+  nargs.29_26 = nargs;
+  i_27 = nargs.29_26 + -1;
+  if (i_27 >= 0)
+    goto <bb 8>;
+  else
+    goto <bb 14>;
+
+  <bb 8>:
+  pretmp_96 = argtbl;
+
+  <bb 9>:
+  # i_57 = PHI <i_35(13), i_27(8)>
+  _30 = (long unsigned int) i_57;
+  _31 = _30 * 16;
+  _32 = pretmp_96 + _31;
+  _33 = _32->name;
+  _34 = strcmp (name_9(D), _33);
+  if (_34 == 0)
+    goto <bb 10>;
+  else
+    goto <bb 11>;
+
+  <bb 10>:
+  # i_99 = PHI <i_57(9)>
+  goto <bb 14>;
+
+  <bb 11>:
+  i_35 = i_57 + -1;
+  if (i_35 >= 0)
+    goto <bb 13>;
+  else
+    goto <bb 12>;
+
+  <bb 12>:
+  # i_100 = PHI <i_35(11)>
+  goto <bb 14>;
+
+  <bb 13>:
+  goto <bb 9>;
+
+  <bb 14>:
+  # i_10 = PHI <i_99(10), i_100(12), i_27(7)>
+  goto <bb 21>;
+
+  <bb 15>:
+  nargs.29_37 = nargs;
+  if (nargs.29_37 > 0)
+    goto <bb 16>;
+  else
+    goto <bb 3>;
+
+  <bb 16>:
+  pretmp_92 = argtbl;
+
+  <bb 17>:
+  # i_66 = PHI <i_48(20), 0(16)>
+  # n_67 = PHI <n_53(20), n_8(D)(16)>
+  _41 = (long unsigned int) i_66;
+  _42 = _41 * 16;
+  _43 = pretmp_92 + _42;
+  _44 = _43->name;
+  _45 = strcmp (name_9(D), _44);
+  if (_45 == 0)
+    goto <bb 18>;
+  else
+    goto <bb 19>;
+
+  <bb 18>:
+  n_47 = n_67 + -1;
+  if (n_47 == 0)
+    goto <bb 29>;
+  else
+    goto <bb 19>;
+
+  <bb 19>:
+  # n_53 = PHI <n_67(17), n_47(18)>
+  i_48 = i_66 + 1;
+  if (nargs.29_37 > i_48)
+    goto <bb 20>;
+  else
+    goto <bb 3>;
+
+  <bb 20>:
+  goto <bb 17>;
+
+  <bb 21>:
+  # _38 = PHI <i_10(14), i_98(29)>
+  if (_38 >= 0)
+    goto <bb 22>;
+  else
+    goto <bb 3>;
+
+  <bb 22>:
+  argtbl.39_11 = argtbl;
+  _12 = (long unsigned int) _38;
+  _13 = _12 * 16;
+  _14 = argtbl.39_11 + _13;
+  _15 = _14->asciival;
+  _59 = *_15;
+  if (_59 != 0)
+    goto <bb 23>;
+  else
+    goto <bb 27>;
+
+  <bb 23>:
+
+  <bb 24>:
+  # _61 = PHI <_17(26), _59(23)>
+  # count_54 = PHI <count_25(26), 0(23)>
+  # i_58 = PHI <i_21(26), 0(23)>
+  count_19 = count_54 + 1;
+  count_25 = _61 == 44 ? count_19 : count_54;
+  i_21 = i_58 + 1;
+  _22 = (sizetype) i_21;
+  _23 = _15 + _22;
+  _17 = *_23;
+  if (_17 != 0)
+    goto <bb 26>;
+  else
+    goto <bb 25>;
+
+  <bb 25>:
+  # count_101 = PHI <count_25(24)>
+  pretmp_87 = count_101 + 1;
+  goto <bb 27>;
+
+  <bb 26>:
+  goto <bb 24>;
+
+  <bb 27>:
+  # prephitmp_88 = PHI <pretmp_87(25), 1(22)>
+
+  <bb 28>:
+  # _1 = PHI <0(3), prephitmp_88(27)>
+  return _1;
+
+  <bb 29>:
+  # i_98 = PHI <i_66(18)>
+  goto <bb 21>;
+
+}
+
+
+
+;; Function countparval (countparval, funcdef_no=31, decl_uid=4026, symbol_order=37)
+
+countparval (char * name)
+{
+  int i;
+  int D.5133;
+  int i;
+  int count;
+  int i;
+  int D.5129;
+  int xargc.37_5;
+  int tabled.38_6;
+  char * _12;
+  char _13;
+  sizetype _18;
+  char * _19;
+  int _22;
+  int nargs.29_24;
+  long unsigned int _28;
+  long unsigned int _29;
+  struct pointer_table * _30;
+  char * _31;
+  int _32;
+  char _40;
+  char _42;
+  struct pointer_table * pretmp_59;
+  struct pointer_table * _61;
+  int pretmp_67;
+  int prephitmp_68;
+
+  <bb 2>:
+  xargc.37_5 = xargc;
+  if (xargc.37_5 == 1)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  goto <bb 16>;
+
+  <bb 4>:
+  tabled.38_6 = tabled;
+  if (tabled.38_6 == 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+
+  <bb 5>:
+  getparinit ();
+
+  <bb 6>:
+  nargs.29_24 = nargs;
+  i_25 = nargs.29_24 + -1;
+  if (i_25 >= 0)
+    goto <bb 7>;
+  else
+    goto <bb 3>;
+
+  <bb 7>:
+  pretmp_59 = argtbl;
+
+  <bb 8>:
+  # i_49 = PHI <i_33(10), i_25(7)>
+  _28 = (long unsigned int) i_49;
+  _29 = _28 * 16;
+  _30 = pretmp_59 + _29;
+  _31 = _30->name;
+  _32 = strcmp (name_2(D), _31);
+  if (_32 == 0)
+    goto <bb 17>;
+  else
+    goto <bb 9>;
+
+  <bb 9>:
+  i_33 = i_49 + -1;
+  if (i_33 >= 0)
+    goto <bb 10>;
+  else
+    goto <bb 3>;
+
+  <bb 10>:
+  goto <bb 8>;
+
+  <bb 11>:
+
+  <bb 12>:
+  # _42 = PHI <_13(13), _40(11)>
+  # count_43 = PHI <count_23(13), 0(11)>
+  # i_50 = PHI <i_17(13), 0(11)>
+  count_15 = count_43 + 1;
+  count_23 = _42 == 44 ? count_15 : count_43;
+  i_17 = i_50 + 1;
+  _18 = (sizetype) i_17;
+  _19 = _12 + _18;
+  _13 = *_19;
+  if (_13 != 0)
+    goto <bb 13>;
+  else
+    goto <bb 14>;
+
+  <bb 13>:
+  goto <bb 12>;
+
+  <bb 14>:
+  # count_65 = PHI <count_23(12)>
+  pretmp_67 = count_65 + 1;
+
+  <bb 15>:
+  # prephitmp_68 = PHI <pretmp_67(14), 1(17)>
+
+  <bb 16>:
+  # _22 = PHI <0(3), prephitmp_68(15)>
+  return _22;
+
+  <bb 17>:
+  # _61 = PHI <_30(8)>
+  _12 = _61->asciival;
+  _40 = *_12;
+  if (_40 != 0)
+    goto <bb 11>;
+  else
+    goto <bb 15>;
+
+}
+
+

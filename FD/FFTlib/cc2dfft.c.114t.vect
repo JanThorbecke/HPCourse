@@ -1,0 +1,210 @@
+
+;; Function cc2dfft (cc2dfft, funcdef_no=34, decl_uid=3831, symbol_order=34)
+
+cc2dfft (struct complex * data, int nx, int ny, int ldx, int sign)
+{
+  struct complex * tmp;
+  int j;
+  int i;
+  int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  struct FILE * __stderrp.0_24;
+  int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  struct complex * _30;
+  int _31;
+  int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  struct complex * _35;
+  int _40;
+  int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  struct complex * _44;
+  int _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  struct complex * _49;
+  int pretmp_101;
+  int pretmp_110;
+
+  <bb 2>:
+  if (ny_11(D) != 1)
+    goto <bb 3>;
+  else
+    goto <bb 26>;
+
+  <bb 3>:
+  ccmfft (data_13(D), nx_14(D), ny_11(D), ldx_17(D), sign_15(D));
+  _19 = nx_14(D) * ny_11(D);
+  _20 = (long unsigned int) _19;
+  _21 = _20 * 8;
+  tmp_23 = malloc (_21);
+  if (tmp_23 == 0B)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+
+  <bb 4>:
+  __stderrp.0_24 = __stderrp;
+  __builtin_fwrite ("cc2dfft: memory allocation error\n", 1, 33, __stderrp.0_24);
+
+  <bb 5>:
+  if (nx_14(D) > 0)
+    goto <bb 6>;
+  else
+    goto <bb 28>;
+
+  <bb 6>:
+
+  <bb 7>:
+  # i_63 = PHI <i_38(13), 0(6)>
+  if (ny_11(D) > 0)
+    goto <bb 8>;
+  else
+    goto <bb 12>;
+
+  <bb 8>:
+  pretmp_110 = ny_11(D) * i_63;
+
+  <bb 9>:
+  # j_64 = PHI <j_37(10), 0(8)>
+  _27 = j_64 + pretmp_110;
+  _28 = (long unsigned int) _27;
+  _29 = _28 * 8;
+  _30 = tmp_23 + _29;
+  _31 = j_64 * ldx_17(D);
+  _32 = _31 + i_63;
+  _33 = (long unsigned int) _32;
+  _34 = _33 * 8;
+  _35 = data_13(D) + _34;
+  *_30 = *_35;
+  j_37 = j_64 + 1;
+  if (ny_11(D) > j_37)
+    goto <bb 10>;
+  else
+    goto <bb 11>;
+
+  <bb 10>:
+  goto <bb 9>;
+
+  <bb 11>:
+
+  <bb 12>:
+  i_38 = i_63 + 1;
+  if (nx_14(D) > i_38)
+    goto <bb 13>;
+  else
+    goto <bb 14>;
+
+  <bb 13>:
+  goto <bb 7>;
+
+  <bb 14>:
+  ccmfft (tmp_23, ny_11(D), nx_14(D), ny_11(D), sign_15(D));
+  if (nx_14(D) > 0)
+    goto <bb 15>;
+  else
+    goto <bb 24>;
+
+  <bb 15>:
+
+  <bb 16>:
+  # i_60 = PHI <i_52(22), 0(15)>
+  if (ny_11(D) > 0)
+    goto <bb 17>;
+  else
+    goto <bb 21>;
+
+  <bb 17>:
+  pretmp_101 = ny_11(D) * i_60;
+
+  <bb 18>:
+  # j_65 = PHI <j_51(19), 0(17)>
+  _40 = j_65 * ldx_17(D);
+  _41 = _40 + i_60;
+  _42 = (long unsigned int) _41;
+  _43 = _42 * 8;
+  _44 = data_13(D) + _43;
+  _46 = j_65 + pretmp_101;
+  _47 = (long unsigned int) _46;
+  _48 = _47 * 8;
+  _49 = tmp_23 + _48;
+  *_44 = *_49;
+  j_51 = j_65 + 1;
+  if (ny_11(D) > j_51)
+    goto <bb 19>;
+  else
+    goto <bb 20>;
+
+  <bb 19>:
+  goto <bb 18>;
+
+  <bb 20>:
+
+  <bb 21>:
+  i_52 = i_60 + 1;
+  if (nx_14(D) > i_52)
+    goto <bb 22>;
+  else
+    goto <bb 23>;
+
+  <bb 22>:
+  goto <bb 16>;
+
+  <bb 23>:
+
+  <bb 24>:
+
+  <bb 25>:
+  free (tmp_23);
+  goto <bb 27>;
+
+  <bb 26>:
+  cc1fft (data_13(D), nx_14(D), sign_15(D));
+
+  <bb 27>:
+  return;
+
+  <bb 28>:
+  ccmfft (tmp_23, ny_11(D), nx_14(D), ny_11(D), sign_15(D));
+  goto <bb 25>;
+
+}
+
+
+
+;; Function free_cc2dfft (free_cc2dfft, funcdef_no=35, decl_uid=3982, symbol_order=35)
+
+free_cc2dfft ()
+{
+  <bb 2>:
+  return;
+
+}
+
+
+
+;; Function cc2dfftf (cc2dfftf, funcdef_no=36, decl_uid=3989, symbol_order=36)
+
+cc2dfftf (struct complex * data, int * nx, int * ny, int * ldx, int * sign)
+{
+  int _3;
+  int _5;
+  int _7;
+  int _9;
+
+  <bb 2>:
+  _3 = *sign_2(D);
+  _5 = *ldx_4(D);
+  _7 = *ny_6(D);
+  _9 = *nx_8(D);
+  cc2dfft (data_10(D), _9, _7, _5, _3);
+  return;
+
+}
+
+

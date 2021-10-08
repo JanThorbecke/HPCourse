@@ -1,0 +1,34 @@
+Check the compiler and CFLAGS options in the file Make_include and adapt to the system you are using.
+
+To compile the code you must first make the FFT library. The FFT library has to be compiled and a library made from it. To do so goto the FFTlib directory and
+type 
+
+> make
+
+then cd to the fdelmodc directory and also type
+
+> make
+ 
+to compile the src code for the FD program. You will see some compile errors passing by, try to solve them. The correct code (without the syntax errors) is in the file with the same name, but with extension .c.ok Use the correct code of the program to see if you have correctly solved the syntax errors.
+
+If you have an executable called fdelmodc you can run the program by running
+
+> ./fdelmod_plane.scr
+
+in the directory fdelmodc/demo/ 
+
+To generate profile data compile with options -pg or -p -g. Depending on the type of compiler you use different options are needed to generate profile hooks into the code: for example have a look at 'man gcc' to look at the profiling options of the gcc compiler
+
+To show the profiled data use 
+
+> gprof ../fdelmodc gmon.out
+
+in the fdelmodc/demo/ directory.
+
+Note for OSX users the gprof functions is installed but does not always work properly.
+
+
+
+OSX maverick with lldb
+
+http://lldb.llvm.org/lldb-gdb.html

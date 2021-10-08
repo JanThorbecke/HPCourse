@@ -1,0 +1,778 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          S u m m a r y   R e p o r t
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Compilation
+-----------
+File     : /cray/css/u2/jan/cache_block_2010/stencil1.f90
+Compiled : 07/27/10  10:58:21
+Compiler : Version 7.2.6.104
+Target   : x86-64
+Command  : /opt/cray/cce/7.2.6.104/cftn/x86-64/bin/ftn_driver.exe -hcpu=x86-64
+           -hstatic -ra -c -ostencil1.o
+           -I/opt/cray/pmi/1.0-1.0000.7901.22.1.ss/include
+           -I/opt/cray/cce/7.2.6.104/craylibs/x86-64/include
+           -L/opt/cray/pmi/1.0-1.0000.7901.22.1.ss/lib64
+           -L/opt/cray/cce/7.2.6.104/craylibs/x86-64
+           -L/opt/acml/4.4.0/gfortran64/lib -lcraymath -lacml_mv -lgfortran
+           -I/opt/acml/4.4.0/gfortran64/include -L/opt/gcc/4.1.2/snos/lib64
+           -D__CRAYXT -D__CRAYXT_COMPUTE_LINUX_TARGET -D__TARGET_LINUX__
+           -I/opt/cray/mpt/5.0.1/xt/seastar/mpich2-cray/include
+           -I/opt/cray/mpt/5.0.1/xt/seastar/sma/include
+           -I/opt/xt-libsci/10.4.6/cray/include -I/opt/xt-pe/2.2.48B/include
+           -I/opt/xt-pe/default/include
+           -L/opt/cray/mpt/5.0.1/xt/seastar/mpich2-cray/lib
+           -L/opt/cray/mpt/5.0.1/xt/seastar/sma/lib64
+           -L/opt/xt-libsci/10.4.6/cray/lib/72 -L/opt/xt-pe/2.2.48B/lib
+           -L/opt/xt-pe/default/lib -L/opt/xt-pe/2.2.48B/lib/snos64
+           -L/opt/xt-pe/default/lib/snos64 -lsci -lsma -lmpichf90 -lmpich -lrt
+           -lpmi -lalpslli -lalpsutil -lportals -lpthread -lm
+           -L/usr/lib/alps stencil1.f90
+
+ftnlx report
+------------
+Source   : /cray/css/u2/jan/cache_block_2010/stencil1.f90
+Date     : 07/27/2010  10:58:22
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          O p t i o n s   R e p o r t
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Options :  -O cache2,fp2,scalar2,thread2,vector2,modinline,ipa3,noaggress
+           -O noautothread,nodwarf,fusion2,nomsgs,negmsgs,omp,nooverindex,patter
+           n
+           -O shortcircuit2,unroll2,nozeroinc
+           -h cache2,fp2,thread2,noautothread,nocaf,cpu,nofunc_trace,noomp_trace
+           -h omp,nopat_trace,nosecond_underscore
+           -s default32 
+           -eh 
+           -eM 
+           -d acdgjlmnovwBDILPQRTZ 
+           -e hkpqyS       
+           -f free
+           -m3
+           -S /tmp/pbs.5104974.sdb/pe_24083/stencil1.s
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          S o u r c e   L i s t i n g
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+     %%%    L o o p m a r k   L e g e n d    %%%
+
+     Primary Loop Type        Modifiers
+     ------- ---- ----        ---------
+     A - Pattern matched      a - vector atomic memory operation
+                              b - blocked
+     C - Collapsed            c - conditional and/or computed
+     D - Deleted              f - fused
+     E - Cloned                
+     I - Inlined              i - interchanged
+     M - Multithreaded        m - partitioned
+     P - Parallel             p - partial
+     R - Redundant            r - unrolled
+                              s - shortloop
+     V - Vectorized           t - array syntax temp used
+                              w - unwound
+
+
+    1.              program stencil1
+    2.              
+    3.                implicit none
+    4.              
+    5.                double precision, allocatable :: u(:,:,:), d(:,:,:), e(:,:,:)
+    6.                double precision err
+    7.                integer i, N
+    8.                double precision, parameter :: tol = 1d-16
+    9.                integer, parameter :: NLOOP = 10
+   10.                integer(kind=8) startt, endt
+   11.                double precision eclksec
+   12.              
+   13.                integer(kind=8) irtc, irtc_rate
+   14.                external irtc, irtc_rate
+   15.              
+   16.                eclksec = dble(irtc_rate())
+   17.              
+   18.                N = 294
+   19.              
+   20.                allocate(u(N,N,N), d(N,N,N), e(N,N,N))
+   21.              
+   22.  Vpr4 I---->   call init(N, N, N, u, e)
+   23.              
+   24.                call diff(N, N, N, u, d)
+   25.              
+   26.                ! Timing loop
+   27.                startt = irtc()
+   28.  1---------<   do i = 1, NLOOP
+   29.  1                call diff(N, N, N, u, d)
+   30.  1--------->   end do
+   31.                endt = irtc()
+   32.              
+   33.                print '(a,i5,a,f10.6,a)', 'Elapsed time for ', NLOOP, ' loops: ', &
+   34.              	dble(endt - startt) / eclksec, ' seconds'
+   35.              
+   36.  Vr4------<>   u = d - e
+   37.  Vr4------<>   err = sqrt(dot_product( &
+   38.                     reshape(u(6:N-5, 6:N-5, 6:N-5), (/ (N-10)**3 /)), &
+   39.                     reshape(u(6:N-5, 6:N-5, 6:N-5), (/ (N-10)**3 /)) )) / (N**3)
+   40.              
+   41.                if (err < tol) then
+   42.                   print *,'Check passed.'
+   43.                else
+   44.                   print '(a,f20.16)','Check failed, error = ',err
+   45.                endif
+   46.              
+   47.                deallocate(u, d, e)
+   48.              
+   49.              contains
+   50.              
+   51.                subroutine init(nx, ny, nz, u, e)
+   52.              
+   53.                  integer, intent(in) :: nx, ny, nz
+   54.                  double precision, intent(out) :: u(nx, ny, nz)
+   55.                  double precision, intent(out) :: e(nx, ny, nz)
+   56.              
+   57.                  integer i, j, k
+   58.                  double precision x, y, z
+   59.              
+   60.                  if (nx < 1 .or. ny < 1 .or. nz < 1) then
+   61.                     write(6, *) 'Improper array sizes passed to init().'
+   62.                     stop
+   63.                  end if
+   64.              
+   65.  1---------<     do k = 1, nz
+   66.  1                  z = (dble(k) - 1d0)/(dble(nz) - 1d0)
+   67.  1 2-------<        do j = 1, ny
+   68.  1 2                   y = (dble(j) - 1d0)/(dble(ny) - 1d0)
+   69.  1 2 Vpr4--<           do i = 1, nx
+   70.  1 2 Vpr4                 x = (dble(i) - 1d0)/(dble(nx) - 1d0)
+   71.  1 2 Vpr4                 u(i, j, k) = sin(x) + y**2 + cos(z)
+   72.  1 2 Vpr4                 e(i, j, k) = cos(x) + 2*y  - sin(z)
+   73.  1 2 Vpr4-->           end do
+   74.  1 2------->        end do
+   75.  1--------->     end do
+   76.              
+   77.                end subroutine init
+   78.              
+   79.              
+   80.                subroutine diff(nx, ny, nz, u, d)
+   81.                  ! Only computes interior differences
+   82.              
+   83.                  integer, intent(in) :: nx, ny, nz
+   84.                  double precision, intent(in)  :: u(nx, ny, nz)
+   85.                  double precision, intent(out) :: d(nx, ny, nz)
+   86.              
+   87.                  double precision dxi, dyi, dzi, tmp(nx)
+   88.                  double precision a1, a2, a3
+   89.                  double precision b1, b2, b3
+   90.                  double precision c1, c2, c3
+   91.                  integer i, j, k
+   92.              
+   93.                  if (nx < 13 .or. ny < 13 .or. nz < 13) then
+   94.                     write(6, *) 'Improper array sizes passed to diff().'
+   95.                     stop
+   96.                  end if
+   97.              
+   98.  A--------<>     d = 0d0
+   99.              
+  100.                  ! Sixth-order centered differences in interior
+  101.              
+  102.                  dxi = (dble(nx) - 1d0)/3840d0
+  103.                  dyi = (dble(ny) - 1d0)/3840d0
+  104.                  dzi = (dble(nz) - 1d0)/3840d0
+  105.                  a1 = dxi*9d0
+  106.                  a2 = dxi*2250d0
+  107.                  a3 = dxi*125d0
+  108.                  b1 = dyi*9d0
+  109.                  b2 = dyi*2250d0
+  110.                  b3 = dyi*125d0
+  111.                  c1 = dzi*9d0
+  112.                  c2 = dzi*2250d0
+  113.                  c3 = dzi*125d0
+  114.              
+  115.              ! BEGIN CACHE BLOCKING
+  116.              !dir$ blockable(j,k)
+  117.              !dir$ blockingsize(92)
+  118.  b---------<     do k = 6, nz-5
+  119.  b           !dir$ blockingsize(92)
+  120.  b b-------<        do j = 6, ny-5
+  121.  b b Vfr4--<           do i = 6, nx-5
+  122.  b b Vfr4                 tmp(i) =  &
+  123.  b b Vfr4                      (-a1*(u(i-5, j, k) - u(i+5, j, k)) &
+  124.  b b Vfr4                       -a2*(u(i-1, j, k) - u(i+1, j, k)) &
+  125.  b b Vfr4                       -a3*(u(i+3, j, k) - u(i-3, j, k)))
+  126.  b b Vfr4-->           end do
+  127.  b b f-----<           do i = 6, nx-5
+  128.  b b f                    tmp(i) = tmp(i) + &
+  129.  b b f                         (-b1*(u(i, j-5, k) - u(i, j+5, k)) &
+  130.  b b f                          -b2*(u(i, j-1, k) - u(i, j+1, k)) &
+  131.  b b f                          -b3*(u(i, j+3, k) - u(i, j-3, k)))
+  132.  b b f----->           end do
+  133.  b b Vr4---<           do i = 6, nx-5
+  134.  b b Vr4                  tmp(i) = tmp(i) + &
+  135.  b b Vr4                       (-c1*(u(i, j, k-5) - u(i, j, k+5)) &
+  136.  b b Vr4                        -c2*(u(i, j, k-1) - u(i, j, k+1)) &
+  137.  b b Vr4                        -c3*(u(i, j, k+3) - u(i, j, k-3)))
+  138.  b b Vr4                  d(i, j, k) = tmp(i) 
+  139.  b b Vr4--->           end do
+  140.  b b------->        end do
+  141.  b--------->     end do
+  142.              ! END CACHE BLOCKING
+  143.              
+  144.                end subroutine diff
+  145.              
+  146.              
+  147.              end program stencil1
+
+ftn-3021 ftn: IPA File = stencil1.f90, Line = 16 
+  Routine IRTC_RATE was not inlined because the compiler was unable to locate the routine to expand it inline.
+
+ftn-6005 ftn: SCALAR File = stencil1.f90, Line = 22 
+  A loop starting at line 22 was unrolled 4 times.
+
+ftn-6209 ftn: VECTOR File = stencil1.f90, Line = 22 
+  A loop starting at line 22 was partially vectorized.
+
+ftn-3021 ftn: IPA File = stencil1.f90, Line = 22 
+  Routine _STOP was not inlined because the compiler was unable to locate the routine to expand it inline.
+
+ftn-3001 ftn: IPA File = stencil1.f90, Line = 22 
+  The call to INIT was inlined.
+
+ftn-3021 ftn: IPA File = stencil1.f90, Line = 24 
+  Routine _STOP was not inlined because the compiler was unable to locate the routine to expand it inline.
+
+ftn-3021 ftn: IPA File = stencil1.f90, Line = 27 
+  Routine IRTC was not inlined because the compiler was unable to locate the routine to expand it inline.
+
+ftn-6288 ftn: VECTOR File = stencil1.f90, Line = 28 
+  A loop starting at line 28 was not vectorized because it contains a call to subroutine "DIFF" on line 29.
+
+ftn-3021 ftn: IPA File = stencil1.f90, Line = 29 
+  Routine _STOP was not inlined because the compiler was unable to locate the routine to expand it inline.
+
+ftn-3021 ftn: IPA File = stencil1.f90, Line = 31 
+  Routine IRTC was not inlined because the compiler was unable to locate the routine to expand it inline.
+
+ftn-6005 ftn: SCALAR File = stencil1.f90, Line = 36 
+  A loop starting at line 36 was unrolled 4 times.
+
+ftn-6204 ftn: VECTOR File = stencil1.f90, Line = 36 
+  A loop starting at line 36 was vectorized.
+
+ftn-6005 ftn: SCALAR File = stencil1.f90, Line = 37 
+  A loop starting at line 37 was unrolled 4 times.
+
+ftn-6204 ftn: VECTOR File = stencil1.f90, Line = 37 
+  A loop starting at line 37 was vectorized.
+
+ftn-3021 ftn: IPA File = stencil1.f90, Line = 38 
+  Routine _RESHAPE was not inlined because the compiler was unable to locate the routine to expand it inline.
+
+ftn-3021 ftn: IPA File = stencil1.f90, Line = 39 
+  Routine _RESHAPE was not inlined because the compiler was unable to locate the routine to expand it inline.
+
+ftn-6294 ftn: VECTOR File = stencil1.f90, Line = 65 
+  A loop starting at line 65 was not vectorized because a better candidate was found at line 69.
+
+ftn-6010 ftn: SCALAR File = stencil1.f90, Line = 66 
+  A divide was turned into a multiply by a reciprocal
+
+ftn-6294 ftn: VECTOR File = stencil1.f90, Line = 67 
+  A loop starting at line 67 was not vectorized because a better candidate was found at line 69.
+
+ftn-6010 ftn: SCALAR File = stencil1.f90, Line = 68 
+  A divide was turned into a multiply by a reciprocal
+
+ftn-6005 ftn: SCALAR File = stencil1.f90, Line = 69 
+  A loop starting at line 69 was unrolled 4 times.
+
+ftn-6209 ftn: VECTOR File = stencil1.f90, Line = 69 
+  A loop starting at line 69 was partially vectorized.
+
+ftn-6010 ftn: SCALAR File = stencil1.f90, Line = 71 
+  A divide was turned into a multiply by a reciprocal
+
+ftn-6202 ftn: VECTOR File = stencil1.f90, Line = 98 
+  A loop starting at line 98 was replaced by a library call.
+
+ftn-6010 ftn: SCALAR File = stencil1.f90, Line = 102 
+  A divide was turned into a multiply by a reciprocal
+
+ftn-6010 ftn: SCALAR File = stencil1.f90, Line = 103 
+  A divide was turned into a multiply by a reciprocal
+
+ftn-6010 ftn: SCALAR File = stencil1.f90, Line = 104 
+  A divide was turned into a multiply by a reciprocal
+
+ftn-6315 ftn: VECTOR File = stencil1.f90, Line = 118 
+  A loop starting at line 118 was not vectorized because the target array (TMP) would require rank expansion.
+
+ftn-6051 ftn: SCALAR File = stencil1.f90, Line = 118 
+  A loop starting at line 118 was blocked according to user directive with block size 92.
+
+ftn-6315 ftn: VECTOR File = stencil1.f90, Line = 120 
+  A loop starting at line 120 was not vectorized because the target array (TMP) would require rank expansion.
+
+ftn-6051 ftn: SCALAR File = stencil1.f90, Line = 120 
+  A loop starting at line 120 was blocked according to user directive with block size 92.
+
+ftn-6005 ftn: SCALAR File = stencil1.f90, Line = 121 
+  A loop starting at line 121 was unrolled 4 times.
+
+ftn-6204 ftn: VECTOR File = stencil1.f90, Line = 121 
+  A loop starting at line 121 was vectorized.
+
+ftn-6004 ftn: SCALAR File = stencil1.f90, Line = 127 
+  A loop starting at line 127 was fused with the loop starting at line 121.
+
+ftn-6005 ftn: SCALAR File = stencil1.f90, Line = 133 
+  A loop starting at line 133 was unrolled 4 times.
+
+ftn-6204 ftn: VECTOR File = stencil1.f90, Line = 133 
+  A loop starting at line 133 was vectorized.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 C r o s s   R e f e r e n c e   for   STENCIL1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Name                            Storage                           Attributes
+----                            -------                           ----------
+
+A1                              Stack                             DOUBLE PRECISION
+  Decl      88
+  Set      105
+  Used     123
+
+A2                              Stack                             DOUBLE PRECISION
+  Decl      88
+  Set      106
+  Used     124
+
+A3                              Stack                             DOUBLE PRECISION
+  Decl      88
+  Set      107
+  Used     125
+
+B1                              Stack                             DOUBLE PRECISION
+  Decl      89
+  Set      108
+  Used     129
+
+B2                              Stack                             DOUBLE PRECISION
+  Decl      89
+  Set      109
+  Used     130
+
+B3                              Stack                             DOUBLE PRECISION
+  Decl      89
+  Set      110
+  Used     131
+
+C1                              Stack                             DOUBLE PRECISION
+  Decl      90
+  Set      111
+  Used     135
+
+C2                              Stack                             DOUBLE PRECISION
+  Decl      90
+  Set      112
+  Used     136
+
+C3                              Stack                             DOUBLE PRECISION
+  Decl      90
+  Set      113
+  Used     137
+
+COS                                                               Function, REAL, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used       0      72
+
+D                               Heap                              DOUBLE PRECISION, DIMENSION(:, :, :), ALLOCATABLE, SAVE
+  Decl       5
+  Set 
+  Used      20      24      29      36      47
+
+D                               Dummy Arg                         DOUBLE PRECISION, DIMENSION(<exp>, <exp>, <exp>), INTENT(OUT)
+  Decl      80      85
+  Set       98     138
+  Used
+
+DBLE                                                              Function, DOUBLE PRECISION, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used       0       0      16      66      70     102     103     104
+
+DIFF                                                              Subroutine, Internal procedure
+  Decl      80
+  Set 
+  Used       0      29
+
+DOT_PRODUCT                                                       Function, INTEGER, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used      37
+
+DXI                             Stack                             DOUBLE PRECISION
+  Decl      87
+  Set      102
+  Used     105     106     107
+
+DYI                             Stack                             DOUBLE PRECISION
+  Decl      87
+  Set      103
+  Used     108     109     110
+
+DZI                             Stack                             DOUBLE PRECISION
+  Decl      87
+  Set      104
+  Used     111     112     113
+
+E                               Heap                              DOUBLE PRECISION, DIMENSION(:, :, :), ALLOCATABLE, SAVE
+  Decl       5
+  Set 
+  Used      20      22      36      47
+
+E                               Dummy Arg                         DOUBLE PRECISION, DIMENSION(<exp>, <exp>, <exp>), INTENT(OUT)
+  Decl      51      55
+  Set       72
+  Used
+
+ECLKSEC                         Static offset=0                   DOUBLE PRECISION, SAVE
+  Decl      11
+  Set       16
+  Used      34
+
+ENDT                            Static offset=64                  INTEGER(KIND=8), SAVE
+  Decl      10
+  Set       31
+  Used      34
+
+ERR                             Static offset=128                 DOUBLE PRECISION, SAVE
+  Decl       6
+  Set       37
+  Used      41      44
+
+I                               Static offset=192                 INTEGER, SAVE
+  Decl       7
+  Set       28
+  Used
+
+I                               Stack                             INTEGER
+  Decl      57
+  Set       69
+  Used      70      71      72
+
+I                               Stack                             INTEGER
+  Decl      91
+  Set      121     127     133
+  Used     122     123     124     125     128     129     130     131     134     135     136     137     138
+
+INIT                                                              Subroutine, Internal procedure
+  Decl      51
+  Set 
+  Used      22
+
+IRTC                                                              Function, INTEGER(KIND=8), RESULT(IRTC), EXTERNAL
+  Decl      13      14
+  Set 
+  Used
+
+IRTC_RATE                                                         Function, INTEGER(KIND=8), RESULT(IRTC_RATE), EXTERNAL
+  Decl      13      14
+  Set 
+  Used
+
+J                               Stack                             INTEGER
+  Decl      57
+  Set       67
+  Used      68      71      72
+
+J                               Stack                             INTEGER
+  Decl      91
+  Set      120
+  Used     123     124     125     129     130     131     135     136     137     138
+
+K                               Stack                             INTEGER
+  Decl      57
+  Set       65
+  Used      66      71      72
+
+K                               Stack                             INTEGER
+  Decl      91
+  Set      118
+  Used     123     124     125     129     130     131     135     136     137     138
+
+N                               Static offset=256                 INTEGER, SAVE
+  Decl       7
+  Set       18
+  Used      22      24      29      39
+
+NLOOP                                                             INTEGER, PARAMETER
+  Decl       9
+  Set 
+  Used      28      33
+
+NX                              Dummy Arg                         INTEGER, INTENT(IN)
+  Decl      51      53
+  Set 
+  Used      54      55      69      70
+
+NX                              Dummy Arg                         INTEGER, INTENT(IN)
+  Decl      80      83
+  Set 
+  Used      84      85      87     102     121     127     133
+
+NY                              Dummy Arg                         INTEGER, INTENT(IN)
+  Decl      51      53
+  Set 
+  Used      54      55      67      68
+
+NY                              Dummy Arg                         INTEGER, INTENT(IN)
+  Decl      80      83
+  Set 
+  Used      84      85     103     120
+
+NZ                              Dummy Arg                         INTEGER, INTENT(IN)
+  Decl      51      53
+  Set 
+  Used      54      55      60      65      66
+
+NZ                              Dummy Arg                         INTEGER, INTENT(IN)
+  Decl      80      83
+  Set 
+  Used      84      85      93     104     118
+
+RESHAPE                                                           Function, INTEGER, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used       0      39
+
+SIN                                                               Function, REAL, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used       0      72
+
+SQRT                                                              Function, REAL, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used      37
+
+STARTT                          Static offset=320                 INTEGER(KIND=8), SAVE
+  Decl      10
+  Set       27
+  Used      34
+
+STENCIL1                                                          Main program
+  Decl       1
+  Set 
+  Used
+
+TMP                             Stack                             DOUBLE PRECISION, DIMENSION(<exp>)
+  Decl      87
+  Set      122     128     134
+  Used     138
+
+TOL                                                               DOUBLE PRECISION, PARAMETER
+  Decl       8
+  Set 
+  Used      41
+
+U                               Heap                              DOUBLE PRECISION, DIMENSION(:, :, :), ALLOCATABLE, SAVE
+  Decl       5
+  Set       36
+  Used      20      22      24      29      47
+
+U                               Dummy Arg                         DOUBLE PRECISION, DIMENSION(<exp>, <exp>, <exp>), INTENT(OUT)
+  Decl      51      54
+  Set       71
+  Used
+
+U                               Dummy Arg                         DOUBLE PRECISION, DIMENSION(<exp>, <exp>, <exp>), INTENT(IN)
+  Decl      80      84
+  Set 
+  Used     123     124     125     129     130     131     135     136     137
+
+X                               Stack                             DOUBLE PRECISION
+  Decl      58
+  Set       70
+  Used      71      72
+
+Y                               Stack                             DOUBLE PRECISION
+  Decl      58
+  Set       68
+  Used      71      72
+
+Z                               Stack                             DOUBLE PRECISION
+  Decl      58
+  Set       66
+  Used      71      72
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                         E x t e r n a l   R e p o r t
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Name  Messages
+----  --------
+COS(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   DIFF in STENCIL1 (Line 71, file stencil1.f90)
+                   DIFF in STENCIL1 (Line 72, file stencil1.f90)
+
+Name  Messages
+----  --------
+DBLE(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   STENCIL1 (Line 16, file stencil1.f90)
+                   STENCIL1 (Line 34, file stencil1.f90)
+                   DIFF in STENCIL1 (Line 66, file stencil1.f90)
+                   DIFF in STENCIL1 (Line 66, file stencil1.f90)
+                   DIFF in STENCIL1 (Line 68, file stencil1.f90)
+                   DIFF in STENCIL1 (Line 68, file stencil1.f90)
+                   DIFF in STENCIL1 (Line 70, file stencil1.f90)
+                   DIFF in STENCIL1 (Line 70, file stencil1.f90)
+                   DIFF in STENCIL1 (Line 102, file stencil1.f90)
+                   DIFF in STENCIL1 (Line 103, file stencil1.f90)
+                   DIFF in STENCIL1 (Line 104, file stencil1.f90)
+
+Name  Messages
+----  --------
+DIFF in STENCIL1
+      Defined as:  Subroutine (line 80, file stencil1.f90)
+
+      Interface:   None
+
+      Called By:   STENCIL1 (Line 24, file stencil1.f90)
+                   STENCIL1 (Line 29, file stencil1.f90)
+
+      Calls:       DBLE(Intrinsic) (Line 66, file stencil1.f90)
+                   DBLE(Intrinsic) (Line 66, file stencil1.f90)
+                   DBLE(Intrinsic) (Line 68, file stencil1.f90)
+                   DBLE(Intrinsic) (Line 68, file stencil1.f90)
+                   DBLE(Intrinsic) (Line 70, file stencil1.f90)
+                   DBLE(Intrinsic) (Line 70, file stencil1.f90)
+                   DBLE(Intrinsic) (Line 102, file stencil1.f90)
+                   DBLE(Intrinsic) (Line 103, file stencil1.f90)
+                   DBLE(Intrinsic) (Line 104, file stencil1.f90)
+                   SIN(Intrinsic) (Line 71, file stencil1.f90)
+                   SIN(Intrinsic) (Line 72, file stencil1.f90)
+                   COS(Intrinsic) (Line 71, file stencil1.f90)
+                   COS(Intrinsic) (Line 72, file stencil1.f90)
+
+Name  Messages
+----  --------
+DIFF
+      Defined as:  No definitions.
+
+                   No calls.  It is not called and does not use any procedure.
+
+      Interface:   None
+
+Name  Messages
+----  --------
+DOT_PRODUCT(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   STENCIL1 (Line 37, file stencil1.f90)
+
+Name  Messages
+----  --------
+INIT in STENCIL1
+      Defined as:  Subroutine (line 51, file stencil1.f90)
+
+      Interface:   None
+
+      Called By:   STENCIL1 (Line 22, file stencil1.f90)
+
+Name  Messages
+----  --------
+INIT
+      Defined as:  No definitions.
+
+                   No calls.  It is not called and does not use any procedure.
+
+      Interface:   None
+
+Name  Messages
+----  --------
+IRTC
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   STENCIL1 (Line 27, file stencil1.f90)
+                   STENCIL1 (Line 31, file stencil1.f90)
+
+Name  Messages
+----  --------
+IRTC_RATE
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   STENCIL1 (Line 16, file stencil1.f90)
+
+Name  Messages
+----  --------
+RESHAPE(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   STENCIL1 (Line 38, file stencil1.f90)
+                   STENCIL1 (Line 39, file stencil1.f90)
+
+Name  Messages
+----  --------
+SIN(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   DIFF in STENCIL1 (Line 71, file stencil1.f90)
+                   DIFF in STENCIL1 (Line 72, file stencil1.f90)
+
+Name  Messages
+----  --------
+SQRT(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   STENCIL1 (Line 37, file stencil1.f90)
+
+Name  Messages
+----  --------
+STENCIL1
+      Defined as:  Program (line 1, file stencil1.f90)
+
+      Calls:       IRTC (Line 27, file stencil1.f90)
+                   IRTC (Line 31, file stencil1.f90)
+                   IRTC_RATE (Line 16, file stencil1.f90)
+                   INIT in STENCIL1 (Line 22, file stencil1.f90)
+                   DIFF in STENCIL1 (Line 24, file stencil1.f90)
+                   DIFF in STENCIL1 (Line 29, file stencil1.f90)
+                   DBLE(Intrinsic) (Line 16, file stencil1.f90)
+                   DBLE(Intrinsic) (Line 34, file stencil1.f90)
+                   RESHAPE(Intrinsic) (Line 38, file stencil1.f90)
+                   RESHAPE(Intrinsic) (Line 39, file stencil1.f90)
+                   DOT_PRODUCT(Intrinsic) (Line 37, file stencil1.f90)
+                   SQRT(Intrinsic) (Line 37, file stencil1.f90)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

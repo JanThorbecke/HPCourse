@@ -1,0 +1,418 @@
+
+;; Function err (err, funcdef_no=13, decl_uid=4035, symbol_order=13) (executed once)
+
+err (char * fmt)
+{
+  struct  args[1];
+  struct FILE * __stdoutp.2_3;
+  int _5;
+  struct FILE * __stderrp.3_6;
+  char * * xargv.4_8;
+  char * _9;
+  struct FILE * __stderrp.3_10;
+  struct FILE * __stderrp.3_13;
+  struct FILE * __stderrp.3_17;
+
+  <bb 2>:
+  __stdoutp.2_3 = __stdoutp;
+  _5 = fflush (__stdoutp.2_3);
+  if (_5 == -1)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  __stderrp.3_6 = __stderrp;
+  __builtin_fwrite ("\nerr: fflush failed on stdout", 1, 29, __stderrp.3_6);
+
+  <bb 4>:
+  xargv.4_8 = xargv;
+  _9 = *xargv.4_8;
+  __stderrp.3_10 = __stderrp;
+  fprintf (__stderrp.3_10, "\n%s: ", _9);
+  __builtin_va_start (&args, 0);
+  __stderrp.3_13 = __stderrp;
+  vfprintf (__stderrp.3_13, fmt_14(D), &args);
+  __builtin_va_end (&args);
+  __stderrp.3_17 = __stderrp;
+  __builtin_fputc (10, __stderrp.3_17);
+  exit (1);
+
+}
+
+
+
+;; Function eatoh (eatoh, funcdef_no=5, decl_uid=4132, symbol_order=5)
+
+eatoh (char * s)
+{
+  long int n;
+  unsigned long n.0_6;
+  unsigned long _7;
+  int * _9;
+  int _10;
+  short int _11;
+
+  <bb 2>:
+  n_5 = strtol (s_3(D), 0B, 10);
+  n.0_6 = (unsigned long) n_5;
+  _7 = n.0_6 + 32768;
+  if (_7 > 65535)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  err ("%s: eatoh: overflow", "atopkge.c");
+
+  <bb 4>:
+  _9 = __error ();
+  _10 = *_9;
+  if (_10 == 34)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  _11 = (short int) n_5;
+  return _11;
+
+}
+
+
+
+;; Function eatou (eatou, funcdef_no=6, decl_uid=4134, symbol_order=6)
+
+eatou (char * s)
+{
+  long unsigned int n;
+  int * _7;
+  int _8;
+  short unsigned int _9;
+
+  <bb 2>:
+  n_5 = strtoul (s_3(D), 0B, 10);
+  if (n_5 > 65535)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  err ("%s: eatou: overflow", "atopkge.c");
+
+  <bb 4>:
+  _7 = __error ();
+  _8 = *_7;
+  if (_8 == 34)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  _9 = (short unsigned int) n_5;
+  return _9;
+
+}
+
+
+
+;; Function eatoi (eatoi, funcdef_no=7, decl_uid=4136, symbol_order=7)
+
+eatoi (char * s)
+{
+  long int n;
+  unsigned long n.1_6;
+  unsigned long _7;
+  int * _9;
+  int _10;
+  int _11;
+
+  <bb 2>:
+  n_5 = strtol (s_3(D), 0B, 10);
+  n.1_6 = (unsigned long) n_5;
+  _7 = n.1_6 + 2147483648;
+  if (_7 > 4294967295)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  err ("%s: eatoi: overflow", "atopkge.c");
+
+  <bb 4>:
+  _9 = __error ();
+  _10 = *_9;
+  if (_10 == 34)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  _11 = (int) n_5;
+  return _11;
+
+}
+
+
+
+;; Function eatop (eatop, funcdef_no=8, decl_uid=4138, symbol_order=8)
+
+eatop (char * s)
+{
+  long unsigned int n;
+  int * _7;
+  int _8;
+  unsigned int _9;
+
+  <bb 2>:
+  n_5 = strtoul (s_3(D), 0B, 10);
+  if (n_5 > 4294967295)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  err ("%s: eatop: overflow", "atopkge.c");
+
+  <bb 4>:
+  _7 = __error ();
+  _8 = *_7;
+  if (_8 == 34)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  _9 = (unsigned int) n_5;
+  return _9;
+
+}
+
+
+
+;; Function eatol (eatol, funcdef_no=9, decl_uid=4140, symbol_order=9)
+
+eatol (char * s)
+{
+  long int n;
+  int * _6;
+  int _7;
+
+  <bb 2>:
+  n_4 = strtol (s_2(D), 0B, 10);
+  _6 = __error ();
+  _7 = *_6;
+  if (_7 == 34)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  err ("%s: eatol: overflow", "atopkge.c");
+
+  <bb 4>:
+  return n_4;
+
+}
+
+
+
+;; Function eatov (eatov, funcdef_no=10, decl_uid=4142, symbol_order=10)
+
+eatov (char * s)
+{
+  long unsigned int n;
+  int * _6;
+  int _7;
+
+  <bb 2>:
+  n_4 = strtoul (s_2(D), 0B, 10);
+  _6 = __error ();
+  _7 = *_6;
+  if (_7 == 34)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  err ("%s: eatov: overflow", "atopkge.c");
+
+  <bb 4>:
+  return n_4;
+
+}
+
+
+
+;; Function eatof (eatof, funcdef_no=11, decl_uid=4144, symbol_order=11)
+
+eatof (char * s)
+{
+  float x;
+  double _5;
+  int * _8;
+  int _9;
+
+  <bb 2>:
+  _5 = strtod (s_3(D), 0B);
+  x_6 = (float) _5;
+  if (x_6 > 3.4028234663852885981170418348451692544e+38)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  err ("%s: eatof: overflow", "atopkge.c");
+
+  <bb 4>:
+  if (x_6 < -3.4028234663852885981170418348451692544e+38)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  _8 = __error ();
+  _9 = *_8;
+  if (_9 == 34)
+    goto <bb 3>;
+  else
+    goto <bb 6>;
+
+  <bb 6>:
+  return x_6;
+
+}
+
+
+
+;; Function eatod (eatod, funcdef_no=12, decl_uid=4146, symbol_order=12)
+
+eatod (char * s)
+{
+  double x;
+  int * _6;
+  int _7;
+
+  <bb 2>:
+  x_4 = strtod (s_2(D), 0B);
+  _6 = __error ();
+  _7 = *_6;
+  if (_7 == 34)
+    goto <bb 5>;
+  else
+    goto <bb 3>;
+
+  <bb 3>:
+  if (x_4 > 1.79769313486231570814527423731704356798070567525844996599e+308)
+    goto <bb 5>;
+  else
+    goto <bb 4>;
+
+  <bb 4>:
+  if (x_4 < -1.79769313486231570814527423731704356798070567525844996599e+308)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+
+  <bb 5>:
+  err ("%s: eatod: overflow", "atopkge.c");
+
+  <bb 6>:
+  return x_4;
+
+}
+
+
+
+;; Function warn (warn, funcdef_no=14, decl_uid=4039, symbol_order=14)
+
+warn (char * fmt)
+{
+  struct  args[1];
+  struct FILE * __stdoutp.5_3;
+  int _5;
+  struct FILE * __stderrp.6_6;
+  char * * xargv.7_8;
+  char * _9;
+  struct FILE * __stderrp.6_10;
+  struct FILE * __stderrp.6_13;
+  struct FILE * __stderrp.6_17;
+
+  <bb 2>:
+  __stdoutp.5_3 = __stdoutp;
+  _5 = fflush (__stdoutp.5_3);
+  if (_5 == -1)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  __stderrp.6_6 = __stderrp;
+  __builtin_fwrite ("\nwarn: fflush failed on stdout", 1, 30, __stderrp.6_6);
+
+  <bb 4>:
+  xargv.7_8 = xargv;
+  _9 = *xargv.7_8;
+  __stderrp.6_10 = __stderrp;
+  fprintf (__stderrp.6_10, "\n%s: ", _9);
+  __builtin_va_start (&args, 0);
+  __stderrp.6_13 = __stderrp;
+  vfprintf (__stderrp.6_13, fmt_14(D), &args);
+  __builtin_va_end (&args);
+  __stderrp.6_17 = __stderrp;
+  __builtin_fputc (10, __stderrp.6_17);
+  args ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function syserr (syserr, funcdef_no=15, decl_uid=4037, symbol_order=15) (executed once)
+
+syserr (char * fmt)
+{
+  struct  args[1];
+  struct FILE * __stdoutp.8_3;
+  int _5;
+  struct FILE * __stderrp.9_6;
+  char * * xargv.10_8;
+  char * _9;
+  struct FILE * __stderrp.9_10;
+  struct FILE * __stderrp.9_13;
+  int * _18;
+  int _19;
+  char * _21;
+  struct FILE * __stderrp.9_22;
+
+  <bb 2>:
+  __stdoutp.8_3 = __stdoutp;
+  _5 = fflush (__stdoutp.8_3);
+  if (_5 == -1)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  __stderrp.9_6 = __stderrp;
+  __builtin_fwrite ("\nsyserr: fflush failed on stdout", 1, 32, __stderrp.9_6);
+
+  <bb 4>:
+  xargv.10_8 = xargv;
+  _9 = *xargv.10_8;
+  __stderrp.9_10 = __stderrp;
+  fprintf (__stderrp.9_10, "\n%s: ", _9);
+  __builtin_va_start (&args, 0);
+  __stderrp.9_13 = __stderrp;
+  vfprintf (__stderrp.9_13, fmt_14(D), &args);
+  __builtin_va_end (&args);
+  _18 = __error ();
+  _19 = *_18;
+  _21 = strerror (_19);
+  __stderrp.9_22 = __stderrp;
+  fprintf (__stderrp.9_22, " (%s)\n", _21);
+  exit (1);
+
+}
+
+

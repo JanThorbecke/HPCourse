@@ -1,0 +1,47 @@
+     1        program dprod
+     2        parameter (n=2000)
+     3        parameter (nrep=100)
+     4        real a(n,n), sum
+     5
+     6        do 10 i = 1, n
+     7           do 11 j = 1, n
+     8              a(j,i) = (i * j) / (i + j)
+     9   11      continue
+    10   10   continue
+    11
+    12        print *, ' Initialization done, entering computations'
+    13
+    14        sum = 0.0
+    15
+    16        do 20 k = 1, nrep
+    17           sum = sum + prod(k,n,a)
+    18   20   continue
+    19
+    20        print *, ' Done, SUM = ', sum/nrep
+    21
+    22        end
+    23
+    24        function prod(k,n,a)
+    25
+    26        integer n
+    27        real a(n,n)
+    28
+    29        prod = 0.0
+    30
+    31  c$omp parallel do
+    32  c$omp&   shared(k,n,a,prod)
+    33  c$omp&   private(i,j)
+    34        do 30 i = 1, n
+    35           do 31 j = 2, n
+    36
+    37              a(1,i) = a(1,i) + a(j,i)/k
+    38
+    39   31      continue
+    40
+    41           prod = prod + a(1,i)
+    42
+    43   30   continue
+    44  c$omp end parallel do
+    45
+    46        return
+    47        end

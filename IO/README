@@ -1,0 +1,45 @@
+This program test IO performance by using 4 different methods. Compile the program io_test.c with a C compiler:
+
+> gcc io_test.c
+
+for the GNU compiler or
+
+> icc io_test.c
+
+for the Intel compiler.
+You now have a ./a.out file which you can run:
+
+> ./a.out
+
+Look in the program and see if you can understand the results. The IO methods used are: 
+	-write/read 
+	-fwrite/fwrite 
+	-mmap 
+	-fprintf/fscanf.
+
+The program can use two arguments 
+'-b' for the output file size (default 16 MB)
+'-f' for the output filename (default /tmp/fileio.bin)
+
+Run the same program but now start two copies each in a seperate window:
+
+> ./a.out -f /tmp/fileio1.bin &
+> ./a.out -f /tmp/fileio2.bin &
+
+
+The '&' at the end of a command means that the process is put in the background and you do not have to wait until the program finishes to get your prompt back.
+
+Also try to write to a file which is not on your local computer. For example use a NFS mounted file system. First write/read with one program to the NFS disk and then with two copies. 
+
+NOTE, for cygwin users ASCII file part of the exercise does not work because the amount of meory required to store the results is too large to handle by cygwin. The output file in cygwin is still stored in memory. 
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,90 @@
+set data style linespoint
+set key right top 
+set mytics 5
+set xlabel 'k block'
+set ylabel 'j block '
+#set size 1.0,1.0
+#set size ratio 0.8
+set grid
+
+#qsub -l mppnodes=\"`cnselect clockmhz.eq.2200`\" job0.pbs
+#Elapsed time for  1000 loops:   3.420287 seconds
+#Elapsed time for  1000 loops:   2.975025 seconds
+#Check failed, error =   0.0027594803536868
+
+set term postscript color eps
+set output 'stencil2.eps'
+set ticslevel 1
+
+set title "Istanbul global search"
+
+
+# j range 1:42 outer
+# k range 1:36 middle
+#!dir$ blockingsize(555)
+#     do j = jbegin, jend
+#!dir$ blockingsize(444)
+#        do k = kts, kte
+#           do i = ibegin, iend
+#              c(i,k,j) = a(1 ,i,k,j)*b(i  ,k  ,j  ) 
+
+
+ref=3.646375
+set view 60,45
+set pm3d at b
+set dgrid3d 42,36
+splot "data2.txt" using 1:2:3 with lines notitle
+
+
+#####
+set title "Istanbul around minimum"
+#set yrange [1:42]
+#set xrange [1:10]
+
+
+set nokey
+set cntrparam bspline
+set contour
+set cntrparam levels 16
+#set cntrparam levels incremental 2.84, 0.02, 3.0
+set surface
+set view 60,45
+set dgrid3d 10,36
+set pm3d at b
+splot "< head -370 data2.txt" using 1:2:3 with lines notitle
+
+set key -5,10
+unset pm3d
+set contour
+unset surface
+set cntrparam levels 18
+#set cntrparam levels incremental 2.84, 0.02, 3.0
+set view 0,0
+set dgrid3d 10,36
+splot "< head -370 data2.txt" using 1:2:3 with lines notitle
+
+
+
+#####
+set title "Magny Cours around minimum"
+
+set nokey
+set contour
+#set cntrparam levels incremental 3.125, 0.005, 3.20
+set cntrparam levels 20
+set surface
+set view 60,45
+unset dgrid3d
+set pm3d at b
+splot "data2b.txt" using 1:2:3 with lines notitle
+
+unset pm3d
+set key -6,20
+set contour
+unset surface
+#set cntrparam levels 100
+#set cntrparam levels incremental 2.95, 0.04, 3.40
+set view 0,0
+set dgrid3d 26,36
+splot "data2b.txt" using 1:2:3 with lines notitle
+

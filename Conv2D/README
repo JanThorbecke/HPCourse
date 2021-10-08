@@ -1,0 +1,19 @@
+Check the compiler and CFLAGS options in the file Make_include and adapt to the system you are using.
+
+To compile the code you must first make the FFT library. The FFT library has to be compiled and a library made from it. To do so goto the FFTlib directory and
+type 
+
+> make
+
+then cd to the src directory and also type
+
+> make
+ 
+to compile the src code for the conv2D program. 
+
+If the compilation was succesfull you can run the program by using the script puls.scr This script is an ASCII file and can be read with an editor. You will see that in the script the program is called 4 times with different options. The options are explained in the course.
+
+Try to understand the different implementations of the 2D convoution. 
+
+
+

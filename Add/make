@@ -1,0 +1,1 @@
+icc -O3 -msse4 -ftree-vectorizer-verbose=7 -ftree-vectorize vect.c 

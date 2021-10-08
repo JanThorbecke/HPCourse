@@ -1,0 +1,440 @@
+
+;; Function wkx2xt (wkx2xt, funcdef_no=34, decl_uid=3945, symbol_order=34)
+
+Removing basic block 35
+Removing basic block 42
+Merging blocks 24 and 37
+Merging blocks 32 and 46
+Merging blocks 40 and 27
+Merging blocks 48 and 41
+Created preheader block for loop 6
+wkx2xt (struct complex * cdata, float * rdata, int nt, int nx, int ldc, int ldr, int xorig)
+{
+  vector(4) float * vectp.20;
+  vector(4) float * vectp.19;
+  vector(4) float vect_cst_.18;
+  vector(4) float vect__74.17;
+  vector(4) float vect__73.16;
+  vector(4) float * vectp.15;
+  vector(4) float * vectp.14;
+  int tmp.13;
+  unsigned int ratio_mult_vf.12;
+  unsigned int bnd.11;
+  unsigned int niters.10;
+  sizetype prolog_loop_adjusted_niters.9;
+  unsigned int prologue_after_cost_adjust.8;
+  unsigned int prolog_loop_niters.7;
+  vector(4) float * vectp.6;
+  unsigned int niters.5;
+  static const char __func__[7] = "wkx2xt";
+  struct complex * cdum;
+  float scl;
+  int norig;
+  int ld1;
+  int j;
+  int i;
+  sizetype _1;
+  sizetype _2;
+  sizetype _3;
+  sizetype _11;
+  _Bool _13;
+  _Bool _15;
+  _Bool _16;
+  sizetype _17;
+  sizetype _18;
+  int _20;
+  double _21;
+  double _22;
+  int _24;
+  int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  struct FILE * __stderrp.0_36;
+  int _38;
+  int _39;
+  int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  struct complex * _43;
+  int _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  struct complex * _48;
+  int _51;
+  int _52;
+  long unsigned int _53;
+  long unsigned int _54;
+  struct complex * _55;
+  int _57;
+  int _58;
+  long unsigned int _59;
+  long unsigned int _60;
+  struct complex * _61;
+  int _69;
+  long unsigned int _70;
+  long unsigned int _71;
+  float * _72;
+  float _73;
+  float _74;
+  unsigned int ivtmp_75;
+  int _80;
+  long unsigned int _97;
+  unsigned int _103;
+  unsigned int _104;
+  unsigned int _105;
+  float _108;
+  float _109;
+  float * _110;
+  long unsigned int _111;
+  long unsigned int _112;
+  int _113;
+  unsigned int _117;
+  unsigned int _118;
+  unsigned int ivtmp_123;
+  unsigned int ivtmp_124;
+  int pretmp_129;
+  unsigned int ivtmp_130;
+  unsigned int ivtmp_134;
+  float _137;
+  float _138;
+  float * _139;
+  long unsigned int _140;
+  long unsigned int _141;
+  int pretmp_142;
+  int _145;
+  unsigned int _148;
+  unsigned int _149;
+  unsigned long _150;
+  unsigned long _151;
+  unsigned long _152;
+  int pretmp_153;
+  unsigned long _155;
+  long unsigned int _157;
+
+  <bb 2>:
+  _13 = xorig_12(D) < 0;
+  _15 = xorig_12(D) >= nx_14(D);
+  _16 = _15 | _13;
+  if (_16 != 0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  __assert_rtn (&__func__, "wkx2xt.c", 32, "(xorig >= 0) && (xorig < nx)");
+
+  <bb 4>:
+  _20 = nt_19(D) * nx_14(D);
+  _21 = (double) _20;
+  _22 = 1.0e+0 / _21;
+  scl_23 = (float) _22;
+  _24 = nt_19(D) + 2;
+  ld1_25 = _24 / 2;
+  norig_26 = nx_14(D) - xorig_12(D);
+  ccmfft (cdata_28(D), nx_14(D), ld1_25, ldc_29(D), -1);
+  _31 = ld1_25 * nx_14(D);
+  _32 = (long unsigned int) _31;
+  _33 = _32 * 8;
+  cdum_35 = malloc (_33);
+  if (cdum_35 == 0B)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+
+  <bb 5>:
+  __stderrp.0_36 = __stderrp;
+  __builtin_fwrite ("wkx2xt: memory allocation error\n", 1, 32, __stderrp.0_36);
+
+  <bb 6>:
+  if (ld1_25 > 0)
+    goto <bb 7>;
+  else
+    goto <bb 21>;
+
+  <bb 7>:
+
+  <bb 8>:
+  # j_83 = PHI <j_64(19), 0(7)>
+  if (norig_26 > 0)
+    goto <bb 9>;
+  else
+    goto <bb 13>;
+
+  <bb 9>:
+  pretmp_153 = ldc_29(D) * j_83;
+
+  <bb 10>:
+  # i_88 = PHI <i_50(11), 0(9)>
+  _38 = i_88 + xorig_12(D);
+  _39 = _38 * ld1_25;
+  _40 = _39 + j_83;
+  _41 = (long unsigned int) _40;
+  _42 = _41 * 8;
+  _43 = cdum_35 + _42;
+  _45 = i_88 + pretmp_153;
+  _46 = (long unsigned int) _45;
+  _47 = _46 * 8;
+  _48 = cdata_28(D) + _47;
+  *_43 = *_48;
+  i_50 = i_88 + 1;
+  if (norig_26 > i_50)
+    goto <bb 11>;
+  else
+    goto <bb 12>;
+
+  <bb 11>:
+  goto <bb 10>;
+
+  <bb 12>:
+
+  <bb 13>:
+  if (xorig_12(D) > 0)
+    goto <bb 14>;
+  else
+    goto <bb 18>;
+
+  <bb 14>:
+  pretmp_142 = ldc_29(D) * j_83;
+
+  <bb 15>:
+  # i_89 = PHI <i_63(16), 0(14)>
+  _51 = i_89 * ld1_25;
+  _52 = _51 + j_83;
+  _53 = (long unsigned int) _52;
+  _54 = _53 * 8;
+  _55 = cdum_35 + _54;
+  _57 = i_89 + pretmp_142;
+  _58 = _57 + norig_26;
+  _59 = (long unsigned int) _58;
+  _60 = _59 * 8;
+  _61 = cdata_28(D) + _60;
+  *_55 = *_61;
+  i_63 = i_89 + 1;
+  if (xorig_12(D) > i_63)
+    goto <bb 16>;
+  else
+    goto <bb 17>;
+
+  <bb 16>:
+  goto <bb 15>;
+
+  <bb 17>:
+
+  <bb 18>:
+  j_64 = j_83 + 1;
+  if (ld1_25 > j_64)
+    goto <bb 19>;
+  else
+    goto <bb 20>;
+
+  <bb 19>:
+  goto <bb 8>;
+
+  <bb 20>:
+
+  <bb 21>:
+  crmfft (cdum_35, rdata_65(D), nt_19(D), nx_14(D), ld1_25, ldr_66(D), 1);
+  if (nx_14(D) > 0)
+    goto <bb 22>;
+  else
+    goto <bb 44>;
+
+  <bb 22>:
+
+  <bb 23>:
+  # i_84 = PHI <i_77(42), 0(22)>
+  if (ldr_66(D) > 0)
+    goto <bb 24>;
+  else
+    goto <bb 41>;
+
+  <bb 24>:
+  pretmp_129 = ldr_66(D) * i_84;
+  niters.5_95 = (unsigned int) ldr_66(D);
+  _97 = (long unsigned int) pretmp_129;
+  _157 = _97 * 4;
+  vectp.6_93 = rdata_65(D) + _157;
+  _155 = (unsigned long) vectp.6_93;
+  _152 = _155 & 15;
+  _151 = _152 >> 2;
+  _150 = -_151;
+  _149 = (unsigned int) _150;
+  _148 = _149 & 3;
+  prolog_loop_niters.7_156 = MIN_EXPR <niters.5_95, _148>;
+  if (niters.5_95 <= 4)
+    goto <bb 25>;
+  else
+    goto <bb 26>;
+
+  <bb 25>:
+
+  <bb 26>:
+  # prologue_after_cost_adjust.8_133 = PHI <niters.5_95(25), prolog_loop_niters.7_156(24)>
+  if (prologue_after_cost_adjust.8_133 == 0)
+    goto <bb 30>;
+  else
+    goto <bb 27>;
+
+  <bb 27>:
+  # j_126 = PHI <0(26)>
+  # ivtmp_130 = PHI <0(26)>
+
+  <bb 45>:
+  # j_147 = PHI <j_126(27), j_135(28)>
+  # ivtmp_124 = PHI <ivtmp_130(27), ivtmp_123(28)>
+  _145 = j_147 + pretmp_129;
+  _141 = (long unsigned int) _145;
+  _140 = _141 * 4;
+  _139 = rdata_65(D) + _140;
+  _138 = *_139;
+  _137 = _138 * scl_23;
+  *_139 = _137;
+  j_135 = j_147 + 1;
+  ivtmp_123 = ivtmp_124 + 1;
+  if (ivtmp_123 < prologue_after_cost_adjust.8_133)
+    goto <bb 28>;
+  else
+    goto <bb 29>;
+
+  <bb 28>:
+  goto <bb 45>;
+
+  <bb 29>:
+  # j_131 = PHI <j_135(45)>
+  if (niters.5_95 == prologue_after_cost_adjust.8_133)
+    goto <bb 40>;
+  else
+    goto <bb 30>;
+
+  <bb 30>:
+  # j_132 = PHI <j_131(29), 0(26)>
+  prolog_loop_adjusted_niters.9_121 = (sizetype) prologue_after_cost_adjust.8_133;
+  niters.10_120 = niters.5_95 - prologue_after_cost_adjust.8_133;
+  _118 = niters.10_120 + 4294967292;
+  _117 = _118 >> 2;
+  bnd.11_119 = _117 + 1;
+  ratio_mult_vf.12_116 = bnd.11_119 << 2;
+  _105 = (unsigned int) ldr_66(D);
+  _104 = _105 - prologue_after_cost_adjust.8_133;
+  _103 = _104 + 4294967295;
+  if (_103 <= 2)
+    goto <bb 36>;
+  else
+    goto <bb 31>;
+
+  <bb 31>:
+  _18 = (sizetype) pretmp_129;
+  _17 = _18 + prolog_loop_adjusted_niters.9_121;
+  _11 = _17 * 4;
+  vectp.15_79 = rdata_65(D) + _11;
+  vect_cst_.18_7 = {scl_23, scl_23, scl_23, scl_23};
+  _3 = (sizetype) pretmp_129;
+  _2 = _3 + prolog_loop_adjusted_niters.9_121;
+  _1 = _2 * 4;
+  vectp.20_4 = rdata_65(D) + _1;
+
+  <bb 32>:
+  # j_82 = PHI <j_76(37), j_132(31)>
+  # vectp.14_10 = PHI <vectp.14_9(37), vectp.15_79(31)>
+  # vectp.19_154 = PHI <vectp.19_144(37), vectp.20_4(31)>
+  # ivtmp_75 = PHI <ivtmp_134(37), 0(31)>
+  _69 = j_82 + pretmp_129;
+  _70 = (long unsigned int) _69;
+  _71 = _70 * 4;
+  _72 = rdata_65(D) + _71;
+  vect__73.16_8 = MEM[(float *)vectp.14_10];
+  _73 = *_72;
+  vect__74.17_5 = vect__73.16_8 * vect_cst_.18_7;
+  _74 = _73 * scl_23;
+  MEM[(float *)vectp.19_154] = vect__74.17_5;
+  j_76 = j_82 + 1;
+  vectp.14_9 = vectp.14_10 + 16;
+  vectp.19_144 = vectp.19_154 + 16;
+  ivtmp_134 = ivtmp_75 + 1;
+  if (ivtmp_134 < bnd.11_119)
+    goto <bb 37>;
+  else
+    goto <bb 35>;
+
+  <bb 33>:
+  # j_115 = PHI <j_106(34), j_102(36)>
+  _113 = j_115 + pretmp_129;
+  _112 = (long unsigned int) _113;
+  _111 = _112 * 4;
+  _110 = rdata_65(D) + _111;
+  _109 = *_110;
+  _108 = _109 * scl_23;
+  *_110 = _108;
+  j_106 = j_115 + 1;
+  if (ldr_66(D) > j_106)
+    goto <bb 34>;
+  else
+    goto <bb 38>;
+
+  <bb 34>:
+  goto <bb 33>;
+
+  <bb 35>:
+  # j_91 = PHI <j_76(32)>
+  _80 = (int) ratio_mult_vf.12_116;
+  tmp.13_81 = _80 + j_132;
+  if (ratio_mult_vf.12_116 == niters.10_120)
+    goto <bb 39>;
+  else
+    goto <bb 36>;
+
+  <bb 36>:
+  # j_102 = PHI <tmp.13_81(35), j_132(30)>
+  goto <bb 33>;
+
+  <bb 37>:
+  goto <bb 32>;
+
+  <bb 38>:
+
+  <bb 39>:
+
+  <bb 40>:
+
+  <bb 41>:
+  i_77 = i_84 + 1;
+  if (nx_14(D) > i_77)
+    goto <bb 42>;
+  else
+    goto <bb 43>;
+
+  <bb 42>:
+  goto <bb 23>;
+
+  <bb 43>:
+
+  <bb 44>:
+  free (cdum_35);
+  return;
+
+}
+
+
+
+;; Function wkx2xtf (wkx2xtf, funcdef_no=35, decl_uid=3999, symbol_order=35)
+
+wkx2xtf (struct complex * cdata, float * rdata, int * nt, int * nx, int * ldc, int * ldr, int * xorig)
+{
+  int _3;
+  int _5;
+  int _7;
+  int _9;
+  int _11;
+
+  <bb 2>:
+  _3 = *xorig_2(D);
+  _5 = *ldr_4(D);
+  _7 = *ldc_6(D);
+  _9 = *nx_8(D);
+  _11 = *nt_10(D);
+  wkx2xt (cdata_12(D), rdata_13(D), _11, _9, _7, _5, _3);
+  return;
+
+}
+
+

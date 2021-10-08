@@ -1,0 +1,31 @@
+
+This program calculates the number of cycles used by basic computational operations:
+
+- add
+- multiply
+- multiply and add
+- division
+- power
+- sin
+
+Before you compile the program you have to change the mhz parameter on line 14 in floatCycl.c. You should change it to the clock frequency in MHz of your CPU. On Linux you can find the clock frequency in the file  /proc/cpuinfo: type 
+
+> more /proc/cpuinfo
+
+After you have changed the mhz parameter have a look at the Makefile. If you have the Intel compilers (icc) you are fine and you do not need to change anything in the Makefile. If you use the GNU compiler (gcc) uncomment (remove the '#' in front of) the CC and CFLAGS lines on line 10 and 11.
+
+Now type 
+
+> make
+
+in the Cycles directory and execute the program by typing
+
+> ./floatCycl
+
+Keep your results in a file so we can use them during the course. It is interesting to see how the number of cycles differs from the computers being used in the group.
+
+Now look inside the program floatCycl.c and see if you understand the difference in the number of cycles between mul, add mul, and unrolled add mul.
+
+If you want to experiment more try to use another compiler or change the compile flags to more aggresive optimisation (-O3). If the number of cycles is changed, how can that be explained?
+
+

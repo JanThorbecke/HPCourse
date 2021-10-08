@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+#PBS -N test2b
+#PBS -j oe
+#PBS -o cache_block2_mc12
+#PBS -l mppwidth=24
+#PBS -S /bin/bash
+#PBS -V
+#PBS -l walltime=05:05:00
+
+#cd /cray/css/users/jan/cache_block_2010
+#cp -r /cray/css/users/jan/cache_block_2010 /lus/scratch/jan/stencil2b
+cd /lus/scratch/jan/stencil2b
+
+source ${MODULESHOME}/init/bash
+module swap PrgEnv-pgi PrgEnv-cray
+rm stencil2
+cp stencil2.f90.org stencil2.f90
+make
+
+aprun -n 1 ./stencil2
+
+for (( j=18; j<43; j+=1 )) do
+	for (( k=1; k<37; k+=1 )) do
+		sed -e 's/555/'"$j"'/g' -e 's/444/'"$k"'/g' < nep2.f90 > stencil2.f90
+		rm stencil2
+		make stencil2
+		echo "Blocksize $k x $j"
+		aprun -n 1 ./stencil2 > out2b.txt
+ 		ltime=`grep Elapsed < out2b.txt | awk '{print $6}'`
+ 		echo "Blocksize(k x j) $k x $j $ltime"
+ 		echo "$k $j $ltime" >> data2b.txt
+	done
+ 	echo " " >> data2b.txt
+done
+
+cp data2b.txt /cray/css/users/jan/cache_block_2010
+

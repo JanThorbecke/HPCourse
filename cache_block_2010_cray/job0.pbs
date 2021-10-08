@@ -1,0 +1,53 @@
+#!/bin/bash
+#
+#PBS -N test
+#PBS -j oe
+#PBS -o cache_block_ex
+#PBS -l mppwidth=24
+#PBS -S /bin/bash
+#PBS -V
+#PBS -l walltime=04:05:00
+
+cd /cray/css/users/jan/cache_block_2010
+
+source ${MODULESHOME}/init/bash
+module swap PrgEnv-pgi PrgEnv-cray
+
+echo "original tensor"
+cp tensor.f90.org tensor.f90
+rm tensor
+make tensor
+aprun -n 1 ./tensor
+
+echo "optimized tensor"
+cp tensor.f90.opt tensor.f90
+rm tensor
+make tensor
+aprun -n 1 ./tensor
+
+echo "original stencil2 "
+cp stencil2.f90.org stencil2.f90
+rm stencil2
+make stencil2
+aprun -n 1 ./stencil2
+
+echo "optimized stencil2 "
+cp stencil2.f90.opt stencil2.f90
+rm stencil2
+make stencil2
+aprun -n 1 ./stencil2
+
+
+echo "original stencil1"
+cp stencil1.f90.org stencil1.f90
+rm stencil1
+make stencil1
+aprun -n 1 ./stencil1
+
+echo "optimized stencil1"
+cp stencil1.f90.opt stencil1.f90
+rm stencil1
+make stencil1
+aprun -n 1 ./stencil1
+
+

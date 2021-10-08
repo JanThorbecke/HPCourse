@@ -1,0 +1,32 @@
+#!/bin/bash
+#
+#PBS -N test1
+#PBS -j oe
+#PBS -o cache_block1_mc12
+#PBS -l mppwidth=24
+#PBS -S /bin/bash
+#PBS -V
+#PBS -l walltime=04:05:00
+
+#cd /cray/css/users/jan/cache_block_2010
+#cp -r /cray/css/users/jan/cache_block_2010 /lus/scratch/jan/stencil1
+cd /lus/scratch/jan/stencil1
+source ${MODULESHOME}/init/bash
+module swap PrgEnv-pgi PrgEnv-cray
+
+aprun -n 1 ./stencil1.org
+
+for (( k=33; k<41; k+=1 )) do
+	for (( j=1; j<21; j+=1 )) do
+		sed -e 's/555/'"$k"'/g' -e 's/444/'"$j"'/g' < nep.f90 > stencil1.f90
+		rm stencil1 
+		make stencil1
+		aprun -n 1 ./stencil1 > out1c.txt
+		ltime=`grep Elapsed < out1c.txt | awk '{print $6}'`
+		echo "Blocksize $k x $j $ltime"
+		echo "$k $j $ltime" >> data1c_nounr.txt
+	done
+	echo " " >> data1c_nounr.txt
+done
+
+cp data1c_nounr.txt /cray/css/users/jan/cache_block_2010

@@ -1,0 +1,27 @@
+# gnuplot script for load_store results
+# corrOpt cache=6 file_out=duocore_1024 np=24
+
+set style data linespoints
+#set key box
+set key outside right
+set xlabel "nt samples"
+set ylabel "performance [Mflop/s]"
+
+#set yrange [0.0:4500]
+set size 1.4,1.0;
+set grid
+
+#set title "scaling on X1 with model 400x250x28"
+set xtics (2,8,32,128,2048,16384,262144,8e6)
+#set ytics (100,150,200)
+set log x
+set xrange [0.9:8388608]
+set parametric
+
+set term postscript eps color 22
+set output 'Correlation_Results.eps'
+plot "duocore_1024" using 1:2 title "DuoCore 2.5 GHz" lw 3, "OpteronIntel_1024" using 1:2 title "Opteron 2.2 GHz" lw 3, "XeonIntel_1024" using 1:2 title "Xeon 3.0 GHz" lw 3, "IntelHaswell" using 1:2 title "Xeon i7 2.0 GHz clang" lw 3, "IntelHaswellpg" using 1:2 title "Xeon i7 2.0 GHz PGI"
+
+set output 'Correlation_Results_Compiler.eps'
+plot "IntelHaswell" using 1:2 title "Xeon i7 2.0 GHz clang" lw 3, "IntelHaswellpg" using 1:2 title "Xeon i7 2.0 GHz PGI", "IntelHaswellgcc" using 1:2 title "Xeon i7 2.0 GHz GCC", "IntelHaswellIntel11" using 1:2 title "Xeon i7 2.0 GHz Intel 11"
+

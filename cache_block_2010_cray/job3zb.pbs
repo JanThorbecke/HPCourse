@@ -1,0 +1,41 @@
+#!/bin/bash
+#
+#PBS -N test3
+#PBS -j oe
+#PBS -o cache_block3_mc12
+#PBS -l mppwidth=24
+#PBS -S /bin/bash
+#PBS -V
+#PBS -l walltime=05:05:00
+
+cd /cray/css/users/jan/cache_block_2010
+cp -r /cray/css/users/jan/cache_block_2010 /lus/scratch/jan/stencil3zb
+cd /lus/scratch/jan/stencil3zb
+
+source ${MODULESHOME}/init/bash
+module swap PrgEnv-pgi PrgEnv-cray
+rm tensor
+cp tensor.f90.org tensor.f90
+make tensor
+mv tensor tensor.org
+#cp tensor.f90.opt tensor.f90
+#make tensor
+
+aprun -n 1 ./tensor.org
+#aprun -n 1 ./tensor
+
+#exit
+
+for (( l=4; l<19; l+=1 )) do
+	for (( k=4; k<19; k+=1 )) do
+		sed -e 's/555/'"$l"'/g' -e 's/444/'"$k"'/g' < nep3.f90 > tensor.f90
+		make tensor
+		aprun -n 1 ./tensor > out3zb.txt
+ 		ltime=`grep Elapsed < out3zb.txt | awk '{print $6}'`
+ 		echo "Blocksize $l x $k $ltime"
+ 		echo "$l $k $ltime" >> data3zb.txt
+	done
+ 	echo " " >> data3zb.txt
+done
+
+cp data3zb.txt /cray/css/users/jan/cache_block_2010

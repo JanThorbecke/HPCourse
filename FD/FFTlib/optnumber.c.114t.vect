@@ -1,0 +1,224 @@
+
+;; Function optncc (optncc, funcdef_no=34, decl_uid=3813, symbol_order=34)
+
+optncc (int n)
+{
+  int n3;
+  int n2;
+  int _1;
+  float _4;
+  double _5;
+  double _6;
+  double _7;
+  double _8;
+  int _9;
+  double _10;
+  double _11;
+  int _16;
+  int _17;
+  int _19;
+
+  <bb 2>:
+  _4 = (float) n_3(D);
+  _5 = (double) _4;
+  _6 = log (_5);
+  _7 = _6 * 1.442695040888963387004650940070860087871551513671875e+0;
+  _8 = _7 + 9.999000000000000110134124042815528810024261474609375e-1;
+  _9 = (int) _8;
+  _10 = (double) _9;
+  _11 = pow (2.0e+0, _10);
+  n2_12 = (int) _11;
+  if (n2_12 != n_3(D))
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 3>:
+  n3_15 = npfa (n_3(D));
+  _16 = n3_15 - n_3(D);
+  _17 = n2_12 - n_3(D);
+  if (_16 < _17)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+
+  <bb 4>:
+  _19 = npfa (n_3(D));
+
+  <bb 5>:
+  # _1 = PHI <_19(4), n2_12(3), n_3(D)(2)>
+  return _1;
+
+}
+
+
+
+;; Function optncr (optncr, funcdef_no=35, decl_uid=3815, symbol_order=35)
+
+optncr (int n)
+{
+  int n3;
+  int n2;
+  int _1;
+  float _4;
+  double _5;
+  double _6;
+  double _7;
+  double _8;
+  int _9;
+  double _10;
+  double _11;
+  int _16;
+  int _17;
+  int _19;
+
+  <bb 2>:
+  _4 = (float) n_3(D);
+  _5 = (double) _4;
+  _6 = log (_5);
+  _7 = _6 * 1.442695040888963387004650940070860087871551513671875e+0;
+  _8 = _7 + 9.999000000000000110134124042815528810024261474609375e-1;
+  _9 = (int) _8;
+  _10 = (double) _9;
+  _11 = pow (2.0e+0, _10);
+  n2_12 = (int) _11;
+  if (n2_12 != n_3(D))
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 3>:
+  n3_15 = npfar (n_3(D));
+  _16 = n3_15 - n_3(D);
+  _17 = n2_12 - n_3(D);
+  if (_16 < _17)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+
+  <bb 4>:
+  _19 = npfar (n_3(D));
+
+  <bb 5>:
+  # _1 = PHI <_19(4), n2_12(3), n_3(D)(2)>
+  return _1;
+
+}
+
+
+
+;; Function optnccf (optnccf, funcdef_no=36, decl_uid=3975, symbol_order=36)
+
+optnccf (int * n)
+{
+  int n3;
+  int n2;
+  int D.4054;
+  int optn;
+  int _3;
+  float _6;
+  double _7;
+  double _8;
+  double _9;
+  double _10;
+  int _11;
+  double _12;
+  double _13;
+  int _16;
+  int _17;
+  int _18;
+  int _19;
+
+  <bb 2>:
+  _3 = *n_2(D);
+  _6 = (float) _3;
+  _7 = (double) _6;
+  _8 = log (_7);
+  _9 = _8 * 1.442695040888963387004650940070860087871551513671875e+0;
+  _10 = _9 + 9.999000000000000110134124042815528810024261474609375e-1;
+  _11 = (int) _10;
+  _12 = (double) _11;
+  _13 = pow (2.0e+0, _12);
+  n2_14 = (int) _13;
+  if (_3 != n2_14)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 3>:
+  n3_15 = npfa (_3);
+  _16 = n3_15 - _3;
+  _17 = n2_14 - _3;
+  if (_16 < _17)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+
+  <bb 4>:
+  _18 = npfa (_3);
+
+  <bb 5>:
+  # _19 = PHI <n2_14(2), n2_14(3), _18(4)>
+  return _19;
+
+}
+
+
+
+;; Function optncrf (optncrf, funcdef_no=37, decl_uid=3979, symbol_order=37)
+
+optncrf (int * n)
+{
+  int n3;
+  int n2;
+  int D.4063;
+  int optn;
+  int _3;
+  float _6;
+  double _7;
+  double _8;
+  double _9;
+  double _10;
+  int _11;
+  double _12;
+  double _13;
+  int _16;
+  int _17;
+  int _18;
+  int _19;
+
+  <bb 2>:
+  _3 = *n_2(D);
+  _6 = (float) _3;
+  _7 = (double) _6;
+  _8 = log (_7);
+  _9 = _8 * 1.442695040888963387004650940070860087871551513671875e+0;
+  _10 = _9 + 9.999000000000000110134124042815528810024261474609375e-1;
+  _11 = (int) _10;
+  _12 = (double) _11;
+  _13 = pow (2.0e+0, _12);
+  n2_14 = (int) _13;
+  if (_3 != n2_14)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 3>:
+  n3_15 = npfar (_3);
+  _16 = n3_15 - _3;
+  _17 = n2_14 - _3;
+  if (_16 < _17)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+
+  <bb 4>:
+  _18 = npfar (_3);
+
+  <bb 5>:
+  # _19 = PHI <n2_14(2), n2_14(3), _18(4)>
+  return _19;
+
+}
+
+

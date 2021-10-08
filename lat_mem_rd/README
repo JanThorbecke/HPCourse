@@ -1,0 +1,58 @@
+
+First adapt in lat_mem_rd.c line 20 the MHz rate for the computer you are running on:
+
+#define MHZ 2500
+
+On linux systems you can find that kind of hardware information in the file /proc/cpuinfo
+
+Compile the program by typing 
+
+> make clean
+> make
+
+and run in by typing 
+
+> ./lat_mem_rd 128 128 >& output_name
+
+The First argument is the maximum memory size (in MB) that will be tested and the second argument is the stride (in Bytes). The '>' in the run line redirects all the output, which would normally written to screen, to the file 'output_name'
+
+The output name contains three columns (A,B and C) with numbers like:
+
+0.00049 1.539 3.540
+A       B     C
+
+Column A is the size of the data array in MB
+Column B is the time in nanoseconds it takes to get data of that size to the CPU
+Column C is the average number of clock ticks it takes to get data of that size to the CPU
+
+
+
+If you have gnuplot installed you can make an eps file of the measured memory bandwidth by running
+
+> gnuplot plot.gnp
+
+(change the title and filename in plot.gnp to the filename you have chosen to be your output file)
+
+As an extra experiment you can change the seconds argument to be larger or smaller than 128. This can take a bit longer to run, but will give interesting results. 
+
+You can see what is already written to file by typing
+
+> tail -f output_name
+
+quit this by holding the control and c key simultaneously.
+
+Another interesting experiment on a duo or quad core machine is to start in a separate window another run:
+
+> ./lat_mem_rd 128 128
+
+or do in one terminal
+
+> ./lat_mem_rd 128 128 > out1; ./lat_mem_rd 128 128 > out2
+
+and compare the results with the single run result. 
+
+
+
+
+
+

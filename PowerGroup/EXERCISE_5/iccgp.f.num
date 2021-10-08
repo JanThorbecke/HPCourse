@@ -1,0 +1,936 @@
+     1        subroutine iccgp(nx,ny,nz,tol)
+     2  C
+     3  C
+     4        integer nx,ny,nz
+     5  C
+     6  C     nx is the number of cells in x-direction
+     7  C     ny is the number of cells in y-direction
+     8  C     nz is the number of cells in z-direction
+     9  C
+    10  C
+    11        double precision tol
+    12  C
+    13  C     tol is the tolerance used in the iterative Poisson solver
+    14  C
+    15  C
+    16  C     parameters:
+    17  C
+    18  C
+    19        integer nnx,nny,nnz
+    20  C
+    21        parameter (nnx=200, nny=200, nnz=32)
+    22  C
+    23  C
+    24  C     nnx is the maximum number of computational cells in x-direction;
+    25  C     nny is the maximum number of computational cells in y-direction;
+    26  C     nnz is the maximum number of computational cells in z-direction.
+    27  C     It is recommended to put the maximum problem sizes equal
+    28  C     to the actual sizes. That is: nnx=nx, nny=ny and nnz=nz.
+    29  C
+    30  C
+    31  C
+    32  C     global variables:
+    33  C
+    34  C
+    35        double precision d,e,lx,ly
+    36  C
+    37        common/laplac/ d(0:nnx+1,0:nny+1,0:nnz/2),
+    38       &               e(0:nnx+1,0:nny+1,0:nnz/2),
+    39       &              lx(0:nnx+1,0:nny+1,0:nnz/2),
+    40       &              ly(0:nnx+1,0:nny+1,0:nnz/2)
+    41
+    42  C
+    43  C
+    44  C
+    45  C     The arrays lx, ly, e and d are initiated by "poissn" such
+    46  C     that lx(i,j) contains the western coefficient of the central
+    47  C     discretisation of the "normalised" Laplace operator
+    48  C
+    49  C                           2     2
+    50  C     -dx(i)*dy(j)*dz(k)*( d   + d   )
+    51  C                           xx    yy
+    52  C
+    53  C     arround cell (i,j,k).
+    54  C     ly(i,j,k) contains the southern coefficient;
+    55  C     d(i,j,k) contains the central coefficient.
+    56  C     The eastern and northern coefficients are given by
+    57  C     lx(i+1,j,k), ly(i,j+1,k)  respectively,
+    58  C     i.e., the "normalised" Laplace operator is symmetric.
+    59  C     Apart from the diagonal the Laplace operator given above
+    60  C     is equal to a  Laplace operator in a spectral space.
+    61  C     This spectral space is related to the 3D physical space
+    62  C     by a fourier transform in the z-direction.
+    63  C     This transform adds a value to the diagonal of the Laplacian.
+    64  C     This value is stored in e. See "poissn".
+    65  C     The arrays lx,ly, e and d are overwritten by the preconditioner.
+    66  C     Virtual elements of d, e, lx, and ly, that are elements with
+    67  C     i=0, or i=nx+1, or j=0 or j=ny+1 are introduced
+    68  C     to simplify the procedure for solving the Poisson equation
+    69  C     for the pressure.
+    70  C     The arrays e, lx, and ly are diagonally ordened (see "precon").
+    71  C
+    72  C
+    73  C
+    74        double precision p
+    75  C
+    76        common/press/p(0:nnx+1,0:nny+1,0:nnz+1)
+    77  C
+    78  C
+    79  C
+    80  C     The array p contains the pressure at time-level n+1,
+    81  C     The pressure is defined at the centres of the computational
+    82  C     cells, i.e., p(i,j,k) represents the pressure at x=dx(1)+..
+    83  C     +dx(i-1)+0.5*dx(i), y=dy(1)+..+dy(j-1)+0.5*dy(j), z=dz(1)+..
+    84  C     +dz(k-1)+0.5*dz(k), where i=1,..,nx, j=1,..,ny and k=1,2,..,nz.
+    85  C     The entries that fall outside this range are introduced for
+    86  C     convenience (see "iccg"). These entries do not have a physical
+    87  C     meaning.
+    88  C
+    89  C
+    90  C
+    91        double precision r,q,a,b
+    92  C
+    93        common/workspace/r(0:nnx+1,0:nny+1,0:nnz+1),
+    94       &                 q(0:nnx+1,0:nny+1,0:nnz+1),
+    95       &                 a(0:nnx+1,0:nny+1,0:nnz+1),
+    96       &                 b(0:nnx+1,0:nny+1,0:nnz+1)
+    97  C
+    98  C
+    99  C     The arrays that are defined here are used as workspace.
+   100  C
+   101  C
+   102  C
+   103  C     local variables:
+   104        double precision alfa(0:nnz-1),beta(0:nnz-1)
+   105        double precision normresidu(0:nnz-1),normnewresidu(0:nnz-1)
+   106        integer i,j,m,n(0:nnz-1),nz2
+   107        logical contin
+   108  C
+   109  C
+   110  C     This routine overwrites the array p, and the arrays
+   111  C     r, q, a and b for the common block workspace.
+   112  C     p(i,j,k), r(i,j,k), q(i,j,k), a(i,j,k and b(i,j,k)
+   113  C     are overwritten for i=0,..,nx+1,  j=0,..,ny+1 and
+   114  C     k=0,...,nz+1.
+   115  C
+   116  C
+   117  C     Before preconditioning and fourier transform the system of
+   118  C     equations for the pressure p was given by
+   119  C
+   120  C     lx(i,j,k)*p(i-1,j,k) +
+   121  C
+   122  C     ly(i,j,k)*p(i,j-1,k) +
+   123  C
+   124  C     lz(i,j,k)*p(i,j,k-1) +
+   125  C
+   126  C     d(i,j,k)*p(i,j,k) +
+   127  C
+   128  C     lx(i+1,j,k)*p(i+1,j,k) +
+   129  C
+   130  C     ly(i,j+1,k)*p(i,j+1,k) +
+   131  C
+   132  C     lz(i,j,k+1)*p(i,j,k+1) =
+   133  C
+   134  C     r(i,j,k)
+   135  C
+   136  C     where i=1,2,..,nx, j=1,2,..,ny and k=0,...,nz-1.
+   137  C     First, a fast fourier transformation in the third direction is
+   138  C     performed. The poisson equation is then solved in the spectral
+   139  C     space, and the solution is transformed back into the physical
+   140  C     space.
+   141  C     The poisson equation in the spectral space reads
+   142  C
+   143  C     lx(i,j,m)*r(i-1,j,m) +
+   144  C
+   145  C     ly(i,j,m)*r(i,j-1,m) +
+   146  C
+   147  C     (d(i,j,m)+e(i,j,m)*r(i,j,m) +
+   148  C
+   149  C     lx(i+1,j,m)*r(i+1,j,m) +
+   150  C
+   151  C     ly(i,j+1,m)*r(i,j+1,m)  =
+   152  C
+   153  C     q(i,j,m)
+   154  C
+   155  C     where i=1,2,..,nx, j=1,2,..,ny and m=0,...,nz/2.
+   156  C     Here, the right-hand-side q is complex.
+   157  C     The complex values of q are stored in a real array with the
+   158  C     same name:
+   159  C
+   160  C     q(i,j,m) = the real part of q(i,j,m)
+   161  C
+   162  C     where i=1,..,nx, j=1,..,ny, and m=0,...,nz/2.
+   163  C     and
+   164  C
+   165  C     q(i,j,m+nz/2) = the imaginary part of q(i,j,m)
+   166  C
+   167  C     where i=1,..,nx, j=1,..,ny, and m=1,...,nz/2-1.
+   168  C
+   169  C     The preconditioning overwrites the arrays lx, ly, e,
+   170  C     and d (see "preconditioner").
+   171  C
+   172  C     The explicitly preconditioned system reads
+   173  C
+   174  C     lx(i,j,k)*p(i-1,j,m) +
+   175  C
+   176  C     ly(i,j,k)*p(i,j-1,m) +
+   177  C
+   178  C     p(i,j,m) +
+   179  C
+   180  C     lx(i+1,j,k)*p(i+1,j,m) +
+   181  C
+   182  C     ly(i,j+1,k)*p(i,j+1,m) =
+   183  C
+   184  C     a(i,j,m)
+   185  C
+   186  C
+   187  C     where i=1,2,..,nx, j=1,2,..,ny and k=0,...,nz/2.
+   188  C     The right-handside a and the unknown q are related to
+   189  C     unscaled rigth-handside r and solution p by
+   190  C
+   191  C     a = q*d     and    p = r/d
+   192  C
+   193  C     respectively.
+   194  C     All arrays in the preconditioned system, except d, are
+   195  C     diagonally ordened (see "preconditioner").
+   196  C     This subroutine applies the conjugate gradient method
+   197  C     to explicitly preconditioned system.
+   198  C     It requires that nx<=ny:
+   199  C
+   200        if (nx .gt. ny) stop
+   201  C
+   202  C
+   203  C     For convenience, the arrays p, r, lx, ly, lz, d, a, q and b
+   204  C     are extended. That is, elements of these arrays bith indices
+   205  C     that lie in the range i=0,..,nx+1, j=0,..,ny+1 are used during
+   206  C     the computations.
+   207  C     It may be emphasized that elements outside the range
+   208  C     i=1,..,nx, j=1,...,ny do not have a physical meaning.
+   209  C     The initiation of the virtual elements of lx, ly, e
+   210  C     and d has been performed in the subroutine "preconditioner"
+   211  C
+   212
+   213
+   214
+   215        nz2 = nz/2
+   216
+   217
+   218        do 10 m=0,nz-1
+   219
+   220  C     Initiation of the virtual elements of q and a:
+   221
+   222        do 11 j=0,ny+1,ny+1
+   223        do 12 i=0,nx+1
+   224        r(i,j,m) = 0.0D0
+   225        a(i,j,m) = 0.0D0
+   226   12   continue
+   227   11   continue
+   228
+   229
+   230        do 21 i=0,nx+1,nx+1
+   231        do 22 j=0,ny+1
+   232        r(i,j,m) = 0.0D0
+   233        a(i,j,m) = 0.0D0
+   234   22   continue
+   235   21   continue
+   236
+   237   10   continue
+   238
+   239        do 20 m=0,nz2
+   240
+   241
+   242  C     Diagonal ordening and scaling of the initial "solution" q
+   243  C     and the right-handside a
+   244
+   245
+   246        do 31 j=0,nx+1
+   247        do 32 i=0,j
+   248        p(i,j,m) = r(i,j-i,m)/d(i,j-i,m)
+   249        a(i,j,m) = d(i,j-i,m)*q(i,j-i,m)
+   250   32   continue
+   251   31   continue
+   252
+   253        do 41 j=nx+2,ny+1
+   254        do 42 i=0,nx+1
+   255        p(i,j,m) = r(i,j-i,m)/d(i,j-i,m)
+   256        a(i,j,m) = d(i,j-i,m)*q(i,j-i,m)
+   257   42   continue
+   258   41   continue
+   259
+   260        do 51 j=0,nx
+   261        do 52 i=j+1,nx+1
+   262        p(i,j,m) = r(i,j-i+2+ny,m)/d(i,j-i+2+ny,m)
+   263        a(i,j,m) = d(i,j-i+2+ny,m)*q(i,j-i+2+ny,m)
+   264   52   continue
+   265   51   continue
+   266
+   267
+   268   20   continue
+   269
+   270  c
+   271  cpm  Added for the sake of example
+   272  c
+   273
+   274        do m=nz2+1,nz-1
+   275           do j = 0,ny+1
+   276              do i = 0,nx+1
+   277                 q(i,j,m) = q(i,j,m-nz2)
+   278              enddo
+   279           enddo
+   280        enddo
+   281
+   282
+   283        do 30 m=nz2+1,nz-1
+   284
+   285        do 61 j=0,nx+1
+   286        do 62 i=0,j
+   287        p(i,j,m) = r(i,j-i,m)/d(i,j-i,m-nz2)
+   288        a(i,j,m) = q(i,j-i,m)*d(i,j-i,m-nz2)
+   289   62   continue
+   290   61   continue
+   291
+   292        do 71 j=nx+2,ny+1
+   293        do 72 i=0,nx+1
+   294        p(i,j,m) = r(i,j-i,m)/d(i,j-i,m-nz2)
+   295        a(i,j,m) = q(i,j-i,m)*d(i,j-i,m-nz2)
+   296   72   continue
+   297   71   continue
+   298
+   299        do 81 j=0,nx
+   300        do 82 i=j+1,nx+1
+   301        p(i,j,m) = r(i,j-i+2+ny,m)/d(i,j-i+2+ny,m-nz2)
+   302        a(i,j,m) = q(i,j-i+2+ny,m)*d(i,j-i+2+ny,m-nz2)
+   303   82   continue
+   304   81   continue
+   305
+   306
+   307   30   continue
+   308
+   309
+   310
+   311  C     computation of the first residu (b)
+   312
+   313
+   314        do 40 m=0,nz-1
+   315
+   316  C     first, the virtual elements of b are set equal to zero
+   317
+   318
+   319        do 91 i=0,nx+1,nx+1
+   320        do 92 j=0,ny+1
+   321        b(i,j,m) = 0.0D0
+   322   92   continue
+   323   91   continue
+   324
+   325   40   continue
+   326
+   327
+   328  C     the other elements of the first residue are
+   329  C     given by
+   330  C                    T
+   331  C     b := a - (L + L + 2I - E) p
+   332
+   333
+   334        do 50 m=0,nz2
+   335
+   336        do 101 j=1,ny
+   337        do 102 i=1,nx
+   338        b(i,j,m) = a(i,j,m)
+   339       &          -ly(i,j,m)*p(i  ,j-1,m)
+   340       &          -lx(i,j,m)*p(i-1,j-1,m)
+   341       &          -(2.0D0-e(i,j,m))*p(i,j,m)
+   342       &          -ly(i  ,j+1,m)*p(i,j+1,m)
+   343       &          -lx(i+1,j+1,m)*p(i+1,j+1,m)
+   344   102  continue
+   345   101  continue
+   346
+   347        j=0
+   348        do 111 i=1,nx
+   349        b(i,j,m) = a(i,j,m)
+   350       &          -ly(i,j,m)*p(i  ,ny+1,m)
+   351       &          -lx(i,j,m)*p(i-1,ny+1,m)
+   352       &          -(2.0D0-e(i,j,m))*p(i,j,m)
+   353       &          -ly(i  ,j+1,m)*p(i  ,j+1,m)
+   354       &          -lx(i+1,j+1,m)*p(i+1,j+1,m)
+   355   111  continue
+   356
+   357        j=ny+1
+   358        do 121 i=1,nx
+   359        b(i,j,m) = a(i,j,m)
+   360       &          -ly(i,j,m)*p(i  ,j-1,m)
+   361       &          -lx(i,j,m)*p(i-1,j-1,m)
+   362       &          -(2.0D0-e(i,j,m))*p(i,j,m)
+   363       &          -ly(i  ,0,m)*p(i  ,0,m)
+   364       &          -lx(i+1,0,m)*p(i+1,0,m)
+   365   121  continue
+   366
+   367
+   368   50   continue
+   369
+   370        do 60 m=nz2+1,nz-1
+   371
+   372
+   373        do 131 j=1,ny
+   374        do 132 i=1,nx
+   375        b(i,j,m) = a(i,j,m)
+   376       &          -ly(i,j,m-nz2)*p(i  ,j-1,m)
+   377       &          -lx(i,j,m-nz2)*p(i-1,j-1,m)
+   378       &          -(2.0D0-e(i,j,m-nz2))*p(i,j,m)
+   379       &          -ly(i  ,j+1,m-nz2)*p(i,j+1,m)
+   380       &          -lx(i+1,j+1,m-nz2)*p(i+1,j+1,m)
+   381   132  continue
+   382   131  continue
+   383
+   384        j=0
+   385        do 141 i=1,nx
+   386        b(i,j,m) = a(i,j,m)
+   387       &          -ly(i,j,m-nz2)*p(i  ,ny+1,m)
+   388       &          -lx(i,j,m-nz2)*p(i-1,ny+1,m)
+   389       &          -(2.0D0-e(i,j,m-nz2))*p(i,j,m)
+   390       &          -ly(i  ,j+1,m-nz2)*p(i  ,j+1,m)
+   391       &          -lx(i+1,j+1,m-nz2)*p(i+1,j+1,m)
+   392   141  continue
+   393
+   394        j=ny+1
+   395        do 151 i=1,nx
+   396        b(i,j,m) = a(i,j,m)
+   397       &          -ly(i,j,m-nz2)*p(i  ,j-1,m)
+   398       &          -lx(i,j,m-nz2)*p(i-1,j-1,m)
+   399       &          -(2.0D0-e(i,j,m-nz2))*p(i,j,m)
+   400       &          -ly(i  ,0,m-nz2)*p(i  ,0,m)
+   401       &          -lx(i+1,0,m-nz2)*p(i+1,0,m)
+   402   151  continue
+   403
+   404
+   405   60   continue
+   406
+   407  C     transformation of the first residu
+   408
+   409  C     the virtual elements of the diagonally ordened
+   410  C     residu are set equal to zero
+   411
+   412        do 70 m=0,nz-1
+   413
+   414        do 161 i=1,nx
+   415        q(i,i  ,m) = 0.0D0
+   416        q(i,i-1,m) = 0.0D0
+   417   161  continue
+   418
+   419
+   420        do 171 i=0,nx+1,nx+1
+   421        do 172 j=0,ny+1
+   422        q(i,j,m) = 0.0D0
+   423   172  continue
+   424   171  continue
+   425
+   426   70   continue
+   427
+   428  C     and the other elements are given by
+   429  C
+   430  C              -1
+   431  C     q := (L+I) b
+   432
+   433        do 80 m=0,nz2
+   434
+   435        do 181 j=2,nx
+   436        do 182 i=1,j-1
+   437        q(i,j,m) = b(i,j,m)
+   438       &          -ly(i,j,m)*q(i  ,j-1,m)
+   439       &          -lx(i,j,m)*q(i-1,j-1,m)
+   440   182  continue
+   441   181  continue
+   442
+   443
+   444        do 191 j=nx+1,ny+1
+   445        do 192 i=1,nx
+   446        q(i,j,m) = b(i,j,m)
+   447       &          -ly(i,j,m)*q(i  ,j-1,m)
+   448       &          -lx(i,j,m)*q(i-1,j-1,m)
+   449   192  continue
+   450   191  continue
+   451
+   452
+   453        j=0
+   454        do 193 i=j+2,nx
+   455        q(i,j,m) = b(i,j,m)
+   456       &          -ly(i,j,m)*q(i  ,ny+1,m)
+   457       &          -lx(i,j,m)*q(i-1,ny+1,m)
+   458   193  continue
+   459
+   460
+   461        do 201 j=1,nx-2
+   462        do 202 i=j+2,nx
+   463        q(i,j,m) = b(i,j,m)
+   464       &          -ly(i,j,m)*q(i  ,j-1,m)
+   465       &          -lx(i,j,m)*q(i-1,j-1,m)
+   466   202  continue
+   467   201  continue
+   468
+   469
+   470   80   continue
+   471
+   472
+   473        do 90 m=nz2+1,nz-1
+   474
+   475
+   476        do 211 j=2,nx
+   477        do 212 i=1,j-1
+   478        q(i,j,m) = b(i,j,m)
+   479       &          -ly(i,j,m-nz2)*q(i  ,j-1,m)
+   480       &          -lx(i,j,m-nz2)*q(i-1,j-1,m)
+   481   212  continue
+   482   211  continue
+   483
+   484
+   485        do 221 j=nx+1,ny+1
+   486        do 222 i=1,nx
+   487        q(i,j,m) = b(i,j,m)
+   488       &          -ly(i,j,m-nz2)*q(i  ,j-1,m)
+   489       &          -lx(i,j,m-nz2)*q(i-1,j-1,m)
+   490   222  continue
+   491   221  continue
+   492
+   493
+   494        j=0
+   495        do 231 i=j+2,nx
+   496        q(i,j,m) = b(i,j,m)
+   497       &          -ly(i,j,m-nz2)*q(i  ,ny+1,m)
+   498       &          -lx(i,j,m-nz2)*q(i-1,ny+1,m)
+   499   231  continue
+   500
+   501
+   502        do 241 j=1,nx-2
+   503        do 242 i=j+2,nx
+   504        q(i,j,m) = b(i,j,m)
+   505       &          -ly(i,j,m-nz2)*q(i  ,j-1,m)
+   506       &          -lx(i,j,m-nz2)*q(i-1,j-1,m)
+   507   242  continue
+   508   241  continue
+   509
+   510
+   511   90   continue
+   512
+   513
+   514
+   515        do 100 m=0,nz-1
+   516
+   517
+   518  C     normresidue(m) := inproduct q(.,.,m) and q(.,.,m)
+   519
+   520        normresidu(m) = 0.0D0
+   521
+   522        bnorm = 0.0
+   523        anorm = 0.0
+   524        pnorm = 0.0
+   525
+   526        do 251 j=0,ny+1
+   527        do 252 i=0,nx+1
+   528        normresidu(m) = normresidu(m) + q(i,j,m)*q(i,j,m)
+   529   252  continue
+   530   251  continue
+   531
+   532
+   533
+   534  C     first conjugate direction r := q
+   535
+   536
+   537        do 261 j=0,ny+1
+   538        do 262 i=0,nx+1
+   539        r(i,j,m) = q(i,j,m)
+   540   262  continue
+   541   261  continue
+   542
+   543
+   544   100  continue
+   545
+   546
+   547        do 116 m=0,nz-1
+   548
+   549  C     n counts the number of iterations:
+   550        n(m)=0
+   551   116  continue
+   552
+   553
+   554
+   555  C ***   START CG ITERATION  ****
+   556
+   557
+   558
+   559        do 110 m=0,nz-1
+   560
+   561        IF (m .le. nz2) THEN
+   562
+   563   1111 continue
+   564
+   565
+   566  C     check convergence:
+   567
+   568        if (normresidu(m) .gt. tol/((m+1.0E0)**6)) then
+   569
+   570  C     next:
+   571
+   572        n(m) = n(m) + 1
+   573
+   574  C                     -T
+   575  C     compute a = (L+I) r
+   576
+   577        do 271 j=nx-2,0,-1
+   578        do 272 i=j+2,nx
+   579        a(i,j,m) = r(i,j,m)
+   580       &          -ly(i  ,j+1,m)*a(i  ,j+1,m)
+   581       &          -lx(i+1,j+1,m)*a(i+1,j+1,m)
+   582   272  continue
+   583   271  continue
+   584
+   585        j=ny+1
+   586        do 281 i=1,nx
+   587        a(i,j,m) = r(i,j,m)
+   588       &          -ly(i  ,0,m)*a(i  ,0,m)
+   589       &          -lx(i+1,0,m)*a(i+1,0,m)
+   590   281  continue
+   591
+   592        do 291 j=ny,nx+1,-1
+   593        do 292 i=1,nx
+   594        a(i,j,m) = r(i,j,m)
+   595       &          -ly(i  ,j+1,m)*a(i  ,j+1,m)
+   596       &          -lx(i+1,j+1,m)*a(i+1,j+1,m)
+   597   292  continue
+   598   291  continue
+   599
+   600        do 301 j=nx,2,-1
+   601        do 302 i=1,j-1
+   602        a(i,j,m) = r(i,j,m)
+   603       &          -ly(i  ,j+1,m)*a(i  ,j+1,m)
+   604       &          -lx(i+1,j+1,m)*a(i+1,j+1,m)
+   605   302  continue
+   606   301  continue
+   607
+   608  C                     -1
+   609  C     compute b = (L+I) (r - Ea)
+   610
+   611
+   612        do 311 j=2,nx
+   613        do 312 i=1,j-1
+   614        b(i,j,m) =  r(i,j,m)
+   615       &          - e(i,j,m)*a(i  ,j  ,m)
+   616       &          -ly(i,j,m)*b(i  ,j-1,m)
+   617       &          -lx(i,j,m)*b(i-1,j-1,m)
+   618   312  continue
+   619   311  continue
+   620
+   621        do 321 j=nx+1,ny+1
+   622        do 322 i=1,nx
+   623        b(i,j,m) =  r(i,j,m)
+   624       &          - e(i,j,m)*a(i  ,j  ,m)
+   625       &          -ly(i,j,m)*b(i  ,j-1,m)
+   626       &          -lx(i,j,m)*b(i-1,j-1,m)
+   627   322  continue
+   628   321  continue
+   629
+   630        j=0
+   631        do 331 i=j+2,nx
+   632        b(i,j,m) =  r(i,j,m)
+   633       &          - e(i,j,m)*a(i  ,j   ,m)
+   634       &          -ly(i,j,m)*b(i  ,ny+1,m)
+   635       &          -lx(i,j,m)*b(i-1,ny+1,m)
+   636   331  continue
+   637
+   638        do 341 j=1,nx-2
+   639        do 342 i=j+2,nx
+   640        b(i,j,m) =  r(i,j,m)
+   641       &          - e(i,j,m)*a(i  ,j  ,m)
+   642       &          -ly(i,j,m)*b(i  ,j-1,m)
+   643       &          -lx(i,j,m)*b(i-1,j-1,m)
+   644   342  continue
+   645   341  continue
+   646
+   647
+   648  C     compute alfa(m) = -norm residu/inproduct of r and (b + a)
+   649
+   650        alfa(m) = 0.0D0
+   651
+   652        do 431 j=0,ny+1
+   653        do 432 i=0,nx+1
+   654        alfa(m) =  alfa(m) + r(i,j,m)*(b(i,j,m)+a(i,j,m))
+   655   432  continue
+   656   431  continue
+   657
+   658        alfa(m) = -normresidu(m)/alfa(m)
+   659
+   660
+   661  C     update iterate  p := p - alfa*a
+   662  C     update residu   q := q + alfa*(b+a)
+   663
+   664        do 441 j=0,ny+1
+   665        do 442 i=0,nx+1
+   666        p(i,j,m) = p(i,j,m) - alfa(m)*a(i,j,m)
+   667        q(i,j,m) = q(i,j,m) + alfa(m)*(b(i,j,m)+a(i,j,m))
+   668   442  continue
+   669   441  continue
+   670
+   671
+   672  C     normnewresidu(m) := inproduct of q and q
+   673
+   674        normnewresidu(m) = 0.0D0
+   675
+   676        do 451 j=0,ny+1
+   677        do 452 i=0,nx+1
+   678        normnewresidu(m) = normnewresidu(m) + q(i,j,m)*q(i,j,m)
+   679   452  continue
+   680   451  continue
+   681
+   682
+   683        beta(m) = normnewresidu(m)/normresidu(m)
+   684
+   685
+   686  C     next conjugate direction  r := q + beta*r
+   687
+   688        do 461 j=0,ny+1
+   689        do 462 i=0,nx+1
+   690        r(i,j,m) = q(i,j,m) + beta(m)*r(i,j,m)
+   691   462  continue
+   692   461  continue
+   693
+   694
+   695  C     update residu:
+   696
+   697        normresidu(m) = normnewresidu(m)
+   698
+   699  C     test convergence:
+   700
+   701        if (normresidu(m) .gt. tol/((m+1.0D0)**6)) then
+   702
+   703  C     stop if CG diverges:
+   704
+   705        if (n(m) .eq. 1000) then
+   706         stop "ERROR: ICCG diverges"
+   707        else
+   708         goto 1111
+   709        endif
+   710
+   711        endif
+   712
+   713
+   714  C     CG iteration has converged
+   715  C     scaling and re-ordening of the solution
+   716
+   717
+   718        do 471 j=0,nx+1
+   719        do 472 i=0,j
+   720        r(i,j-i,m) = d(i,j-i,m)*p(i,j,m)
+   721   472  continue
+   722   471  continue
+   723
+   724
+   725        do 481 j=nx+2,ny+1
+   726        do 482 i=0,nx+1
+   727        r(i,j-i,m) = d(i,j-i,m)*p(i,j,m)
+   728   482  continue
+   729   481  continue
+   730
+   731        do 491 j=0,nx
+   732        do 492 i=j+1,nx+1
+   733        r(i,j-i+2+ny,m) = d(i,j-i+2+ny,m)*p(i,j,m)
+   734   492  continue
+   735   491  continue
+   736
+   737        endif
+   738
+   739        ENDIF
+   740
+   741  cpm  end first part, start second part
+   742
+   743        IF (m .gt. nz2) THEN
+   744
+   745   2222 continue
+   746
+   747  C     check convergence:
+   748
+   749        if (normresidu(m) .gt. tol/(((m-nz2)+1.0D0)**6)) then
+   750
+   751  C     next:
+   752
+   753        n(m) = n(m) + 1
+   754
+   755  C                     -T
+   756  C     compute a = (L+I) r
+   757
+   758        do 351 j=nx-2,0,-1
+   759        do 352 i=j+2,nx
+   760        a(i,j,m) = r(i,j,m)
+   761       &          -ly(i  ,j+1,m-nz2)*a(i  ,j+1,m)
+   762       &          -lx(i+1,j+1,m-nz2)*a(i+1,j+1,m)
+   763   352  continue
+   764   351  continue
+   765
+   766        j=ny+1
+   767        do 361 i=1,nx
+   768        a(i,j,m) = r(i,j,m)
+   769       &          -ly(i  ,0,m-nz2)*a(i  ,0,m)
+   770       &          -lx(i+1,0,m-nz2)*a(i+1,0,m)
+   771   361  continue
+   772
+   773        do 371 j=ny,nx+1,-1
+   774        do 372 i=1,nx
+   775        a(i,j,m) = r(i,j,m)
+   776       &          -ly(i  ,j+1,m-nz2)*a(i  ,j+1,m)
+   777       &          -lx(i+1,j+1,m-nz2)*a(i+1,j+1,m)
+   778   372  continue
+   779   371  continue
+   780
+   781        do 381 j=nx,2,-1
+   782        do 382 i=1,j-1
+   783        a(i,j,m) = r(i,j,m)
+   784       &          -ly(i  ,j+1,m-nz2)*a(i  ,j+1,m)
+   785       &          -lx(i+1,j+1,m-nz2)*a(i+1,j+1,m)
+   786   382  continue
+   787   381  continue
+   788
+   789  C                     -1
+   790  C     compute b = (L+I) (r - Ea)
+   791
+   792        do 391 j=2,nx
+   793        do 392 i=1,j-1
+   794        b(i,j,m) =  r(i,j,m)
+   795       &          - e(i,j,m-nz2)*a(i  ,j  ,m)
+   796       &          -ly(i,j,m-nz2)*b(i  ,j-1,m)
+   797       &          -lx(i,j,m-nz2)*b(i-1,j-1,m)
+   798   392  continue
+   799   391  continue
+   800
+   801        do 401 j=nx+1,ny+1
+   802        do 402 i=1,nx
+   803        b(i,j,m) =  r(i,j,m)
+   804       &          - e(i,j,m-nz2)*a(i  ,j  ,m)
+   805       &          -ly(i,j,m-nz2)*b(i  ,j-1,m)
+   806       &          -lx(i,j,m-nz2)*b(i-1,j-1,m)
+   807   402  continue
+   808   401  continue
+   809
+   810        j=0
+   811        do 411 i=j+2,nx
+   812        b(i,j,m) =  r(i,j,m)
+   813       &          - e(i,j,m-nz2)*a(i  ,j   ,m)
+   814       &          -ly(i,j,m-nz2)*b(i  ,ny+1,m)
+   815       &          -lx(i,j,m-nz2)*b(i-1,ny+1,m)
+   816   411  continue
+   817
+   818        do 421 j=1,nx-2
+   819        do 422 i=j+2,nx
+   820        b(i,j,m) =  r(i,j,m)
+   821       &          - e(i,j,m-nz2)*a(i  ,j  ,m)
+   822       &          -ly(i,j,m-nz2)*b(i  ,j-1,m)
+   823       &          -lx(i,j,m-nz2)*b(i-1,j-1,m)
+   824   422  continue
+   825   421  continue
+   826
+   827  C     compute alfa(m) = -norm residu/inproduct of r and (b + a)
+   828
+   829        alfa(m) = 0.0D0
+   830
+   831        do 433 j=0,ny+1
+   832        do 434 i=0,nx+1
+   833        alfa(m) =  alfa(m) + r(i,j,m)*(b(i,j,m)+a(i,j,m))
+   834   434  continue
+   835   433  continue
+   836
+   837        alfa(m) = -normresidu(m)/alfa(m)
+   838
+   839  C     update iterate  p := p - alfa*a
+   840  C     update residu   q := q + alfa*(b+a)
+   841
+   842
+   843        do 443 j=0,ny+1
+   844        do 444 i=0,nx+1
+   845        p(i,j,m) = p(i,j,m) - alfa(m)*a(i,j,m)
+   846        q(i,j,m) = q(i,j,m) + alfa(m)*(b(i,j,m)+a(i,j,m))
+   847   444  continue
+   848   443  continue
+   849
+   850
+   851  C     normnewresidu(m) := inproduct of q and q
+   852
+   853        normnewresidu(m) = 0.0D0
+   854
+   855        do 453 j=0,ny+1
+   856        do 454 i=0,nx+1
+   857        normnewresidu(m) = normnewresidu(m) + q(i,j,m)*q(i,j,m)
+   858   454  continue
+   859   453  continue
+   860
+   861        beta(m) = normnewresidu(m)/normresidu(m)
+   862
+   863  C     next conjugate direction  r := q + beta*r
+   864
+   865        do 463 j=0,ny+1
+   866        do 464 i=0,nx+1
+   867        r(i,j,m) = q(i,j,m) + beta(m)*r(i,j,m)
+   868   464  continue
+   869   463  continue
+   870
+   871
+   872  C     update residu:
+   873
+   874        normresidu(m) = normnewresidu(m)
+   875
+   876  C     test convergence:
+   877
+   878        if (normresidu(m) .gt. tol/(((m-nz2)+1.0D0)**6))  then
+   879
+   880  C     stop if CG diverges:
+   881
+   882        if (n(m) .eq. 1000) then
+   883         stop "ERROR: ICCG diverges"
+   884        else
+   885         goto 2222
+   886        endif
+   887
+   888        endif
+   889
+   890        endif
+   891
+   892        ENDIF
+   893
+   894  110   continue
+   895
+   896  C ***   END CG ITERATION  ***
+   897
+   898
+   899        do 125 m=nz2+1,nz-1
+   900
+   901  C     CG iteration has converged
+   902  C     scaling and re-ordening of the solution
+   903
+   904
+   905        do 501 j=0,nx+1
+   906        do 502 i=0,j
+   907        r(i,j-i,m) = d(i,j-i,m-nz2)*p(i,j,m)
+   908   502  continue
+   909   501  continue
+   910
+   911
+   912        do 511 j=nx+2,ny+1
+   913        do 512 i=0,nx+1
+   914        r(i,j-i,m) = d(i,j-i,m-nz2)*p(i,j,m)
+   915   512  continue
+   916   511  continue
+   917
+   918        do 521 j=0,nx
+   919        do 522 i=j+1,nx+1
+   920        r(i,j-i+2+ny,m) = d(i,j-i+2+ny,m-nz2)*p(i,j,m)
+   921   522  continue
+   922   521  continue
+   923
+   924
+   925   125  continue
+   926
+   927        do 600 m=0,nz-1
+   928           write(*,*) m,n(m),normresidu(m)
+   929   600  continue
+   930
+   931        print *, ' '
+   932        print *, ' '
+   933
+   934
+   935        return
+   936        end

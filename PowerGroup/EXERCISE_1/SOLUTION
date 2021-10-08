@@ -1,0 +1,94 @@
+
+SOLUTION to:
+
+EXERCISE 1:   Matrix Multiply Using Autoparallelism
+***************************************************
+
+
+Silicon Graphics BV
+De Meern, The Netherlands.
+
+March 25, 1999.
+
+
+
+1.  The single-CPU execution time is about 15 seconds.
+
+
+2.  This directory contains the files matmul.l and matmul.m.
+    Note that the compiler has interchanged the loops with index
+    30 and 32. 
+
+
+3.  Runtimes are about:
+
+    2 CPUs:   ca. 8   secs.
+    3 CPUs:   ca. 5   secs.
+    4 CPUs:   ca. 4   secs.
+
+    The relevant environment variable to set the number of threads is
+    OMP_NUM_THREADS.  Usage:  setenv OMP_NUM_THREADS 2
+
+
+4.  We have seen in question 2 that the compiler interchanges the 
+    loops with label 30 and 31. We need the following OpenMP directives
+    just in front of the loop with label 30:
+
+    c$omp    parallel do
+    c$omp&   shared(l,m,n,A,B,C)
+    c$omp&   private(i,j,k)
+
+    Just after the "30 continue" line, we can insert:
+
+    c$omp end parallel do
+  
+    The output in files matmul.l and matmul.m shows that this time, the
+    compiler has not interchanged the loops with label 30 and 31.
+
+    Runtimes are about (note to set the OMP_NUM_THREADS value to the
+    desired value, see above):
+
+    1 CPU:    ca. 15 seconds
+    2 CPUs:   ca. 17 seconds
+    3 CPUS:   ca.  9 seconds
+    4 CPUS:   ca.  7 seconds 
+
+    The parallellization now is across index i, the first index of array C.
+    This means that each processor is responsible for a certain amount
+    of rows of array C. This is not advantageous for memory access.
+    Interesting to see is that for 2 CPUs, the wallclock time goes up,
+    and that it decreases again for more CPUs.
+
+    What happens is that false sharing occurs between the processors:
+    two processors write into the same cache line (note, not the
+    same words in the cache line !). This is the cause of the bad
+    performance.
+
+
+5.  The loop with label 31 becomes now:
+
+         do 31 j = 1,n
+
+            x = 0.0
+
+            do 32 k = 1,m
+               x = x +A(i,k)* B(k,j)
+ 32         continue
+
+            C(i,j) = x
+
+ 31      continue
+
+
+    Note that variable x should be private to each thread, so 
+    it must be included in the "c$omp&   private" clause.
+
+    Compile with -O3 -mp, and run (note the OMP_NUM_THREADS 
+    environment variable):
+
+    1 CPU:    ca. 15 secs.
+    2 CPUs:   ca   8 secs.
+    3 CPUs:   ca   5 secs.
+    4 CPUs:   ca.  4 secs.
+
+

@@ -1,0 +1,56 @@
+Cache Blocking Homework
+Cray Performance Symposium
+July 2010
+
+Description
+-----------
+As microprocessors gain more cores, and their memory hierarchies become more
+complicated, those codes that take clever advantage of the cache structures
+better differentiate themselves in terms of their sustained performance. Cache
+blocking is an important loop transformation technique that can improve a
+code's use of various levels of cache. Modern compilers, especially the Cray
+compiler, are able to automatically block for cache. However, the compiler must
+often resort to heuristics that result in suboptimal code. Programmers and
+analysts can either help the compiler through the use of directives, or
+manually block loop nests to improve performance even more.
+
+Exercises
+---------
+Included in this package are three sample codes, each with blockable loop
+nests.
+
+* stencil1: A 19-point (or 18-point, depending on how you count) sixth-order
+            stencil
+
+* stencil2: Also a 19-point stencil, but with variable coefficients.
+            Contributed by Tricia Balle
+
+* tensor: A tensor product, contracting two rank-four tensors along different
+          dimensions
+
+Instructions
+------------
+Each exercise contains a timed loop nest that can be blocked to reduce its
+execution time. Timing is done using Dick Sandness's high-resolution timer
+functions. The blockable nests are marked with the comments
+
+  ! BEGIN CACHE BLOCKING
+    ...
+  ! END CACHE BLOCKING
+
+Each exercise times its blockable loop, and checks correctness of the result.
+Please make no code modifications outside of the BEGIN CACHE BLOCKING ... END
+CACHE BLOCKING region, in order to preserve the correctness of the checks.
+Within this CACHE BLOCKING region, anything goes, as long as it preserves
+correctness and total flop count, and falls within the spirit of the benchmark.
+
+The included Makefile's default target will build all three tests. The Makefile
+assumes that PrgEnv-cray is loaded.
+
+Submitting Results
+------------------
+Please email your modified code to Steve (whalen@cray.com), and cc Jef
+(jef@cray.com), by Friday, August 13, 2010. Steve will evaluate each submission
+against the "asis" code by compiling both with CCE, using default flags, and
+running them on MC12 processors. The winner's submission will be shared with
+all submitters; other entries will be kept confidential.

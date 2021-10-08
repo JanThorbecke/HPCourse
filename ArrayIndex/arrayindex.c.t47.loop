@@ -1,0 +1,820 @@
+
+;; Function wallclock_time (wallclock_time)
+
+wallclock_time ()
+{
+  static int base = 0;
+  double time;
+  static struct timeval b_val;
+  struct timeval s_val;
+  double D.3667;
+  double D.3666;
+  __darwin_suseconds_t D.3665;
+  __darwin_suseconds_t D.3664;
+  __darwin_suseconds_t D.3663;
+  double D.3662;
+  __darwin_time_t D.3661;
+  __darwin_time_t D.3660;
+  __darwin_time_t D.3659;
+  double D.3658;
+  int base.7;
+
+<bb 0>:
+  gettimeofday (&s_val, 0B);
+  base.7_3 = base;
+  if (base.7_3 == 0) goto <L0>; else goto <L1>;
+
+<L0>:;
+  b_val = s_val;
+  base = 1;
+  goto <bb 3> (<L2>);
+
+<L1>:;
+  D.3659_6 = s_val.tv_sec;
+  D.3660_8 = b_val.tv_sec;
+  D.3661_9 = D.3659_6 - D.3660_8;
+  D.3662_10 = (double) D.3661_9;
+  D.3663_11 = s_val.tv_usec;
+  D.3664_12 = b_val.tv_usec;
+  D.3665_13 = D.3663_11 - D.3664_12;
+  D.3666_14 = (double) D.3665_13;
+  D.3667_15 = D.3666_14 * 9.99999999999999954748111825886258685613938723691e-7;
+  time_16 = D.3662_10 + D.3667_15;
+
+  # time_1 = PHI <0.0(1), time_16(2)>;
+<L2>:;
+  return time_1;
+
+}
+
+
+
+;; Function main (main)
+
+main ()
+{
+  int pretmp.32;
+  long unsigned int pretmp.31;
+  double pretmp.30;
+  int pretmp.29;
+  int pretmp.28;
+  long unsigned int pretmp.27;
+  double pretmp.26;
+  int pretmp.25;
+  int pretmp.24;
+  double pretmp.23;
+  int pretmp.22;
+  int pretmp.21;
+  long unsigned int pretmp.20;
+  double * * pretmp.19;
+  double * * pretmp.18;
+  long unsigned int pretmp.17;
+  long unsigned int pretmp.16;
+  double pretmp.15;
+  long unsigned int pretmp.14;
+  int pretmp.13;
+  long unsigned int pretmp.12;
+  int pretmp.11;
+  long unsigned int pretmp.10;
+  int pretmp.9;
+  static int base = 0;
+  double time;
+  static struct timeval b_val;
+  struct timeval s_val;
+  double D.3846;
+  double D.3845;
+  __darwin_suseconds_t D.3844;
+  __darwin_suseconds_t D.3843;
+  __darwin_suseconds_t D.3842;
+  double D.3841;
+  __darwin_time_t D.3840;
+  __darwin_time_t D.3839;
+  __darwin_time_t D.3838;
+  double D.3837;
+  int base.7;
+  static int base = 0;
+  double time;
+  static struct timeval b_val;
+  struct timeval s_val;
+  double D.3830;
+  double D.3829;
+  __darwin_suseconds_t D.3828;
+  __darwin_suseconds_t D.3827;
+  __darwin_suseconds_t D.3826;
+  double D.3825;
+  __darwin_time_t D.3824;
+  __darwin_time_t D.3823;
+  __darwin_time_t D.3822;
+  double D.3821;
+  int base.7;
+  static int base = 0;
+  double time;
+  static struct timeval b_val;
+  struct timeval s_val;
+  double D.3814;
+  double D.3813;
+  __darwin_suseconds_t D.3812;
+  __darwin_suseconds_t D.3811;
+  __darwin_suseconds_t D.3810;
+  double D.3809;
+  __darwin_time_t D.3808;
+  __darwin_time_t D.3807;
+  __darwin_time_t D.3806;
+  double D.3805;
+  int base.7;
+  static int base = 0;
+  double time;
+  static struct timeval b_val;
+  struct timeval s_val;
+  double D.3798;
+  double D.3797;
+  __darwin_suseconds_t D.3796;
+  __darwin_suseconds_t D.3795;
+  __darwin_suseconds_t D.3794;
+  double D.3793;
+  __darwin_time_t D.3792;
+  __darwin_time_t D.3791;
+  __darwin_time_t D.3790;
+  double D.3789;
+  int base.7;
+  static int base = 0;
+  double time;
+  static struct timeval b_val;
+  struct timeval s_val;
+  double D.3782;
+  double D.3781;
+  __darwin_suseconds_t D.3780;
+  __darwin_suseconds_t D.3779;
+  __darwin_suseconds_t D.3778;
+  double D.3777;
+  __darwin_time_t D.3776;
+  __darwin_time_t D.3775;
+  __darwin_time_t D.3774;
+  double D.3773;
+  int base.7;
+  static int base = 0;
+  double time;
+  static struct timeval b_val;
+  struct timeval s_val;
+  double D.3766;
+  double D.3765;
+  __darwin_suseconds_t D.3764;
+  __darwin_suseconds_t D.3763;
+  __darwin_suseconds_t D.3762;
+  double D.3761;
+  __darwin_time_t D.3760;
+  __darwin_time_t D.3759;
+  __darwin_time_t D.3758;
+  double D.3757;
+  int base.7;
+  static int base = 0;
+  double time;
+  static struct timeval b_val;
+  struct timeval s_val;
+  double D.3750;
+  double D.3749;
+  __darwin_suseconds_t D.3748;
+  __darwin_suseconds_t D.3747;
+  __darwin_suseconds_t D.3746;
+  double D.3745;
+  __darwin_time_t D.3744;
+  __darwin_time_t D.3743;
+  __darwin_time_t D.3742;
+  double D.3741;
+  int base.7;
+  static int base = 0;
+  double time;
+  static struct timeval b_val;
+  struct timeval s_val;
+  double D.3734;
+  double D.3733;
+  __darwin_suseconds_t D.3732;
+  __darwin_suseconds_t D.3731;
+  __darwin_suseconds_t D.3730;
+  double D.3729;
+  __darwin_time_t D.3728;
+  __darwin_time_t D.3727;
+  __darwin_time_t D.3726;
+  double D.3725;
+  int base.7;
+  static int base = 0;
+  double time;
+  static struct timeval b_val;
+  struct timeval s_val;
+  double D.3718;
+  double D.3717;
+  __darwin_suseconds_t D.3716;
+  __darwin_suseconds_t D.3715;
+  __darwin_suseconds_t D.3714;
+  double D.3713;
+  __darwin_time_t D.3712;
+  __darwin_time_t D.3711;
+  __darwin_time_t D.3710;
+  double D.3709;
+  int base.7;
+  static int base = 0;
+  double time;
+  static struct timeval b_val;
+  struct timeval s_val;
+  double D.3702;
+  double D.3701;
+  __darwin_suseconds_t D.3700;
+  __darwin_suseconds_t D.3699;
+  __darwin_suseconds_t D.3698;
+  double D.3697;
+  __darwin_time_t D.3696;
+  __darwin_time_t D.3695;
+  __darwin_time_t D.3694;
+  double D.3693;
+  int base.7;
+  static const char __func__[5] = "main";
+  char * filename;
+  double * * d;
+  double * c;
+  double * a;
+  double time;
+  double t_bias;
+  double t1;
+  double t0;
+  int loops;
+  int size;
+  int power;
+  int iy;
+  int ix;
+  int N;
+  int * index;
+  int j;
+  int l2_line;
+  int l1_size;
+  int l2_size;
+  int mhz;
+  struct FILE * fp;
+  int D.3649;
+  double D.3648;
+  double * D.3647;
+  double * D.3646;
+  long unsigned int D.3645;
+  long unsigned int D.3644;
+  int D.3643;
+  double D.3642;
+  double D.3641;
+  double * D.3640;
+  double * D.3639;
+  double D.3638;
+  double D.3637;
+  double * D.3636;
+  double * D.3635;
+  long unsigned int D.3634;
+  long unsigned int D.3633;
+  int D.3632;
+  int D.3631;
+  double D.3630;
+  int D.3629;
+  double D.3628;
+  double D.3627;
+  double D.3626;
+  double D.3625;
+  double D.3624;
+  double D.3623;
+  double D.3622;
+  double D.3621;
+  double D.3620;
+  double D.3619;
+  double * D.3618;
+  double * D.3617;
+  double * D.3616;
+  double * * D.3615;
+  double * * D.3614;
+  long unsigned int D.3613;
+  long unsigned int D.3612;
+  double D.3611;
+  double D.3610;
+  double D.3609;
+  int * D.3608;
+  int * D.3607;
+  long unsigned int D.3606;
+  long int D.3605;
+  long int D.3604;
+  void * D.3603;
+  long unsigned int D.3602;
+  double * * D.3601;
+  double * * D.3600;
+  long unsigned int D.3599;
+  long unsigned int D.3598;
+  double * D.3597;
+  double * D.3596;
+  long unsigned int D.3595;
+  long unsigned int D.3594;
+  int D.3593;
+  long int D.3592;
+  long int D.3591;
+  double * D.3590;
+  double * D.3589;
+  void * D.3588;
+  long unsigned int D.3587;
+  long unsigned int D.3586;
+  long int D.3585;
+  long int D.3584;
+  void * D.3583;
+  long unsigned int D.3582;
+  long unsigned int D.3581;
+  struct FILE * __stderrp.6;
+  double D.3579;
+  double D.3578;
+
+<bb 0>:
+  gettimeofday (&s_val, 0B);
+  base.7_47 = base;
+  if (base.7_47 == 0) goto <L0>; else goto <L1>;
+
+<L0>:;
+  b_val = s_val;
+  base = 1;
+  goto <bb 3> (<L2>);
+
+<L1>:;
+  D.3694_381 = s_val.tv_sec;
+  D.3695_383 = b_val.tv_sec;
+  D.3696_384 = D.3694_381 - D.3695_383;
+  D.3697_385 = (double) D.3696_384;
+  D.3698_386 = s_val.tv_usec;
+  D.3699_387 = b_val.tv_usec;
+  D.3700_388 = D.3698_386 - D.3699_387;
+  D.3701_389 = (double) D.3700_388;
+  D.3702_390 = D.3701_389 * 9.99999999999999954748111825886258685613938723691e-7;
+  t0_391 = D.3697_385 + D.3702_390;
+
+  # t0_19 = PHI <0.0(1), t0_391(2)>;
+<L2>:;
+  gettimeofday (&s_val, 0B);
+  base.7_49 = base;
+  if (base.7_49 == 0) goto <L3>; else goto <L4>;
+
+<L3>:;
+  b_val = s_val;
+  base = 1;
+  goto <bb 6> (<L5>);
+
+<L4>:;
+  D.3710_364 = s_val.tv_sec;
+  D.3711_365 = b_val.tv_sec;
+  D.3712_366 = D.3710_364 - D.3711_365;
+  D.3713_367 = (double) D.3712_366;
+  D.3714_368 = s_val.tv_usec;
+  D.3715_369 = b_val.tv_usec;
+  D.3716_370 = D.3714_368 - D.3715_369;
+  D.3717_371 = (double) D.3716_370;
+  D.3718_372 = D.3717_371 * 9.99999999999999954748111825886258685613938723691e-7;
+  t1_373 = D.3713_367 + D.3718_372;
+
+  # t1_20 = PHI <0.0(4), t1_373(5)>;
+<L5>:;
+  t_bias_51 = t1_20 - t0_19;
+  __stderrp.6_53 = __stderrp;
+  fprintf (__stderrp.6_53, &"t_bias = %e\n"[0], t_bias_51);
+  D.3583_59 = malloc (16384);
+  d_60 = (double * *) D.3583_59;
+  D.3584_61 = d_60 == 0B;
+  D.3585_62 = __builtin_expect (D.3584_61, 0);
+  if (D.3585_62 != 0) goto <L6>; else goto <L7>;
+
+<L6>:;
+  __assert_rtn (&__func__, &"arrayindex.c"[0], 35, &"d != NULL"[0]);
+
+<L7>:;
+  D.3588_65 = malloc (33554432);
+  D.3589_66 = (double *) D.3588_65;
+  *d_60 = D.3589_66;
+  D.3591_68 = D.3589_66 == 0B;
+  D.3592_69 = __builtin_expect (D.3591_68, 0);
+  if (D.3592_69 != 0) goto <L8>; else goto <L113>;
+
+<L8>:;
+  __assert_rtn (&__func__, &"arrayindex.c"[0], 37, &"d[0] != NULL"[0]);
+
+<L113>:;
+
+  # ix_930 = PHI <1(59), ix_362(60)>;
+<L99>:;
+  D.3590_352 = *d_60;
+  D.3593_353 = ix_930 * 2048;
+  D.3594_354 = (long unsigned int) D.3593_353;
+  D.3595_355 = D.3594_354 * 8;
+  D.3596_356 = (double *) D.3595_355;
+  D.3597_357 = D.3590_352 + D.3596_356;
+  D.3598_358 = (long unsigned int) ix_930;
+  D.3599_359 = D.3598_358 * 8;
+  D.3600_360 = (double * *) D.3599_359;
+  D.3601_361 = d_60 + D.3600_360;
+  *D.3601_361 = D.3597_357;
+  ix_362 = ix_930 + 1;
+  if (ix_362 <= 2047) goto <L114>; else goto <L12>;
+
+<L114>:;
+  goto <bb 10> (<L99>);
+
+<L12>:;
+  c_71 = *d_60;
+  D.3603_74 = malloc (16777216);
+  index_75 = (int *) D.3603_74;
+  D.3604_76 = index_75 == 0B;
+  D.3605_77 = __builtin_expect (D.3604_76, 0);
+  if (D.3605_77 != 0) goto <L13>; else goto <L115>;
+
+<L13>:;
+  __assert_rtn (&__func__, &"arrayindex.c"[0], 47, &"index!= NULL"[0]);
+
+<L115>:;
+
+  # ix_969 = PHI <0(61), ix_351(62)>;
+<L100>:;
+  D.3598_347 = (long unsigned int) ix_969;
+  D.3606_348 = D.3598_347 * 4;
+  D.3607_349 = (int *) D.3606_348;
+  D.3608_350 = index_75 + D.3607_349;
+  *D.3608_350 = ix_969;
+  ix_351 = ix_969 + 1;
+  if (ix_351 <= 4194303) goto <L116>; else goto <L17>;
+
+<L116>:;
+  goto <bb 13> (<L100>);
+
+<L17>:;
+  gettimeofday (&s_val, 0B);
+  base.7_79 = base;
+  if (base.7_79 == 0) goto <L18>; else goto <L19>;
+
+<L18>:;
+  b_val = s_val;
+  base = 1;
+  goto <bb 17> (<L20>);
+
+<L19>:;
+  D.3726_331 = s_val.tv_sec;
+  D.3727_332 = b_val.tv_sec;
+  D.3728_333 = D.3726_331 - D.3727_332;
+  D.3729_334 = (double) D.3728_333;
+  D.3730_335 = s_val.tv_usec;
+  D.3731_336 = b_val.tv_usec;
+  D.3732_337 = D.3730_335 - D.3731_336;
+  D.3733_338 = (double) D.3732_337;
+  D.3734_339 = D.3733_338 * 9.99999999999999954748111825886258685613938723691e-7;
+  t0_340 = D.3729_334 + D.3734_339;
+
+  # t0_27 = PHI <0.0(15), t0_340(16)>;
+<L20>:;
+
+  # j_1008 = PHI <j_315(65), 0(17)>;
+<L21>:;
+
+  # iy_1034 = PHI <iy_317(64), 0(18)>;
+<L22>:;
+  pretmp.16_1174 = (long unsigned int) iy_1034;
+  pretmp.17_1148 = pretmp.16_1174 * 8;
+  pretmp.18_1122 = (double * *) pretmp.17_1148;
+  pretmp.19_1049 = d_60 + pretmp.18_1122;
+
+  # ix_1060 = PHI <ix_329(63), 0(19)>;
+<L23>:;
+  D.3610_318 = (double) ix_1060;
+  D.3611_319 = D.3610_318 * 3.14159265358979311599796346854418516159057617188e+0;
+  D.3612_320 = pretmp.16_1174;
+  D.3613_321 = pretmp.17_1148;
+  D.3614_322 = pretmp.18_1122;
+  D.3615_323 = pretmp.19_1049;
+  D.3616_324 = *D.3615_323;
+  D.3598_325 = (long unsigned int) ix_1060;
+  D.3599_326 = D.3598_325 * 8;
+  D.3617_327 = (double *) D.3599_326;
+  D.3618_328 = D.3616_324 + D.3617_327;
+  *D.3618_328 = D.3611_319;
+  ix_329 = ix_1060 + 1;
+  if (ix_329 <= 2047) goto <L117>; else goto <L25>;
+
+<L117>:;
+  goto <bb 20> (<L23>);
+
+<L25>:;
+  iy_317 = iy_1034 + 1;
+  if (iy_317 <= 2047) goto <L118>; else goto <L27>;
+
+<L118>:;
+  goto <bb 19> (<L22>);
+
+<L27>:;
+  j_315 = j_1008 + 1;
+  if (j_315 <= 9) goto <L119>; else goto <L29>;
+
+<L119>:;
+  goto <bb 18> (<L21>);
+
+<L29>:;
+  gettimeofday (&s_val, 0B);
+  base.7_82 = base;
+  if (base.7_82 == 0) goto <L30>; else goto <L31>;
+
+<L30>:;
+  b_val = s_val;
+  base = 1;
+  goto <bb 26> (<L32>);
+
+<L31>:;
+  D.3742_298 = s_val.tv_sec;
+  D.3743_299 = b_val.tv_sec;
+  D.3744_300 = D.3742_298 - D.3743_299;
+  D.3745_301 = (double) D.3744_300;
+  D.3746_302 = s_val.tv_usec;
+  D.3747_303 = b_val.tv_usec;
+  D.3748_304 = D.3746_302 - D.3747_303;
+  D.3749_305 = (double) D.3748_304;
+  D.3750_306 = D.3749_305 * 9.99999999999999954748111825886258685613938723691e-7;
+  t1_307 = D.3745_301 + D.3750_306;
+
+  # t1_35 = PHI <0.0(24), t1_307(25)>;
+<L32>:;
+  D.3620_84 = t1_35 - t0_27;
+  D.3621_85 = D.3620_84 - t_bias_51;
+  time_87 = D.3621_85 / 1.0e+1;
+  D.3624_91 = time_87 * 1.048576e+6;
+  D.3625_92 = 3.3554432e+7 / D.3624_91;
+  D.3627_94 = time_87 * 2.5e+3;
+  D.3628_95 = D.3627_94 * 1.0e+6;
+  D.3629_96 = (int) D.3628_95;
+  __stderrp.6_97 = __stderrp;
+  fprintf (__stderrp.6_97, &"Direct index time = %e [%d] = %d cycles = %f MB/s\n"[0], time_87, 10, D.3629_96, D.3625_92);
+  gettimeofday (&s_val, 0B);
+  base.7_98 = base;
+  if (base.7_98 == 0) goto <L33>; else goto <L34>;
+
+<L33>:;
+  b_val = s_val;
+  base = 1;
+  goto <bb 29> (<L35>);
+
+<L34>:;
+  D.3758_281 = s_val.tv_sec;
+  D.3759_282 = b_val.tv_sec;
+  D.3760_283 = D.3758_281 - D.3759_282;
+  D.3761_284 = (double) D.3760_283;
+  D.3762_285 = s_val.tv_usec;
+  D.3763_286 = b_val.tv_usec;
+  D.3764_287 = D.3762_285 - D.3763_286;
+  D.3765_288 = (double) D.3764_287;
+  D.3766_289 = D.3765_288 * 9.99999999999999954748111825886258685613938723691e-7;
+  t0_290 = D.3761_284 + D.3766_289;
+
+  # t0_36 = PHI <0.0(27), t0_290(28)>;
+<L35>:;
+
+  # j_1125 = PHI <j_268(68), 0(29)>;
+<L36>:;
+
+  # iy_1151 = PHI <iy_270(67), 0(30)>;
+<L37>:;
+  pretmp.24_921 = iy_1151 * 2048;
+
+  # ix_1177 = PHI <ix_279(66), 0(31)>;
+<L38>:;
+  D.3610_271 = (double) ix_1177;
+  D.3611_272 = D.3610_271 * 3.14159265358979311599796346854418516159057617188e+0;
+  D.3631_273 = pretmp.24_921;
+  D.3632_274 = D.3631_273 + ix_1177;
+  D.3633_275 = (long unsigned int) D.3632_274;
+  D.3634_276 = D.3633_275 * 8;
+  D.3635_277 = (double *) D.3634_276;
+  D.3636_278 = c_71 + D.3635_277;
+  *D.3636_278 = D.3611_272;
+  ix_279 = ix_1177 + 1;
+  if (ix_279 <= 2047) goto <L120>; else goto <L40>;
+
+<L120>:;
+  goto <bb 32> (<L38>);
+
+<L40>:;
+  iy_270 = iy_1151 + 1;
+  if (iy_270 <= 2047) goto <L121>; else goto <L42>;
+
+<L121>:;
+  goto <bb 31> (<L37>);
+
+<L42>:;
+  j_268 = j_1125 + 1;
+  if (j_268 <= 9) goto <L122>; else goto <L44>;
+
+<L122>:;
+  goto <bb 30> (<L36>);
+
+<L44>:;
+  gettimeofday (&s_val, 0B);
+  base.7_101 = base;
+  if (base.7_101 == 0) goto <L45>; else goto <L46>;
+
+<L45>:;
+  b_val = s_val;
+  base = 1;
+  goto <bb 38> (<L47>);
+
+<L46>:;
+  D.3774_251 = s_val.tv_sec;
+  D.3775_252 = b_val.tv_sec;
+  D.3776_253 = D.3774_251 - D.3775_252;
+  D.3777_254 = (double) D.3776_253;
+  D.3778_255 = s_val.tv_usec;
+  D.3779_256 = b_val.tv_usec;
+  D.3780_257 = D.3778_255 - D.3779_256;
+  D.3781_258 = (double) D.3780_257;
+  D.3782_259 = D.3781_258 * 9.99999999999999954748111825886258685613938723691e-7;
+  t1_260 = D.3777_254 + D.3782_259;
+
+  # t1_37 = PHI <0.0(36), t1_260(37)>;
+<L47>:;
+  D.3620_103 = t1_37 - t0_36;
+  D.3621_104 = D.3620_103 - t_bias_51;
+  time_106 = D.3621_104 / 1.0e+1;
+  D.3624_110 = time_106 * 1.048576e+6;
+  D.3625_111 = 3.3554432e+7 / D.3624_110;
+  D.3627_113 = time_106 * 2.5e+3;
+  D.3628_114 = D.3627_113 * 1.0e+6;
+  D.3629_115 = (int) D.3628_114;
+  __stderrp.6_116 = __stderrp;
+  fprintf (__stderrp.6_116, &"Explicit index time = %e [%d] = %d cycles = %f MB/s\n"[0], time_106, 10, D.3629_115, D.3625_111);
+  gettimeofday (&s_val, 0B);
+  base.7_117 = base;
+  if (base.7_117 == 0) goto <L48>; else goto <L49>;
+
+<L48>:;
+  b_val = s_val;
+  base = 1;
+  goto <bb 41> (<L50>);
+
+<L49>:;
+  D.3790_234 = s_val.tv_sec;
+  D.3791_235 = b_val.tv_sec;
+  D.3792_236 = D.3790_234 - D.3791_235;
+  D.3793_237 = (double) D.3792_236;
+  D.3794_238 = s_val.tv_usec;
+  D.3795_239 = b_val.tv_usec;
+  D.3796_240 = D.3794_238 - D.3795_239;
+  D.3797_241 = (double) D.3796_240;
+  D.3798_242 = D.3797_241 * 9.99999999999999954748111825886258685613938723691e-7;
+  t0_243 = D.3793_237 + D.3798_242;
+
+  # t0_38 = PHI <0.0(39), t0_243(40)>;
+<L50>:;
+
+  # j_1242 = PHI <j_224(70), 0(41)>;
+<L51>:;
+
+  # iy_1269 = PHI <iy_231(69), 0(42)>;
+  # ix_1270 = PHI <ix_232(69), 0(42)>;
+<L52>:;
+  D.3610_225 = (double) ix_1270;
+  D.3611_226 = D.3610_225 * 3.14159265358979311599796346854418516159057617188e+0;
+  D.3612_227 = (long unsigned int) iy_1269;
+  D.3613_228 = D.3612_227 * 8;
+  D.3639_229 = (double *) D.3613_228;
+  D.3640_230 = c_71 + D.3639_229;
+  *D.3640_230 = D.3611_226;
+  iy_231 = iy_1269 + 1;
+  ix_232 = ix_1270 + 1;
+  if (ix_232 <= 4194303) goto <L123>; else goto <L54>;
+
+<L123>:;
+  goto <bb 43> (<L52>);
+
+<L54>:;
+  j_224 = j_1242 + 1;
+  if (j_224 <= 9) goto <L124>; else goto <L56>;
+
+<L124>:;
+  goto <bb 42> (<L51>);
+
+<L56>:;
+  gettimeofday (&s_val, 0B);
+  base.7_120 = base;
+  if (base.7_120 == 0) goto <L57>; else goto <L58>;
+
+<L57>:;
+  b_val = s_val;
+  base = 1;
+  goto <bb 48> (<L59>);
+
+<L58>:;
+  D.3806_206 = s_val.tv_sec;
+  D.3807_207 = b_val.tv_sec;
+  D.3808_208 = D.3806_206 - D.3807_207;
+  D.3809_209 = (double) D.3808_208;
+  D.3810_210 = s_val.tv_usec;
+  D.3811_211 = b_val.tv_usec;
+  D.3812_212 = D.3810_210 - D.3811_211;
+  D.3813_213 = (double) D.3812_212;
+  D.3814_214 = D.3813_213 * 9.99999999999999954748111825886258685613938723691e-7;
+  t1_215 = D.3809_209 + D.3814_214;
+
+  # t1_39 = PHI <0.0(46), t1_215(47)>;
+<L59>:;
+  D.3620_122 = t1_39 - t0_38;
+  D.3621_123 = D.3620_122 - t_bias_51;
+  time_125 = D.3621_123 / 1.0e+1;
+  D.3624_129 = time_125 * 1.048576e+6;
+  D.3625_130 = 3.3554432e+7 / D.3624_129;
+  D.3627_132 = time_125 * 2.5e+3;
+  D.3628_133 = D.3627_132 * 1.0e+6;
+  D.3629_134 = (int) D.3628_133;
+  __stderrp.6_135 = __stderrp;
+  fprintf (__stderrp.6_135, &"Loop carried index time = %e [%d] = %d cycles = %f MB/s\n"[0], time_125, 10, D.3629_134, D.3625_130);
+  gettimeofday (&s_val, 0B);
+  base.7_136 = base;
+  if (base.7_136 == 0) goto <L60>; else goto <L61>;
+
+<L60>:;
+  b_val = s_val;
+  base = 1;
+  goto <bb 51> (<L62>);
+
+<L61>:;
+  D.3822_189 = s_val.tv_sec;
+  D.3823_190 = b_val.tv_sec;
+  D.3824_191 = D.3822_189 - D.3823_190;
+  D.3825_192 = (double) D.3824_191;
+  D.3826_193 = s_val.tv_usec;
+  D.3827_194 = b_val.tv_usec;
+  D.3828_195 = D.3826_193 - D.3827_194;
+  D.3829_196 = (double) D.3828_195;
+  D.3830_197 = D.3829_196 * 9.99999999999999954748111825886258685613938723691e-7;
+  t0_198 = D.3825_192 + D.3830_197;
+
+  # t0_40 = PHI <0.0(49), t0_198(50)>;
+<L62>:;
+
+  # j_1323 = PHI <j_175(72), 0(51)>;
+<L63>:;
+
+  # ix_1349 = PHI <ix_187(71), 0(52)>;
+<L64>:;
+  D.3610_176 = (double) ix_1349;
+  D.3611_177 = D.3610_176 * 3.14159265358979311599796346854418516159057617188e+0;
+  D.3598_178 = (long unsigned int) ix_1349;
+  D.3606_179 = D.3598_178 * 4;
+  D.3607_180 = (int *) D.3606_179;
+  D.3608_181 = index_75 + D.3607_180;
+  D.3643_182 = *D.3608_181;
+  D.3644_183 = (long unsigned int) D.3643_182;
+  D.3645_184 = D.3644_183 * 8;
+  D.3646_185 = (double *) D.3645_184;
+  D.3647_186 = c_71 + D.3646_185;
+  *D.3647_186 = D.3611_177;
+  ix_187 = ix_1349 + 1;
+  if (ix_187 <= 4194303) goto <L125>; else goto <L66>;
+
+<L125>:;
+  goto <bb 53> (<L64>);
+
+<L66>:;
+  j_175 = j_1323 + 1;
+  if (j_175 <= 9) goto <L126>; else goto <L68>;
+
+<L126>:;
+  goto <bb 52> (<L63>);
+
+<L68>:;
+  gettimeofday (&s_val, 0B);
+  base.7_139 = base;
+  if (base.7_139 == 0) goto <L69>; else goto <L70>;
+
+<L69>:;
+  b_val = s_val;
+  base = 1;
+  goto <bb 58> (<L71>);
+
+<L70>:;
+  D.3838_158 = s_val.tv_sec;
+  D.3839_159 = b_val.tv_sec;
+  D.3840_160 = D.3838_158 - D.3839_159;
+  D.3841_161 = (double) D.3840_160;
+  D.3842_162 = s_val.tv_usec;
+  D.3843_163 = b_val.tv_usec;
+  D.3844_164 = D.3842_162 - D.3843_163;
+  D.3845_165 = (double) D.3844_164;
+  D.3846_166 = D.3845_165 * 9.99999999999999954748111825886258685613938723691e-7;
+  t1_167 = D.3841_161 + D.3846_166;
+
+  # t1_41 = PHI <0.0(56), t1_167(57)>;
+<L71>:;
+  D.3620_141 = t1_41 - t0_40;
+  D.3621_142 = D.3620_141 - t_bias_51;
+  time_144 = D.3621_142 / 1.0e+1;
+  D.3624_148 = time_144 * 1.048576e+6;
+  D.3625_149 = 3.3554432e+7 / D.3624_148;
+  D.3627_151 = time_144 * 2.5e+3;
+  D.3628_152 = D.3627_151 * 1.0e+6;
+  D.3629_153 = (int) D.3628_152;
+  __stderrp.6_154 = __stderrp;
+  fprintf (__stderrp.6_154, &"Indirect time = %e [%d] = %d cycles = %f MB/s\n"[0], time_144, 10, D.3629_153, D.3625_149);
+  free (c_71);
+  free (d_60);
+  return 0;
+
+}
+
+

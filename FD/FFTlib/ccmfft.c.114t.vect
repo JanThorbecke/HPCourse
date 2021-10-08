@@ -1,0 +1,33 @@
+
+;; Function ccmfft (ccmfft, funcdef_no=34, decl_uid=3825, symbol_order=34)
+
+ccmfft (struct complex * data, int n1, int n2, int ld1, int sign)
+{
+  <bb 2>:
+  ccm_fft (data_2(D), n1_3(D), n2_4(D), ld1_5(D), sign_6(D));
+  return;
+
+}
+
+
+
+;; Function ccmfftf (ccmfftf, funcdef_no=35, decl_uid=3972, symbol_order=35)
+
+ccmfftf (struct complex * data, int * n1, int * n2, int * ld1, int * sign)
+{
+  int _3;
+  int _5;
+  int _7;
+  int _9;
+
+  <bb 2>:
+  _3 = *sign_2(D);
+  _5 = *ld1_4(D);
+  _7 = *n2_6(D);
+  _9 = *n1_8(D);
+  ccm_fft (data_10(D), _9, _7, _5, _3);
+  return;
+
+}
+
+

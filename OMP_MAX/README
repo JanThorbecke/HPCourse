@@ -1,0 +1,38 @@
+
+Edit the Makefile and define your compiler which supports OpenMP (FC=) 
+
+Type
+
+> make
+
+and the Fortran program test_omp will be made.
+
+First set the number of processors you want to use:
+
+> export OMP_NUM_THREADS=1
+
+if you want to use 1 thread to calculate the maximum/sum/minimum. Then run your program
+
+> ./test_omp
+
+Now change the number in 
+
+> export OMP_NUM_THREADS=2
+
+and run the program again. This time it should be almost two times faster.
+
+If you have more cores in your system you can increase the number until the number of available cores. You can also try to use more OMP_NUM_THREADS than you have cores...
+
+This was nothing new, now start to use 
+-1- as many OMP_NUM_THREADS as there are cores-1 in your system. 
+-2- as many OMP_NUM_THREADS as there are cores in your system. 
+-3- double OMP_NUM_THREADS, so every core is running two OpenMP threads. 
+
+Check the runtimes. If you have nuamctl (see manpage nuamctl) try to place you OpenMP threads on certain cores in your system using:
+
+numactl --physcpubind=2-6 
+
+to use core number 2 and 6 for your OpenMP job.  Using numactl try to run 4 OpenMP threads on one core. 
+
+Also inspect the code and see how the reductions are done, is there another way to write this code?
+

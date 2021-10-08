@@ -1,0 +1,85 @@
+
+EXERCISE 4:   Jacobi Iterative Solver
+*************************************
+
+
+Silicon Graphics BV
+De Meern, The Netherlands.
+
+March 30, 1999.
+
+
+This exercise contains a somewhat larger application program.
+We have implemented a Jacobi method with relaxation parameter. 
+
+
+1.  Go to directory single, and compile the source files. The
+    Makefile is prepared for single-CPU optimisation. Just type
+    make. Run the resulting executable, and time its execution time.
+    Note that input on STDIN is required. The input is collected
+    in file "input", which is located on the same level as directory
+    single:
+
+    time single/jacobi < input
+
+
+2.  Profile the code with ssrun on a single CPU and determine the
+    CPU time distribution with prof.
+
+
+3.  Go to directory multi, which contains the exact same sources
+    as directory single. The Makefile is also the same, except 
+    that the "-pfa keep" flag has been included in the 
+    Makefile in the multi directory.
+
+    Compile the sources with the Makefile as supplied, so only
+    with automatic parallellization. Run on 1, 2, 3 and 4 CPUs
+    and determine the wallclock results. 
+
+    Try to explain this behaviour, by examining the jacobi.m file.
+
+
+4.  Use OpenMP directives to parallellize the important loop in
+    subroutine jacobi. Insert the relevant compiler option in 
+    the Makefile, and recompile. Run the executable and determine
+    the wallclock times on 1, 2, 3 and 4 CPUs. 
+
+    What do you observe in the jacobi.m file now ?
+
+
+5.  The reason that in part 3. the compiler decided to 
+    parallellize the innermost loop (over I) is the following:
+    
+    The compiler has fused (taken together) both loops over J
+    in routine jacobi.f. Of course, this is not straightforward,
+    but it can be done. Parallellization of the combined loop
+    over J is not possible due to data dependencies, and therefore
+    the compiler parallellizes the innermost loop over I.
+
+    Now, delete the OpenMP directives from the jacobi.f file again.
+
+    With the -LNO:fusion=0 compiler option, you can instruct the
+    compiler to not combine any loops. Now, use this option 
+    and -pfa keep in the Makefile to recompile all sources.
+
+    Run the executable on 1, 2, 3 and 4 processors and determine the
+    wallclock times.
+  
+    
+6.  Go to directory extra. Here you find a slightly modified
+    version of jacobi.f. Also, already some OpenMP directives
+    have been added. However, these are not enough for parallel
+    execution of the code.
+
+    Compile te sources (use the Makefile included) and run on
+    1, 2, 3 and 4 CPUs. Determine the wallclock times.
+
+    Now, consider the parallel region (the region which starts
+    with the c$omp parallel directive). Within this parallel
+    region, use various kinds of OpenMP directives, in order to
+    finally end up with an efficient parallel version, comparable
+    to the timing results we observed earlier in this exercise.
+    
+    Hint: do this step-by-step. Check the numerical answers each
+          time.
+

@@ -1,0 +1,23 @@
+# gnuplot script for load_store results
+
+set style data linespoints
+set xlabel "size of array in Bytes"
+set ylabel "bandwidth [MBytes/s]"
+
+set yrange [0.0:10000]
+set size 1.0,1.0;
+set grid
+set xtics (16,128,1024,16e3,1e6,16e6,4e9)
+set log x
+set xrange [8:8e9]
+set parametric
+
+set term postscript eps color 22
+set output 'LoadStore.eps'
+plot "MacCore2Duo30" using 1:2 title "Penryn dc 2.5" lw 3, "PentiumD2.8" using 1:2 title "PentiumD 2.8" lw 3, "AMD_mc12_2.0GHz" using 1:2 title "Magny-Cours 2.0" lw 3, "IntelCore2Quad" using 1:2 title "Intel Quad2Core 2.8" lw 3, "AMD_IL_2.3GHz" using 1:2 title "Interlagos 2.3"
+
+exit
+
+set term postscript eps color 22
+set output 'OpteronIntel.eps'
+plot "OpteronIntel_1024" using 1:2 title "Opteron 1024" lw 3, "OpteronIntel_4096" using 1:2 title "Opteron 4096" lw 3, "OpteronIntel_16384" using 1:2 title "Opteron 16384" lw 3

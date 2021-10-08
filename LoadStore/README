@@ -1,0 +1,38 @@
+
+First adapt in loadStore.c line 17 with machine specific information and line 24 for the output filename (choose a convenient name which specifies your hardware):
+
+ 17     int mhz=2500, l3_size=6291456, l1_size=32768, l2_line=64;
+.....
+ 24     filename="MacCore2Duo";
+
+On linux systems you can find that kind of hardware information in the file /proc/cpuinfo or use
+
+> dmesg | grep -i cpu
+
+Note that the cache-size in the source file must be given in Bytes.  The cache-size given in /proc/cpuinfo is the largest L2 (or L3)-cache size. The L1-cache size is sometimes difficult to find and you can try google to find it. If that does not work just leave the L1-cache size set to 32768 Bytes. From the latency exercise (3) you can also determine the cache sizes. 
+
+Compile the program by typing 
+
+> make 
+
+and run in by typing 
+
+> ./loadStore
+
+If you have gnuplot installed you can make an eps file of the measured memory bandwidth by running
+
+> gnuplot plot.gnp
+
+(change the title and filename in plot.gnp to the filename you have chosen to be your output file)
+
+As an extra experiment you can change line 36 in loadStore.c to:
+
+	while (power < 30) {
+
+(this was 26) and make the executable and run again. Note that the run will take much more time and your computer can slow down significantly. If it takes too long (more than 10 minutes) you should kill the program with 'control c'.
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+
+This program computes a 1D convolution with periodic and non-periodic boundaries.
+
+compile the program by invoking a fortran 90 compiler with -O3 optimization. For example the GNU compiler
+
+gfortran -O3 convolution.F90
+
+This produces an executable with the default name a.out.
+
+Run the executable by typing
+./a.out
+
+see the runtime. Try to change the code which gives the same answers, but is much faster. The main kernel blocks are repeated in the
+source file and in each second block you can make your changes to get faster code and the same answers (upto the 6'th digit).
+
+Hints:
+- Try to get rid of the modulo operator in the most inner loop.
+- The min and max in the innerloop are not good for a compiler to generate fast code.
+- Think about introducing temporary arrays...
+
+

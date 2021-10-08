@@ -1,0 +1,48 @@
+#!/bin/bash
+
+tar cvf ~/Sites/xs4all/HPCourse/code/Cycles.tar Cycles/
+
+tar cvf ~/Sites/xs4all/HPCourse/code/LoadStore.tar LoadStore/Ma* LoadStore/README LoadStore/plot.gnp  LoadStore/loadStore.c
+
+tar cvf ~/Sites/xs4all/HPCourse/code/lat_mem_rd.tar lat_mem_rd/*.c lat_mem_rd/*.h lat_mem_rd/Ma* lat_mem_rd/README lat_mem_rd/plot.gnp
+
+
+tar cvf ~/Sites/xs4all/HPCourse/code/IO.tar IO/
+
+tar cvf ~/Sites/xs4all/HPCourse/code/FloatPrecision.tar FloatPrecision/
+
+tar cvf ~/Sites/xs4all/HPCourse/code/FD.tar FD/
+
+
+tar cvf ~/Sites/xs4all/HPCourse/code/LoopChange.tar LoopChange/
+
+tar cvf ~/Sites/xs4all/HPCourse/code/vect.tar Vect/
+
+tar cvf ~/Sites/xs4all/HPCourse/code/MatMul.tar MatMul
+
+tar cvf ~/Sites/xs4all/HPCourse/code/MatMulUnroll.tar MatMulUnroll/
+
+tar cvf ~/Sites/xs4all/HPCourse/code/MatMulBlock.tar MatMulBlock/
+
+tar cvf ~/Sites/xs4all/HPCourse/code/Conv2D.tar Conv2D/
+
+tar cvf ~/Sites/xs4all/HPCourse/code/Conv1D.tar Conv1D/
+
+tar cvf ~/Sites/xs4all/HPCourse/code/Corr.tar Corr/*.c Corr/Makefile  Corr/README Corr/*.h Corr/plot.gnp
+
+tar cvf ~/Sites/xs4all/HPCourse/code/CacheBlock.tar CacheBlock/
+
+
+tar cvf ~/Sites/xs4all/HPCourse/code/OMP_MAX.tar OMP_MAX/
+
+tar cvf ~/Sites/xs4all/HPCourse/code/MPI_pi.tar MPI_pi/*.c MPI_pi/Makefile MPI_pi/README MPI_pi/*.f90 MPI_pi/*.scr
+
+tar cvf ~/Sites/xs4all/HPCourse/code/MasterSlave.tar MasterSlave/
+
+tar cvf ~/Sites/xs4all/HPCourse/code/CacheTrash.tar CacheTrash/
+
+tar cvf ~/Sites/xs4all/HPCourse/code/OMP_schedule.tar OMP_schedule/
+
+tar cvf ~/Sites/xs4all/HPCourse/code/RaceCondition.tar RaceCondition/
+
+tar cvf ~/Sites/xs4all/HPCourse/code/MPI_Cart.tar MPI_Cart/

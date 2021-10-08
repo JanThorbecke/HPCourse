@@ -1,0 +1,13 @@
+#!/bin/sh
+#PBS -N MALLOC_TEST
+#PBS -l mppwidth=1
+#PBS -j oe
+
+cd $PBS_O_WORKDIR
+
+echo "MALLOC"
+aprun ./malloc_bench
+
+echo "TCMALLOC"
+aprun ./tcmalloc_bench
+

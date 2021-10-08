@@ -1,0 +1,559 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          S u m m a r y   R e p o r t
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Compilation
+-----------
+File     : /cray/css/u2/jan/cache_block_2010/tensor.f90
+Compiled : 07/27/10  07:02:35
+Compiler : Version 7.2.5
+Target   : x86-64
+Command  : /opt/cray/cce/7.2.5/cftn/x86-64/bin/ftn_driver.exe -hcpu=x86-64
+           -hcpu=mc12 -hnetwork=seastar -hstatic -ra -c -otensor.o
+           -I/opt/cray/portals/2.2.0-1.0301.22039.18.2.ss/include
+           -I/opt/cray/pmi/1.0-1.0000.7901.22.1.ss/include
+           -I/opt/cray/cce/7.2.5/craylibs/x86-64/include
+           -L/opt/cray/portals/2.2.0-1.0301.22039.18.2.ss/lib64
+           -L/opt/cray/pmi/1.0-1.0000.7901.22.1.ss/lib64
+           -L/opt/cray/cce/7.2.5/craylibs/x86-64
+           -L/opt/acml/4.4.0/gfortran64/lib -lcraymath -lacml_mv -lgfortran
+           -I/opt/acml/4.4.0/gfortran64/include -L/opt/gcc/4.1.2/snos/lib64
+           -D__CRAYXT -D__CRAYXT_COMPUTE_LINUX_TARGET -D__TARGET_LINUX__
+           -I/opt/cray/mpt/5.0.1/xt/seastar/mpich2-cray/include
+           -I/opt/cray/mpt/5.0.1/xt/seastar/sma/include
+           -I/opt/xt-libsci/10.4.6/cray/include
+           -L/opt/cray/mpt/5.0.1/xt/seastar/mpich2-cray/lib
+           -L/opt/cray/mpt/5.0.1/xt/seastar/sma/lib64
+           -L/opt/xt-libsci/10.4.6/cray/lib/72 -lsci_mc12_mp -lsma -lmpichf90
+           -lmpich -lrt -lpmi -lalpslli -lalpsutil -lportals -lpthread -lm
+           -L/usr/lib/alps tensor.f90
+
+ftnlx report
+------------
+Source   : /cray/css/u2/jan/cache_block_2010/tensor.f90
+Date     : 07/27/2010  07:02:35
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          O p t i o n s   R e p o r t
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Options :  -O cache2,fp2,scalar2,thread2,vector2,modinline,ipa3,noaggress
+           -O noautothread,nodwarf,fusion2,nomsgs,negmsgs,omp,nooverindex,patter
+           n
+           -O shortcircuit2,unroll2,nozeroinc
+           -h cache2,fp2,thread2,noautothread,nocaf,cpu,nofunc_trace,network
+           -h noomp_trace,omp,nopat_trace,nosecond_underscore
+           -s default32 
+           -eh 
+           -eM 
+           -d acdgjlmnovwBDILPQRTZ 
+           -e hkpqyS       
+           -f free
+           -m3
+           -S /tmp/pe_4745/tensor.s
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          S o u r c e   L i s t i n g
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+     %%%    L o o p m a r k   L e g e n d    %%%
+
+     Primary Loop Type        Modifiers
+     ------- ---- ----        ---------
+     A - Pattern matched      a - vector atomic memory operation
+                              b - blocked
+     C - Collapsed            c - conditional and/or computed
+     D - Deleted              f - fused
+     E - Cloned                
+     I - Inlined              i - interchanged
+     M - Multithreaded        m - partitioned
+     P - Parallel             p - partial
+     R - Redundant            r - unrolled
+                              s - shortloop
+     V - Vectorized           t - array syntax temp used
+                              w - unwound
+
+
+    1.                      program tensor
+    2.                      
+    3.                        implicit none
+    4.                      
+    5.                        double precision, allocatable :: A(:,:,:,:), B(:,:,:,:), C(:,:,:,:), D(:,:,:,:)
+    6.                        integer i, j, k, l, m, n
+    7.                        integer loop
+    8.                      
+    9.                        double precision err
+   10.                        double precision, parameter :: tol = 1d-12
+   11.                      
+   12.                        integer, parameter :: NLOOP = 2
+   13.                      
+   14.                        integer, parameter :: N1 = 10, M1 = 500
+   15.                        integer, parameter :: N2 =  8, M2 = 454
+   16.                      
+   17.                        integer(kind=8) startt, endt
+   18.                        double precision eclksec
+   19.                      
+   20.                        integer(kind=8) irtc, irtc_rate
+   21.                        external irtc, irtc_rate
+   22.                      
+   23.                        eclksec = dble(irtc_rate())
+   24.                      
+   25.                        allocate(A(N1,N2,M1,M2), B(M1,M2,N1,N2), C(N1,N2,N1,N2), D(N1,N2,N1,N2))
+   26.                      
+   27.                        ! Initialize A and B
+   28.  i-----------------<   do i = 1, N1
+   29.  i 2---------------<      do j = 1, N2
+   30.  i 2 iVpr4---------<         do k = 1, M1
+   31.  i 2 iVpr4 i-------<            do l = 1, M2
+   32.  i 2 iVpr4 i                       A(i,j,k,l) = 1d0/(dble(i + j + k + l))
+   33.  i 2 iVpr4 i                       B(k,l,i,j) = sin(dble(i + j + k + l))
+   34.  i 2 iVpr4 i------->            end do
+   35.  i 2 iVpr4--------->         end do
+   36.  i 2--------------->      end do
+   37.  i----------------->   end do
+   38.                      
+   39.                        ! Calculate correct answer
+   40.  A----------------<>   D = 0d0
+   41.  b-----------------<   do n = 1, N2
+   42.  b b---------------<      do m = 1, N1
+   43.  b b b-------------<         do j = 1, N2
+   44.  b b b iVw---------<            do i = 1, N1
+   45.  b b b iVw ib------<               do l = 1, M2
+   46.  b b b iVw ib i----<                  do k = 1, M1
+   47.  b b b iVw ib i                          D(i,j,m,n) = D(i,j,m,n) + A(i,j,k,l)*B(k,l,m,n)
+   48.  b b b iVw ib i---->                  end do
+   49.  b b b iVw ib------>               end do
+   50.  b b b iVw--------->            end do
+   51.  b b b------------->         end do
+   52.  b b--------------->      end do
+   53.  b----------------->   end do
+   54.                      
+   55.                        ! Timing loop
+   56.  1-----------------<   do loop = 0, NLOOP
+   57.  1                        if (loop == 1) startt = irtc()
+   58.  1 A--------------<>      C = 0d0
+   59.  1                   ! BEGIN CACHE BLOCKING
+   60.  1 b---------------<      do n = 1, N2
+   61.  1 b b-------------<         do m = 1, N1
+   62.  1 b b b-----------<            do j = 1, N2
+   63.  1 b b b iVw-------<               do i = 1, N1
+   64.  1 b b b iVw ib----<                  do l = 1, M2
+   65.  1 b b b iVw ib i--<                     do k = 1, M1
+   66.  1 b b b iVw ib i                           C(i,j,m,n) = C(i,j,m,n) + A(i,j,k,l)*B(k,l,m,n)
+   67.  1 b b b iVw ib i-->                     end do
+   68.  1 b b b iVw ib---->                  end do
+   69.  1 b b b iVw------->               end do
+   70.  1 b b b----------->            end do
+   71.  1 b b------------->         end do
+   72.  1 b--------------->      end do
+   73.  1                   ! END CACHE BLOCKING
+   74.  1----------------->   end do
+   75.                        endt = irtc()
+   76.                      
+   77.                        print '(a,i5,a,f10.6,a)', 'Elapsed time for ', NLOOP, ' loops: ', &
+   78.                      	dble(endt - startt) / eclksec, ' seconds'
+   79.                      
+   80.  Vr4--------------<>   D = D - C
+   81.  Vr4--------------<>   err = sqrt(dot_product( &
+   82.                             reshape(D, (/ N1*N2*N1*N2 /)), &
+   83.                             reshape(D, (/ N1*N2*N1*N2 /))))
+   84.                      
+   85.                        if (err < tol) then
+   86.                           print *,'Check passed.'
+   87.                        else
+   88.                           print '(a,f20.16)','Check failed, error = ',err
+   89.                        endif
+   90.                      
+   91.                        deallocate(A, B, C, D)
+   92.                      
+   93.                      end program tensor
+
+ftn-3021 ftn: IPA File = tensor.f90, Line = 23 
+  Routine IRTC_RATE was not inlined because the compiler was unable to locate the routine to expand it inline.
+
+ftn-6007 ftn: SCALAR File = tensor.f90, Line = 28 
+  A loop starting at line 28 was interchanged with the loop starting at line 31.
+
+ftn-6294 ftn: VECTOR File = tensor.f90, Line = 28 
+  A loop starting at line 28 was not vectorized because a better candidate was found at line 30.
+
+ftn-6294 ftn: VECTOR File = tensor.f90, Line = 29 
+  A loop starting at line 29 was not vectorized because a better candidate was found at line 30.
+
+ftn-6007 ftn: SCALAR File = tensor.f90, Line = 30 
+  A loop starting at line 30 was interchanged with the loop starting at line 31.
+
+ftn-6005 ftn: SCALAR File = tensor.f90, Line = 30 
+  A loop starting at line 30 was unrolled 4 times.
+
+ftn-6209 ftn: VECTOR File = tensor.f90, Line = 30 
+  A loop starting at line 30 was partially vectorized.
+
+ftn-6294 ftn: VECTOR File = tensor.f90, Line = 31 
+  A loop starting at line 31 was not vectorized because a better candidate was found at line 30.
+
+ftn-6010 ftn: SCALAR File = tensor.f90, Line = 32 
+  A divide was turned into a multiply by a reciprocal
+
+ftn-6202 ftn: VECTOR File = tensor.f90, Line = 40 
+  A loop starting at line 40 was replaced by a library call.
+
+ftn-6294 ftn: VECTOR File = tensor.f90, Line = 41 
+  A loop starting at line 41 was not vectorized because a better candidate was found at line 44.
+
+ftn-6049 ftn: SCALAR File = tensor.f90, Line = 41 
+  A loop starting at line 41 was blocked with block size 0.
+
+ftn-6294 ftn: VECTOR File = tensor.f90, Line = 42 
+  A loop starting at line 42 was not vectorized because a better candidate was found at line 44.
+
+ftn-6049 ftn: SCALAR File = tensor.f90, Line = 42 
+  A loop starting at line 42 was blocked with block size 8.
+
+ftn-6294 ftn: VECTOR File = tensor.f90, Line = 43 
+  A loop starting at line 43 was not vectorized because a better candidate was found at line 44.
+
+ftn-6049 ftn: SCALAR File = tensor.f90, Line = 43 
+  A loop starting at line 43 was blocked with block size 0.
+
+ftn-6007 ftn: SCALAR File = tensor.f90, Line = 44 
+  A loop starting at line 44 was interchanged with the loop starting at line 46.
+
+ftn-6373 ftn: VECTOR File = tensor.f90, Line = 44 
+  A loop starting at line 44 with a trip count of 10 was unwound into 5 vector iterations.
+
+ftn-6382 ftn: VECTOR File = tensor.f90, Line = 44 
+  A loop starting at line 44 was partially vector pipelined.
+
+ftn-6204 ftn: VECTOR File = tensor.f90, Line = 44 
+  A loop starting at line 44 was vectorized.
+
+ftn-6254 ftn: VECTOR File = tensor.f90, Line = 45 
+  A loop starting at line 45 was not vectorized because a recurrence was found on "D" at line 47.
+
+ftn-6049 ftn: SCALAR File = tensor.f90, Line = 45 
+  A loop starting at line 45 was blocked with block size 8.
+
+ftn-6007 ftn: SCALAR File = tensor.f90, Line = 46 
+  A loop starting at line 46 was interchanged with the loop starting at line 45.
+
+ftn-6254 ftn: VECTOR File = tensor.f90, Line = 46 
+  A loop starting at line 46 was not vectorized because a recurrence was found on "D" at line 47.
+
+ftn-6287 ftn: VECTOR File = tensor.f90, Line = 56 
+  A loop starting at line 56 was not vectorized because it contains a call to function "IRTC" on line 57.
+
+ftn-3021 ftn: IPA File = tensor.f90, Line = 57 
+  Routine IRTC was not inlined because the compiler was unable to locate the routine to expand it inline.
+
+ftn-6202 ftn: VECTOR File = tensor.f90, Line = 58 
+  A loop starting at line 58 was replaced by a library call.
+
+ftn-6294 ftn: VECTOR File = tensor.f90, Line = 60 
+  A loop starting at line 60 was not vectorized because a better candidate was found at line 63.
+
+ftn-6049 ftn: SCALAR File = tensor.f90, Line = 60 
+  A loop starting at line 60 was blocked with block size 0.
+
+ftn-6294 ftn: VECTOR File = tensor.f90, Line = 61 
+  A loop starting at line 61 was not vectorized because a better candidate was found at line 63.
+
+ftn-6049 ftn: SCALAR File = tensor.f90, Line = 61 
+  A loop starting at line 61 was blocked with block size 8.
+
+ftn-6294 ftn: VECTOR File = tensor.f90, Line = 62 
+  A loop starting at line 62 was not vectorized because a better candidate was found at line 63.
+
+ftn-6049 ftn: SCALAR File = tensor.f90, Line = 62 
+  A loop starting at line 62 was blocked with block size 0.
+
+ftn-6007 ftn: SCALAR File = tensor.f90, Line = 63 
+  A loop starting at line 63 was interchanged with the loop starting at line 65.
+
+ftn-6373 ftn: VECTOR File = tensor.f90, Line = 63 
+  A loop starting at line 63 with a trip count of 10 was unwound into 5 vector iterations.
+
+ftn-6382 ftn: VECTOR File = tensor.f90, Line = 63 
+  A loop starting at line 63 was partially vector pipelined.
+
+ftn-6204 ftn: VECTOR File = tensor.f90, Line = 63 
+  A loop starting at line 63 was vectorized.
+
+ftn-6254 ftn: VECTOR File = tensor.f90, Line = 64 
+  A loop starting at line 64 was not vectorized because a recurrence was found on "C" at line 66.
+
+ftn-6049 ftn: SCALAR File = tensor.f90, Line = 64 
+  A loop starting at line 64 was blocked with block size 8.
+
+ftn-6007 ftn: SCALAR File = tensor.f90, Line = 65 
+  A loop starting at line 65 was interchanged with the loop starting at line 64.
+
+ftn-6254 ftn: VECTOR File = tensor.f90, Line = 65 
+  A loop starting at line 65 was not vectorized because a recurrence was found on "C" at line 66.
+
+ftn-3021 ftn: IPA File = tensor.f90, Line = 75 
+  Routine IRTC was not inlined because the compiler was unable to locate the routine to expand it inline.
+
+ftn-6005 ftn: SCALAR File = tensor.f90, Line = 80 
+  A loop starting at line 80 was unrolled 4 times.
+
+ftn-6204 ftn: VECTOR File = tensor.f90, Line = 80 
+  A loop starting at line 80 was vectorized.
+
+ftn-6005 ftn: SCALAR File = tensor.f90, Line = 81 
+  A loop starting at line 81 was unrolled 4 times.
+
+ftn-6204 ftn: VECTOR File = tensor.f90, Line = 81 
+  A loop starting at line 81 was vectorized.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                  C r o s s   R e f e r e n c e   for   TENSOR
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Name                            Storage                           Attributes
+----                            -------                           ----------
+
+A                               Heap                              DOUBLE PRECISION, DIMENSION(:, :, :, :), ALLOCATABLE, SAVE
+  Decl       5
+  Set       32
+  Used      25      47      66      91
+
+B                               Heap                              DOUBLE PRECISION, DIMENSION(:, :, :, :), ALLOCATABLE, SAVE
+  Decl       5
+  Set       33
+  Used      25      47      66      91
+
+C                               Heap                              DOUBLE PRECISION, DIMENSION(:, :, :, :), ALLOCATABLE, SAVE
+  Decl       5
+  Set       58      66
+  Used      25      80      91
+
+D                               Heap                              DOUBLE PRECISION, DIMENSION(:, :, :, :), ALLOCATABLE, SAVE
+  Decl       5
+  Set       40      47      80
+  Used      25      91
+
+DBLE                                                              Function, DOUBLE PRECISION, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used       0      23      33      78
+
+DOT_PRODUCT                                                       Function, INTEGER, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used      81
+
+ECLKSEC                         Static offset=0                   DOUBLE PRECISION, SAVE
+  Decl      18
+  Set       23
+  Used      78
+
+ENDT                            Static offset=64                  INTEGER(KIND=8), SAVE
+  Decl      17
+  Set       75
+  Used      78
+
+ERR                             Static offset=128                 DOUBLE PRECISION, SAVE
+  Decl       9
+  Set       81
+  Used      85      88
+
+I                               Static offset=192                 INTEGER, SAVE
+  Decl       6
+  Set       28      44      63
+  Used      32      33      47      66
+
+IRTC                                                              Function, INTEGER(KIND=8), RESULT(IRTC), EXTERNAL
+  Decl      20      21
+  Set 
+  Used
+
+IRTC_RATE                                                         Function, INTEGER(KIND=8), RESULT(IRTC_RATE), EXTERNAL
+  Decl      20      21
+  Set 
+  Used
+
+J                               Static offset=256                 INTEGER, SAVE
+  Decl       6
+  Set       29      43      62
+  Used      32      33      47      66
+
+K                               Static offset=320                 INTEGER, SAVE
+  Decl       6
+  Set       30      46      65
+  Used      32      33      47      66
+
+L                               Static offset=384                 INTEGER, SAVE
+  Decl       6
+  Set       31      45      64
+  Used      32      33      47      66
+
+LOOP                            Static offset=448                 INTEGER, SAVE
+  Decl       7
+  Set       56
+  Used      57
+
+M                               Static offset=512                 INTEGER, SAVE
+  Decl       6
+  Set       42      61
+  Used      47      66
+
+M1                                                                INTEGER, PARAMETER
+  Decl      14
+  Set 
+  Used      25      30      46      65
+
+M2                                                                INTEGER, PARAMETER
+  Decl      15
+  Set 
+  Used      25      31      45      64
+
+N                               Static offset=576                 INTEGER, SAVE
+  Decl       6
+  Set       41      60
+  Used      47      66
+
+N1                                                                INTEGER, PARAMETER
+  Decl      14
+  Set 
+  Used      25      28      42      44      61      63      82      83
+
+N2                                                                INTEGER, PARAMETER
+  Decl      15
+  Set 
+  Used      25      29      41      43      60      62      82      83
+
+NLOOP                                                             INTEGER, PARAMETER
+  Decl      12
+  Set 
+  Used      56      77
+
+RESHAPE                                                           Function, INTEGER, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used       0      83
+
+SIN                                                               Function, REAL, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used      33
+
+SQRT                                                              Function, REAL, Implicit type, INTRINSIC
+  Decl
+  Set 
+  Used      81
+
+STARTT                          Static offset=640                 INTEGER(KIND=8), SAVE
+  Decl      17
+  Set       57
+  Used      78
+
+TENSOR                                                            Main program
+  Decl       1
+  Set 
+  Used
+
+TOL                                                               DOUBLE PRECISION, PARAMETER
+  Decl      10
+  Set 
+  Used      85
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                         E x t e r n a l   R e p o r t
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Name  Messages
+----  --------
+DBLE(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   TENSOR (Line 23, file tensor.f90)
+                   TENSOR (Line 32, file tensor.f90)
+                   TENSOR (Line 33, file tensor.f90)
+                   TENSOR (Line 78, file tensor.f90)
+
+Name  Messages
+----  --------
+DOT_PRODUCT(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   TENSOR (Line 81, file tensor.f90)
+
+Name  Messages
+----  --------
+IRTC
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   TENSOR (Line 57, file tensor.f90)
+                   TENSOR (Line 75, file tensor.f90)
+
+Name  Messages
+----  --------
+IRTC_RATE
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   TENSOR (Line 23, file tensor.f90)
+
+Name  Messages
+----  --------
+RESHAPE(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   TENSOR (Line 82, file tensor.f90)
+                   TENSOR (Line 83, file tensor.f90)
+
+Name  Messages
+----  --------
+SIN(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   TENSOR (Line 33, file tensor.f90)
+
+Name  Messages
+----  --------
+SQRT(Intrinsic)
+      Defined as:  No definitions.
+
+      Interface:   None
+
+      Called By:   TENSOR (Line 81, file tensor.f90)
+
+Name  Messages
+----  --------
+TENSOR
+      Defined as:  Program (line 1, file tensor.f90)
+
+      Calls:       IRTC (Line 57, file tensor.f90)
+                   IRTC (Line 75, file tensor.f90)
+                   IRTC_RATE (Line 23, file tensor.f90)
+                   DBLE(Intrinsic) (Line 23, file tensor.f90)
+                   DBLE(Intrinsic) (Line 32, file tensor.f90)
+                   DBLE(Intrinsic) (Line 33, file tensor.f90)
+                   DBLE(Intrinsic) (Line 78, file tensor.f90)
+                   SIN(Intrinsic) (Line 33, file tensor.f90)
+                   RESHAPE(Intrinsic) (Line 82, file tensor.f90)
+                   RESHAPE(Intrinsic) (Line 83, file tensor.f90)
+                   DOT_PRODUCT(Intrinsic) (Line 81, file tensor.f90)
+                   SQRT(Intrinsic) (Line 81, file tensor.f90)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

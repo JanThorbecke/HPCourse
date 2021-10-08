@@ -1,0 +1,24 @@
+  Cmd[0]: lat_mem_rd_mp -n 6 -d 1 -N 6 -S 6 -sn 0 -sl 0, 1000MB, XT, nodes 1
+  Placement list entries: 6
+    PE 0, cmd 0, nid 256, CPU 0x1
+    PE 1, cmd 0, nid 256, CPU 0x2
+    PE 2, cmd 0, nid 256, CPU 0x4
+    PE 3, cmd 0, nid 256, CPU 0x8
+    PE 4, cmd 0, nid 256, CPU 0x10
+    PE 5, cmd 0, nid 256, CPU 0x20
+
+
+  Cmd[0]: lat_mem_rd_mp -n 12 -d 1 -N 12 -S 0 -sn 0 -sl 0, 1000MB, XT, nodes 1
+  Placement list entries: 12
+    PE 0, cmd 0, nid 256, CPU 0x1
+    PE 1, cmd 0, nid 256, CPU 0x2
+    PE 2, cmd 0, nid 256, CPU 0x4
+    PE 3, cmd 0, nid 256, CPU 0x8
+    PE 4, cmd 0, nid 256, CPU 0x10
+    PE 5, cmd 0, nid 256, CPU 0x20
+    PE 6, cmd 0, nid 256, CPU 0x40
+    PE 7, cmd 0, nid 256, CPU 0x80
+    PE 8, cmd 0, nid 256, CPU 0x100
+    PE 9, cmd 0, nid 256, CPU 0x200
+    PE 10, cmd 0, nid 256, CPU 0x400
+    PE 11, cmd 0, nid 256, CPU 0x800

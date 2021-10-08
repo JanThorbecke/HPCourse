@@ -1,0 +1,128 @@
+# gnuplot script for lat_mem results
+
+set data style linespoint
+set xlabel "memory size (MB)"
+set ylabel "clock cycles"
+set key outside left
+
+set yrange [0:50]
+set size 1.0,1.0;
+set grid
+set xtics (0.03,0.06,0.25,1,2,4,6,16,32,128)
+set log x
+#set log y
+set xrange [0.00049:130]
+#set parametric
+
+
+set ylabel "clock cycles"
+set yrange [0:220]
+set term postscript eps color 22
+set title "Memory latency in cycles Shanghai 2.4 multi-core with strides 256 128 64 32"
+set size 2,2;
+set output 'latmem_shanghaiCoresStride.eps'
+plot \
+"Shanghai2.4_0_of_1" using 1:3 title "1 of 1" lw 2 lt 1, \
+"Shanghai2.4_0_of_2" using 1:3 title "1 of 2" lw 2 lt 2, \
+"Shanghai2.4_1_of_2" using 1:3 title "2 of 2" lw 2 lt 2, \
+"Shanghai2.4_0_of_4" using 1:3 title "1 of 4" lw 2 lt 7, \
+"Shanghai2.4_1_of_4" using 1:3 title "2 of 4" lw 2 lt 7, \
+"Shanghai2.4_2_of_4" using 1:3 title "3 of 4" lw 2 lt 7, \
+"Shanghai2.4_3_of_4" using 1:3 title "4 of 4" lw 2 lt 7, \
+"Shanghai2.4_0_of_8" using 1:3 title "1 of 8" lw 2 lt 3, \
+"Shanghai2.4_1_of_8" using 1:3 title "2 of 8" lw 2 lt 3, \
+"Shanghai2.4_2_of_8" using 1:3 title "3 of 8" lw 2 lt 3, \
+"Shanghai2.4_3_of_8" using 1:3 title "4 of 8" lw 2 lt 3, \
+"Shanghai2.4_4_of_8" using 1:3 title "5 of 8" lw 2 lt 3, \
+"Shanghai2.4_5_of_8" using 1:3 title "6 of 8" lw 2 lt 3, \
+"Shanghai2.4_6_of_8" using 1:3 title "7 of 8" lw 2 lt 3, \
+"Shanghai2.4_7_of_8" using 1:3 title "8 of 8" lw 2 lt 3\
+
+
+set yrange [0:100]
+set ylabel "nano seconds"
+set term postscript eps color 22
+set title "Memory latency in nanoseconds Shanghai 2.4 multi-core with strides 256 128 64 32"
+set size 2,2;
+set output 'latmem_ns_shanghaiCoresStride.eps'
+plot \
+"Shanghai2.4_0_of_1" using 1:2 title "1 of 1" lw 2 lt 1, \
+"Shanghai2.4_0_of_2" using 1:2 title "1 of 2" lw 2 lt 2, \
+"Shanghai2.4_1_of_2" using 1:2 title "2 of 2" lw 2 lt 2, \
+"Shanghai2.4_0_of_4" using 1:2 title "1 of 4" lw 2 lt 7, \
+"Shanghai2.4_1_of_4" using 1:2 title "2 of 4" lw 2 lt 7, \
+"Shanghai2.4_2_of_4" using 1:2 title "3 of 4" lw 2 lt 7, \
+"Shanghai2.4_3_of_4" using 1:2 title "4 of 4" lw 2 lt 7, \
+"Shanghai2.4_0_of_8" using 1:2 title "1 of 8" lw 2 lt 3, \
+"Shanghai2.4_1_of_8" using 1:2 title "2 of 8" lw 2 lt 3, \
+"Shanghai2.4_2_of_8" using 1:2 title "3 of 8" lw 2 lt 3, \
+"Shanghai2.4_3_of_8" using 1:2 title "4 of 8" lw 2 lt 3, \
+"Shanghai2.4_4_of_8" using 1:2 title "5 of 8" lw 2 lt 3, \
+"Shanghai2.4_5_of_8" using 1:2 title "6 of 8" lw 2 lt 3, \
+"Shanghai2.4_6_of_8" using 1:2 title "7 of 8" lw 2 lt 3, \
+"Shanghai2.4_7_of_8" using 1:2 title "8 of 8" lw 2 lt 3\
+
+set yrange [0:100]
+set ylabel "nano seconds"
+set term postscript eps color 22
+set title "Memory latency in nanoseconds Shanghai 2.4 multi-core with strides 256 128 64 32"
+set size 2,2;
+set output 'latmem_ns_shanghaiCoresStride_1.eps'
+plot \
+"Shanghai2.4_0_of_1" using 1:2 title "1 of 1" lw 2 lt 1, \
+"Shanghai2.4_0_of_2" using 1:2 title "1 of 2" lw 2 lt 2, \
+"Shanghai2.4_0_of_4" using 1:2 title "1 of 4" lw 2 lt 7, \
+"Shanghai2.4_0_of_8" using 1:2 title "1 of 8" lw 2 lt 3 \
+
+
+set yrange [0:100]
+set ylabel "nano seconds"
+set term postscript eps color 22
+set title "Memory latency in nanoseconds Istanbul 2.6 multi-core with strides 256 128 64 32"
+set size 2,2;
+set output 'latmem_ns_istanbulCoresStride.eps'
+plot \
+"Istanbul2.6_0_of_1" using 1:2 title "1 of 1" lw 2 lt 1, \
+"Istanbul2.6_0_of_2" using 1:2 title "1 of 2" lw 2 lt 2, \
+"Istanbul2.6_1_of_2" using 1:2 title "2 of 2" lw 2 lt 2, \
+"Istanbul2.6_0_of_3" using 1:2 title "1 of 3" lw 2 lt 4, \
+"Istanbul2.6_1_of_3" using 1:2 title "2 of 3" lw 2 lt 4, \
+"Istanbul2.6_2_of_3" using 1:2 title "3 of 3" lw 2 lt 4, \
+"Istanbul2.6_0_of_4" using 1:2 title "1 of 4" lw 2 lt 5, \
+"Istanbul2.6_1_of_4" using 1:2 title "2 of 4" lw 2 lt 5, \
+"Istanbul2.6_2_of_4" using 1:2 title "3 of 4" lw 2 lt 5, \
+"Istanbul2.6_3_of_4" using 1:2 title "4 of 4" lw 2 lt 5, \
+"Istanbul2.6_0_of_6" using 1:2 title "1 of 6" lw 2 lt 7, \
+"Istanbul2.6_1_of_6" using 1:2 title "2 of 6" lw 2 lt 7, \
+"Istanbul2.6_2_of_6" using 1:2 title "3 of 6" lw 2 lt 7, \
+"Istanbul2.6_3_of_6" using 1:2 title "4 of 6" lw 2 lt 7, \
+"Istanbul2.6_4_of_6" using 1:2 title "5 of 6" lw 2 lt 7, \
+"Istanbul2.6_5_of_6" using 1:2 title "6 of 6" lw 2 lt 7, \
+"Istanbul2.6_0_of_12" using 1:2 title "1 of 12" lw 2 lt 3, \
+"Istanbul2.6_1_of_12" using 1:2 title "2 of 12" lw 2 lt 3, \
+"Istanbul2.6_2_of_12" using 1:2 title "3 of 12" lw 2 lt 3, \
+"Istanbul2.6_3_of_12" using 1:2 title "4 of 12" lw 2 lt 3, \
+"Istanbul2.6_4_of_12" using 1:2 title "5 of 12" lw 2 lt 3, \
+"Istanbul2.6_5_of_12" using 1:2 title "6 of 12" lw 2 lt 3, \
+"Istanbul2.6_6_of_12" using 1:2 title "7 of 12" lw 2 lt 3, \
+"Istanbul2.6_7_of_12" using 1:2 title "8 of 12" lw 2 lt 3, \
+"Istanbul2.6_8_of_12" using 1:2 title "9 of 12" lw 2 lt 3, \
+"Istanbul2.6_9_of_12" using 1:2 title "10 of 12" lw 2 lt 3, \
+"Istanbul2.6_10_of_12" using 1:2 title "11 of 12" lw 2 lt 3, \
+"Istanbul2.6_11_of_12" using 1:2 title "12 of 12" lw 2 lt 3 \
+
+
+set yrange [0:100]
+set ylabel "nano seconds"
+set term postscript eps color 22
+set title "Memory latency in nanoseconds Istanbul 2.6 multi-core with strides 256 128 64 32"
+set size 2,2;
+set output 'latmem_ns_istanbulCoresStride_1.eps'
+plot \
+"Istanbul2.6_0_of_1" using 1:2 title "1 of 1" lw 2 lt 1, \
+"Istanbul2.6_0_of_2" using 1:2 title "1 of 2" lw 2 lt 2, \
+"Istanbul2.6_0_of_3" using 1:2 title "1 of 3" lw 2 lt 4, \
+"Istanbul2.6_0_of_4" using 1:2 title "1 of 4" lw 2 lt 5, \
+"Istanbul2.6_0_of_6" using 1:2 title "1 of 6" lw 2 lt 7, \
+"Istanbul2.6_0_of_12" using 1:2 title "1 of 12" lw 2 lt 3 \
+

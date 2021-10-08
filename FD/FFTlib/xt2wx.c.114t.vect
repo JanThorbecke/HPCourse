@@ -1,0 +1,212 @@
+
+;; Function xt2wx (xt2wx, funcdef_no=34, decl_uid=3922, symbol_order=34)
+
+xt2wx (float * rdata, struct complex * cdata, int nt, int nx, int ldr, int ldc)
+{
+  struct complex * cdum;
+  int ld1;
+  int j;
+  int i;
+  int _7;
+  int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  struct FILE * __stderrp.0_16;
+  int _22;
+  int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  struct complex * _27;
+  int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  struct complex * _32;
+  int pretmp_61;
+
+  <bb 2>:
+  _7 = nt_6(D) + 2;
+  ld1_8 = _7 / 2;
+  _10 = ld1_8 * nx_9(D);
+  _11 = (long unsigned int) _10;
+  _12 = _11 * 8;
+  cdum_15 = malloc (_12);
+  if (cdum_15 == 0B)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  __stderrp.0_16 = __stderrp;
+  __builtin_fwrite ("xt2wx: memory allocation error\n", 1, 31, __stderrp.0_16);
+
+  <bb 4>:
+  rcmfft (rdata_18(D), cdum_15, nt_6(D), nx_9(D), ldr_19(D), ld1_8, -1);
+  if (nx_9(D) > 0)
+    goto <bb 5>;
+  else
+    goto <bb 14>;
+
+  <bb 5>:
+
+  <bb 6>:
+  # i_41 = PHI <i_35(12), 0(5)>
+  if (ld1_8 > 0)
+    goto <bb 7>;
+  else
+    goto <bb 11>;
+
+  <bb 7>:
+  pretmp_61 = ld1_8 * i_41;
+
+  <bb 8>:
+  # j_42 = PHI <j_34(9), 0(7)>
+  _22 = j_42 * ldc_21(D);
+  _23 = _22 + i_41;
+  _24 = (long unsigned int) _23;
+  _25 = _24 * 8;
+  _27 = cdata_26(D) + _25;
+  _29 = j_42 + pretmp_61;
+  _30 = (long unsigned int) _29;
+  _31 = _30 * 8;
+  _32 = cdum_15 + _31;
+  *_27 = *_32;
+  j_34 = j_42 + 1;
+  if (ld1_8 > j_34)
+    goto <bb 9>;
+  else
+    goto <bb 10>;
+
+  <bb 9>:
+  goto <bb 8>;
+
+  <bb 10>:
+
+  <bb 11>:
+  i_35 = i_41 + 1;
+  if (nx_9(D) > i_35)
+    goto <bb 12>;
+  else
+    goto <bb 13>;
+
+  <bb 12>:
+  goto <bb 6>;
+
+  <bb 13>:
+
+  <bb 14>:
+  free (cdum_15);
+  return;
+
+}
+
+
+
+;; Function xt2wxf (xt2wxf, funcdef_no=35, decl_uid=3985, symbol_order=35)
+
+xt2wxf (float * rdata, struct complex * cdata, int * nt, int * nx, int * ldr, int * ldc)
+{
+  struct complex * cdum;
+  int ld1;
+  int j;
+  int i;
+  int _3;
+  int _5;
+  int _7;
+  int _9;
+  int _13;
+  int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  struct FILE * __stderrp.0_19;
+  int _21;
+  int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  struct complex * _26;
+  int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  struct complex * _31;
+  int pretmp_66;
+
+  <bb 2>:
+  _3 = *ldc_2(D);
+  _5 = *ldr_4(D);
+  _7 = *nx_6(D);
+  _9 = *nt_8(D);
+  _13 = _9 + 2;
+  ld1_14 = _13 / 2;
+  _15 = _7 * ld1_14;
+  _16 = (long unsigned int) _15;
+  _17 = _16 * 8;
+  cdum_18 = malloc (_17);
+  if (cdum_18 == 0B)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  __stderrp.0_19 = __stderrp;
+  __builtin_fwrite ("xt2wx: memory allocation error\n", 1, 31, __stderrp.0_19);
+
+  <bb 4>:
+  rcmfft (rdata_10(D), cdum_18, _9, _7, _5, ld1_14, -1);
+  if (_7 > 0)
+    goto <bb 5>;
+  else
+    goto <bb 14>;
+
+  <bb 5>:
+
+  <bb 6>:
+  # i_47 = PHI <i_33(12), 0(5)>
+  if (ld1_14 > 0)
+    goto <bb 7>;
+  else
+    goto <bb 11>;
+
+  <bb 7>:
+  pretmp_66 = ld1_14 * i_47;
+
+  <bb 8>:
+  # j_44 = PHI <j_32(9), 0(7)>
+  _21 = _3 * j_44;
+  _23 = _21 + i_47;
+  _24 = (long unsigned int) _23;
+  _25 = _24 * 8;
+  _26 = cdata_11(D) + _25;
+  _28 = j_44 + pretmp_66;
+  _29 = (long unsigned int) _28;
+  _30 = _29 * 8;
+  _31 = cdum_18 + _30;
+  *_26 = *_31;
+  j_32 = j_44 + 1;
+  if (ld1_14 > j_32)
+    goto <bb 9>;
+  else
+    goto <bb 10>;
+
+  <bb 9>:
+  goto <bb 8>;
+
+  <bb 10>:
+
+  <bb 11>:
+  i_33 = i_47 + 1;
+  if (_7 > i_33)
+    goto <bb 12>;
+  else
+    goto <bb 13>;
+
+  <bb 12>:
+  goto <bb 6>;
+
+  <bb 13>:
+
+  <bb 14>:
+  free (cdum_18);
+  return;
+
+}
+
+

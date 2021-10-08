@@ -1,0 +1,109 @@
+Running on: host=tuna
+Thu May 14 12:21:54 CDT 2009
+[PE_0]: MPI rank order: Using default aprun rank ordering.
+[PE_0]: rank 0 is on nid00256
+Hello from rank 0, thread 0, on nid00256. (core affinity = 0)
+Application 110140 resources: utime 0, stime 0
+
+real	10m1.028s
+user	0m0.068s
+sys	0m0.032s
+[PE_0]: MPI rank order: Using default aprun rank ordering.
+[PE_0]: rank 0 is on nid00256
+[PE_0]: rank 1 is on nid00256
+Hello from rank 1, thread 0, on nid00256. (core affinity = 1)
+Hello from rank 0, thread 0, on nid00256. (core affinity = 0)
+Application 110145 resources: utime 0, stime 0
+
+real	10m20.321s
+user	0m0.064s
+sys	0m0.040s
+[PE_0]: MPI rank order: Using default aprun rank ordering.
+[PE_0]: rank 0 is on nid00256
+[PE_0]: rank 1 is on nid00256
+[PE_0]: rank 2 is on nid00256
+Hello from rank 2, thread 0, on nid00256. (core affinity = 2)
+Hello from rank 1, thread 0, on nid00256. (core affinity = 1)
+Hello from rank 0, thread 0, on nid00256. (core affinity = 0)
+Application 110146 resources: utime 0, stime 0
+
+real	10m36.957s
+user	0m0.068s
+sys	0m0.020s
+[PE_0]: MPI rank order: Using default aprun rank ordering.
+[PE_0]: rank 0 is on nid00256
+[PE_0]: rank 1 is on nid00256
+[PE_0]: rank 2 is on nid00256
+[PE_0]: rank 3 is on nid00256
+Hello from rank 3, thread 0, on nid00256. (core affinity = 3)
+Hello from rank 1, thread 0, on nid00256. (core affinity = 1)
+Hello from rank 2, thread 0, on nid00256. (core affinity = 2)
+Hello from rank 0, thread 0, on nid00256. (core affinity = 0)
+Application 110147 resources: utime 0, stime 0
+
+real	10m41.393s
+user	0m0.060s
+sys	0m0.036s
+[PE_0]: MPI rank order: Using default aprun rank ordering.
+[PE_0]: rank 0 is on nid00256
+[PE_0]: rank 1 is on nid00256
+[PE_0]: rank 2 is on nid00256
+[PE_0]: rank 3 is on nid00256
+[PE_0]: rank 4 is on nid00256
+[PE_0]: rank 5 is on nid00256
+Hello from rank 5, thread 0, on nid00256. (core affinity = 5)
+Hello from rank 2, thread 0, on nid00256. (core affinity = 2)
+Hello from rank 4, thread 0, on nid00256. (core affinity = 4)
+Hello from rank 1, thread 0, on nid00256. (core affinity = 1)
+Hello from rank 0, thread 0, on nid00256. (core affinity = 0)
+Hello from rank 3, thread 0, on nid00256. (core affinity = 3)
+Application 110148 resources: utime 0, stime 0
+
+real	10m54.341s
+user	0m0.056s
+sys	0m0.032s
+[PE_0]: MPI rank order: Using default aprun rank ordering.
+[PE_0]: rank 0 is on nid00256
+[PE_0]: rank 1 is on nid00256
+[PE_0]: rank 2 is on nid00256
+[PE_0]: rank 3 is on nid00256
+[PE_0]: rank 4 is on nid00256
+[PE_0]: rank 5 is on nid00256
+[PE_0]: rank 6 is on nid00256
+[PE_0]: rank 7 is on nid00256
+[PE_0]: rank 8 is on nid00256
+[PE_0]: rank 9 is on nid00256
+[PE_0]: rank 10 is on nid00256
+[PE_0]: rank 11 is on nid00256
+Hello from rank 11, thread 0, on nid00256. (core affinity = 11)
+Hello from rank 9, thread 0, on nid00256. (core affinity = 9)
+Hello from rank 8, thread 0, on nid00256. (core affinity = 8)
+Hello from rank 3, thread 0, on nid00256. (core affinity = 3)
+Hello from rank 7, thread 0, on nid00256. (core affinity = 7)
+Hello from rank 6, thread 0, on nid00256. (core affinity = 6)
+Hello from rank 5, thread 0, on nid00256. (core affinity = 5)
+Hello from rank 1, thread 0, on nid00256. (core affinity = 1)
+Hello from rank 0, thread 0, on nid00256. (core affinity = 0)
+Hello from rank 2, thread 0, on nid00256. (core affinity = 2)
+Hello from rank 10, thread 0, on nid00256. (core affinity = 10)
+Hello from rank 4, thread 0, on nid00256. (core affinity = 4)
+Application 110151 resources: utime 0, stime 0
+
+real	11m0.149s
+user	0m0.068s
+sys	0m0.040s
+Thu May 14 13:25:28 CDT 2009
+
+ + ---------------------------------------------------------------- 
+ +        Job name: job12.12 
+ +          Job Id: 1174939.sdb 
+ +      Start Time: Thu May 14 12:21:53 CDT 2009 
+ +        End Time: Thu May 14 13:25:28 CDT 2009 
+ +        Walltime: 01:03:35 ( 3815 secs ) 
+ +            User: jan 
+ +            Host: tuna 
+ +           Queue: workq 
+ +  Req. Resources: mppnppn=12,mppwidth=12,walltime=24:00:00 
+ +     Acct String: [ not specified ] 
+ + ---------------------------------------------------------------- 
+

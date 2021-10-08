@@ -1,0 +1,27 @@
+# gnuplot script for load_store results
+
+#set data style point
+set style data linespoints
+
+set xlabel "memory size"
+set ylabel "clock cycles"
+
+
+set yrange [0:250]
+set size 1.0,1.0;
+set grid
+set xtics (0.03125,1,2,4,6,16,32,128)
+set log x
+#set log y
+set xrange [0.00049:130]
+#set parametric
+
+set term postscript eps color 22
+set output 'MacCompare.eps'
+plot "MacCore2Duo" using 1:3 title "Mac Core 2 Duo" lw 3, \
+"MacCorei7" using 1:3 title "Mac Core i7" lw 3
+
+set yrange [0:25]
+set term postscript eps color 22
+set output 'Maci7.eps'
+plot "MacCorei7" using 1:3 title "Mac Core i7" lw 3

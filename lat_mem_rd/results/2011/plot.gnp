@@ -1,0 +1,142 @@
+# gnuplot script for lat_mem results
+
+set data style linespoint
+set xlabel "memory size (MB)"
+set ylabel "clock cycles"
+set key outside top
+
+set yrange [0:80]
+set size 1.0,1.0;
+set grid
+set xtics (0.03,0.06,0.25,1,2,4,6,16,32,128)
+set log x
+#set log y
+set xrange [0.00049:130]
+#set parametric
+
+set term postscript eps color 22
+set title "Memory latency in cycles with a stride of 64 Bytes"
+set size 2,2;
+set output 'latmem_cycles.eps'
+plot "Latency_Core2DuoT5450" using 1:3 title "Core2DuoT5450" lw 2, "Latency_DualCoreOpteron270" using 1:3 title "DualCoreOpteron270" lw 2
+
+exit;
+
+set term postscript eps color 22
+set yrange [0:80]
+set title "Memory latency in cycles with a stride of 64 Bytes"
+set size 2,2;
+set output 'latmem64_cycles.eps'
+plot "MacCore2Duo_64" using 1:3 title "Penryn dc 2.5" lw 2, "Shanghai2.4_64" using 1:3 title "Shanghai 2.4" lw 2, "Barcelona2.2_64" using 1:3 title "Barcelona 2.2" lw 2, "IntelCore2Quad_64" using 1:3 title "IntelCore2Quad 2.8" lw 2, "Istanbul2.6_64" using 1:3 title "Istanbul 2.6"
+
+#, "Istanbul2.6_32" using 1:3 title "Istanbul 2.6" lw 2
+#, "Istanbul2.6_32" using 1:3 title "Istanbul 2.6" lw 2
+
+set yrange [0:50]
+set size 2.0,2.0;
+set output 'latmem_2.eps'
+plot "latency32" using 1:3 title "job 1/1" lw 3, "latency32_1" using 1:3 title "job 1/2" lw 3, "latency32_2" using 1:3 title "job 2/2" lw 3
+
+set output 'latmem_icore7.eps'
+plot "run800.out" using 1:3 title "iCore7 800 MHz" lw 3, "run1066.out" using 1:3 title "iCore7 1066 MHz" lw 3, "run1333.out" using 1:3 title "iCore7 1333 MHz" lw 3, "run1600.out" using 1:3 title "iCore7 1600 MHz" lw 3
+
+set yrange [0:25]
+set ylabel "nano seconds"
+set output 'latmem_nanosec.eps'
+set title "Memory latency in nanoseconds with a stride of 32 Bytes"
+set size 2,2;
+plot "MacCore2Duo_32" using 1:2 title "Penryn dc 2.5" lw 2, "PentiumD2.8" using 1:2 title "PentiumD 2.8" lw 2, "Phenom2.3" using 1:2 title "Phenom qc 2.3" lw 2, "Opteron2.2" using 1:2 title "Opteron 2.2" lw 2, "run1600.out" using 1:2 title "Core i7 2.67" lw 2, "Shanghai2.4_32" using 1:2 title "Shanghai 2.4" lw 2, "Xeon3.0_32" using 1:2 title "Xeon 3.0" lw 2, "Barcelona2.2_32" using 1:2 title "Barcelona 2.2" lw 2, "Xeon3.0_32" using 1:2 title "Xeon 3.0" lw 2, "Xeon2.8_32" using 1:2 title "Xeon 2.8" lw 2, "Istanbul2.6_32" using 1:2 title "Istanbul 2.6" lw 2
+
+
+
+set ylabel "clock cycles"
+set yrange [0:50]
+set term postscript eps color 22
+set title "Memory latency in cycles Shanghai 2.4 multi-core usage"
+set size 2,2;
+set output 'latmem_shanghaiCores.eps'
+plot "Shanghai2.4_0_of_1" using 1:3 title "1 of 1" lw 2 lt 1, \
+"Shanghai2.4_0_of_2" using 1:3 title "1 of 2" lw 2 lt 2, \
+"Shanghai2.4_1_of_2" using 1:3 title "2 of 2" lw 2 lt 2, \
+"Shanghai2.4_0_of_4" using 1:3 title "1 of 4" lw 2 lt 7, \
+"Shanghai2.4_1_of_4" using 1:3 title "2 of 4" lw 2 lt 7, \
+"Shanghai2.4_2_of_4" using 1:3 title "3 of 4" lw 2 lt 7, \
+"Shanghai2.4_3_of_4" using 1:3 title "4 of 4" lw 2 lt 7, \
+"Shanghai2.4_0_of_4b" using 1:3 title "1 of 4 -S2" lw 2 lt 8, \
+"Shanghai2.4_1_of_4b" using 1:3 title "2 of 4 -S2" lw 2 lt 8, \
+"Shanghai2.4_2_of_4b" using 1:3 title "3 of 4 -S2" lw 2 lt 8, \
+"Shanghai2.4_3_of_4b" using 1:3 title "4 of 4 -S2" lw 2 lt 8, \
+"Shanghai2.4_0_of_8" using 1:3 title "1 of 8" lw 2 lt 3, \
+"Shanghai2.4_1_of_8" using 1:3 title "2 of 8" lw 2 lt 3, \
+"Shanghai2.4_2_of_8" using 1:3 title "3 of 8" lw 2 lt 3, \
+"Shanghai2.4_3_of_8" using 1:3 title "4 of 8" lw 2 lt 3, \
+"Shanghai2.4_4_of_8" using 1:3 title "5 of 8" lw 2 lt 3, \
+"Shanghai2.4_5_of_8" using 1:3 title "6 of 8" lw 2 lt 3, \
+"Shanghai2.4_6_of_8" using 1:3 title "7 of 8" lw 2 lt 3, \
+"Shanghai2.4_7_of_8" using 1:3 title "8 of 8" lw 2 lt 3\
+
+
+set yrange [0:80]
+set term postscript eps color 22
+set title "Memory latency in cycles Istanbul 2.6 multi-core usage"
+set size 2,2;
+set output 'latmem_istanbulCores.eps'
+plot "Istanbul2.6_0_of_1" using 1:3 title "1 of 1" lw 2 lt 1, \
+"Istanbul2.6_0_of_2" using 1:3 title "1 of 2" lw 2 lt 2, \
+"Istanbul2.6_1_of_2" using 1:3 title "2 of 2" lw 2 lt 2, \
+"Istanbul2.6_0_of_3" using 1:3 title "1 of 3" lw 2 lt 4, \
+"Istanbul2.6_1_of_3" using 1:3 title "2 of 3" lw 2 lt 4, \
+"Istanbul2.6_2_of_3" using 1:3 title "3 of 3" lw 2 lt 4, \
+"Istanbul2.6_0_of_6" using 1:3 title "1 of 6" lw 2 lt 7, \
+"Istanbul2.6_1_of_6" using 1:3 title "2 of 6" lw 2 lt 7, \
+"Istanbul2.6_2_of_6" using 1:3 title "3 of 6" lw 2 lt 7, \
+"Istanbul2.6_3_of_6" using 1:3 title "4 of 6" lw 2 lt 7, \
+"Istanbul2.6_4_of_6" using 1:3 title "5 of 6" lw 2 lt 7, \
+"Istanbul2.6_4_of_6" using 1:3 title "6 of 6" lw 2 lt 7, \
+"Istanbul2.6_0_of_12" using 1:3 title "1 of 12" lw 2 lt 3, \
+"Istanbul2.6_1_of_12" using 1:3 title "2 of 12" lw 2 lt 3, \
+"Istanbul2.6_2_of_12" using 1:3 title "3 of 12" lw 2 lt 3, \
+"Istanbul2.6_3_of_12" using 1:3 title "4 of 12" lw 2 lt 3, \
+"Istanbul2.6_4_of_12" using 1:3 title "5 of 12" lw 2 lt 3, \
+"Istanbul2.6_5_of_12" using 1:3 title "6 of 12" lw 2 lt 3, \
+"Istanbul2.6_6_of_12" using 1:3 title "7 of 12" lw 2 lt 3, \
+"Istanbul2.6_7_of_12" using 1:3 title "8 of 12" lw 2 lt 3, \
+"Istanbul2.6_8_of_12" using 1:3 title "9 of 12" lw 2 lt 3, \
+"Istanbul2.6_9_of_12" using 1:3 title "10 of 12" lw 2 lt 3, \
+"Istanbul2.6_10_of_12" using 1:3 title "11 of 12" lw 2 lt 3, \
+"Istanbul2.6_11_of_12" using 1:3 title "12 of 12" lw 2 lt 3\
+
+
+set yrange [0:30]
+set ylabel "nano seconds"
+set term postscript eps color 22
+set title "Memory latency in nanoseconds Istanbul 2.6 multi-core usage"
+set size 2,2;
+set output 'latmem_istanbul_ns_Cores.eps'
+plot "Istanbul2.6_0_of_1" using 1:2 title "1 of 1" lw 2 lt 1, \
+"Istanbul2.6_0_of_2" using 1:2 title "1 of 2" lw 2 lt 2, \
+"Istanbul2.6_1_of_2" using 1:2 title "2 of 2" lw 2 lt 2, \
+"Istanbul2.6_0_of_3" using 1:2 title "1 of 3" lw 2 lt 4, \
+"Istanbul2.6_1_of_3" using 1:2 title "2 of 3" lw 2 lt 4, \
+"Istanbul2.6_2_of_3" using 1:2 title "3 of 3" lw 2 lt 4, \
+"Istanbul2.6_0_of_6" using 1:2 title "1 of 6" lw 2 lt 7, \
+"Istanbul2.6_1_of_6" using 1:2 title "2 of 6" lw 2 lt 7, \
+"Istanbul2.6_2_of_6" using 1:2 title "3 of 6" lw 2 lt 7, \
+"Istanbul2.6_3_of_6" using 1:2 title "4 of 6" lw 2 lt 7, \
+"Istanbul2.6_4_of_6" using 1:2 title "5 of 6" lw 2 lt 7, \
+"Istanbul2.6_4_of_6" using 1:2 title "6 of 6" lw 2 lt 7, \
+"Istanbul2.6_0_of_12" using 1:2 title "1 of 12" lw 2 lt 3, \
+"Istanbul2.6_1_of_12" using 1:2 title "2 of 12" lw 2 lt 3, \
+"Istanbul2.6_2_of_12" using 1:2 title "3 of 12" lw 2 lt 3, \
+"Istanbul2.6_3_of_12" using 1:2 title "4 of 12" lw 2 lt 3, \
+"Istanbul2.6_4_of_12" using 1:2 title "5 of 12" lw 2 lt 3, \
+"Istanbul2.6_5_of_12" using 1:2 title "6 of 12" lw 2 lt 3, \
+"Istanbul2.6_6_of_12" using 1:2 title "7 of 12" lw 2 lt 3, \
+"Istanbul2.6_7_of_12" using 1:2 title "8 of 12" lw 2 lt 3, \
+"Istanbul2.6_8_of_12" using 1:2 title "9 of 12" lw 2 lt 3, \
+"Istanbul2.6_9_of_12" using 1:2 title "10 of 12" lw 2 lt 3, \
+"Istanbul2.6_10_of_12" using 1:2 title "11 of 12" lw 2 lt 3, \
+"Istanbul2.6_11_of_12" using 1:2 title "12 of 12" lw 2 lt 3\
+
+
+
