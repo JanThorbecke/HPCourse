@@ -1,8 +1,11 @@
+
+---- float accuracy
 Compile the program with
 
 gcc -O0 float.c
 
 and run 
+
 ./a.out
 
 in the code the floating point numbers are printed with
@@ -13,10 +16,31 @@ in the code the floating point numbers are printed with
 
 
 Compile the second program
+
 gcc comparefloats.c
 
 and run
+
 ./a.out
 
 can you explain the outcome of these tests? What happens if you change the 'float a,b;' to 'double a,b;'
+
+
+---- Rounding
+
+You want to define receivers on a Cartesian grid (with dx=3.2) that have 12.8 between receivers; each 4 grid points a receiver
+
+The code round.c is designed to do that.
+
+To compile the code
+
+gcc -c getpars.c ; gcc -Ofast -ffast-math round.c getpars.o
+
+then run the code with the command, that defines dx,dxrcv and the origin of the grid.
+
+./a.out dx=3.2 dxrcv=12.8 x0=-1000
+
+The code has a check if all receivers are 4 points apart...
+
+Do you know a way how to avoid the problem? 
 
