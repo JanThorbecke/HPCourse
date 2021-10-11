@@ -5,7 +5,7 @@ Type
 
 > make
 
-and two programs will be made: one called MasterSlave and one MPIprobe.
+and two programs will be made: one called MasterWorker and one MPIprobe.
 
 To run the MPI program it is assumed that you also can use a job scheduler (like PBS) which can schedule MPI jobs on the cluster. In the script jobpbs.scr you can change the number of nodes in the line
 
