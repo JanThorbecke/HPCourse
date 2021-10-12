@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 	}
 
 	for (ir=1; ir<nrecv; ir++) {
-		if (x[ir]-x[ir-1] != 4) fprintf(stderr,"xr=%f zr=%f at grid coordintes ix=%d iz=%d\n",xr[ir], zr[ir], x[ir], z[ir]);
+		if (x[ir]-x[ir-1] != 4) fprintf(stderr,"xr=%f zr=%f at grid coordinates ix=%d iz=%d\n",xr[ir], zr[ir], x[ir], z[ir]);
 	}
 
 
