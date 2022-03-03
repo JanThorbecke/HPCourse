@@ -1,0 +1,2 @@
+#gcc-mp-11 -fopenmp -Ofast stream.c -DNTIMES=40 -DSTREAM_ARRAY_SIZE=80000000 -o stream
+gcc -fopenmp -Ofast stream.c -DNTIMES=40 -DSTREAM_ARRAY_SIZE=80000000 -o stream

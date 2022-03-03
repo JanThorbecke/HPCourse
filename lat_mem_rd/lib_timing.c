@@ -66,8 +66,7 @@ rusage(void)
 
 #endif	/* RUSAGE */
 
-void
-lmbench_usage(int argc, char *argv[], char* usage)
+void lmbench_usage(int argc, char *argv[], char* usage)
 {
 	fprintf(stderr,"Usage: %s %s", argv[0], usage);
 	exit(-1);
@@ -1578,7 +1577,7 @@ bread(void* buf, long nbytes)
 void
 touch(char *buf, int nbytes)
 {
-	static	psize;
+	static int psize;
 
 	if (!psize) {
 		psize = getpagesize();
@@ -1647,6 +1646,7 @@ cp(char* src, char* dst, mode_t mode)
 	fsync(dfd);
 	close(sfd);
 	close(dfd);
+    return 0;
 }
 
 #if defined(hpux) || defined(__hpux)

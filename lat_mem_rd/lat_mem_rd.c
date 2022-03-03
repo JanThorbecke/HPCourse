@@ -17,12 +17,13 @@ char	*id = "$Id: s.lat_mem_rd.c 1.13 98/06/30 16:13:49-07:00 lm@lm.bitmover.com 
 #include "bench.h"
 #define STRIDE  (512/sizeof(char *))
 #define	LOWER	512
-#define MHZ 2000
+#define MHZ 3220
 
 void	loads(size_t len, size_t range, size_t stride, 
 	      int parallel, int warmup, int repetitions);
 size_t	step(size_t k);
 void	initialize(iter_t iterations, void* cookie);
+void lmbench_usage(int argc, char *argv[], char* usage);
 
 benchmp_f	fpInit = stride_initialize;
 

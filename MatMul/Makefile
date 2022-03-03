@@ -38,6 +38,10 @@ MKL=/opt/intel/Compiler/11.0/059/Frameworks/mkl/lib/em64t
 MKL=/opt/intel/Compiler/11.1/046/Frameworks/mkl/lib/universal
 LIBS = -L$(MKL) -lmkl_core -lmkl_intel_lp64 -lmkl_intel_thread -lm
 
+#Mac OSX with M1 aarch64 chips
+LIBS= /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk//usr/lib/liblapack.tbd /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk//usr/lib/libblas.tbd
+
+
 #if you have none of the above just try
 #LIBS= -lblas
 

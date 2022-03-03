@@ -5,6 +5,10 @@ First adapt in lat_mem_rd.c line 20 the MHz rate for the computer you are runnin
 
 On linux systems you can find that kind of hardware information in the file /proc/cpuinfo
 
+Note: On Apple M1 processors it is harder to find 'sysctl hw' gives some basic information, but not the frequency. The following command gives useful information:
+sudo /usr/bin/powermetrics -s cpu_power -n 1 | grep 'frequency: '    
+
+
 Compile the program by typing 
 
 > make clean

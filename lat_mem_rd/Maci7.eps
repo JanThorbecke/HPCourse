@@ -1,7 +1,7 @@
 %!PS-Adobe-2.0 EPSF-2.0
 %%Title: Maci7.eps
-%%Creator: gnuplot 5.2 patchlevel 0
-%%CreationDate: Tue May  8 15:35:00 2018
+%%Creator: gnuplot 5.4 patchlevel 2
+%%CreationDate: Thu Feb 17 13:14:56 2022
 %%DocumentFonts: (atend)
 %%BoundingBox: 50 50 410 302
 %%EndComments
@@ -48,7 +48,7 @@ gnudict begin
   } if
 } def
 %
-% Gnuplot Prolog Version 5.1 (Oct 2015)
+% Gnuplot Prolog Version 5.2 (Dec 2017)
 %
 %/SuppressPDFMark true def
 %
@@ -305,7 +305,7 @@ gnudict begin
   ColR ColG ColB setrgbcolor} def
 /BoxColFill {gsave Rec PolyFill} def
 /PolyFill {gsave Density fill grestore grestore} def
-/h {rlineto rlineto rlineto gsave closepath fill grestore} bind def
+/h {rlineto rlineto rlineto closepath gsave fill grestore stroke} bind def
 %
 % PostScript Level 1 Pattern Fill routine for rectangles
 % Usage: x y w h s a XX PatternFill
@@ -478,10 +478,10 @@ systemdict /pdfmark known not {
 SDict begin [
   /Title (Maci7.eps)
   /Subject (gnuplot plot)
-  /Creator (gnuplot 5.2 patchlevel 0)
+  /Creator (gnuplot 5.4 patchlevel 2)
 %  /Producer (gnuplot)
 %  /Keywords ()
-  /CreationDate (Tue May  8 15:35:00 2018)
+  /CreationDate (Thu Feb 17 13:14:56 2022)
   /DOCINFO pdfmark
 end
 } ifelse
@@ -503,7 +503,7 @@ end
                TBx1 TBxmargin sub TBy2 TBymargin add L
 	       TBx2 TBxmargin add TBy2 TBymargin add L
 	       TBx2 TBxmargin add TBy1 TBymargin sub L closepath } def
-/DrawTextBox { PopTextBox stroke /Boxing false def} def
+/DrawTextBox { PL PopTextBox stroke /Boxing false def} def
 /FillTextBox { gsave PopTextBox fill grestore /Boxing false def} def
 0 0 0 0 InitTextBox
 /TBxmargin 20 def
@@ -543,6 +543,8 @@ stroke
 814 704 M
 [ [(Helvetica) 220.0 0.0 true true 0 ( 0)]
 ] -73.3 MRshow
+/Helvetica findfont 220 scalefont setfont
+/vshift -73 def
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -563,6 +565,7 @@ stroke
 814 1527 M
 [ [(Helvetica) 220.0 0.0 true true 0 ( 5)]
 ] -73.3 MRshow
+/Helvetica findfont 220 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -583,6 +586,7 @@ stroke
 814 2350 M
 [ [(Helvetica) 220.0 0.0 true true 0 ( 10)]
 ] -73.3 MRshow
+/Helvetica findfont 220 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -603,6 +607,7 @@ stroke
 814 3173 M
 [ [(Helvetica) 220.0 0.0 true true 0 ( 15)]
 ] -73.3 MRshow
+/Helvetica findfont 220 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -623,6 +628,7 @@ stroke
 814 3996 M
 [ [(Helvetica) 220.0 0.0 true true 0 ( 20)]
 ] -73.3 MRshow
+/Helvetica findfont 220 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -643,26 +649,51 @@ stroke
 814 4819 M
 [ [(Helvetica) 220.0 0.0 true true 0 ( 25)]
 ] -73.3 MRshow
+/Helvetica findfont 220 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
 0.500 UL
 LTa
 LCa setrgbcolor
-2895 704 M
+2891 704 M
+0 3832 V
+0 220 R
+0 63 V
+stroke
+1.000 UL
+LTb
+LCb setrgbcolor
+2891 704 M
+0 63 V
+0 4052 R
+0 -63 V
+stroke
+2891 484 M
+[ [(Helvetica) 220.0 0.0 true true 0 ( 0.031)]
+] -73.3 MCshow
+/Helvetica findfont 220 scalefont setfont
+1.000 UL
+LTb
+LCb setrgbcolor
+0.500 UL
+LTa
+LCa setrgbcolor
+3598 704 M
 0 4115 V
 stroke
 1.000 UL
 LTb
 LCb setrgbcolor
-2895 704 M
+3598 704 M
 0 63 V
 0 4052 R
 0 -63 V
 stroke
-2895 484 M
-[ [(Helvetica) 220.0 0.0 true true 0 ( 0.03125)]
+3598 484 M
+[ [(Helvetica) 220.0 0.0 true true 0 ( 0.14)]
 ] -73.3 MCshow
+/Helvetica findfont 220 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -670,9 +701,7 @@ LCb setrgbcolor
 LTa
 LCa setrgbcolor
 4520 704 M
-0 3832 V
-0 220 R
-0 63 V
+0 4115 V
 stroke
 1.000 UL
 LTb
@@ -685,6 +714,7 @@ stroke
 4520 484 M
 [ [(Helvetica) 220.0 0.0 true true 0 ( 1)]
 ] -73.3 MCshow
+/Helvetica findfont 220 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -692,9 +722,7 @@ LCb setrgbcolor
 LTa
 LCa setrgbcolor
 4845 704 M
-0 3832 V
-0 220 R
-0 63 V
+0 4115 V
 stroke
 1.000 UL
 LTb
@@ -707,6 +735,7 @@ stroke
 4845 484 M
 [ [(Helvetica) 220.0 0.0 true true 0 ( 2)]
 ] -73.3 MCshow
+/Helvetica findfont 220 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -714,9 +743,7 @@ LCb setrgbcolor
 LTa
 LCa setrgbcolor
 5170 704 M
-0 3832 V
-0 220 R
-0 63 V
+0 4115 V
 stroke
 1.000 UL
 LTb
@@ -729,6 +756,7 @@ stroke
 5170 484 M
 [ [(Helvetica) 220.0 0.0 true true 0 ( 4)]
 ] -73.3 MCshow
+/Helvetica findfont 220 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -736,9 +764,7 @@ LCb setrgbcolor
 LTa
 LCa setrgbcolor
 5361 704 M
-0 3832 V
-0 220 R
-0 63 V
+0 4115 V
 stroke
 1.000 UL
 LTb
@@ -751,6 +777,7 @@ stroke
 5361 484 M
 [ [(Helvetica) 220.0 0.0 true true 0 ( 6)]
 ] -73.3 MCshow
+/Helvetica findfont 220 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -758,9 +785,7 @@ LCb setrgbcolor
 LTa
 LCa setrgbcolor
 5820 704 M
-0 3832 V
-0 220 R
-0 63 V
+0 4115 V
 stroke
 1.000 UL
 LTb
@@ -773,6 +798,7 @@ stroke
 5820 484 M
 [ [(Helvetica) 220.0 0.0 true true 0 ( 16)]
 ] -73.3 MCshow
+/Helvetica findfont 220 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -780,9 +806,7 @@ LCb setrgbcolor
 LTa
 LCa setrgbcolor
 6146 704 M
-0 3832 V
-0 220 R
-0 63 V
+0 4115 V
 stroke
 1.000 UL
 LTb
@@ -795,6 +819,7 @@ stroke
 6146 484 M
 [ [(Helvetica) 220.0 0.0 true true 0 ( 32)]
 ] -73.3 MCshow
+/Helvetica findfont 220 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -815,6 +840,7 @@ stroke
 6796 484 M
 [ [(Helvetica) 220.0 0.0 true true 0 ( 128)]
 ] -73.3 MCshow
+/Helvetica findfont 220 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -832,29 +858,34 @@ Z stroke
 LTb
 LCb setrgbcolor
 LCb setrgbcolor
-198 2761 M
+209 2761 M
 currentpoint gsave translate -270 rotate 0 0 moveto
 [ [(Helvetica) 220.0 0.0 true true 0 (clock cycles)]
 ] -73.3 MCshow
 grestore
+/Helvetica findfont 220 scalefont setfont
 LTb
 LCb setrgbcolor
 3874 154 M
-[ [(Helvetica) 220.0 0.0 true true 0 (memory size)]
+[ [(Helvetica) 220.0 0.0 true true 0 (memory size in MB)]
 ] -73.3 MCshow
+/Helvetica findfont 220 scalefont setfont
 LTb
 % Begin plot #1
 1.000 UP
 3.000 UL
 LTb
-0.58 0.00 0.83 C LCb setrgbcolor
-5816 4646 M
+0.58 0.00 0.83 C
+LCb setrgbcolor
+2530 4646 M
 [ [(Helvetica) 220.0 0.0 true true 0 (Mac Core i7)]
 ] -73.3 MRshow
+/Helvetica findfont 220 scalefont setfont
 1.000 UP
 3.000 UL
 LTb
-0.58 0.00 0.83 C 5948 4646 M
+0.58 0.00 0.83 C
+2662 4646 M
 591 0 V
 946 1117 M
 325 -1 V
@@ -931,7 +962,7 @@ LTb
 35 222 V
 32 -71 V
 30 85 V
-8 252 V
+7 252 V
 946 1117 Pls
 1271 1116 Pls
 1594 1116 Pls
@@ -1007,7 +1038,7 @@ LTb
 5108 4553 Pls
 5140 4482 Pls
 5170 4567 Pls
-6243 4646 Pls
+2957 4646 Pls
 % End plot #1
 2.000 UL
 LTb
