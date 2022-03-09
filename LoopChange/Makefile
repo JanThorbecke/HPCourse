@@ -2,13 +2,13 @@
 
 #use this for the GNU compiler
 FC	= gfortran
-FFLAGS 	= -O3 -m64
-CC	=gcc -m64
+FFLAGS 	= -O3 
+CC	= gcc 
 
 #use this for the Intel compiler
 #FC=ifort
 #FFLAGS= -O3 -opt-report-phase=hlo -nowarn -vec-report3
-CC=icc
+#CC=icc
 #CFLAGS 	= -O3 -mssse3 -par-report -opt-report 3 -opt-report-phase=hlo
 #icc -O1 -mssse3 -no-scalar-rep -opt-report 3 -opt-report-phase=hlo -restrict -c floatCycl.c -S -fcode-asm
 

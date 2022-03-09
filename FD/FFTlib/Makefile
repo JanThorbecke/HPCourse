@@ -1,6 +1,6 @@
 # Makefile for ...FFT
 
-ROOT = .
+ROOT = ../
 
 B = $(ROOT)/bin
 I = $(ROOT)/include

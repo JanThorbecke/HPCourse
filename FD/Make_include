@@ -12,7 +12,7 @@ CC = clang
 PROFILE = -pg
 OPTC = -Ofast
 
-#OSX PGI 
+#PGI 
 CC = pgcc
 PROFILE = -Mprof=lines,func
 OPTC = -Ofast
@@ -21,7 +21,7 @@ OPTC = -O0 -g
 #GNU 
 CC = gcc
 PROFILE = -pg
-OPTC = -O3 -ffast-math -funroll-all-loops -mssse3 -mfpmath=sse -fdump-tree-vect -ftree-vectorizer-verbose=3 $(PROFILE)
+OPTC = -O3 -ffast-math -funroll-all-loops -fdump-tree-vect -ftree-vectorizer-verbose=3 $(PROFILE)
 
 ########################################################################
 # standard CFLAGS

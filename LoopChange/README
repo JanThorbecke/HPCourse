@@ -1,15 +1,14 @@
 
-Open the Makefile and change the compiler to the one you are using and choose a low optimisation flag -O1 or -O0. 
+Open the Makefile and change the compiler to the one you are using and choose a low optimisation flag :
+for example you can first try the lowest optimization level -O0 and then try -O1. 
 
 > make
 
-and run in by typing
+and run the build executable by typing
 
 ./loop
 
-You will see different output results printed to the screen/terminal. Each output represent a certain order how the 3D array is accessed
-in memory. Read the code and try to explain the results. 
+You will see different output results printed to the screen/terminal. Each output represent a certain order how the 3D array is accessed in memory. Read the code and try to explain the results. 
 
-Now try to compile with high optimisation -O3 (or -fast depending on your compiler) and do the test again. Can you still understand
-the results?
+Now try to compile with high optimisation -O3 (or -fast depending on your compiler) and do the test again. Can you still understand the results?
 

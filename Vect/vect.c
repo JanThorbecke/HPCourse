@@ -12,9 +12,9 @@ int main(int argc, char *argv[]) {
     float *a, *b;
     double t0, t1, fcycles, s;
 
-    mhz = 2000;
+    mhz = 3200;
     Loop = 1000000;
-    N=1024;
+    N=4096;
     a=(float *)calloc(N,sizeof(float));
     b=(float *)calloc(N,sizeof(float));
 
@@ -28,6 +28,7 @@ int main(int argc, char *argv[]) {
 	for (k=0; k<Loop; k++){
 /* this loop will not vectorize */
 #pragma novector
+#pragma clang loop vectorize(disable)
 		for (j=0; j<N; j++) {
 			s += a[j]*b[j];
 		}
@@ -63,6 +64,7 @@ int main(int argc, char *argv[]) {
 /* this loop will vectorize */
 #pragma ivdep
 #pragma vector
+#pragma clang loop vectorize(enable)
 		for (j=0; j<N; j++) {
 			a[j+1] = b[j];
 			b[j+1] = a[j];
@@ -74,7 +76,6 @@ int main(int argc, char *argv[]) {
 	fcycles = ((t1-t0)*mhz)/(2.0*(Loop/1000000)*N);
 	fprintf(stderr,"loop used %d cycles per instruction %f\n", (int)cycles, fcycles);
 	fprintf(stderr,"a[2] %e\n", a[2]);
-
 
 	return 0;
 }

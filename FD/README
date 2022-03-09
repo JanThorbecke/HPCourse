@@ -1,7 +1,6 @@
 Check the compiler and CFLAGS options in the file Make_include and adapt to the system you are using.
 
-To compile the code you must first make the FFT library. The FFT library has to be compiled and a library made from it. To do so goto the FFTlib directory and
-type 
+To compile the code you must first make the FFT library. The FFT library has to be compiled and a library made from it. To make the library cd to the FFTlib directory and type 
 
 > make
 
@@ -25,9 +24,7 @@ To show the profiled data use
 
 in the fdelmodc/demo/ directory.
 
-Note for OSX users the gprof functions is installed but does not always work properly.
-
-
+Note for Apple OSX users the gprof function is installed but does not always work properly.
 
 OSX maverick with lldb
 
