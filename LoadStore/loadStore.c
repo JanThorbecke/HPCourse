@@ -14,14 +14,14 @@ double wallclock_time(void);
 int main ()
 {
 	FILE *fp;
-	int mhz=2000, l3_size=12582912, l2_size=65536, l1_size=32768, l2_line=64;
+	int mhz=3200, l3_size=12582912, l2_size=65536, l1_size=32768, l2_line=64;
 	int ix, iy, j;
 	size_t power, size, loops;
 	double t0, t1, t_bias, time;
 	double *a, *c, *d, zero=0, *f, *t;
 	char *filename;
 
-	filename="MacCorei7";
+	filename="MacM1";
 	t0  = wallclock_time();
 	t1  = wallclock_time();
 	t_bias = t1-t0;
@@ -33,7 +33,7 @@ int main ()
 
 	size = 0;
 	power = 1;
-	while (power < 31) {
+	while (power < 32) {
 		size = pow(2,power);
 
 		c = (double *)malloc(size*sizeof(double)+l2_line);

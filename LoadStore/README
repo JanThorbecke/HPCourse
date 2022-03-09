@@ -3,7 +3,7 @@ First adapt in loadStore.c line 17 with machine specific information and line 24
 
  17     int mhz=2500, l3_size=6291456, l1_size=32768, l2_line=64;
 .....
- 24     filename="MacCore2Duo";
+ 24     filename="MacM1";
 
 On linux systems you can find that kind of hardware information in the file /proc/cpuinfo or use
 
@@ -27,9 +27,9 @@ If you have gnuplot installed you can make an eps file of the measured memory ba
 
 As an extra experiment you can change line 36 in loadStore.c to:
 
-	while (power < 30) {
+	while (power < 33) {
 
-(this was 26) and make the executable and run again. Note that the run will take much more time and your computer can slow down significantly. If it takes too long (more than 10 minutes) you should kill the program with 'control c'.
+(this was 31) and make the executable and run again. Note that the run will take much more time and your computer can slow down significantly. If it takes too long (more than 10 minutes) you should kill the program with 'control c'.
 
 
 

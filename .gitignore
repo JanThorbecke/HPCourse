@@ -56,3 +56,5 @@ pmbw-0.6.2.tar
 lat_mem_rd/lat_mem_rd
 Stream/stream
 membench/membench
+Cycles/floatCycl
+LoadStore/loadStore

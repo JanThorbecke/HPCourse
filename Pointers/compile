@@ -1,0 +1,3 @@
+gcc -w ampersand.c -o gcc.out
+
+clang -w ampersand.c -o clang.out

@@ -1,6 +1,6 @@
 # Makefile
 
-CC	= clang
+CC	= gcc
 CFLAGS 	= -O0 -m64
 
 PRG = loadStore

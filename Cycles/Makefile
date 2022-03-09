@@ -1,14 +1,13 @@
 # Makefile
 
-#CC	= icc
-#CFLAGS 	= -O1 
-#CFLAGS 	= -O1 -mssse3 -no-scalar-rep -opt-report 3 -opt-report-phase=hlo -restrict -S -fcode-asm
-#CFLAGS 	= -O3 -mssse3 -par-report -opt-report 3 -opt-report-phase=hlo
-#icc -O1 -mssse3 -no-scalar-rep -opt-report 3 -opt-report-phase=hlo -restrict -c floatCycl.c -S -fcode-asm
-
 CC	= gcc
 CFLAGS 	= -O1
 #CFLAGS 	= -O3 -ffast-math 
+
+#CC	= icc
+#CFLAGS 	= -O1 
+#CFLAGS 	= -O3 -march=core-avx2 -qmkl -qopt-report -qopt-report-annotate -qopt-report-phase=all
+#icc -O1 -mssse3 -no-scalar-rep -opt-report 3 -opt-report-phase=hlo -restrict -c floatCycl.c -S -fcode-asm
 
 
 PRG = floatCycl

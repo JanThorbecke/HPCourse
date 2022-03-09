@@ -12,7 +12,9 @@ Before you compile the program you have to change the mhz parameter on line 14 i
 
 > more /proc/cpuinfo
 
-After you have changed the mhz parameter have a look at the Makefile. If you have the Intel compilers (icc) you are fine and you do not need to change anything in the Makefile. If you use the GNU compiler (gcc) uncomment (remove the '#' in front of) the CC and CFLAGS lines on line 10 and 11.
+After you have changed the mhz parameter have a look at the Makefile. 
+If you have the GNU compilers (gcc) you are fine and you do not need to change anything in the Makefile. 
+If you use the Intel compiler (icc) uncomment (remove the '#' in front of) the CC and CFLAGS lines on line 7 and 8 in the Makefile.
 
 Now type 
 

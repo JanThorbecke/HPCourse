@@ -31,7 +31,7 @@ The '&' at the end of a command means that the process is put in the background 
 
 Also try to write to a file which is not on your local computer. For example use a NFS mounted file system. First write/read with one program to the NFS disk and then with two copies. 
 
-NOTE, for cygwin users ASCII file part of the exercise does not work because the amount of meory required to store the results is too large to handle by cygwin. The output file in cygwin is still stored in memory. 
+NOTE, for cygwin users ASCII file part of the exercise does not work because the amount of memory required to store the results is too large to handle by cygwin. The output file in cygwin is still stored in memory. 
 
 
 

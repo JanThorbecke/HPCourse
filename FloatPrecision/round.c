@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
 	fprintf(stderr,"dx=%f dz=%f dxrcv=%f dzrcv=%f\n", dx, dz, dxrcv, dzrcv);
 
-	sub_x0=sub_z0=dx*0.5;
+	//sub_x0=sub_z0=dx*0.5;
 
 	xr = (float *)malloc(nrecv*sizeof(float));
 	zr = (float *)malloc(nrecv*sizeof(float));
