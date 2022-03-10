@@ -7,7 +7,7 @@ include ../Make_include
 ALLINC     = -I.
 
 #CFLAGS 	= -O3 -xP -ip -fno-alias -D$(MACHINE) $(ALLINC) -vec-report2
-LIBS    = -L../FFTlib/lib -lgenfft -lm
+LIBS    = -L../lib -lgenfft -lm 
 
 PRG = fdelmodc
 

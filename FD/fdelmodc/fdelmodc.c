@@ -215,7 +215,7 @@ int main(int argc, char **argv)
 	mod.naz = n1;
 	mod.nax = n2;
 	sizem=n1*n2;
-	sizem=n2;
+	//sizem=n2;
 
 	rox = (float *)calloc(sizem,sizeof(float));
 	roz = (float *)calloc(sizem,sizeof(float));
@@ -386,7 +386,7 @@ int main(int argc, char **argv)
 //				fprintf(stderr,"ToFile = %d isam=%d fileno=%d it=%d itwritten=%d\n", writeToFile,isam, fileno, it, itwritten);
 
 				/* store time at receiver positions */
-				getRecTimes(mod, rec, it, isam, &vx, &vz, &tzz, &txx, &txz, 
+				getRecTimes(mod, rec, it, isam, vx, vz, tzz, txx, txz, 
 					rec_vx, rec_vz, rec_txx, rec_tzz, rec_txz, 
 					rec_p, rec_pp, rec_ss, verbose);
 			

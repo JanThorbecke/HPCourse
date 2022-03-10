@@ -13,15 +13,17 @@ PROFILE = -pg
 OPTC = -Ofast
 
 #PGI 
-CC = pgcc
-PROFILE = -Mprof=lines,func
-OPTC = -Ofast
-OPTC = -O0 -g
+#CC = pgcc
+#PROFILE = -Mprof=lines,func
+#OPTC = -Ofast
+#OPTC = -O0 -g
 
 #GNU 
 CC = gcc
-PROFILE = -pg
-OPTC = -O3 -ffast-math -funroll-all-loops -fdump-tree-vect -ftree-vectorizer-verbose=3 $(PROFILE)
+#PROFILE = -pg
+PROFILE = -g #debug only
+#OPTC = -O3 -ffast-math -funroll-all-loops -fdump-tree-vect -ftree-vectorizer-verbose=3 $(PROFILE) # for vectorisation feedback
+OPTC = -O3 -ffast-math -funroll-all-loops -fbounds-check $(PROFILE)
 
 ########################################################################
 # standard CFLAGS
@@ -41,9 +43,9 @@ RANLIB = ar -s
 
 .SUFFIXES : .o .c .cc .f .a
 .c.o	:
-	$(CC) -c $(CFLAGS) $(OPTC) $<
+	$(CC) -c $(CFLAGS) $<
 .c.a	:
-	$(CC) -c $(CFLAGS) $(OPTC) $<
+	$(CC) -c $(CFLAGS) $<
 	$(AR) $(ARFLAGS) $@ $*.o
 	rm -f $*.o
 .o.a	:

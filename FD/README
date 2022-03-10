@@ -16,6 +16,13 @@ If you have an executable called fdelmodc you can run the program by running
 
 in the directory fdelmodc/demo/ 
 
+It is very likely that you will encounter an error at runtime, can you find the problem with the help of 'gdb'?
+To use gdb insert gdb at line 24 in fdelmod_plane.scr
+
+gdb ../fdelmodc \
+
+and execute the fdelmod_plane.scr script.
+
 To generate profile data compile with options -pg or -p -g. Depending on the type of compiler you use different options are needed to generate profile hooks into the code: for example have a look at 'man gcc' to look at the profiling options of the gcc compiler
 
 To show the profiled data use 
@@ -24,7 +31,7 @@ To show the profiled data use
 
 in the fdelmodc/demo/ directory.
 
-Note for Apple OSX users the gprof function is installed but does not always work properly.
+Note for Apple OSX users the gprof function is not installed but does not always work properly.
 
 OSX maverick with lldb
 
