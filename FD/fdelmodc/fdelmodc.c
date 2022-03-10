@@ -215,7 +215,7 @@ int main(int argc, char **argv)
 	mod.naz = n1;
 	mod.nax = n2;
 	sizem=n1*n2;
-	//sizem=n2;
+	sizem=n2;
 
 	rox = (float *)calloc(sizem,sizeof(float));
 	roz = (float *)calloc(sizem,sizeof(float));
