@@ -313,7 +313,7 @@ int main(int argc, char **argv)
 
 		izsrc = shot.z[ishot];
 		ixsrc = shot.x[ishot];
-		fileno= 0;
+		fileno= 0
 
 		memset(vx,0,sizem*sizeof(float));
 		memset(vz,0,sizem*sizeof(float));
@@ -386,7 +386,7 @@ int main(int argc, char **argv)
 //				fprintf(stderr,"ToFile = %d isam=%d fileno=%d it=%d itwritten=%d\n", writeToFile,isam, fileno, it, itwritten);
 
 				/* store time at receiver positions */
-				getRecTimes(mod, rec, it, isam, vx, vz, tzz, txx, txz, 
+				getRecTimes(mod, rec, it, isam, &vx, &vz, &tzz, &txx, &txz, 
 					rec_vx, rec_vz, rec_txx, rec_tzz, rec_txz, 
 					rec_p, rec_pp, rec_ss, verbose);
 			
@@ -418,7 +418,7 @@ int main(int argc, char **argv)
 			}
 
 		} /* end of loop over time steps */
-//		}
+		}
 
 		/* write output files: receivers or beams */
 		if (fileno) fileno++;

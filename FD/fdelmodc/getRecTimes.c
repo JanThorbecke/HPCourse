@@ -1,4 +1,4 @@
-#include<stdlib.h>
+#include<stlib.h>
 #include<stdio.h>
 #include<math.h>
 #include<assert.h>
@@ -7,7 +7,7 @@
 int getRecTimes(modPar mod, recPar rec, int itime, int isam, float *vx, float *vz, float *tzz, float *txx, float *txz, float *rec_vx, float *rec_vz, float *rec_txx, float *rec_tzz, float *rec_txz, float *rec_p, float *rec_pp, float *rec_ss, int verbose)
 {
 	int n1, ibnd;
-	int irec, iz, ix2, iz2, ix;
+	int irec, iz, ix2, iz2;
 
     ibnd = mod.iorder/2-1;
 	n1   = mod.naz;

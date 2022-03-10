@@ -9,8 +9,8 @@ OPTC = -O3 -axT -no-prec-div
 
 #OSX clang 
 CC = clang
-PROFILE = -pg
-OPTC = -Ofast
+PROFILE = -g
+OPTC = -Ofast -fsanitize=address
 
 #PGI 
 #CC = pgcc
@@ -19,11 +19,11 @@ OPTC = -Ofast
 #OPTC = -O0 -g
 
 #GNU 
-CC = gcc
+#CC = gcc
 #PROFILE = -pg
-PROFILE = -g #debug only
+#PROFILE = -g #debug only
 #OPTC = -O3 -ffast-math -funroll-all-loops -fdump-tree-vect -ftree-vectorizer-verbose=3 $(PROFILE) # for vectorisation feedback
-OPTC = -O3 -ffast-math -funroll-all-loops -fbounds-check $(PROFILE)
+#OPTC = -O3 -ffast-math -funroll-all-loops -fbounds-check $(PROFILE)
 
 ########################################################################
 # standard CFLAGS
