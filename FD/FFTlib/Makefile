@@ -60,7 +60,7 @@ list	:
 	$(AR) tv $(LIB)
 
 clean:
-	-rm -f core a.out $(LIB)
+	-rm -f core a.out $(LIB) *.vect $I/genfft.h
 
 #	@cd test ; $(MAKE) clean
 
