@@ -29,7 +29,7 @@ int main ()
 
 	N = 2048;
 	size = N*N;
-	loops = 100;
+	loops = 200;
 
 	d = (double **)malloc(N*sizeof(double*));
 	assert(d != NULL);
@@ -60,7 +60,7 @@ int main ()
 	}
 	t1  = wallclock_time();
 	time = (t1-t0-t_bias)/loops;
-	fprintf(stderr, "Direct index time = %e [%d] = %d cycles = %f MB/s\n", 
+	fprintf(stderr, "Direct index time = %e [%d] = %d cycles value = %f \n", 
 		time, loops, (int)((time)*mhz*1e+6), d[129][313]);
 	
 	
@@ -75,7 +75,7 @@ int main ()
 	}
 	t1  = wallclock_time();
 	time = (t1-t0-t_bias)/loops;
-	fprintf(stderr, "Explicit index time = %e [%d] = %d cycles = %f MB/s\n", 
+	fprintf(stderr, "Explicit index time = %e [%d] = %d cycles value = %f \n", 
 		time, loops, (int)((time)*mhz*1e+6), d[129][313]);
 
 	t0  = wallclock_time();
@@ -89,7 +89,7 @@ int main ()
 	}
 	t1  = wallclock_time();
 	time = (t1-t0-t_bias)/loops;
-	fprintf(stderr, "Loop carried index time = %e [%d] = %d cycles = %f MB/s\n", 
+	fprintf(stderr, "Loop carried index time = %e [%d] = %d cycles value = %f \n", 
 		time, loops, (int)((time)*mhz*1e+6), d[129][313]);
 	
 	t0  = wallclock_time();
@@ -102,7 +102,7 @@ int main ()
 	}
 	t1  = wallclock_time();
 	time = (t1-t0-t_bias)/loops;
-	fprintf(stderr, "Indirect time = %e [%d] = %d cycles = %f MB/s\n", 
+	fprintf(stderr, "Indirect time = %e [%d] = %d cycles value = %f \n", 
 		time, loops, (int)((time)*mhz*1e+6), d[129][313]);
 	
 	free(d[0]);

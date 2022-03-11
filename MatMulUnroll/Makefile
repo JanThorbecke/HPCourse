@@ -1,15 +1,14 @@
 # Makefile
 
-
 #intel compiler
 CC	= icc
-CFLAGS 	= -O3 -mssse3 -opt-report
-CFLAGS 	= -O3 -mssse3 -par-report -vec-report -inline-level=0
+CFLAGS 	= -O3 -mavx2 -opt-report
+CFLAGS 	= -O3 -mavx2 -par-report -vec-report -inline-level=0
 #CFLAGS 	= -O1 -par-report
 
 #GNU compiler
 CC	= gcc
-CFLAGS	= -O3 -mssse3 -mfpmath=sse -ftree-vectorizer-verbose=3 -ftree-vectorize
+CFLAGS	= -O3 -ftree-vectorizer-verbose=3 -ftree-vectorize
 
 #BLAS library
 #marken (TA cluster)
@@ -31,8 +30,11 @@ MKL=/opt/intel/Compiler/11.0/059/Frameworks/mkl/lib/em64t
 MKL=/opt/intel/Compiler/11.1/046/Frameworks/mkl/lib/universal
 LIBS = -L$(MKL) -lmkl_core -lmkl_intel_lp64 -lmkl_intel_thread -lm
 
+#Mac OSX with M1 aarch64 chips
+LIBS= /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk//usr/lib/liblapack.tbd /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk//usr/lib/libblas.tbd
+
 #If you do not have blas and get messages about missing sgemm_ 
-#uncomment the followinf line
+#uncomment the following line
 #LIBS= -lm
 
 PRG = ClassicMatrixMultiply

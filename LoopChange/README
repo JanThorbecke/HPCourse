@@ -12,3 +12,11 @@ You will see different output results printed to the screen/terminal. Each outpu
 
 Now try to compile with high optimisation -O3 (or -fast depending on your compiler) and do the test again. Can you still understand the results?
 
+There is also a small Python code: Loops.py . There are 2 implementations of the same kernel: one is obvious much faster. Is this the same 'problem' as in the Foryran code?
+
+The loop2.c and loop2.f90 are attempts to make a different example. It somehow shows the same as loop.f90 but has less 'spectacular' runtime differences. 
+Interesting is the result when increasing N in loop2 from 1000 to 1024 and run again: same problem larger N... it is expected that it will run a bit slower (more work to do). Try the example to find that out. 
+
+gcc wallclock_time.c -c
+gfortran wallclock_time.o loop2.f90 
+

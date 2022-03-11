@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rm snap_s* rec_r*
+

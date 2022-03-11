@@ -59,3 +59,4 @@ Stream/stream
 membench/membench
 Cycles/floatCycl
 LoadStore/loadStore
+MatMul/ClassicMatrixMultiply

@@ -1,6 +1,6 @@
 
 Open the Makefile and change the LIBS= variable to a library where BLAS can be found. For some machines the LIBS variable has
-already put into the makefile and uncomment (remove the # in front of the line) the correct LIBS= definition.
+already put into the makefile and uncomment (remove the # in front of the line) for the LIBS= definition on your system.
 
 In case you cannot find a suitable BLAS library remove the call to sgemm in the code at line 176:
 
@@ -18,7 +18,7 @@ replace those lines with
 
 and in the Makefile comment out (add a # at the first position of the line) all LIBS= definitions, and compile again.
 
-If the make command gives errors because it does not understand the -mssse3 flag remove this flag from the CFLAGS= definition and
+If the make command gives errors because it does not understand the -mavx2 flag remove this flag from the CFLAGS= definition and
 try again.  Or use the GNU compilers.
 
 Compile the program by typing
