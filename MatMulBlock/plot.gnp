@@ -2,7 +2,8 @@
 
 #set style data linespoints
 #set data style linespoint
-set data style point
+set style function point
+
 
 set xlabel "block size"
 set ylabel "runtime in seconds"
@@ -17,3 +18,8 @@ set title "Blocking of Matrix multiplication 2040x2040"
 set term postscript eps color 22
 set output 'MatMulBlock.eps'
 plot "results.txt" using 1:2 title "Mac Core 2 Duo" lw 3
+
+set title "Blocking of Matrix multiplication 2040x2040"
+set term postscript eps color 22
+set output 'MatMulBlockM1.eps'
+plot "resultsM1.txt" using 1:2 title "M1" lw 3

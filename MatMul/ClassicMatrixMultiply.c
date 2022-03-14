@@ -23,8 +23,8 @@
 #include <stdio.h>
 
 #define NINT(x) ((int)((x)>0.0?(x)+0.5:(x)-0.5))
-#define ROWS     1024     // Number of rows in each matrix
-#define COLUMNS  1024  // Number of columns in each matrix
+#define ROWS     1020     // Number of rows in each matrix
+#define COLUMNS  1020  // Number of columns in each matrix
 
 double wallclock_time(void);
 static float matrix_a[ROWS][COLUMNS] ;    // Left matrix operand

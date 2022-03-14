@@ -3,15 +3,21 @@
 
 #intel compiler
 CC	= icc
-CFLAGS 	= -O3 -mssse3 -opt-report
-CFLAGS 	= -O3 -mssse3 -par-report  -vec-report -opt_report_phase=all -fno-alias
-CFLAGS 	= -O3 -mssse3 -par-report -vec-report -opt_report_phase=all -inline-level=0
-CFLAGS 	= -O2 -mssse3 -vec-report 
+CFLAGS 	= -O3 -opt-report
+CFLAGS 	= -O3 -par-report -vec-report -Wl,-no_compact_unwind
 #CFLAGS 	= -O1 -par-report
+
+#PGI compiler
+#CC = pgcc
+#CFLAGS  = -fast
 
 #GNU compiler
 #CC	= gcc
-#CFLAGS	= -O3 $(DEFINES) $(ALLINC) -mssse3 -ftree-vectorize -fast
+#CFLAGS	= -O3 $(DEFINES) $(ALLINC) 
+
+#OSX clang compiler
+CC	= clang
+CFLAGS 	= -O3 
 
 #BLAS library
 #marken (TA cluster)
@@ -27,14 +33,20 @@ LIBS = -L/usr/local/atlas/lib -latlas -lf77blas -lgfortran -lm
 # using older GNU compilers
 #LIBS = -L/usr/local/atlas/lib -latlas -lf77blas -lg2c
 
-
 #Mac OSX with intel compiler
 MKL=/opt/intel/Compiler/11.0/059/Frameworks/mkl/lib/em64t
 MKL=/opt/intel/Compiler/11.1/046/Frameworks/mkl/lib/universal
 LIBS = -L$(MKL) -lmkl_core -lmkl_intel_lp64 -lmkl_intel_thread -lm
 
-#If you do not have blas and get messages about missing sgemm_ 
-#uncomment the followinf line
+#Mac OSX with M1 aarch64 chips
+LIBS= /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk//usr/lib/liblapack.tbd /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk//usr/lib/libblas.tbd
+
+
+#if you have none of the above just try
+#LIBS= -lblas
+
+#If you still do not have blas and get messages about missing sgemm_ 
+#uncomment the following line
 #LIBS= -lm
 
 PRG = ClassicMatrixMultiply

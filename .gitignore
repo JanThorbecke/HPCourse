@@ -60,3 +60,4 @@ membench/membench
 Cycles/floatCycl
 LoadStore/loadStore
 MatMul/ClassicMatrixMultiply
+Corr/corrOpt

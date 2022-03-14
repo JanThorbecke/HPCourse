@@ -187,7 +187,7 @@ int main(int argc, char* argv[])
 	multiply_matrices3();
 	t1=wallclock_time();
 	fprintf(stderr,"sgemm = time =%lf\n", t1-t0);
-	for (bout=400; bout<=ROWS; bout+=2) {
+	for (bout=4; bout<=ROWS; bout+=2) {
 		bmid=bout;
 		bin=bout;
 //		for (bmid=24; bmid<COLUMNS/4; bmid+=24) {
