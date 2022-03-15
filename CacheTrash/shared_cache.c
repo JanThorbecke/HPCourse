@@ -5,44 +5,54 @@
 #include <assert.h>
 
 double wallclock_time();
-#define NMAX 40960
+#define NMAX 409600
+#define NLOOP 3000
 
 int main(int argc, char *argv[])
 {
-	float a[NMAX],  b[NMAX],  c[NMAX],  d[NMAX];
-	int i;
-	double t0, t1, t2;
+        float a[NMAX],  b[NMAX],  c[NMAX],  d[NMAX];
+        int i,j;
+        double t0, t1, t2;
 
-	for (i=0; i<NMAX; i++) {
-		a[i] = 0.0;
-		b[i] = i;
-		c[i] = 2*i;
-		d[i] = -0.5*i;
-	}
+        for (i=0; i<NMAX; i++) {
+                a[i] = 0.0;
+                b[i] = i;
+                c[i] = 2*i;
+                d[i] = -0.5*i;
+        }
 
-	t0 = wallclock_time();
-	#pragma omp parallel for schedule(static,32)
-	for (i=0; i<NMAX; i++) {
-		a[i] = b[i]+c[i]*d[i];
-	}
-	t1 = wallclock_time();
-	fprintf(stderr,"shared cache loop = %e seconds %f\n", t1-t0, a[NMAX/2]);
+        t0 = wallclock_time();
+        #pragma omp parallel private(i,j) shared(a,b,c)
+        for (j=0; j<NLOOP; j++) {
+        #pragma omp for schedule(static,1)
+        for (i=0; i<NMAX; i++) {
+                a[i] += b[i]+c[i]*d[i];
+        }
+        }
+        t1 = wallclock_time();
+        fprintf(stderr,"shared cache loop = %e seconds\n", t1-t0);
+        fprintf(stderr,"a[NMAX/2] = %f\n",a[NMAX/2]);
 
-	for (i=0; i<NMAX; i++) {
-		a[i] = 0.0;
-		b[i] = i;
-		c[i] = 2*i;
-		d[i] = -0.5*i;
-	}
+        for (i=0; i<NMAX; i++) {
+                a[i] = 0.0;
+                b[i] = i;
+                c[i] = 2*i;
+                d[i] = -0.5*i;
+        }
 
-	t0 = wallclock_time();
-	for (i=0; i<NMAX; i++) {
-		a[i] = b[i]+c[i]*d[i];
-	}
-	t1 = wallclock_time();
-	fprintf(stderr,"non-shared loop = %e seconds\n", t1-t0);
+        t0 = wallclock_time();
+        #pragma omp parallel private(i,j) shared(a,b,c)
+        for (j=0; j<NLOOP; j++) {
+        #pragma omp for schedule(static)
+        for (i=0; i<NMAX; i++) {
+                a[i] += b[i]+c[i]*d[i];
+        }
+        }
+        t1 = wallclock_time();
+        fprintf(stderr,"non-shared loop = %e seconds\n", t1-t0);
+        fprintf(stderr,"a[NMAX/2] = %f\n",a[NMAX/2]);
 
-	return 0;
+        return 0;
 }
 
 double wallclock_time()
@@ -65,4 +75,5 @@ double wallclock_time()
 
         return (double)time;
 }
+
 
