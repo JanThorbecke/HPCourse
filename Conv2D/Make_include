@@ -10,12 +10,11 @@ OPTC = -O3 -axT -no-prec-div
 #GNU 
 CC = gcc
 #PROFILE = -g -p
-OPTC = -O3 -ffast-math -funroll-all-loops -mssse3 -fomit-frame-pointer -mtune=nocona -mfpmath=sse -fdump-tree-vect
--ftree-vectorizer-verbose=3
+OPTC = -O3 -ffast-math -funroll-all-loops -fomit-frame-pointer -fdump-tree-vect -ftree-vectorizer-verbose=3
 
 #OSX clang
-CC = clang
-OPTC = -Ofast
+#CC = clang
+#OPTC = -Ofast
 
 ########################################################################
 # standard CFLAGS
