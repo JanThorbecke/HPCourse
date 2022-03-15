@@ -2,7 +2,6 @@
 EXERCISE 3:   PARALLEL SECTIONS
 *******************************
 
-
 Silicon Graphics BV
 De Meern, The Netherlands.
 
@@ -11,6 +10,31 @@ March 26, 1999.
 Apart from parallellizing do loops, there is another method of
 parallellizing chunks of code. This concept is known as parallel
 sections.
+
+For more information about sections see 
+
+https://www.openmp.org/wp-content/uploads/OpenMPRefCard-5-2-web.pdf
+
+The general structure of an OpenMP section is
+
+c$omp  parallel
+c$omp& shared(a,b,c)
+c$omp& private(i,j,k)
+c$omp  sections
+
+c$omp  section
+   compute kernel 1
+
+c$omp  section
+   compute kernel 2
+
+c$omp  section
+   compute kernel 3
+
+...
+
+c$omp end sections
+c$omp end parallel
 
 
 1.  Take a look at the source code in file ex3.f. Determine 
