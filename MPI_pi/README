@@ -5,21 +5,25 @@ Type
 
 > make
 
-and two programs will be made: one called openmp_pi and one mpi_pi.
+and three programs will be made: one called openmp_pi, openmp_pi2 and one mpi_pi.
 
 First set the number of processors you want to use:
 
 > export OMP_NUM_THREADS=1
 
-if you want to use 1 thread to calculate PI. Then run your program
+if you want to use 1 thread to calculate PI. Then run your programs
 
 > ./openmp_pi
+
+and
+
+> ./openmp_pi2
 
 Now change the number in 
 
 > export OMP_NUM_THREADS=2
 
-and run the program again. This time it should be almost two times faster.
+and run the programs again. This time it should be almost two times faster.
 
 If you have more cores in your system you can increase the number until the number of available cores. You can also try to use more OMP_NUM_THREADS than you have cores...
 

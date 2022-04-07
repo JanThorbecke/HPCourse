@@ -2,7 +2,7 @@
 
       implicit none
       integer i,j, size, chunk_size
-      parameter (size=240000)
+      parameter (size=2400000)
       parameter (chunk_size=size/24)
 
       double precision x_sum, x_max, x_min, x
