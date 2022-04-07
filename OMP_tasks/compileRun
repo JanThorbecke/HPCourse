@@ -1,0 +1,3 @@
+gcc -fopenmp tasks.c -o tasks
+export OMP_NUM_THREADS=2
+./tasks
