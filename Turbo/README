@@ -1,0 +1,35 @@
+
+Open the Makefile and change the LIBS= variable to a library where BLAS can be found. For some machines the LIBS variable has already put into the makefile and uncomment (remove the # in front of the line) for the LIBS= definition on your system.
+
+In case you cannot find a suitable BLAS library remove the call to sgemm in the code at line 176:
+
+175 
+176     sgemm_(transa, transb, &row, &col, &col, &alpha,
+177         &matrix_a[0][0], &col, &matrix_b[0][0], &col, &beta, &matrix_r[0][0]    , &col);
+178 
+
+replace those lines with
+
+175 /*
+176     sgemm_(transa, transb, &row, &col, &col, &alpha,
+177         &matrix_a[0][0], &col, &matrix_b[0][0], &col, &beta, &matrix_r[0][0]    , &col);
+178  */
+
+and in the Makefile comment out (add a # at the first position of the line) all LIBS= definitions, and compile again, or uncomment line 50 in the Makefile.
+
+If the make command gives errors because it does not understand the -mavx2 flag remove this flag from the CFLAGS= definition and try again.  Or use the GNU compilers.
+
+Compile the program by typing
+
+> make
+
+and run in by typing
+
+export OMP_NUM_THREADS=4
+./ClassicMatrixMultiply
+
+In another terminal monitor the frequency of the cores with the command
+
+watch -n.1 "cat /proc/cpuinfo | grep \"cpu MHz\""
+
+
