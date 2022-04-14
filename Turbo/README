@@ -33,3 +33,4 @@ In another terminal monitor the frequency of the cores with the command
 watch -n.1 "cat /proc/cpuinfo | grep \"cpu MHz\""
 
 
+

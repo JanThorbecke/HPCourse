@@ -191,6 +191,7 @@ int main(int argc, char* argv[])
 
 	fprintf(result_file, "Classic matrix multiplication\n") ;
 
+while (1) {
 #pragma omp parallel 
 {
 	initialize_matrices() ;
@@ -228,6 +229,7 @@ int main(int argc, char* argv[])
 	multiply_matrices3() ;
 	t1=wallclock_time();
 	fprintf(stderr,"Time multiply_matrices 3 =%lf\n", t1-t0);
+}
 }
 
 	fclose(result_file) ;
