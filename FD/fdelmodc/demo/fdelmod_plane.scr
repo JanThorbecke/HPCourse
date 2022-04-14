@@ -21,7 +21,7 @@
 export filecp=model_cp.su
 export filero=model_cp.su
 
-lldb ../fdelmodc \
+gdb ../fdelmodc \
 	file_cp=$filecp file_den=$filero \
 	ischeme=1 \
 	file_src=wavelet.su verbose=3 \
