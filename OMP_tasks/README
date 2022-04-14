@@ -1,0 +1,5 @@
+This example is full explained in 
+
+https://openmp.org/wp-content/uploads/sc13.tasking.ruud.pdf
+
+Follow the slides in this presentation and learn how tasks can help to parallelise non-loop structures.

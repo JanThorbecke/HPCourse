@@ -38,7 +38,7 @@ mpif_pi: mpif_pi.f90
 	$(CC) $(CFLAGS) -c $<
 
 clean:
-	rm -f core mpi_pi openmp_pi mpif_pi
+	rm -f core mpi_pi openmp_pi mpif_pi openmp_pi2
 
 print:	Makefile $(SRC)
 	$(PRINT) $?
