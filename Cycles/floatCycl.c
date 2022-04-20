@@ -10,7 +10,7 @@ int main (int argc, char *argv[])
 	float *a, *b, *c;
 	double t0, t1, t2, fcycles;
 
-	mhz = 3220;
+	mhz = 2900;
 	Loop = 10000000;
 	N=128;
 	a=(float *)calloc(N,sizeof(float));

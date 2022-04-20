@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#SBATCH --job-name="loadStore"
+#SBATCH --job-name="floatCycle"
 #SBATCH --partition=compute
 #SBATCH --time=00:20:00
 #SBATCH --nodes=1
@@ -13,5 +13,5 @@ module use /mnt/shared/apps/modulefiles
 module load 2022r1
 module load compute
 
-srun ./loadStore
+srun ./floatCycl 
 
