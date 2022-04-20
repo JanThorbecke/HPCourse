@@ -32,6 +32,11 @@ As an extra experiment you can change line 36 in loadStore.c to:
 (this was 31) and make the executable and run again. Note that the run will take much more time and your computer can slow down significantly. If it takes too long (more than 10 minutes) you should kill the program with 'control c'.
 
 
+DelftBlue nodes have the following CPU installed
+model name	: Intel(R) Xeon(R) Gold 6248R CPU @ 3.00GHz
+with
+        int mhz=3000, l3_size=67108864, l2_size=1048576, l1_size=32768, l2_line=64;
+
 
 
 

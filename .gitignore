@@ -54,6 +54,10 @@ Mkfile.old
 dkms.conf
 pmbw-0.6.2.tar
 
+#batch job output
+slurm-*.out
+
+#binaries
 lat_mem_rd/lat_mem_rd
 Stream/stream
 membench/membench
