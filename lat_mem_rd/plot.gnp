@@ -21,6 +21,7 @@ set term postscript eps color 22
 set output 'MacCompareClock.eps'
 plot "MacCore2Duo" using 1:3 title "Mac Core 2 Duo 2006" lw 3, \
 "MacCorei7" using 1:3 title "Mac Core i7 2012" lw 3, \
+"delftblue" using 1:3 title "Delft Blue 6248R 24C 3.0GHz" lw 3, \
 "MacM1pro" using 1:3 title "Mac M1 pro 2021" lw 3
 
 set output 'MacCompareTime.eps'
