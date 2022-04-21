@@ -7,7 +7,7 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1
 #SBATCH --exclusive
-#SBATCH --mem=20G
+#SBATCH --mem=60G
 
 module use /mnt/shared/apps/modulefiles
 module load 2022r1

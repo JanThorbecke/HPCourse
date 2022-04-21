@@ -69,6 +69,7 @@ int main ()
 			time, loops, (size_t)((time)*mhz*1e+6), size*sizeof(double)/((1024*1024)*(time)) );
 	
 		fprintf(fp, "%ld %e\n", (size*sizeof(double)), size*sizeof(double)/((1024*1024)*(time)) );
+		fflush(fp);
 	
 		free(c);
 		free(d);
