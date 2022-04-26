@@ -1,7 +1,7 @@
 # Makefile
 
 CC	= gcc
-CFLAGS 	= -O0 -m64
+CFLAGS 	= -O1 -m64
 
 PRG = loadStore
 #PRG = lsTests

@@ -5,7 +5,7 @@ set xlabel "nt samples"
 set ylabel "bandwidth [MBytes/s]"
 
 
-set yrange [0.0:17000]
+set yrange [0.0:30000]
 set size 1.0,1.0;
 set grid
 set xtics (16,128,1024,16e3,1e6,16e6,1e9)
@@ -17,6 +17,7 @@ set term postscript eps color 22
 set output 'Macs.eps'
 plot "MacCore2Duo" using 1:2 title "Mac Core 2 Duo 2007" lw 3, \
      "MacCorei7" using 1:2 title "Mac Core i7 2014" lw 3, \
+     "DelftBlue" using 1:2 title "Xeon 6248R 2020" lw 3, \
      "MacM1" using 1:2 title "Mac M1 2021" lw 3
 
 exit
