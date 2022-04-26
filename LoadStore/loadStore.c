@@ -21,7 +21,7 @@ int main ()
 	double *a, *c, *d, zero=0, *f, *t;
 	char *filename;
 
-	filename="DelftBlue";
+	filename="MacM1";
 	t0  = wallclock_time();
 	t1  = wallclock_time();
 	t_bias = t1-t0;
