@@ -2,6 +2,7 @@
 Open the Makefile and change the compiler to the one you are using and choose a low optimisation flag :
 for example you can first try the lowest optimization level -O0 and then try -O1. 
 
+> make clean
 > make
 
 and run the build executable by typing
