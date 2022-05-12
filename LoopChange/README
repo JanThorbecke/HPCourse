@@ -19,5 +19,5 @@ The loop2.c and loop2.f90 are attempts to make a different example. It somehow s
 Interesting is the result when increasing N in loop2 from 1000 to 1024 and run again: same problem larger N... it is expected that it will run a bit slower (more work to do). Try the example to find that out. 
 
 gcc wallclock_time.c -c
-gfortran wallclock_time.o loop2.f90 
+gfortran -Ofast wallclock_time.o loop2.f90 
 
