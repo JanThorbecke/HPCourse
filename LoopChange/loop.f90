@@ -1,7 +1,7 @@
       program main
 
       integer N
-      parameter (N=500)
+      parameter (N=400)
       real  A(N,N,N)
       real  B(N,N,N)
       real  C(N,N,N)
