@@ -42,6 +42,7 @@
 *.su
 *.idb
 *.pdb
+*.optrpt
 
 # Kernel Module Compile Results
 *.mod*
@@ -70,3 +71,5 @@ MatMul/ClassicMatrixMultiply
 Corr/corrOpt
 CacheTrash/shared_cache
 RaceCondition/racecondition
+Vect/vect
+MatMulUnroll/ClassicMatrixMultiply

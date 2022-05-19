@@ -2,13 +2,13 @@
 
 #Intel compiler
 CC	= icc
-CFLAGS 	= -O0 -opt-report-phase=hlo -g -openmp
+CFLAGS 	= -O0 -qopt-report-phase=par -g -qopenmp
 #CFLAGS 	= -O3 -mssse3 -par-report -opt-report 3 -opt-report-phase=hlo
 #icc -O1 -mssse3 -no-scalar-rep -opt-report 3 -opt-report-phase=hlo -restrict -c floatCycl.c -S -fcode-asm
 
 #PGI compiler
-CC	= gcc
-CFLAGS 	= -O1 -fopenmp
+#CC	= pgcc
+#CFLAGS 	= -O1 -fopenmp
 
 
 #GNU compiler

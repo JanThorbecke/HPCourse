@@ -3,7 +3,6 @@
 #Intel compiler
 CC	= icc
 CFLAGS 	= -O3 -qopt-report=5
-#icc -O1 -mssse3 -no-scalar-rep -opt-report 3 -opt-report-phase=hlo -restrict -c floatCycl.c -S -fcode-asm
 
 #GNU compiler
 #CC	= gcc

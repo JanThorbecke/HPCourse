@@ -1,0 +1,22 @@
+For downloading and working on the exercises the following is needed:
+
+Linux:
+Ubuntu:
+sudo apt-get update
+sudo apt install build-essential
+sudo apt-get install manpages-dev
+RedHat
+subscription-manager repos --enable rhel-desktop-devtools-7-rpms
+subscription-manager repos --enable rhel-7-desktop-optional-rpms
+
+Apple OSX
+Install Xcode from Appstore 
+Then in a terminal run the command:
+xcode-select --install
+
+Windows 10
+https://docs.microsoft.com/en-us/windows/wsl/install Windows Subsystem for Linux lets developers run a GNU/Linux environment without a Virtual Machine.
+
+https://www.office.com/launch/forms?auth=2
+
+

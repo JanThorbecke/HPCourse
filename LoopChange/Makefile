@@ -2,7 +2,7 @@
 
 #use this for the GNU compiler
 FC	= gfortran
-FFLAGS 	= -O3 
+FFLAGS 	= -O1 
 CC	= gcc 
 
 #use this for the Intel compiler
