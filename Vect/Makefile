@@ -15,8 +15,8 @@ CFLAGS  = -O3 -qopt-report=5
 #CFLAGS 	= -fast -Minfo -Mvect
 
 #apple clang compiler
-CC	= clang
-CFLAGS 	= -Ofast -Rpass=loop-vectorize -Rpass-analysis=loop-vectorize
+#CC	= clang
+#CFLAGS 	= -Ofast -Rpass=loop-vectorize -Rpass-analysis=loop-vectorize
 
 PRG = vect
 
