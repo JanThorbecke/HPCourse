@@ -25,10 +25,10 @@ int main(int argc, char *argv[]) {
 
 	t0=wallclock_time();
 	s = 0.0;
+#pragma novector
 	for (k=0; k<Loop; k++){
 /* this loop will not vectorize */
 #pragma novector
-#pragma clang loop vectorize(disable)
 		for (j=0; j<N; j++) {
 			s += a[j]*b[j];
 		}
