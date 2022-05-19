@@ -72,3 +72,4 @@ Corr/corrOpt
 CacheTrash/shared_cache
 RaceCondition/racecondition
 Vect/vect
+MatMulUnroll/ClassicMatrixMultiply
