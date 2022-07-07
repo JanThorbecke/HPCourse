@@ -16,8 +16,8 @@ CFLAGS 	= -O3 -par-report -vec-report -Wl,-no_compact_unwind
 #CFLAGS	= -O3 $(DEFINES) $(ALLINC) 
 
 #OSX clang compiler
-CC	= clang
-CFLAGS 	= -O3 
+#CC	= clang
+#CFLAGS 	= -O3 
 
 #BLAS library
 #marken (TA cluster)
