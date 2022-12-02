@@ -30,11 +30,9 @@ int main()
     t0=wallclock_time();
 	#pragma omp parallel private(x) shared(sum)
     {
-//    #pragma omp for private(x) reduction(+:sum)
-	#pragma omp for 
+    #pragma omp for private(x) reduction(+:sum)
 	for (i=0; i<num_steps; i++){
 		x = ((double)i+0.5)*step;
-		#pragma omp critical 
 		sum = sum + 4.0/(1.0 + x*x);
 	}
 	}
