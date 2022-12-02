@@ -79,6 +79,7 @@
       open(unit=41, file="prefetchLVL1.dat")
 
       do s = 1, maxScanRange
+          sp1 = s+1
 
           a = 0.0
           call cpu_time(start)
@@ -104,6 +105,7 @@
       open(unit=42, file="prefetchLVL2.dat")
 
       do s = 1, maxScanRange
+          sp1 = s+1
 
           a = 0.0
           call cpu_time(start)
@@ -129,6 +131,7 @@
       open(unit=43, file="prefetchLVL3.dat")
 
       do s = 1, maxScanRange
+          sp1 = s+1
 
           a = 0.0
           call cpu_time(start)
