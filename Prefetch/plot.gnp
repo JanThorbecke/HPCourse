@@ -9,13 +9,26 @@ set xlabel "Prefetching this far ahead"
 set ylabel "Runtime in seconds"
 
 
-set yrange [0.038:0.048]
+#set yrange [0.038:0.048]
 set size 1.0,1.0;
 set grid
 set xrange [0:200]
 set title "Influence of prefetching on runtimes"
 set term postscript eps color 22
 set output 'prefetch.eps'
+plot "noPrefetch.dat" using 1:2 title "no prefetch" lw 3, \
+ "prefetchLVL0.dat" using 1:2 title "prefetch lvl 0" lw 3, \
+ "prefetchLVL1.dat" using 1:2 title "prefetch lvl 1" lw 3, \
+ "prefetchLVL2.dat" using 1:2 title "prefetch lvl 2" lw 3, \
+ "prefetchLVL3.dat" using 1:2 title "prefetch lvl 3" lw 3
+
+set yrange [0.048:0.058]
+set size 1.0,1.0;
+set grid
+set xrange [0:200]
+set title "Influence of prefetching on runtimes"
+set term postscript eps color 22
+set output 'prefetchzoom.eps'
 plot "noPrefetch.dat" using 1:2 title "no prefetch" lw 3, \
  "prefetchLVL0.dat" using 1:2 title "prefetch lvl 0" lw 3, \
  "prefetchLVL1.dat" using 1:2 title "prefetch lvl 1" lw 3, \
