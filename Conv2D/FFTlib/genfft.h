@@ -42,6 +42,11 @@ typedef struct _dcomplexStruct { /* complex number */
 extern "C" {
 #endif
 
+int npfa (int nmin);
+int npfao (int nmin, int nmax);
+int npfar (int nmin);
+int npfaro (int nmin, int nmax);
+
 int optncc(int n);
 int optncr(int n);
 

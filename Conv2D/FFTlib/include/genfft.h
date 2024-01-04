@@ -1,1 +1,1 @@
-/palmyra/data/jthorbecke/HPCourse/Conv2D/FFTlib/genfft.h
+/Users/jan/src/HPCourse/Conv2D/FFTlib/genfft.h
