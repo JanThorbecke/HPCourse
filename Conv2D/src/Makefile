@@ -1,8 +1,8 @@
 # Makefile for puls3D
 
-ROOT=$(HOME)/src/HPCourse/Conv2D/
+ROOT=$(PWD)/../
 
-include $(ROOT)/Make_include
+include ../Make_include
 
 ALLINC = -I$(ROOT)/FFTlib/include/
 
