@@ -1,6 +1,10 @@
 
 Edit the Makefile and define your compiler which supports OpenMP (CC=) and define your mpi compile script (MPICC=).
 
+To load an MPI compiler the following module can be used:
+
+module load openmpi
+
 Type
 
 > make
