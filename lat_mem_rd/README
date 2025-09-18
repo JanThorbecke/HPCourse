@@ -1,7 +1,7 @@
 
 First adapt in lat_mem_rd.c line 20 the MHz rate for the computer you are running on:
 
-#define MHZ 2500
+#define MHZ 2250
 
 On linux systems you can find that kind of hardware information in the file /proc/cpuinfo
 

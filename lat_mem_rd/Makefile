@@ -1,6 +1,7 @@
 SHELL=/bin/bash
 
-CC=icc
+CC=icx
+CC=gcc
 MAKE=make
 AR=ar
 ARCREATE=cr
