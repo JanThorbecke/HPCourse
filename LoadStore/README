@@ -7,6 +7,10 @@ First adapt in loadStore.c line 17 with machine specific information and line 24
 
 On linux systems you can find that kind of hardware information in the file /proc/cpuinfo or use
 
+> lscpu
+
+or 
+
 > dmesg | grep -i cpu
 
 Note that the cache-size in the source file must be given in Bytes.  The cache-size given in /proc/cpuinfo is the largest L2 (or L3)-cache size. The L1-cache size is sometimes difficult to find and you can try google to find it. If that does not work just leave the L1-cache size set to 32768 Bytes. From the latency exercise (3) you can also determine the cache sizes. 
