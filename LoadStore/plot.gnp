@@ -18,6 +18,7 @@ set output 'Macs.eps'
 plot "MacCore2Duo" using 1:2 title "Mac Core 2 Duo 2007" lw 3, \
      "MacCorei7" using 1:2 title "Mac Core i7 2014" lw 3, \
      "DelftBlue" using 1:2 title "Xeon 6248R 2020" lw 3, \
+     "palmyra" using 1:2 title "AMD 7742 2020" lw 3, \
      "MacM1" using 1:2 title "Mac M1 2021" lw 3
 
 exit
