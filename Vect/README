@@ -1,4 +1,6 @@
-When you use the Intel compiler (icc) you only have to type make and run the ./vect program. 
+When you use the Intel compiler (icx on GSE server 'module load intel-oneapi' ) you only have to type make and run the ./vect program. 
+
+The vect.optrpt is an annotated source code version that mentions the optimization carried out.
 
 Look at the code and try to understand what is computed and how it is implemented. 
 

@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
 /* this loop will vectorize */
 #pragma ivdep
 #pragma vector
-#pragma clang loop vectorize(enable)
+//#pragma clang loop vectorize(enable)
 		for (j=0; j<N; j++) {
 			a[j+1] = b[j];
 			b[j+1] = a[j];

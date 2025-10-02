@@ -1,8 +1,8 @@
 # Makefile
 
 #Intel compiler
-CC	= icc
-CFLAGS 	= -O3 -qopt-report=5
+CC	= icx
+CFLAGS 	= -O3 -qopt-report=3  -qopt-report-phase=vec
 
 #GNU compiler
 #CC	= gcc
