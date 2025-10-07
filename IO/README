@@ -9,7 +9,8 @@ for the GNU compiler or
 for the Intel compiler.
 You now have a ./a.out file which you can run:
 
-> ./a.out
+> ./a.out -f $PWD/IOtest.bin
+
 
 Look in the program and see if you can understand the results. The IO methods used are: 
 	-write/read 

@@ -17,6 +17,11 @@ replace those lines with
 
 and in the Makefile comment out (add a # at the first position of the line) all LIBS= definitions, and compile again, or uncomment line 50 in the Makefile.
 
+On the GSE servers (plamyra, oahua, ...) you can load the MKL module and the intel (classic) compilers
+
+module load intel-oneapi-compilers-classic
+module load intel-oneapi-mkl/2023.1.0
+
 If the make command gives errors because it does not understand the -mavx2 flag remove this flag from the CFLAGS= definition and try again.  Or use the GNU compilers.
 
 Compile the program by typing

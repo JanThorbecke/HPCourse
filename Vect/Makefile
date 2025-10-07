@@ -4,6 +4,8 @@
 CC	= icx
 CFLAGS 	= -O3 -qopt-report=3  -qopt-report-phase=vec
 
+CC	= icc
+CFLAGS 	= -O3 -qopt-report=3  -qopt-report-phase=vec
 #GNU compiler
 #CC	= gcc
 #CFLAGS 	= -O3 -Ofast -ftree-vectorize -mtune=intel -fopt-info-vec -fopt-info-vec-missed 
