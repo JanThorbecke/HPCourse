@@ -38,7 +38,8 @@ set output 'summary.eps'
 plot "AppleM1" using 1:2 title "AppleM1 1024" lw 3, \
 	 "OpteronIntel_1024" using 1:2 title "Opteron 1024" lw 3, \
 	 "duocore_1024" using 1:2 title "DuoCore 1024" lw 3, \
-	"XeonIntel_1024" using 1:2 title "Xeon 1024" lw 3
+	 "XeonIntel_1024" using 1:2 title "Xeon 1024" lw 3, \
+	 "palmyra.txt" using 1:2 title "AMD 7742 1024" lw 3
 
 exit;
 
