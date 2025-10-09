@@ -111,8 +111,8 @@ int main(int argc, char *argv[])
 			t0 = wallclock_time();
 #pragma ivdep
 			for (l=0; l<ntout; l++) {
-#pragma ivdep
 /*
+#pragma ivdep
                      cr = 0.0;
                      for (j=0; j<nt; j++) {
                          cr += A[j]*B[j+l];
