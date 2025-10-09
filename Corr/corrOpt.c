@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
 /* Compute full correlation */
 
 	for (i=1; i<np; i++) {
-		nt= (int)pow(2.,(float)i);
+		nt= (size_t)pow(2.,(float)i);
 		t2=0.0;
 		for (k=0; k<nrepeat; k++) {
 #pragma ivdep

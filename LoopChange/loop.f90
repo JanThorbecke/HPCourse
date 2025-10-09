@@ -31,7 +31,7 @@
       t1 = wallclock_time()
 
       write(*,*)'A=',a(1,1,1), a(1,N,1), a(N,1,N)
-      write(*,*)'time i j k = ', t1-t0
+      write(*,'(A, F7.4)')'time i j k = ', t1-t0
 
       call setzero(N,A)
       t0 = wallclock_time()
@@ -45,7 +45,7 @@
       t1 = wallclock_time()
 
       write(*,*)'A=',a(1,1,1), a(1,N,1), a(N,1,N)
-      write(*,*)'time i k j = ', t1-t0
+      write(*,'(A, F7.4)') 'time i k j = ', t1-t0
 
       call setzero(N,A)
       t0 = wallclock_time()
@@ -59,7 +59,7 @@
       t1 = wallclock_time()
 
       write(*,*)'A=',a(1,1,1), a(1,N,1), a(N,1,N)
-      write(*,*)'time j i k = ', t1-t0
+      write(*,'(A, F7.4)')'time j i k = ', t1-t0
 
 
       call setzero(N,A)
@@ -74,7 +74,7 @@
       t1 = wallclock_time()
 
       write(*,*)'A=',a(1,1,1), a(1,N,1), a(N,1,N)
-      write(*,*)'time j k i = ', t1-t0
+      write(*,'(A, F7.4)')'time j k i = ', t1-t0
 
       call setzero(N,A)
       t0 = wallclock_time()
@@ -88,7 +88,7 @@
       t1 = wallclock_time()
 
       write(*,*)'A=',a(1,1,1), a(1,N,1), a(N,1,N)
-      write(*,*)'time k i j = ', t1-t0
+      write(*,'(A, F7.4)')'time k i j = ', t1-t0
 
       call setzero(N,A)
       t0 = wallclock_time()
@@ -102,7 +102,7 @@
       t1 = wallclock_time()
 
       write(*,*)'A=',a(1,1,1), a(1,N,1), a(N,1,N)
-      write(*,*)'time k j i = ', t1-t0
+      write(*,'(A, F7.4)')'time k j i = ', t1-t0
 
       end
 
