@@ -1,9 +1,9 @@
 # Makefile for corrtest
 
-#CC = icc
-#CFLAGS  = -O3 -vec-report
-CC = gcc
-CFLAGS  = -O3 -ftree-vectorize -ftree-vectorizer-verbose=2 -fstrict-aliasing 
+CC = icx
+CFLAGS  = -O3 -qopt-report=3
+#CC = gcc
+#CFLAGS  = -O0 #-ftree-vectorize -ftree-vectorizer-verbose=2 -fstrict-aliasing 
 #CC = clang
 #CFLAGS  = -Ofast  -fdiagnostics-show-option
 #CC = pgcc
