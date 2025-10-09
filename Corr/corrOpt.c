@@ -100,11 +100,13 @@ int main(int argc, char *argv[])
 		nt= (size_t)pow(2.,(float)i);
 		t2=0.0;
 		for (k=0; k<nrepeat; k++) {
+/*
 #pragma ivdep
 			for (j=0; j<cachesize; j++) {
 				A[j] = 0.0;
 				B[j] = 0.0;
 			}
+*/
 			memset(C,0,sizeof(float)*nt);
 			t0 = wallclock_time();
 #pragma ivdep
