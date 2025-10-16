@@ -12,6 +12,7 @@ sudo sysctl -a | grep cache
 
 compile the shared_cache example by typing:
 
+module load intel-oneapi-compilers-classic
 make clean
 make
 

@@ -27,7 +27,7 @@ Now change the number in
 
 > export OMP_NUM_THREADS=2
 
-and run the programs again. This time it should be almost two times faster. Are the answers still correct? Cab you explain the results by inspecting the source code?
+and run the programs again. This time it should be almost two times faster. Are the answers still correct? Can you explain the results by inspecting the source code?
 
 If you have more cores in your system you can increase the number until the number of available cores. You can also try to use more OMP_NUM_THREADS than you have cores...
 
