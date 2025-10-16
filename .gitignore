@@ -6,6 +6,9 @@
 *.ko
 *.obj
 *.elf
+*.s
+*.ll
+*.opt.yaml
 
 # Linker output
 *.ilk
