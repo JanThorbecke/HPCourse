@@ -77,3 +77,12 @@ RaceCondition/racecondition
 Vect/vect
 MatMulUnroll/ClassicMatrixMultiply
 Conv2D/src/puls3D
+LoopChange/loop
+LoopChange/loop2
+LoopChange/loop2c
+LoopChange/loop2c1*
+MPI_pi/mpi_pi
+MPI_pi/mpif_pi
+MPI_pi/openmp_pi
+MPI_pi/openmp_pi2
+
