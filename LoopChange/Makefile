@@ -2,20 +2,27 @@
 
 #use this for the GNU compiler
 FC	= gfortran
-FFLAGS 	= -O3 
+FFLAGS 	= -O1 
 CC	= gcc 
+CFLAGS = -O3
 
 #use this for the Intel compiler
-FC=ifx
-FFLAGS= -O3 -qopt-report=3 -qopt-report-phase=all -axCORE-AVX2
-CC=icx
-CFLAGS = -O3 -qopt-report=3 -qopt-report-phase=all
+#FC=ifx
+#FFLAGS= -O0 -qopt-report=3 -qopt-report-phase=all -axCORE-AVX2
+#CC=icx
+#CFLAGS = -O3 -qopt-report=3 -qopt-report-phase=all
 
-#use this for the PGI compiler
-#FC=pgf90
-#FFLAGS= -O1 -Minfo
-#CC=pgcc
+#use this for the Nvdia compiler
+FC=nvfortran
+FFLAGS= -O1 -Minfo=all
+CC=nvc
+CFLAGS = -O3  -Manno -Minfo=all
 
+# For AMD aocc compilera
+FC=flang
+FFLAGS= -O3 -fgen-aor
+CC=clang
+CFLAGS = -O3 -fgen-aor
 
 PRG = loop
 

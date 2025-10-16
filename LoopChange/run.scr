@@ -1,0 +1,27 @@
+#!/bin/bash
+
+sed 's/#define N 1000/#define N 1024/' loop2c.c | sed -e '27,117d' > loop2c1024.c
+sed 's/#define N 1000/#define N 1000/' loop2c.c | sed -e '27,117d' > loop2c1000.c
+
+module load aocc/5.0.0
+clang -c wallclock_time.c
+clang loop2c1000.c -O3 -o loop2c1000 wallclock_time.o
+clang loop2c1024.c -O3 -o loop2c1024 wallclock_time.o
+
+perf stat -d ./loop2c1000
+perf stat -d ./loop2c1024
+
+
+
+module load nvhpc/25.7
+nvc -c wallclock_time.c
+nvc loop2c1000.c -O3 -Manno -Minfo=all -o loop2c1000nv wallclock_time.o
+nvc loop2c1024.c -O3 -Manno -Minfo=all -o loop2c1024nv wallclock_time.o
+
+perf stat -d ./loop2c1000nv
+perf stat -d ./loop2c1024nv
+
+
+perf stat -e all_dc_accesses -e fp_ret_sse_avx_ops.all,sse_avx_stalls,l2_cache_hits_from_dc_misses,l2_cache_misses_from_dc_misses ./loop2c1024
+
+perf stat -e all_dc_accesses -e fp_ret_sse_avx_ops.all,sse_avx_stalls,l2_cache_hits_from_dc_misses,l2_cache_misses_from_dc_misses ./loop2c1024nv
