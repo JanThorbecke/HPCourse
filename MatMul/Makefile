@@ -2,28 +2,30 @@
 
 
 #intel compiler
-CC	= icc
-CFLAGS 	= -O3 -qopt-report
+#CC	= icx
+#CFLAGS 	= -O3 -qopt-report
 #CFLAGS 	= -O3 -par-report -vec-report -Wl,-no_compact_unwind
 #CFLAGS 	= -O1 -par-report
 
-#PGI compiler
-#CC = pgcc
+#Nvidia (old PGI) compiler
+#CC = nvcc
 #CFLAGS  = -fast
 
 #GNU compiler
-#CC	= gcc
-#CFLAGS	= -O3 $(DEFINES) $(ALLINC) 
+CC	= gcc
+CFLAGS	= -O3 $(DEFINES) $(ALLINC) 
 
 #OSX clang compiler
 #CC	= clang
 #CFLAGS 	= -O3 
 
 #BLAS library
-#marken (TA cluster)
-MKL=/opt/intel/mkl/10.0.3.020/
+#palmyra (GSE servers) Intel's MKL
 MKL=$(MKLROOT)
 LIBS = -L$(MKL)/lib/em64t/ -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lm
+
+#palmyra (GSE servers) AMD's libblis 'module load amdblis'
+LIBS = -L$(AMDBLIS_ROOT)/lib -lblis -lm
 
 #linux (TNW cluster)
 #MKL=/opt/mkl-8.0.1/lib/32/
