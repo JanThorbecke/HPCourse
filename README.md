@@ -8,9 +8,9 @@ Load Store
 Memory Latency
 
 * Operating System and tools:
- * IO
- * Floating point precision
- * Elastic Finite Difference, with some mistakes as exercise 
+  * IO
+  * Floating point precision
+  * Elastic Finite Difference, with some mistakes as exercise 
 
 * Single core Optimization:
  * Effect of loop order on performance
